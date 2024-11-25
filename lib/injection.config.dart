@@ -54,8 +54,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i700.AuthCheckBloc>(
         () => _i700.AuthCheckBloc(gh<_i878.IAuthFacade>()));
-    gh.factory<_i409.SignInBloc>(
-        () => _i409.SignInBloc(gh<_i878.IAuthFacade>()));
+    gh.factory<_i409.SignInBloc>(() => _i409.SignInBloc(
+          gh<_i878.IAuthFacade>(),
+          gh<_i357.ITokenRepository>(),
+        ));
     return this;
   }
 }

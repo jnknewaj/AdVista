@@ -10,6 +10,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.noRefreshToken() = NoRefreshToken;
   const factory AuthFailure.noServerAuthCode() = NoServerAuthCode;
   const factory AuthFailure.tokenExchangeFailed() = TokenExchangeFailed;
+  const factory AuthFailure.failedToStoreToken() = FailedToStoreToken;
   const factory AuthFailure.notSignedIn() = NotSignedIn;
   const factory AuthFailure.networkError() = NetworkError;
   const factory AuthFailure.unknown({String? code, String? msg}) = Unknown;

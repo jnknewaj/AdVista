@@ -25,30 +25,38 @@ class _Handler extends StatelessWidget {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
         state.map(
-          initial: (_) {
-            showSnackbar(context, 'Signing In');
-          },
-          inProgrees: (_) {},
-          signInSuccess: (s) {
-            final temp = s.tokens;
-            print('TOKENS =======  $temp');
-            navigateAndRemoveUntil(context, const HomePage());
-          },
-          failed: (f) {
-            final text = f.failure.map(
-              cancelledByUser: (_) => 'Cancelled By User',
-              networkError: (_) => 'Network Error',
-              noAccessToken: (_) => 'No Access Token',
-              notSignedIn: (_) => 'Not Signed In',
-              serverError: (m) => 'Server error : ${m.msg}',
-              unknown: (u) => '${u.code}  || ${u.msg}',
-              noServerAuthCode: (_) => 'No Server Auth Code',
-              tokenExchangeFailed: (_) => 'Token exchange failed',
-              noRefreshToken: (_) => 'No Refresh Token',
-            );
-            showSnackbar(context, text);
-          },
-        );
+            initial: (_) {
+              showSnackbar(context, 'Signing In');
+            },
+            inProgrees: (_) {},
+            signInSuccess: (s) {
+              final temp = s.tokens;
+              print('TOKENS =======  $temp');
+              navigateAndRemoveUntil(context, const HomePage());
+            },
+            failed: (f) {
+              final text = f.failure.map(
+                  cancelledByUser: (_) => 'Cancelled By User',
+                  networkError: (_) => 'Network Error',
+                  noAccessToken: (_) => 'No Access Token',
+                  notSignedIn: (_) => 'Not Signed In',
+                  serverError: (m) => 'Server error : ${m.msg}',
+                  unknown: (u) => '${u.code}  || ${u.msg}',
+                  noServerAuthCode: (_) => 'No Server Auth Code',
+                  tokenExchangeFailed: (_) => 'Token exchange failed',
+                  noRefreshToken: (_) => 'No Refresh Token',
+                  failedToStoreToken: (_) => 'Failed To Store Auth Tokens');
+              showSnackbar(context, text);
+            },
+            failedToStoreTokens: (s) {
+              final msg = s.failure.map(
+                notFound: (_) => 'Token Not Found',
+                expired: (_) => 'Token Expired',
+                serverError: (err) =>
+                    'Server Error. Code : ${err.code} Message : ${err.msg}',
+                unknown: (e) => 'Unknown error occurred',
+              );
+            });
       },
       child: BlocBuilder<SignInBloc, SignInState>(
         builder: (context, state) {

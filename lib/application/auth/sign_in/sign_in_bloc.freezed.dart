@@ -178,6 +178,7 @@ mixin _$SignInState {
     required TResult Function() inProgrees,
     required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -186,6 +187,7 @@ mixin _$SignInState {
     TResult? Function()? inProgrees,
     TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -194,6 +196,7 @@ mixin _$SignInState {
     TResult Function()? inProgrees,
     TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -203,6 +206,7 @@ mixin _$SignInState {
     required TResult Function(_InProgrees value) inProgrees,
     required TResult Function(_SignInSuccess value) signInSuccess,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -211,6 +215,7 @@ mixin _$SignInState {
     TResult? Function(_InProgrees value)? inProgrees,
     TResult? Function(_SignInSuccess value)? signInSuccess,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -219,6 +224,7 @@ mixin _$SignInState {
     TResult Function(_InProgrees value)? inProgrees,
     TResult Function(_SignInSuccess value)? signInSuccess,
     TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -290,6 +296,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() inProgrees,
     required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
   }) {
     return initial();
   }
@@ -301,6 +308,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? inProgrees,
     TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
   }) {
     return initial?.call();
   }
@@ -312,6 +320,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? inProgrees,
     TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -327,6 +336,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_InProgrees value) inProgrees,
     required TResult Function(_SignInSuccess value) signInSuccess,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
   }) {
     return initial(this);
   }
@@ -338,6 +348,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_InProgrees value)? inProgrees,
     TResult? Function(_SignInSuccess value)? signInSuccess,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
   }) {
     return initial?.call(this);
   }
@@ -349,6 +360,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_InProgrees value)? inProgrees,
     TResult Function(_SignInSuccess value)? signInSuccess,
     TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -407,6 +419,7 @@ class _$InProgreesImpl implements _InProgrees {
     required TResult Function() inProgrees,
     required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
   }) {
     return inProgrees();
   }
@@ -418,6 +431,7 @@ class _$InProgreesImpl implements _InProgrees {
     TResult? Function()? inProgrees,
     TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
   }) {
     return inProgrees?.call();
   }
@@ -429,6 +443,7 @@ class _$InProgreesImpl implements _InProgrees {
     TResult Function()? inProgrees,
     TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (inProgrees != null) {
@@ -444,6 +459,7 @@ class _$InProgreesImpl implements _InProgrees {
     required TResult Function(_InProgrees value) inProgrees,
     required TResult Function(_SignInSuccess value) signInSuccess,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
   }) {
     return inProgrees(this);
   }
@@ -455,6 +471,7 @@ class _$InProgreesImpl implements _InProgrees {
     TResult? Function(_InProgrees value)? inProgrees,
     TResult? Function(_SignInSuccess value)? signInSuccess,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
   }) {
     return inProgrees?.call(this);
   }
@@ -466,6 +483,7 @@ class _$InProgreesImpl implements _InProgrees {
     TResult Function(_InProgrees value)? inProgrees,
     TResult Function(_SignInSuccess value)? signInSuccess,
     TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (inProgrees != null) {
@@ -563,6 +581,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     required TResult Function() inProgrees,
     required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
   }) {
     return signInSuccess(tokens);
   }
@@ -574,6 +593,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     TResult? Function()? inProgrees,
     TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
   }) {
     return signInSuccess?.call(tokens);
   }
@@ -585,6 +605,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     TResult Function()? inProgrees,
     TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (signInSuccess != null) {
@@ -600,6 +621,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     required TResult Function(_InProgrees value) inProgrees,
     required TResult Function(_SignInSuccess value) signInSuccess,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
   }) {
     return signInSuccess(this);
   }
@@ -611,6 +633,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     TResult? Function(_InProgrees value)? inProgrees,
     TResult? Function(_SignInSuccess value)? signInSuccess,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
   }) {
     return signInSuccess?.call(this);
   }
@@ -622,6 +645,7 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     TResult Function(_InProgrees value)? inProgrees,
     TResult Function(_SignInSuccess value)? signInSuccess,
     TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (signInSuccess != null) {
@@ -727,6 +751,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() inProgrees,
     required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
   }) {
     return failed(failure);
   }
@@ -738,6 +763,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? inProgrees,
     TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
   }) {
     return failed?.call(failure);
   }
@@ -749,6 +775,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? inProgrees,
     TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -764,6 +791,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(_InProgrees value) inProgrees,
     required TResult Function(_SignInSuccess value) signInSuccess,
     required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
   }) {
     return failed(this);
   }
@@ -775,6 +803,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(_InProgrees value)? inProgrees,
     TResult? Function(_SignInSuccess value)? signInSuccess,
     TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
   }) {
     return failed?.call(this);
   }
@@ -786,6 +815,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(_InProgrees value)? inProgrees,
     TResult Function(_SignInSuccess value)? signInSuccess,
     TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -804,5 +834,177 @@ abstract class _Failed implements SignInState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailedToStoreTokensImplCopyWith<$Res> {
+  factory _$$FailedToStoreTokensImplCopyWith(_$FailedToStoreTokensImpl value,
+          $Res Function(_$FailedToStoreTokensImpl) then) =
+      __$$FailedToStoreTokensImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TokenFailures failure});
+
+  $TokenFailuresCopyWith<$Res> get failure;
+}
+
+/// @nodoc
+class __$$FailedToStoreTokensImplCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$FailedToStoreTokensImpl>
+    implements _$$FailedToStoreTokensImplCopyWith<$Res> {
+  __$$FailedToStoreTokensImplCopyWithImpl(_$FailedToStoreTokensImpl _value,
+      $Res Function(_$FailedToStoreTokensImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailedToStoreTokensImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as TokenFailures,
+    ));
+  }
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenFailuresCopyWith<$Res> get failure {
+    return $TokenFailuresCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$FailedToStoreTokensImpl implements _FailedToStoreTokens {
+  const _$FailedToStoreTokensImpl(this.failure);
+
+  @override
+  final TokenFailures failure;
+
+  @override
+  String toString() {
+    return 'SignInState.failedToStoreTokens(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailedToStoreTokensImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailedToStoreTokensImplCopyWith<_$FailedToStoreTokensImpl> get copyWith =>
+      __$$FailedToStoreTokensImplCopyWithImpl<_$FailedToStoreTokensImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() inProgrees,
+    required TResult Function(AuthTokens tokens) signInSuccess,
+    required TResult Function(AuthFailure failure) failed,
+    required TResult Function(TokenFailures failure) failedToStoreTokens,
+  }) {
+    return failedToStoreTokens(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? inProgrees,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
+    TResult? Function(AuthFailure failure)? failed,
+    TResult? Function(TokenFailures failure)? failedToStoreTokens,
+  }) {
+    return failedToStoreTokens?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? inProgrees,
+    TResult Function(AuthTokens tokens)? signInSuccess,
+    TResult Function(AuthFailure failure)? failed,
+    TResult Function(TokenFailures failure)? failedToStoreTokens,
+    required TResult orElse(),
+  }) {
+    if (failedToStoreTokens != null) {
+      return failedToStoreTokens(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InProgrees value) inProgrees,
+    required TResult Function(_SignInSuccess value) signInSuccess,
+    required TResult Function(_Failed value) failed,
+    required TResult Function(_FailedToStoreTokens value) failedToStoreTokens,
+  }) {
+    return failedToStoreTokens(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InProgrees value)? inProgrees,
+    TResult? Function(_SignInSuccess value)? signInSuccess,
+    TResult? Function(_Failed value)? failed,
+    TResult? Function(_FailedToStoreTokens value)? failedToStoreTokens,
+  }) {
+    return failedToStoreTokens?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InProgrees value)? inProgrees,
+    TResult Function(_SignInSuccess value)? signInSuccess,
+    TResult Function(_Failed value)? failed,
+    TResult Function(_FailedToStoreTokens value)? failedToStoreTokens,
+    required TResult orElse(),
+  }) {
+    if (failedToStoreTokens != null) {
+      return failedToStoreTokens(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FailedToStoreTokens implements SignInState {
+  const factory _FailedToStoreTokens(final TokenFailures failure) =
+      _$FailedToStoreTokensImpl;
+
+  TokenFailures get failure;
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FailedToStoreTokensImplCopyWith<_$FailedToStoreTokensImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
