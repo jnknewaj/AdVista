@@ -12,6 +12,7 @@ part 'auth_check_state.dart';
 
 @injectable
 class AuthCheckBloc extends Bloc<AuthCheckEvent, AuthCheckState> {
+  /// [GoogleAuthFacade]
   final IAuthFacade _authFacade;
 
   AuthCheckBloc(

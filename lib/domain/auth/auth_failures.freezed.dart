@@ -21,6 +21,9 @@ mixin _$AuthFailure {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -31,6 +34,9 @@ mixin _$AuthFailure {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -41,6 +47,9 @@ mixin _$AuthFailure {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -52,6 +61,9 @@ mixin _$AuthFailure {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -62,6 +74,9 @@ mixin _$AuthFailure {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -72,6 +87,9 @@ mixin _$AuthFailure {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -145,6 +163,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -158,6 +179,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -171,6 +195,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -188,6 +215,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -201,6 +231,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -214,6 +247,9 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -301,6 +337,9 @@ class _$ServerErrorImpl implements ServerError {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -314,6 +353,9 @@ class _$ServerErrorImpl implements ServerError {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -327,6 +369,9 @@ class _$ServerErrorImpl implements ServerError {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -344,6 +389,9 @@ class _$ServerErrorImpl implements ServerError {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -357,6 +405,9 @@ class _$ServerErrorImpl implements ServerError {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -370,6 +421,9 @@ class _$ServerErrorImpl implements ServerError {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -438,6 +492,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -451,6 +508,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -464,6 +524,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -481,6 +544,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -494,6 +560,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -507,6 +576,9 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -521,6 +593,448 @@ class _$NoAccessTokenImpl implements NoAccessToken {
 
 abstract class NoAccessToken implements AuthFailure {
   const factory NoAccessToken() = _$NoAccessTokenImpl;
+}
+
+/// @nodoc
+abstract class _$$NoRefreshTokenImplCopyWith<$Res> {
+  factory _$$NoRefreshTokenImplCopyWith(_$NoRefreshTokenImpl value,
+          $Res Function(_$NoRefreshTokenImpl) then) =
+      __$$NoRefreshTokenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoRefreshTokenImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$NoRefreshTokenImpl>
+    implements _$$NoRefreshTokenImplCopyWith<$Res> {
+  __$$NoRefreshTokenImplCopyWithImpl(
+      _$NoRefreshTokenImpl _value, $Res Function(_$NoRefreshTokenImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoRefreshTokenImpl implements NoRefreshToken {
+  const _$NoRefreshTokenImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.noRefreshToken()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoRefreshTokenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function(String? msg) serverError,
+    required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
+    required TResult Function() notSignedIn,
+    required TResult Function() networkError,
+    required TResult Function(String? code, String? msg) unknown,
+  }) {
+    return noRefreshToken();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function(String? msg)? serverError,
+    TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
+    TResult? Function()? notSignedIn,
+    TResult? Function()? networkError,
+    TResult? Function(String? code, String? msg)? unknown,
+  }) {
+    return noRefreshToken?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function(String? msg)? serverError,
+    TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
+    TResult Function()? notSignedIn,
+    TResult Function()? networkError,
+    TResult Function(String? code, String? msg)? unknown,
+    required TResult orElse(),
+  }) {
+    if (noRefreshToken != null) {
+      return noRefreshToken();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return noRefreshToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult? Function(NotSignedIn value)? notSignedIn,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return noRefreshToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (noRefreshToken != null) {
+      return noRefreshToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoRefreshToken implements AuthFailure {
+  const factory NoRefreshToken() = _$NoRefreshTokenImpl;
+}
+
+/// @nodoc
+abstract class _$$NoServerAuthCodeImplCopyWith<$Res> {
+  factory _$$NoServerAuthCodeImplCopyWith(_$NoServerAuthCodeImpl value,
+          $Res Function(_$NoServerAuthCodeImpl) then) =
+      __$$NoServerAuthCodeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoServerAuthCodeImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$NoServerAuthCodeImpl>
+    implements _$$NoServerAuthCodeImplCopyWith<$Res> {
+  __$$NoServerAuthCodeImplCopyWithImpl(_$NoServerAuthCodeImpl _value,
+      $Res Function(_$NoServerAuthCodeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoServerAuthCodeImpl implements NoServerAuthCode {
+  const _$NoServerAuthCodeImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.noServerAuthCode()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoServerAuthCodeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function(String? msg) serverError,
+    required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
+    required TResult Function() notSignedIn,
+    required TResult Function() networkError,
+    required TResult Function(String? code, String? msg) unknown,
+  }) {
+    return noServerAuthCode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function(String? msg)? serverError,
+    TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
+    TResult? Function()? notSignedIn,
+    TResult? Function()? networkError,
+    TResult? Function(String? code, String? msg)? unknown,
+  }) {
+    return noServerAuthCode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function(String? msg)? serverError,
+    TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
+    TResult Function()? notSignedIn,
+    TResult Function()? networkError,
+    TResult Function(String? code, String? msg)? unknown,
+    required TResult orElse(),
+  }) {
+    if (noServerAuthCode != null) {
+      return noServerAuthCode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return noServerAuthCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult? Function(NotSignedIn value)? notSignedIn,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return noServerAuthCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (noServerAuthCode != null) {
+      return noServerAuthCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoServerAuthCode implements AuthFailure {
+  const factory NoServerAuthCode() = _$NoServerAuthCodeImpl;
+}
+
+/// @nodoc
+abstract class _$$TokenExchangeFailedImplCopyWith<$Res> {
+  factory _$$TokenExchangeFailedImplCopyWith(_$TokenExchangeFailedImpl value,
+          $Res Function(_$TokenExchangeFailedImpl) then) =
+      __$$TokenExchangeFailedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TokenExchangeFailedImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$TokenExchangeFailedImpl>
+    implements _$$TokenExchangeFailedImplCopyWith<$Res> {
+  __$$TokenExchangeFailedImplCopyWithImpl(_$TokenExchangeFailedImpl _value,
+      $Res Function(_$TokenExchangeFailedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
+  const _$TokenExchangeFailedImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.tokenExchangeFailed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TokenExchangeFailedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function(String? msg) serverError,
+    required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
+    required TResult Function() notSignedIn,
+    required TResult Function() networkError,
+    required TResult Function(String? code, String? msg) unknown,
+  }) {
+    return tokenExchangeFailed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function(String? msg)? serverError,
+    TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
+    TResult? Function()? notSignedIn,
+    TResult? Function()? networkError,
+    TResult? Function(String? code, String? msg)? unknown,
+  }) {
+    return tokenExchangeFailed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function(String? msg)? serverError,
+    TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
+    TResult Function()? notSignedIn,
+    TResult Function()? networkError,
+    TResult Function(String? code, String? msg)? unknown,
+    required TResult orElse(),
+  }) {
+    if (tokenExchangeFailed != null) {
+      return tokenExchangeFailed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return tokenExchangeFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult? Function(NotSignedIn value)? notSignedIn,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return tokenExchangeFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (tokenExchangeFailed != null) {
+      return tokenExchangeFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TokenExchangeFailed implements AuthFailure {
+  const factory TokenExchangeFailed() = _$TokenExchangeFailedImpl;
 }
 
 /// @nodoc
@@ -567,6 +1081,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -580,6 +1097,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -593,6 +1113,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -610,6 +1133,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -623,6 +1149,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -636,6 +1165,9 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -696,6 +1228,9 @@ class _$NetworkErrorImpl implements NetworkError {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -709,6 +1244,9 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -722,6 +1260,9 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -739,6 +1280,9 @@ class _$NetworkErrorImpl implements NetworkError {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -752,6 +1296,9 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -765,6 +1312,9 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
@@ -860,6 +1410,9 @@ class _$UnknownImpl implements Unknown {
     required TResult Function() cancelledByUser,
     required TResult Function(String? msg) serverError,
     required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
@@ -873,6 +1426,9 @@ class _$UnknownImpl implements Unknown {
     TResult? Function()? cancelledByUser,
     TResult? Function(String? msg)? serverError,
     TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
@@ -886,6 +1442,9 @@ class _$UnknownImpl implements Unknown {
     TResult Function()? cancelledByUser,
     TResult Function(String? msg)? serverError,
     TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
@@ -903,6 +1462,9 @@ class _$UnknownImpl implements Unknown {
     required TResult Function(CancelledByUser value) cancelledByUser,
     required TResult Function(ServerError value) serverError,
     required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
@@ -916,6 +1478,9 @@ class _$UnknownImpl implements Unknown {
     TResult? Function(CancelledByUser value)? cancelledByUser,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
@@ -929,6 +1494,9 @@ class _$UnknownImpl implements Unknown {
     TResult Function(CancelledByUser value)? cancelledByUser,
     TResult Function(ServerError value)? serverError,
     TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,

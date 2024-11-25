@@ -176,7 +176,7 @@ mixin _$SignInState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgrees,
-    required TResult Function(String accessToken) signInSuccess,
+    required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +184,7 @@ mixin _$SignInState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? inProgrees,
-    TResult? Function(String accessToken)? signInSuccess,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -192,7 +192,7 @@ mixin _$SignInState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgrees,
-    TResult Function(String accessToken)? signInSuccess,
+    TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
     required TResult orElse(),
   }) =>
@@ -288,7 +288,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgrees,
-    required TResult Function(String accessToken) signInSuccess,
+    required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
   }) {
     return initial();
@@ -299,7 +299,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? inProgrees,
-    TResult? Function(String accessToken)? signInSuccess,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
   }) {
     return initial?.call();
@@ -310,7 +310,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgrees,
-    TResult Function(String accessToken)? signInSuccess,
+    TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
     required TResult orElse(),
   }) {
@@ -405,7 +405,7 @@ class _$InProgreesImpl implements _InProgrees {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgrees,
-    required TResult Function(String accessToken) signInSuccess,
+    required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
   }) {
     return inProgrees();
@@ -416,7 +416,7 @@ class _$InProgreesImpl implements _InProgrees {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? inProgrees,
-    TResult? Function(String accessToken)? signInSuccess,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
   }) {
     return inProgrees?.call();
@@ -427,7 +427,7 @@ class _$InProgreesImpl implements _InProgrees {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgrees,
-    TResult Function(String accessToken)? signInSuccess,
+    TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
     required TResult orElse(),
   }) {
@@ -485,7 +485,9 @@ abstract class _$$SignInSuccessImplCopyWith<$Res> {
           _$SignInSuccessImpl value, $Res Function(_$SignInSuccessImpl) then) =
       __$$SignInSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String accessToken});
+  $Res call({AuthTokens tokens});
+
+  $AuthTokensCopyWith<$Res> get tokens;
 }
 
 /// @nodoc
@@ -501,28 +503,38 @@ class __$$SignInSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accessToken = null,
+    Object? tokens = null,
   }) {
     return _then(_$SignInSuccessImpl(
-      null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == tokens
+          ? _value.tokens
+          : tokens // ignore: cast_nullable_to_non_nullable
+              as AuthTokens,
     ));
+  }
+
+  /// Create a copy of SignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthTokensCopyWith<$Res> get tokens {
+    return $AuthTokensCopyWith<$Res>(_value.tokens, (value) {
+      return _then(_value.copyWith(tokens: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SignInSuccessImpl implements _SignInSuccess {
-  const _$SignInSuccessImpl(this.accessToken);
+  const _$SignInSuccessImpl(this.tokens);
 
   @override
-  final String accessToken;
+  final AuthTokens tokens;
 
   @override
   String toString() {
-    return 'SignInState.signInSuccess(accessToken: $accessToken)';
+    return 'SignInState.signInSuccess(tokens: $tokens)';
   }
 
   @override
@@ -530,12 +542,11 @@ class _$SignInSuccessImpl implements _SignInSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignInSuccessImpl &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken));
+            (identical(other.tokens, tokens) || other.tokens == tokens));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken);
+  int get hashCode => Object.hash(runtimeType, tokens);
 
   /// Create a copy of SignInState
   /// with the given fields replaced by the non-null parameter values.
@@ -550,10 +561,10 @@ class _$SignInSuccessImpl implements _SignInSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgrees,
-    required TResult Function(String accessToken) signInSuccess,
+    required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
   }) {
-    return signInSuccess(accessToken);
+    return signInSuccess(tokens);
   }
 
   @override
@@ -561,10 +572,10 @@ class _$SignInSuccessImpl implements _SignInSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? inProgrees,
-    TResult? Function(String accessToken)? signInSuccess,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
   }) {
-    return signInSuccess?.call(accessToken);
+    return signInSuccess?.call(tokens);
   }
 
   @override
@@ -572,12 +583,12 @@ class _$SignInSuccessImpl implements _SignInSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgrees,
-    TResult Function(String accessToken)? signInSuccess,
+    TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
     required TResult orElse(),
   }) {
     if (signInSuccess != null) {
-      return signInSuccess(accessToken);
+      return signInSuccess(tokens);
     }
     return orElse();
   }
@@ -621,9 +632,9 @@ class _$SignInSuccessImpl implements _SignInSuccess {
 }
 
 abstract class _SignInSuccess implements SignInState {
-  const factory _SignInSuccess(final String accessToken) = _$SignInSuccessImpl;
+  const factory _SignInSuccess(final AuthTokens tokens) = _$SignInSuccessImpl;
 
-  String get accessToken;
+  AuthTokens get tokens;
 
   /// Create a copy of SignInState
   /// with the given fields replaced by the non-null parameter values.
@@ -714,7 +725,7 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() inProgrees,
-    required TResult Function(String accessToken) signInSuccess,
+    required TResult Function(AuthTokens tokens) signInSuccess,
     required TResult Function(AuthFailure failure) failed,
   }) {
     return failed(failure);
@@ -725,7 +736,7 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? inProgrees,
-    TResult? Function(String accessToken)? signInSuccess,
+    TResult? Function(AuthTokens tokens)? signInSuccess,
     TResult? Function(AuthFailure failure)? failed,
   }) {
     return failed?.call(failure);
@@ -736,7 +747,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? inProgrees,
-    TResult Function(String accessToken)? signInSuccess,
+    TResult Function(AuthTokens tokens)? signInSuccess,
     TResult Function(AuthFailure failure)? failed,
     required TResult orElse(),
   }) {

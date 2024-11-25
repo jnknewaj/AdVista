@@ -30,16 +30,22 @@ class _Handler extends StatelessWidget {
           },
           inProgrees: (_) {},
           signInSuccess: (s) {
+            final temp = s.tokens;
+            print('TOKENS =======  $temp');
             navigateAndRemoveUntil(context, const HomePage());
           },
           failed: (f) {
             final text = f.failure.map(
-                cancelledByUser: (_) => 'Cancelled By User',
-                networkError: (_) => 'Network Error',
-                noAccessToken: (_) => 'No Access Token',
-                notSignedIn: (_) => 'Not Signed In',
-                serverError: (m) => 'Server error : ${m.msg}',
-                unknown: (u) => '${u.code}  || ${u.msg}');
+              cancelledByUser: (_) => 'Cancelled By User',
+              networkError: (_) => 'Network Error',
+              noAccessToken: (_) => 'No Access Token',
+              notSignedIn: (_) => 'Not Signed In',
+              serverError: (m) => 'Server error : ${m.msg}',
+              unknown: (u) => '${u.code}  || ${u.msg}',
+              noServerAuthCode: (_) => 'No Server Auth Code',
+              tokenExchangeFailed: (_) => 'Token exchange failed',
+              noRefreshToken: (_) => 'No Refresh Token',
+            );
             showSnackbar(context, text);
           },
         );

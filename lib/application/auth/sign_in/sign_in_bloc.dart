@@ -1,4 +1,5 @@
 import 'package:advista/domain/auth/auth_failures.dart';
+import 'package:advista/domain/auth/auth_tokens.dart';
 import 'package:advista/domain/auth/i_auth_facade.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,7 +31,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         // );
         await result.fold(
           (failure) async => emit(SignInState.failed(failure)),
-          (accessToken) async => emit(SignInState.signInSuccess(accessToken)),
+          (authTokens) async => emit(SignInState.signInSuccess(authTokens)),
         );
       },
     );
