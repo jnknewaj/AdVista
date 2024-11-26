@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:advista/domain/auth/i_auth_facade.dart';
+import 'package:advista/domain/auth/i_token_repository.dart';
+import 'package:advista/domain/core/i_account_repository.dart';
+import 'package:advista/infrastructure/core/admob_account_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,9 +17,13 @@ part 'auth_check_state.dart';
 class AuthCheckBloc extends Bloc<AuthCheckEvent, AuthCheckState> {
   /// [GoogleAuthFacade]
   final IAuthFacade _authFacade;
+  final ITokenRepository _tokenRepository;
+  final IAccountRepository _admobAccountRepository;
 
   AuthCheckBloc(
     this._authFacade,
+    this._admobAccountRepository,
+    this._tokenRepository,
   ) : super(const AuthCheckState.initial()) {
     on<AuthCheckEvent>(_onEvent);
   }
@@ -33,6 +40,8 @@ class AuthCheckBloc extends Bloc<AuthCheckEvent, AuthCheckState> {
             : const AuthCheckState.unAuthenticated());
       },
       signOutPressed: (e) async {
+        await _tokenRepository.clearTokens();
+        await _admobAccountRepository.removeAccountId();
         await _authFacade.signOut();
         emit(const AuthCheckState.unAuthenticated());
       },

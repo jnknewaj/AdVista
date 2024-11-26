@@ -16,10 +16,45 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccountFailures {
-  String get name => throw _privateConstructorUsedError;
-  String get publisherId => throw _privateConstructorUsedError;
-  String get reportingTimeZone => throw _privateConstructorUsedError;
-  String get currencyCode => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) httpFailure,
+    required TResult Function(String message) unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? httpFailure,
+    TResult? Function(String message)? unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? httpFailure,
+    TResult Function(String message)? unknown,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HTTPFailure value) httpFailure,
+    required TResult Function(Unknown value) unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HTTPFailure value)? httpFailure,
+    TResult? Function(Unknown value)? unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HTTPFailure value)? httpFailure,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AccountFailures
   /// with the given fields replaced by the non-null parameter values.
@@ -34,11 +69,7 @@ abstract class $AccountFailuresCopyWith<$Res> {
           AccountFailures value, $Res Function(AccountFailures) then) =
       _$AccountFailuresCopyWithImpl<$Res, AccountFailures>;
   @useResult
-  $Res call(
-      {String name,
-      String publisherId,
-      String reportingTimeZone,
-      String currencyCode});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -56,53 +87,34 @@ class _$AccountFailuresCopyWithImpl<$Res, $Val extends AccountFailures>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? publisherId = null,
-    Object? reportingTimeZone = null,
-    Object? currencyCode = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      publisherId: null == publisherId
-          ? _value.publisherId
-          : publisherId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportingTimeZone: null == reportingTimeZone
-          ? _value.reportingTimeZone
-          : reportingTimeZone // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$AccountFailuresImplCopyWith<$Res>
+abstract class _$$HTTPFailureImplCopyWith<$Res>
     implements $AccountFailuresCopyWith<$Res> {
-  factory _$$AccountFailuresImplCopyWith(_$AccountFailuresImpl value,
-          $Res Function(_$AccountFailuresImpl) then) =
-      __$$AccountFailuresImplCopyWithImpl<$Res>;
+  factory _$$HTTPFailureImplCopyWith(
+          _$HTTPFailureImpl value, $Res Function(_$HTTPFailureImpl) then) =
+      __$$HTTPFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String publisherId,
-      String reportingTimeZone,
-      String currencyCode});
+  $Res call({int code, String message});
 }
 
 /// @nodoc
-class __$$AccountFailuresImplCopyWithImpl<$Res>
-    extends _$AccountFailuresCopyWithImpl<$Res, _$AccountFailuresImpl>
-    implements _$$AccountFailuresImplCopyWith<$Res> {
-  __$$AccountFailuresImplCopyWithImpl(
-      _$AccountFailuresImpl _value, $Res Function(_$AccountFailuresImpl) _then)
+class __$$HTTPFailureImplCopyWithImpl<$Res>
+    extends _$AccountFailuresCopyWithImpl<$Res, _$HTTPFailureImpl>
+    implements _$$HTTPFailureImplCopyWith<$Res> {
+  __$$HTTPFailureImplCopyWithImpl(
+      _$HTTPFailureImpl _value, $Res Function(_$HTTPFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountFailures
@@ -110,27 +122,17 @@ class __$$AccountFailuresImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? publisherId = null,
-    Object? reportingTimeZone = null,
-    Object? currencyCode = null,
+    Object? code = null,
+    Object? message = null,
   }) {
-    return _then(_$AccountFailuresImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      publisherId: null == publisherId
-          ? _value.publisherId
-          : publisherId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportingTimeZone: null == reportingTimeZone
-          ? _value.reportingTimeZone
-          : reportingTimeZone // ignore: cast_nullable_to_non_nullable
-              as String,
-      currencyCode: null == currencyCode
-          ? _value.currencyCode
-          : currencyCode // ignore: cast_nullable_to_non_nullable
+    return _then(_$HTTPFailureImpl(
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -138,88 +140,275 @@ class __$$AccountFailuresImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountFailuresImpl
-    with DiagnosticableTreeMixin
-    implements _AccountFailures {
-  const _$AccountFailuresImpl(
-      {required this.name,
-      required this.publisherId,
-      required this.reportingTimeZone,
-      required this.currencyCode});
+class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
+  const _$HTTPFailureImpl(this.code, this.message);
 
   @override
-  final String name;
+  final int code;
   @override
-  final String publisherId;
-  @override
-  final String reportingTimeZone;
-  @override
-  final String currencyCode;
+  final String message;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AccountFailures(name: $name, publisherId: $publisherId, reportingTimeZone: $reportingTimeZone, currencyCode: $currencyCode)';
+    return 'AccountFailures.httpFailure(code: $code, message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AccountFailures'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('publisherId', publisherId))
-      ..add(DiagnosticsProperty('reportingTimeZone', reportingTimeZone))
-      ..add(DiagnosticsProperty('currencyCode', currencyCode));
+      ..add(DiagnosticsProperty('type', 'AccountFailures.httpFailure'))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountFailuresImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.publisherId, publisherId) ||
-                other.publisherId == publisherId) &&
-            (identical(other.reportingTimeZone, reportingTimeZone) ||
-                other.reportingTimeZone == reportingTimeZone) &&
-            (identical(other.currencyCode, currencyCode) ||
-                other.currencyCode == currencyCode));
+            other is _$HTTPFailureImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, publisherId, reportingTimeZone, currencyCode);
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   /// Create a copy of AccountFailures
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountFailuresImplCopyWith<_$AccountFailuresImpl> get copyWith =>
-      __$$AccountFailuresImplCopyWithImpl<_$AccountFailuresImpl>(
-          this, _$identity);
+  _$$HTTPFailureImplCopyWith<_$HTTPFailureImpl> get copyWith =>
+      __$$HTTPFailureImplCopyWithImpl<_$HTTPFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) httpFailure,
+    required TResult Function(String message) unknown,
+  }) {
+    return httpFailure(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? httpFailure,
+    TResult? Function(String message)? unknown,
+  }) {
+    return httpFailure?.call(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? httpFailure,
+    TResult Function(String message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (httpFailure != null) {
+      return httpFailure(code, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HTTPFailure value) httpFailure,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return httpFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HTTPFailure value)? httpFailure,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return httpFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HTTPFailure value)? httpFailure,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (httpFailure != null) {
+      return httpFailure(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _AccountFailures implements AccountFailures {
-  const factory _AccountFailures(
-      {required final String name,
-      required final String publisherId,
-      required final String reportingTimeZone,
-      required final String currencyCode}) = _$AccountFailuresImpl;
+abstract class HTTPFailure implements AccountFailures {
+  const factory HTTPFailure(final int code, final String message) =
+      _$HTTPFailureImpl;
 
+  int get code;
   @override
-  String get name;
-  @override
-  String get publisherId;
-  @override
-  String get reportingTimeZone;
-  @override
-  String get currencyCode;
+  String get message;
 
   /// Create a copy of AccountFailures
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AccountFailuresImplCopyWith<_$AccountFailuresImpl> get copyWith =>
+  _$$HTTPFailureImplCopyWith<_$HTTPFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnknownImplCopyWith<$Res>
+    implements $AccountFailuresCopyWith<$Res> {
+  factory _$$UnknownImplCopyWith(
+          _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
+      __$$UnknownImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$UnknownImplCopyWithImpl<$Res>
+    extends _$AccountFailuresCopyWithImpl<$Res, _$UnknownImpl>
+    implements _$$UnknownImplCopyWith<$Res> {
+  __$$UnknownImplCopyWithImpl(
+      _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$UnknownImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
+  const _$UnknownImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AccountFailures.unknown(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountFailures.unknown'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnknownImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
+      __$$UnknownImplCopyWithImpl<_$UnknownImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) httpFailure,
+    required TResult Function(String message) unknown,
+  }) {
+    return unknown(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? httpFailure,
+    TResult? Function(String message)? unknown,
+  }) {
+    return unknown?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? httpFailure,
+    TResult Function(String message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(HTTPFailure value) httpFailure,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(HTTPFailure value)? httpFailure,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(HTTPFailure value)? httpFailure,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unknown implements AccountFailures {
+  const factory Unknown(final String message) = _$UnknownImpl;
+
+  @override
+  String get message;
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

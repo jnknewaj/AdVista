@@ -16,6 +16,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
+import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
+    as _i747;
 import 'domain/auth/i_auth_facade.dart' as _i878;
 import 'domain/auth/i_token_repository.dart' as _i357;
 import 'domain/core/i_account_repository.dart' as _i566;
@@ -50,8 +52,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i519.Client>(() => thirdPartyInjectableModuels.client);
     gh.lazySingleton<_i116.GoogleSignIn>(
         () => googleInjectableModule.googleSignIn);
-    gh.lazySingleton<_i566.IAccountRepository>(
-        () => _i876.AdmobAccountRepository());
     gh.lazySingleton<_i1066.TokenApiClient>(
         () => _i1066.TokenApiClient(gh<_i519.Client>()));
     gh.lazySingleton<_i621.BaseService>(
@@ -64,22 +64,32 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i116.GoogleSignIn>(),
           gh<_i1066.TokenApiClient>(),
         ));
+    gh.lazySingleton<_i405.AccountService>(() => _i405.AccountService(
+          gh<_i558.FlutterSecureStorage>(),
+          gh<_i621.BaseService>(),
+          gh<_i744.TokenStorageService>(),
+        ));
     gh.lazySingleton<_i357.ITokenRepository>(
         () => _i969.TokenRepository(gh<_i744.TokenStorageService>()));
     gh.lazySingleton<_i628.MetricsService>(
         () => _i628.MetricsService(gh<_i621.BaseService>()));
-    gh.factory<_i700.AuthCheckBloc>(
-        () => _i700.AuthCheckBloc(gh<_i878.IAuthFacade>()));
-    gh.lazySingleton<_i405.AccountService>(() => _i405.AccountService(
-          gh<_i558.FlutterSecureStorage>(),
-          gh<_i621.BaseService>(),
-        ));
+    gh.lazySingleton<_i566.IAccountRepository>(
+        () => _i876.AdmobAccountRepository(gh<_i405.AccountService>()));
     gh.factory<_i409.SignInBloc>(() => _i409.SignInBloc(
           gh<_i878.IAuthFacade>(),
           gh<_i357.ITokenRepository>(),
         ));
     gh.lazySingleton<_i839.IMetricsRepository>(
         () => _i18.MetricsRepository(gh<_i628.MetricsService>()));
+    gh.factory<_i747.AdmobAccountBloc>(() => _i747.AdmobAccountBloc(
+          gh<_i566.IAccountRepository>(),
+          gh<_i405.AccountService>(),
+        ));
+    gh.factory<_i700.AuthCheckBloc>(() => _i700.AuthCheckBloc(
+          gh<_i878.IAuthFacade>(),
+          gh<_i566.IAccountRepository>(),
+          gh<_i357.ITokenRepository>(),
+        ));
     return this;
   }
 }
