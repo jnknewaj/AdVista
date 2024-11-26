@@ -28,24 +28,29 @@ class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
     AdmobAccountEvent event,
     Emitter<AdmobAccountState> emit,
   ) async {
-    await event.map(accountInfoRequested: (e) async {
-      emit(const AdmobAccountState.loading());
-      final result = await _repository.getAccount();
-      await result.fold(
-        (l) => AdmobAccountState.failed(l),
-        (account) async {
-          await _accountService.storeAccountId(account.publisherId);
-          emit(AdmobAccountState.loaded(account));
-        },
-      );
-    }, checkedAccountId: (e) async {
-      emit(const AdmobAccountState.loading());
-      final idStored = await _accountService.isAccountIdStored();
-      if (idStored) {
-        emit(const AdmobAccountState.idInfoFound());
-      } else {
-        emit(const AdmobAccountState.idInfoNotFound());
-      }
-    });
+    await event.map(
+      accountInfoRequested: (e) async {
+        emit(const AdmobAccountState.loading());
+        final result = await _repository.getAccount();
+        await result.fold(
+          (l) => AdmobAccountState.failed(l),
+          (account) async {
+            print("ACCOUNTFOUND : ${account.publisherId}");
+            await _accountService.storeAccountId(account.publisherId);
+            print("Account stored successfully");
+            emit(AdmobAccountState.loaded(account));
+          },
+        );
+      },
+      checkedAccountId: (e) async {
+        emit(const AdmobAccountState.loading());
+        final idStored = await _accountService.isAccountIdStored();
+        if (idStored) {
+          emit(const AdmobAccountState.idInfoFound());
+        } else {
+          emit(const AdmobAccountState.idInfoNotFound());
+        }
+      },
+    );
   }
 }

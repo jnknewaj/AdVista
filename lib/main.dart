@@ -62,7 +62,7 @@ class AuthGate extends StatelessWidget {
                 failed: (s) {
                   showSnackbar(context, 'Failed To Get Admob Account Info');
                 },
-                idInfoFound: (s) {
+                idInfoFound: (ss) {
                   navigateAndRemoveUntil(context, const HomePage());
                 },
                 idInfoNotFound: (s) {

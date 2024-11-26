@@ -32,6 +32,7 @@ class AccountService {
 
   Future<bool> isAccountIdStored() async {
     final accountId = await getAccountId();
+    print('MYID: $accountId');
     return accountId != null;
   }
 
