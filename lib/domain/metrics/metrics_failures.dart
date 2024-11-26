@@ -5,6 +5,8 @@ part 'metrics_failures.freezed.dart';
 @freezed
 class MetricsFailures with _$MetricsFailures {
   const factory MetricsFailures.serviceError({String? msg}) = ServiceError;
+  const factory MetricsFailures.idNotFoundError({String? msg}) =
+      IdNotFoundError;
   const factory MetricsFailures.unknown({String? msg, String? code}) = Unknown;
   const factory MetricsFailures.httpError({
     String? msg,

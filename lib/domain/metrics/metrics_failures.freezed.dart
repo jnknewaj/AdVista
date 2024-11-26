@@ -20,6 +20,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? msg) serviceError,
+    required TResult Function(String? msg) idNotFoundError,
     required TResult Function(String? msg, String? code) unknown,
     required TResult Function(String? msg, int? code) httpError,
   }) =>
@@ -27,6 +28,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? msg)? serviceError,
+    TResult? Function(String? msg)? idNotFoundError,
     TResult? Function(String? msg, String? code)? unknown,
     TResult? Function(String? msg, int? code)? httpError,
   }) =>
@@ -34,6 +36,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? msg)? serviceError,
+    TResult Function(String? msg)? idNotFoundError,
     TResult Function(String? msg, String? code)? unknown,
     TResult Function(String? msg, int? code)? httpError,
     required TResult orElse(),
@@ -42,6 +45,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServiceError value) serviceError,
+    required TResult Function(IdNotFoundError value) idNotFoundError,
     required TResult Function(Unknown value) unknown,
     required TResult Function(HttpError value) httpError,
   }) =>
@@ -49,6 +53,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServiceError value)? serviceError,
+    TResult? Function(IdNotFoundError value)? idNotFoundError,
     TResult? Function(Unknown value)? unknown,
     TResult? Function(HttpError value)? httpError,
   }) =>
@@ -56,6 +61,7 @@ mixin _$MetricsFailures {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServiceError value)? serviceError,
+    TResult Function(IdNotFoundError value)? idNotFoundError,
     TResult Function(Unknown value)? unknown,
     TResult Function(HttpError value)? httpError,
     required TResult orElse(),
@@ -175,6 +181,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? msg) serviceError,
+    required TResult Function(String? msg) idNotFoundError,
     required TResult Function(String? msg, String? code) unknown,
     required TResult Function(String? msg, int? code) httpError,
   }) {
@@ -185,6 +192,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? msg)? serviceError,
+    TResult? Function(String? msg)? idNotFoundError,
     TResult? Function(String? msg, String? code)? unknown,
     TResult? Function(String? msg, int? code)? httpError,
   }) {
@@ -195,6 +203,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? msg)? serviceError,
+    TResult Function(String? msg)? idNotFoundError,
     TResult Function(String? msg, String? code)? unknown,
     TResult Function(String? msg, int? code)? httpError,
     required TResult orElse(),
@@ -209,6 +218,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServiceError value) serviceError,
+    required TResult Function(IdNotFoundError value) idNotFoundError,
     required TResult Function(Unknown value) unknown,
     required TResult Function(HttpError value) httpError,
   }) {
@@ -219,6 +229,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServiceError value)? serviceError,
+    TResult? Function(IdNotFoundError value)? idNotFoundError,
     TResult? Function(Unknown value)? unknown,
     TResult? Function(HttpError value)? httpError,
   }) {
@@ -229,6 +240,7 @@ class _$ServiceErrorImpl implements ServiceError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServiceError value)? serviceError,
+    TResult Function(IdNotFoundError value)? idNotFoundError,
     TResult Function(Unknown value)? unknown,
     TResult Function(HttpError value)? httpError,
     required TResult orElse(),
@@ -251,6 +263,163 @@ abstract class ServiceError implements MetricsFailures {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ServiceErrorImplCopyWith<_$ServiceErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IdNotFoundErrorImplCopyWith<$Res>
+    implements $MetricsFailuresCopyWith<$Res> {
+  factory _$$IdNotFoundErrorImplCopyWith(_$IdNotFoundErrorImpl value,
+          $Res Function(_$IdNotFoundErrorImpl) then) =
+      __$$IdNotFoundErrorImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? msg});
+}
+
+/// @nodoc
+class __$$IdNotFoundErrorImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$IdNotFoundErrorImpl>
+    implements _$$IdNotFoundErrorImplCopyWith<$Res> {
+  __$$IdNotFoundErrorImplCopyWithImpl(
+      _$IdNotFoundErrorImpl _value, $Res Function(_$IdNotFoundErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(_$IdNotFoundErrorImpl(
+      msg: freezed == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IdNotFoundErrorImpl implements IdNotFoundError {
+  const _$IdNotFoundErrorImpl({this.msg});
+
+  @override
+  final String? msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.idNotFoundError(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IdNotFoundErrorImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IdNotFoundErrorImplCopyWith<_$IdNotFoundErrorImpl> get copyWith =>
+      __$$IdNotFoundErrorImplCopyWithImpl<_$IdNotFoundErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? msg) serviceError,
+    required TResult Function(String? msg) idNotFoundError,
+    required TResult Function(String? msg, String? code) unknown,
+    required TResult Function(String? msg, int? code) httpError,
+  }) {
+    return idNotFoundError(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? msg)? serviceError,
+    TResult? Function(String? msg)? idNotFoundError,
+    TResult? Function(String? msg, String? code)? unknown,
+    TResult? Function(String? msg, int? code)? httpError,
+  }) {
+    return idNotFoundError?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? msg)? serviceError,
+    TResult Function(String? msg)? idNotFoundError,
+    TResult Function(String? msg, String? code)? unknown,
+    TResult Function(String? msg, int? code)? httpError,
+    required TResult orElse(),
+  }) {
+    if (idNotFoundError != null) {
+      return idNotFoundError(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServiceError value) serviceError,
+    required TResult Function(IdNotFoundError value) idNotFoundError,
+    required TResult Function(Unknown value) unknown,
+    required TResult Function(HttpError value) httpError,
+  }) {
+    return idNotFoundError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServiceError value)? serviceError,
+    TResult? Function(IdNotFoundError value)? idNotFoundError,
+    TResult? Function(Unknown value)? unknown,
+    TResult? Function(HttpError value)? httpError,
+  }) {
+    return idNotFoundError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServiceError value)? serviceError,
+    TResult Function(IdNotFoundError value)? idNotFoundError,
+    TResult Function(Unknown value)? unknown,
+    TResult Function(HttpError value)? httpError,
+    required TResult orElse(),
+  }) {
+    if (idNotFoundError != null) {
+      return idNotFoundError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IdNotFoundError implements MetricsFailures {
+  const factory IdNotFoundError({final String? msg}) = _$IdNotFoundErrorImpl;
+
+  @override
+  String? get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IdNotFoundErrorImplCopyWith<_$IdNotFoundErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -333,6 +502,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? msg) serviceError,
+    required TResult Function(String? msg) idNotFoundError,
     required TResult Function(String? msg, String? code) unknown,
     required TResult Function(String? msg, int? code) httpError,
   }) {
@@ -343,6 +513,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? msg)? serviceError,
+    TResult? Function(String? msg)? idNotFoundError,
     TResult? Function(String? msg, String? code)? unknown,
     TResult? Function(String? msg, int? code)? httpError,
   }) {
@@ -353,6 +524,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? msg)? serviceError,
+    TResult Function(String? msg)? idNotFoundError,
     TResult Function(String? msg, String? code)? unknown,
     TResult Function(String? msg, int? code)? httpError,
     required TResult orElse(),
@@ -367,6 +539,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServiceError value) serviceError,
+    required TResult Function(IdNotFoundError value) idNotFoundError,
     required TResult Function(Unknown value) unknown,
     required TResult Function(HttpError value) httpError,
   }) {
@@ -377,6 +550,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServiceError value)? serviceError,
+    TResult? Function(IdNotFoundError value)? idNotFoundError,
     TResult? Function(Unknown value)? unknown,
     TResult? Function(HttpError value)? httpError,
   }) {
@@ -387,6 +561,7 @@ class _$UnknownImpl implements Unknown {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServiceError value)? serviceError,
+    TResult Function(IdNotFoundError value)? idNotFoundError,
     TResult Function(Unknown value)? unknown,
     TResult Function(HttpError value)? httpError,
     required TResult orElse(),
@@ -493,6 +668,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? msg) serviceError,
+    required TResult Function(String? msg) idNotFoundError,
     required TResult Function(String? msg, String? code) unknown,
     required TResult Function(String? msg, int? code) httpError,
   }) {
@@ -503,6 +679,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? msg)? serviceError,
+    TResult? Function(String? msg)? idNotFoundError,
     TResult? Function(String? msg, String? code)? unknown,
     TResult? Function(String? msg, int? code)? httpError,
   }) {
@@ -513,6 +690,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? msg)? serviceError,
+    TResult Function(String? msg)? idNotFoundError,
     TResult Function(String? msg, String? code)? unknown,
     TResult Function(String? msg, int? code)? httpError,
     required TResult orElse(),
@@ -527,6 +705,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServiceError value) serviceError,
+    required TResult Function(IdNotFoundError value) idNotFoundError,
     required TResult Function(Unknown value) unknown,
     required TResult Function(HttpError value) httpError,
   }) {
@@ -537,6 +716,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServiceError value)? serviceError,
+    TResult? Function(IdNotFoundError value)? idNotFoundError,
     TResult? Function(Unknown value)? unknown,
     TResult? Function(HttpError value)? httpError,
   }) {
@@ -547,6 +727,7 @@ class _$HttpErrorImpl implements HttpError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServiceError value)? serviceError,
+    TResult Function(IdNotFoundError value)? idNotFoundError,
     TResult Function(Unknown value)? unknown,
     TResult Function(HttpError value)? httpError,
     required TResult orElse(),

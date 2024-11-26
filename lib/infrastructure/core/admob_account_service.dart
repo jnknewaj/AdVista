@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:advista/domain/core/admob_account.dart';
 import 'package:advista/infrastructure/core/admob_account_dto.dart';
+import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/utils/string_consts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
@@ -70,5 +71,41 @@ class AccountService {
       // Handle general errors
       throw ServiceException('Unexpected error: $e');
     }
+  }
+
+  Future<DateTime?> fetchAccountOpeningDate() async {
+    final accountId = await getAccountId();
+    if (accountId == null) {
+      throw IdNotFoundException(msg: 'Admob Id Not Found In Storage');
+    }
+
+    final accessToken = await _tokenStorageService.fetchValidAccessToken();
+
+    final url =
+        'https://admob.googleapis.com/v1/accounts/$accountId/networkReport:generate';
+
+    final headers = {
+      'Authorization': 'Bearer $accessToken',
+      'Content-Type': 'application/json',
+    };
+
+    final body = {
+      "reportSpec": {
+        "dateRange": {
+          "startDate": {"year": 2010, "month": 1, "day": 1},
+          "endDate": {"year": 2024, "month": 11, "day": 22}
+        },
+        "dimensions": ["DATE"],
+        "metrics": [
+          "AD_REQUESTS",
+        ],
+        "sortConditions": [
+          {"dimension": "DATE", "order": "ASCENDING"}
+        ],
+      }
+    };
+
+    final data =
+        await _baseService.post(url: url, headers: headers, body: body);
   }
 }

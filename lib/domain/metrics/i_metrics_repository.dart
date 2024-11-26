@@ -4,7 +4,12 @@ import 'package:dartz/dartz.dart';
 
 abstract class IMetricsRepository {
   /// To get aggregate data in a given time range
-  Future<Either<MetricsFailures, MetricsSummary>> getMetricsSummary({
+  Future<Either<MetricsFailures, MetricsSummary>> getMetricsSummary(
+    DateTime endDate,
+  );
+
+  /// To get aggregate data in a given time range
+  Future<Either<MetricsFailures, MetricsSummary>> getMetrics({
     required DateTime startDate,
     required DateTime endDate,
   });

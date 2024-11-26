@@ -18,6 +18,7 @@ import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
 import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
     as _i747;
+import 'application/metrics/metrics_summary/metrics_summary_bloc.dart' as _i842;
 import 'domain/auth/i_auth_facade.dart' as _i878;
 import 'domain/auth/i_token_repository.dart' as _i357;
 import 'domain/core/i_account_repository.dart' as _i566;
@@ -71,8 +72,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i357.ITokenRepository>(
         () => _i969.TokenRepository(gh<_i744.TokenStorageService>()));
-    gh.lazySingleton<_i628.MetricsService>(
-        () => _i628.MetricsService(gh<_i621.BaseService>()));
+    gh.lazySingleton<_i628.MetricsService>(() => _i628.MetricsService(
+          gh<_i621.BaseService>(),
+          gh<_i405.AccountService>(),
+        ));
     gh.lazySingleton<_i566.IAccountRepository>(
         () => _i876.AdmobAccountRepository(gh<_i405.AccountService>()));
     gh.factory<_i409.SignInBloc>(() => _i409.SignInBloc(
@@ -81,6 +84,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i839.IMetricsRepository>(
         () => _i18.MetricsRepository(gh<_i628.MetricsService>()));
+    gh.factory<_i842.MetricsSummaryBloc>(
+        () => _i842.MetricsSummaryBloc(gh<_i839.IMetricsRepository>()));
     gh.factory<_i747.AdmobAccountBloc>(() => _i747.AdmobAccountBloc(
           gh<_i566.IAccountRepository>(),
           gh<_i405.AccountService>(),

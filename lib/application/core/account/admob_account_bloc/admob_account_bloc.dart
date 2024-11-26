@@ -33,7 +33,7 @@ class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
         emit(const AdmobAccountState.loading());
         final result = await _repository.getAccount();
         await result.fold(
-          (l) => AdmobAccountState.failed(l),
+          (l) async => AdmobAccountState.failed(l),
           (account) async {
             print("ACCOUNTFOUND : ${account.publisherId}");
             await _accountService.storeAccountId(account.publisherId);
