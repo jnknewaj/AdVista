@@ -4,7 +4,6 @@ import 'package:advista/domain/auth/i_auth_facade.dart';
 import 'package:advista/infrastructure/auth/auth_tokens_dto.dart';
 import 'package:advista/infrastructure/auth/token_api_client.dart';
 import 'package:advista/utils/helper.dart';
-import 'package:advista/utils/string_consts.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';

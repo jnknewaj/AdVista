@@ -23,3 +23,8 @@ showSnackbar(BuildContext context, String text) {
       backgroundColor: Colors.cyan,
     ));
 }
+
+/// Formats a `DateTime` into the required string format
+String formatDate(DateTime date) {
+  return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+}

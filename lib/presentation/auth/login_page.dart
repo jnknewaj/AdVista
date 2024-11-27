@@ -1,6 +1,6 @@
 import 'package:advista/application/auth/sign_in/sign_in_bloc.dart';
 import 'package:advista/injection.dart';
-import 'package:advista/presentation/home/home_page.dart';
+import 'package:advista/main.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +32,8 @@ class _Handler extends StatelessWidget {
             signInSuccess: (s) {
               final temp = s.tokens;
               print('TOKENS =======  $temp');
-              navigateAndRemoveUntil(context, const HomePage());
+              // Storing tokens done in bloc itself for simplicity
+              navigateAndRemoveUntil(context, const AuthGate());
             },
             failed: (f) {
               final text = f.failure.map(
