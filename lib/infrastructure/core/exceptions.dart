@@ -13,3 +13,13 @@ class IdNotFoundException implements Exception {
   final String msg;
   IdNotFoundException({required this.msg});
 }
+
+class ServiceException implements Exception {
+  final String message;
+
+  /// Throws from [BaseService]
+  ServiceException(this.message);
+
+  @override
+  String toString() => 'ServiceException: $message';
+}

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
@@ -24,10 +26,7 @@ class BaseService {
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
-        throw HttpException(
-          response.statusCode,
-          response.body,
-        );
+        throw HttpException(response.body);
       }
     } catch (e) {
       throw ServiceException('Unexpected error: $e');
@@ -48,32 +47,10 @@ class BaseService {
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else {
-        throw HttpException(
-          response.statusCode,
-          response.body,
-        );
+        throw HttpException(response.body);
       }
     } catch (e) {
       throw ServiceException('Unexpected error: $e');
     }
   }
-}
-
-class HttpException implements Exception {
-  final int statusCode;
-  final String responseBody;
-
-  HttpException(this.statusCode, this.responseBody);
-
-  @override
-  String toString() => 'HttpException($statusCode): $responseBody';
-}
-
-class ServiceException implements Exception {
-  final String message;
-
-  ServiceException(this.message);
-
-  @override
-  String toString() => 'ServiceException: $message';
 }

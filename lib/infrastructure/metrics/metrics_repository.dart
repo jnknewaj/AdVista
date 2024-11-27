@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/domain/metrics/metrics_summary.dart';
@@ -28,10 +30,7 @@ class MetricsRepository implements IMetricsRepository {
       return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
-      return left(MetricsFailures.httpError(
-        code: e.statusCode,
-        msg: e.responseBody,
-      ));
+      return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));
     } on IdNotFoundException catch (e) {
       // Handle any unexpected errors
       return left(MetricsFailures.idNotFoundError(msg: e.msg));
@@ -59,10 +58,7 @@ class MetricsRepository implements IMetricsRepository {
       return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
-      return left(MetricsFailures.httpError(
-        code: e.statusCode,
-        msg: e.responseBody,
-      ));
+      return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));
     } on IdNotFoundException catch (e) {
       // Handle any unexpected errors
       return left(MetricsFailures.idNotFoundError(msg: e.msg));
