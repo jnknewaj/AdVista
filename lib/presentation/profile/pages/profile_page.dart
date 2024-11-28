@@ -34,6 +34,28 @@ class ProfilePage extends StatelessWidget {
               );
             },
           ),
+          BlocListener<AdmobAccountBloc, AdmobAccountState>(
+            listener: (context, state) {
+              cprint('VISTA', 'Listening : ${state.toString()}');
+              state.maybeMap(
+                failed: (f) {
+                  final text = f.failures.map(
+                    networkFailure: (e) => e.msg,
+                    timeOut: (e) => e.msg,
+                    parsingFailure: (e) => e.msg,
+                    tokenNotFound: (e) => e.msg,
+                    serverFailure: (e) =>
+                        'Server error code : ${e.code}, ${e.msg}',
+                    httpFailure: (e) =>
+                        'HTTP error code : ${e.code}, ${e.message}',
+                    unknown: (e) => e.message,
+                  );
+                  showSnackbar(context, text);
+                },
+                orElse: () {},
+              );
+            },
+          )
         ],
         child: const _Handler(),
       ),
@@ -62,6 +84,7 @@ class _Handler extends StatelessWidget {
       ),
       body: BlocBuilder<AdmobAccountBloc, AdmobAccountState>(
         builder: (context, state) {
+          cprint('VISTA', "exclusively in : ${state.toString()}");
           return ListView(
             children: [
               state.maybeMap(
@@ -73,6 +96,10 @@ class _Handler extends StatelessWidget {
                   return Text(
                       'Failed to load account info : ${s.failures.toString()}');
                 },
+                initial: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+                loading: (_) =>
+                    const Center(child: CircularProgressIndicator()),
                 orElse: () => const SizedBox(),
               ),
             ],

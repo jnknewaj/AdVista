@@ -25,9 +25,6 @@ class MetricsRepository implements IMetricsRepository {
 
       // Convert DTO to domain and return as a successful result
       return right(dto.toDomain());
-    } on ServiceException catch (e) {
-      // Handle specific service-level exceptions
-      return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
       return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));
@@ -53,9 +50,6 @@ class MetricsRepository implements IMetricsRepository {
 
       // Convert DTO to domain and return as a successful result
       return right(dto.toDomain());
-    } on ServiceException catch (e) {
-      // Handle specific service-level exceptions
-      return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
       return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));

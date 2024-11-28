@@ -14,12 +14,29 @@ class IdNotFoundException implements Exception {
   IdNotFoundException({required this.msg});
 }
 
-class ServiceException implements Exception {
+class NetworkException implements Exception {
   final String message;
-
-  /// Throws from [BaseService]
-  ServiceException(this.message);
-
-  @override
-  String toString() => 'ServiceException: $message';
+  NetworkException(this.message);
 }
+
+class ServerException implements Exception {
+  final String code;
+  final String message;
+  ServerException({required this.message, required this.code});
+}
+
+class ParsingException implements Exception {
+  final String message;
+  ParsingException(this.message);
+}
+
+// UNVERIFIED
+// class ServiceException implements Exception {
+//   final String message;
+
+//   /// Throws from [BaseService]
+//   ServiceException(this.message);
+
+//   @override
+//   String toString() => 'ServiceException: $message';
+// }
