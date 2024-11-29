@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/domain/metrics/metrics_summary.dart';
-import 'package:advista/infrastructure/core/base_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_service.dart';
 import 'package:dartz/dartz.dart';

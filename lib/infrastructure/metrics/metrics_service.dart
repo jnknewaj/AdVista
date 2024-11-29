@@ -57,7 +57,7 @@ class MetricsService {
       );
 
       return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException catch (e) {
+    } on HttpException {
       rethrow;
     }
   }
@@ -97,7 +97,7 @@ class MetricsService {
       );
 
       return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException catch (e) {
+    } on HttpException {
       rethrow;
     }
   }

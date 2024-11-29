@@ -12,10 +12,8 @@ import 'package:advista/utils/app_utils.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-/**
- * Dependent:
- *  - [AdmobAccountBloc] 
- */
+/// Dependent:
+///  - [AdmobAccountBloc]
 @LazySingleton(as: IAccountRepository)
 class AdmobAccountRepository implements IAccountRepository {
   final AccountService _accountService;
@@ -27,8 +25,7 @@ class AdmobAccountRepository implements IAccountRepository {
     try {
       final account = await _accountService.fetchAccountInfo();
       return right(account);
-    } on NetworkException catch (e) {
-      cprint('VISTA', 'SocketVaia now Network in repo');
+    } on NetworkException {
       return left(
           const AccountFailures.networkFailure('Check network connection.'));
     } on TimeoutException catch (e) {
@@ -37,7 +34,6 @@ class AdmobAccountRepository implements IAccountRepository {
       return left(AccountFailures.parsingFailure(
           'Response parsing failed : ${e.message}'));
     } on TokenNotFoundException catch (e) {
-      cprint('VISTA---Repo vai', 'GF in Repo');
       return left(AccountFailures.tokenNotFound(
           'Any of the tokens or expiry time missing : ${e.message}'));
     } on ServerException catch (e) {
@@ -57,6 +53,33 @@ class AdmobAccountRepository implements IAccountRepository {
       return right(unit);
     } catch (e) {
       return left(AccountFailures.unknown(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AccountFailures, String>> getAccoutOpeningDate() async {
+    try {
+      final date = await _accountService.fetchAccountOpeningDate();
+      return right(date);
+    } on IdNotFoundException catch (e) {
+      return left(AccountFailures.idNotFound(e.msg));
+    } on NetworkException {
+      return left(
+          const AccountFailures.networkFailure('Check network connection.'));
+    } on TimeoutException {
+      return left(const AccountFailures.timeOut('Request timeout'));
+    } on ParsingException catch (e) {
+      return left(AccountFailures.parsingFailure(
+          'Response parsing failed : ${e.message}'));
+    } on TokenNotFoundException catch (e) {
+      return left(AccountFailures.tokenNotFound(e.message));
+    } on ServerException catch (e) {
+      return left(AccountFailures.serverFailure(msg: e.message, code: e.code));
+    } on UnknownException catch (e) {
+      return left(AccountFailures.unknown(e.message ?? 'Unexpected error'));
+    } catch (e) {
+      return left(AccountFailures.unknown(
+          'Unknown and unhandled error : ${e.toString()}'));
     }
   }
 }

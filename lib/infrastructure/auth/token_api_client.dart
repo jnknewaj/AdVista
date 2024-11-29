@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/utils/api_consts.dart';
-import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/string_consts.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
@@ -83,7 +81,6 @@ class TokenApiClient {
       return jsonDecode(response.body);
     } else {
       final error = jsonDecode(response.body);
-      cprint('VISTA ERR', 'ServerException, Code : ${response.statusCode}');
       throw ServerException(
         message:
             'Request Failed. Error : ${error['error_description'] ?? 'Unknown'}',
@@ -92,19 +89,3 @@ class TokenApiClient {
     }
   }
 }
-
-// try {} on SocketException catch (e) {
-//       cprint('VISTA ERR', 'Check Network - ${e.message}');
-//       throw NetworkException('Check Network - ${e.message}');
-//     } on TimeoutException catch (e) {
-//       cprint('VISTA ERR', 'TimeOut : ${e.message}');
-//       throw TimeoutException('The request timed out.');
-//     } on FormatException catch (e) {
-//       cprint('VISTA ERR', 'ParsingError : ${e.message}');
-//       throw ParsingException('Response parsing failed: ${e.message}');
-//     } catch (e) {
-//       cprint('VISTA ERR', 'Unknwon : ${e.toString()}');
-//       throw UnknownException(
-//           message:
-//               'Unexpected error occurred in http.post(). Class : [TokenApiClient]. Details: ${e.toString()}');
-//     }

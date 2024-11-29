@@ -13,10 +13,8 @@ part 'admob_account_bloc.freezed.dart';
 part 'admob_account_event.dart';
 part 'admob_account_state.dart';
 
-/**
- * Dependent:
- *  - [ProfilePage]
- */
+/// Dependent:
+///  - [ProfilePage]
 
 @injectable
 class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
@@ -39,17 +37,12 @@ class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
       accountInfoRequested: (e) async {
         emit(const AdmobAccountState.loading());
         final result = await _repository.getAccount();
-        cprint('VISTA result', result.toString());
         await result.fold(
           (l) async => emit(AdmobAccountState.failed(l)),
           (account) async {
-            cprint('VISTA', "ACCOUNTFOUND : ${account.publisherId}");
             final acId = await _accountService.getAccountId();
             if (acId == null) {
               await _accountService.storeAccountId(account.publisherId);
-              cprint('VISTA', 'ID NOT EXIST, to be stored');
-            } else {
-              cprint('VISTA', 'ID Exists, no need to store');
             }
 
             emit(AdmobAccountState.loaded(account));

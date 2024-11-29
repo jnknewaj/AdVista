@@ -9,6 +9,7 @@ class AccountFailures with _$AccountFailures {
   const factory AccountFailures.timeOut(String msg) = TimeOut;
   const factory AccountFailures.parsingFailure(String msg) = ParsingFailure;
   const factory AccountFailures.tokenNotFound(String msg) = TokenNotFound;
+  const factory AccountFailures.idNotFound(String msg) = IdNotFound;
   const factory AccountFailures.serverFailure({
     required String msg,
     required String code,

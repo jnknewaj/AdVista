@@ -16,6 +16,8 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
+import 'application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart'
+    as _i250;
 import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
     as _i747;
 import 'application/metrics/metrics_summary/metrics_summary_bloc.dart' as _i842;
@@ -87,6 +89,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i566.IAccountRepository>(),
           gh<_i823.AccountService>(),
         ));
+    gh.factory<_i250.AcOpeningDateBloc>(
+        () => _i250.AcOpeningDateBloc(gh<_i566.IAccountRepository>()));
     gh.factory<_i700.AuthCheckBloc>(() => _i700.AuthCheckBloc(
           gh<_i878.IAuthFacade>(),
           gh<_i566.IAccountRepository>(),

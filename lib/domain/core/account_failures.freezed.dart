@@ -22,6 +22,7 @@ mixin _$AccountFailures {
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -33,6 +34,7 @@ mixin _$AccountFailures {
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -44,6 +46,7 @@ mixin _$AccountFailures {
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -56,6 +59,7 @@ mixin _$AccountFailures {
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -67,6 +71,7 @@ mixin _$AccountFailures {
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -78,6 +83,7 @@ mixin _$AccountFailures {
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -190,6 +196,7 @@ class _$NetworkFailureImpl
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -204,6 +211,7 @@ class _$NetworkFailureImpl
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -218,6 +226,7 @@ class _$NetworkFailureImpl
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -236,6 +245,7 @@ class _$NetworkFailureImpl
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -250,6 +260,7 @@ class _$NetworkFailureImpl
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -264,6 +275,7 @@ class _$NetworkFailureImpl
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -368,6 +380,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -382,6 +395,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -396,6 +410,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -414,6 +429,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -428,6 +444,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -442,6 +459,7 @@ class _$TimeOutImpl with DiagnosticableTreeMixin implements TimeOut {
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -549,6 +567,7 @@ class _$ParsingFailureImpl
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -563,6 +582,7 @@ class _$ParsingFailureImpl
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -577,6 +597,7 @@ class _$ParsingFailureImpl
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -595,6 +616,7 @@ class _$ParsingFailureImpl
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -609,6 +631,7 @@ class _$ParsingFailureImpl
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -623,6 +646,7 @@ class _$ParsingFailureImpl
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -729,6 +753,7 @@ class _$TokenNotFoundImpl
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -743,6 +768,7 @@ class _$TokenNotFoundImpl
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -757,6 +783,7 @@ class _$TokenNotFoundImpl
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -775,6 +802,7 @@ class _$TokenNotFoundImpl
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -789,6 +817,7 @@ class _$TokenNotFoundImpl
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -803,6 +832,7 @@ class _$TokenNotFoundImpl
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -824,6 +854,190 @@ abstract class TokenNotFound implements AccountFailures {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenNotFoundImplCopyWith<_$TokenNotFoundImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IdNotFoundImplCopyWith<$Res> {
+  factory _$$IdNotFoundImplCopyWith(
+          _$IdNotFoundImpl value, $Res Function(_$IdNotFoundImpl) then) =
+      __$$IdNotFoundImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$IdNotFoundImplCopyWithImpl<$Res>
+    extends _$AccountFailuresCopyWithImpl<$Res, _$IdNotFoundImpl>
+    implements _$$IdNotFoundImplCopyWith<$Res> {
+  __$$IdNotFoundImplCopyWithImpl(
+      _$IdNotFoundImpl _value, $Res Function(_$IdNotFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$IdNotFoundImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IdNotFoundImpl with DiagnosticableTreeMixin implements IdNotFound {
+  const _$IdNotFoundImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AccountFailures.idNotFound(msg: $msg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountFailures.idNotFound'))
+      ..add(DiagnosticsProperty('msg', msg));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IdNotFoundImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IdNotFoundImplCopyWith<_$IdNotFoundImpl> get copyWith =>
+      __$$IdNotFoundImplCopyWithImpl<_$IdNotFoundImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeOut,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg, String code) serverFailure,
+    required TResult Function(int code, String message) httpFailure,
+    required TResult Function(String message) unknown,
+  }) {
+    return idNotFound(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeOut,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg, String code)? serverFailure,
+    TResult? Function(int code, String message)? httpFailure,
+    TResult? Function(String message)? unknown,
+  }) {
+    return idNotFound?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeOut,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg, String code)? serverFailure,
+    TResult Function(int code, String message)? httpFailure,
+    TResult Function(String message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (idNotFound != null) {
+      return idNotFound(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkFailure value) networkFailure,
+    required TResult Function(TimeOut value) timeOut,
+    required TResult Function(ParsingFailure value) parsingFailure,
+    required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(HTTPFailure value) httpFailure,
+    required TResult Function(Unknown value) unknown,
+  }) {
+    return idNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkFailure value)? networkFailure,
+    TResult? Function(TimeOut value)? timeOut,
+    TResult? Function(ParsingFailure value)? parsingFailure,
+    TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
+    TResult? Function(ServerFailure value)? serverFailure,
+    TResult? Function(HTTPFailure value)? httpFailure,
+    TResult? Function(Unknown value)? unknown,
+  }) {
+    return idNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkFailure value)? networkFailure,
+    TResult Function(TimeOut value)? timeOut,
+    TResult Function(ParsingFailure value)? parsingFailure,
+    TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(HTTPFailure value)? httpFailure,
+    TResult Function(Unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (idNotFound != null) {
+      return idNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IdNotFound implements AccountFailures {
+  const factory IdNotFound(final String msg) = _$IdNotFoundImpl;
+
+  String get msg;
+
+  /// Create a copy of AccountFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IdNotFoundImplCopyWith<_$IdNotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -918,6 +1132,7 @@ class _$ServerFailureImpl
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -932,6 +1147,7 @@ class _$ServerFailureImpl
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -946,6 +1162,7 @@ class _$ServerFailureImpl
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -964,6 +1181,7 @@ class _$ServerFailureImpl
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -978,6 +1196,7 @@ class _$ServerFailureImpl
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -992,6 +1211,7 @@ class _$ServerFailureImpl
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -1108,6 +1328,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -1122,6 +1343,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -1136,6 +1358,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -1154,6 +1377,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -1168,6 +1392,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -1182,6 +1407,7 @@ class _$HTTPFailureImpl with DiagnosticableTreeMixin implements HTTPFailure {
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,
@@ -1288,6 +1514,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     required TResult Function(String msg) timeOut,
     required TResult Function(String msg) parsingFailure,
     required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) idNotFound,
     required TResult Function(String msg, String code) serverFailure,
     required TResult Function(int code, String message) httpFailure,
     required TResult Function(String message) unknown,
@@ -1302,6 +1529,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     TResult? Function(String msg)? timeOut,
     TResult? Function(String msg)? parsingFailure,
     TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg, String code)? serverFailure,
     TResult? Function(int code, String message)? httpFailure,
     TResult? Function(String message)? unknown,
@@ -1316,6 +1544,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     TResult Function(String msg)? timeOut,
     TResult Function(String msg)? parsingFailure,
     TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? idNotFound,
     TResult Function(String msg, String code)? serverFailure,
     TResult Function(int code, String message)? httpFailure,
     TResult Function(String message)? unknown,
@@ -1334,6 +1563,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     required TResult Function(TimeOut value) timeOut,
     required TResult Function(ParsingFailure value) parsingFailure,
     required TResult Function(TokenNotFound value) tokenNotFound,
+    required TResult Function(IdNotFound value) idNotFound,
     required TResult Function(ServerFailure value) serverFailure,
     required TResult Function(HTTPFailure value) httpFailure,
     required TResult Function(Unknown value) unknown,
@@ -1348,6 +1578,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     TResult? Function(TimeOut value)? timeOut,
     TResult? Function(ParsingFailure value)? parsingFailure,
     TResult? Function(TokenNotFound value)? tokenNotFound,
+    TResult? Function(IdNotFound value)? idNotFound,
     TResult? Function(ServerFailure value)? serverFailure,
     TResult? Function(HTTPFailure value)? httpFailure,
     TResult? Function(Unknown value)? unknown,
@@ -1362,6 +1593,7 @@ class _$UnknownImpl with DiagnosticableTreeMixin implements Unknown {
     TResult Function(TimeOut value)? timeOut,
     TResult Function(ParsingFailure value)? parsingFailure,
     TResult Function(TokenNotFound value)? tokenNotFound,
+    TResult Function(IdNotFound value)? idNotFound,
     TResult Function(ServerFailure value)? serverFailure,
     TResult Function(HTTPFailure value)? httpFailure,
     TResult Function(Unknown value)? unknown,

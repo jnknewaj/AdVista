@@ -1,4 +1,5 @@
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
+import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/auth/login_page.dart';
@@ -19,6 +20,10 @@ class ProfilePage extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AdmobAccountBloc>()
             ..add(const AdmobAccountEvent.accountInfoRequested()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AcOpeningDateBloc>()
+            ..add(const AcOpeningDateEvent.started()),
         )
       ],
       child: MultiBlocListener(
@@ -36,7 +41,6 @@ class ProfilePage extends StatelessWidget {
           ),
           BlocListener<AdmobAccountBloc, AdmobAccountState>(
             listener: (context, state) {
-              cprint('VISTA', 'Listening : ${state.toString()}');
               state.maybeMap(
                 failed: (f) {
                   final text = f.failures.map(
@@ -49,6 +53,29 @@ class ProfilePage extends StatelessWidget {
                     httpFailure: (e) =>
                         'HTTP error code : ${e.code}, ${e.message}',
                     unknown: (e) => e.message,
+                    idNotFound: (e) => e.msg,
+                  );
+                  showSnackbar(context, text);
+                },
+                orElse: () {},
+              );
+            },
+          ),
+          BlocListener<AcOpeningDateBloc, AcOpeningDateState>(
+            listener: (context, state) {
+              state.maybeMap(
+                failed: (s) {
+                  final text = s.failure.map(
+                    networkFailure: (e) => e.msg,
+                    timeOut: (e) => e.msg,
+                    parsingFailure: (e) => e.msg,
+                    tokenNotFound: (e) => e.msg,
+                    serverFailure: (e) =>
+                        'Server error code : ${e.code}, ${e.msg}',
+                    httpFailure: (e) =>
+                        'HTTP error code : ${e.code}, ${e.message}',
+                    unknown: (e) => e.message,
+                    idNotFound: (e) => e.msg,
                   );
                   showSnackbar(context, text);
                 },
@@ -82,12 +109,12 @@ class _Handler extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<AdmobAccountBloc, AdmobAccountState>(
-        builder: (context, state) {
-          cprint('VISTA', "exclusively in : ${state.toString()}");
-          return ListView(
-            children: [
-              state.maybeMap(
+      body: ListView(
+        children: [
+          // Account Info
+          BlocBuilder<AdmobAccountBloc, AdmobAccountState>(
+            builder: (context, state) {
+              return state.maybeMap(
                 loaded: (s) {
                   final account = s.account;
                   return Text('Publisher : ${account.name}');
@@ -101,10 +128,29 @@ class _Handler extends StatelessWidget {
                 loading: (_) =>
                     const Center(child: CircularProgressIndicator()),
                 orElse: () => const SizedBox(),
-              ),
-            ],
-          );
-        },
+              );
+            },
+          ),
+          BlocBuilder<AcOpeningDateBloc, AcOpeningDateState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                loaded: (s) {
+                  final date = s.date;
+                  return Text('Date : $date');
+                },
+                failed: (s) {
+                  return Text(
+                      'Failed to load account info : ${s.failure.toString()}');
+                },
+                initial: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+                loading: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+                orElse: () => const SizedBox(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

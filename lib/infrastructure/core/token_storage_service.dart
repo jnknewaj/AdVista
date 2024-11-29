@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-import 'dart:io';
 import 'package:advista/domain/auth/auth_tokens.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -33,24 +32,16 @@ class TokenStorageService {
   /// **Doesn't handle other potential exceptions rather propagates.**
   Future<String> fetchValidAccessToken() async {
     final accessToken = await _storage.read(key: KEY_ACCESS_TOKEN);
+    cprint('SKT at', accessToken);
     final expiryTimeString = await _storage.read(key: KEY_EXPIRY_TIME);
+    cprint('SKT time', expiryTimeString);
     final refreshToken = await _storage.read(key: KEY_REFRESH_TOKEN);
-
-    cprint('VISTA --- ACCESS TOKENS :', '$accessToken');
-    cprint('VISTA --- REFRESH TOKENS :', '$refreshToken');
-    cprint('VISTA --- TIMEEXPIRY :', '$expiryTimeString');
-
-    if (refreshToken == null) {
-      cprint('Vis', 'null rt');
-    } else {
-      cprint('Vis', 'RT ache -> ');
-    }
+    cprint('SKT rt', refreshToken);
 
     if (accessToken == null ||
         expiryTimeString == null ||
         refreshToken == null ||
         refreshToken.isEmpty) {
-      cprint('VISTA', 'Token Expired');
       throw TokenNotFoundException('Any of the tokens or expiry time missing');
     }
 
@@ -83,28 +74,24 @@ class TokenStorageService {
     }
   }
 
+  Future<void> logStorageContents() async {
+    final accessToken = await _storage.read(key: KEY_ACCESS_TOKEN);
+    final refreshToken = await _storage.read(key: KEY_REFRESH_TOKEN);
+    final expiryTime = await _storage.read(key: KEY_EXPIRY_TIME);
+    cprint('STORAGE', 'Current Tokens in Storage:');
+    cprint('STORAGE', 'Access Token: $accessToken');
+    cprint('STORAGE', 'Refresh Token: $refreshToken');
+    cprint('STORAGE', 'Expiry Time: $expiryTime');
+  }
+
   /// Clears access token. refresh token and expiry time from storage.
   /// Doesnt handle exception.
   Future<void> clearTokens() async {
     await _storage.delete(key: KEY_ACCESS_TOKEN);
     await _storage.delete(key: KEY_REFRESH_TOKEN);
     await _storage.delete(key: KEY_EXPIRY_TIME);
+
+    await logStorageContents();
     return;
   }
 }
-
-// try {} on SocketException catch (e) {
-//       throw NetworkException('Check Network - ${e.message}');
-//     } on TimeoutException catch (e) {
-//       throw TimeoutException('The request timed out.');
-//     } on FormatException catch (e) {
-//       throw ParsingException('Response parsing failed: ${e.message}');
-//     } on ServerException catch (e) {
-//       throw ServerException(message: e.message, code: e.code);
-//     } on TokenNotFoundException catch (e) {
-//       throw TokenNotFoundException(e.message);
-//     } catch (e) {
-//       throw UnknownException(
-//           message:
-//               'Unexpected error occurred in http.post(). Class : [TokenApiClient]. Details: ${e.toString()}');
-//     }
