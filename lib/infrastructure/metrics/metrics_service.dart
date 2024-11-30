@@ -1,4 +1,6 @@
-import 'package:advista/infrastructure/core/admob_account_service.dart';
+import 'dart:io';
+
+import 'package:advista/infrastructure/core/account_service.dart';
 import 'package:advista/infrastructure/core/base_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_summary_dto.dart';
@@ -55,10 +57,8 @@ class MetricsService {
       );
 
       return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException catch (e) {
-      throw ServiceException('HTTP error (${e.statusCode}): ${e.responseBody}');
-    } on Exception catch (e) {
-      throw ServiceException('Unexpected error: $e');
+    } on HttpException {
+      rethrow;
     }
   }
 
@@ -97,10 +97,8 @@ class MetricsService {
       );
 
       return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException catch (e) {
-      throw ServiceException('HTTP error (${e.statusCode}): ${e.responseBody}');
-    } on Exception catch (e) {
-      throw ServiceException('Unexpected error: $e');
+    } on HttpException {
+      rethrow;
     }
   }
 }

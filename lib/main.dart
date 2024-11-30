@@ -94,12 +94,12 @@ class AuthGate extends StatelessWidget {
             return state.map(
               initial: (_) => const SplashScreen(),
               authenticated: (_) => Container(
-                child: Center(
+                child: const Center(
                   child: Text('Authenticated'),
                 ),
               ),
               unAuthenticated: (_) => Container(
-                child: Center(
+                child: const Center(
                   child: Text('Not Authenticated'),
                 ),
               ),

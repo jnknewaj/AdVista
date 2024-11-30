@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/domain/metrics/metrics_summary.dart';
-import 'package:advista/infrastructure/core/base_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_service.dart';
 import 'package:dartz/dartz.dart';
@@ -23,15 +24,9 @@ class MetricsRepository implements IMetricsRepository {
 
       // Convert DTO to domain and return as a successful result
       return right(dto.toDomain());
-    } on ServiceException catch (e) {
-      // Handle specific service-level exceptions
-      return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
-      return left(MetricsFailures.httpError(
-        code: e.statusCode,
-        msg: e.responseBody,
-      ));
+      return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));
     } on IdNotFoundException catch (e) {
       // Handle any unexpected errors
       return left(MetricsFailures.idNotFoundError(msg: e.msg));
@@ -54,15 +49,9 @@ class MetricsRepository implements IMetricsRepository {
 
       // Convert DTO to domain and return as a successful result
       return right(dto.toDomain());
-    } on ServiceException catch (e) {
-      // Handle specific service-level exceptions
-      return left(MetricsFailures.serviceError(msg: e.message));
     } on HttpException catch (e) {
       // Handle HTTP-related exceptions with the status code or message
-      return left(MetricsFailures.httpError(
-        code: e.statusCode,
-        msg: e.responseBody,
-      ));
+      return left(MetricsFailures.httpError(code: e.hashCode, msg: e.message));
     } on IdNotFoundException catch (e) {
       // Handle any unexpected errors
       return left(MetricsFailures.idNotFoundError(msg: e.msg));

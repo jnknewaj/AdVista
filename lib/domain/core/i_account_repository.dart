@@ -5,4 +5,5 @@ import 'package:dartz/dartz.dart';
 abstract class IAccountRepository {
   Future<Either<AccountFailures, AdmobAccount>> getAccount();
   Future<Either<AccountFailures, Unit>> removeAccountId();
+  Future<Either<AccountFailures, String>> getAccoutOpeningDate();
 }

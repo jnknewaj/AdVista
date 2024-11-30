@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:advista/infrastructure/core/admob_account_service.dart';
+import 'package:advista/infrastructure/core/account_service.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,8 +13,12 @@ part 'admob_account_bloc.freezed.dart';
 part 'admob_account_event.dart';
 part 'admob_account_state.dart';
 
+/// Dependent:
+///  - [ProfilePage]
+
 @injectable
 class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
+  /// Implemented by [AdmobAccountRepository]
   final IAccountRepository _repository;
   final AccountService _accountService;
 
@@ -33,11 +38,13 @@ class AdmobAccountBloc extends Bloc<AdmobAccountEvent, AdmobAccountState> {
         emit(const AdmobAccountState.loading());
         final result = await _repository.getAccount();
         await result.fold(
-          (l) async => AdmobAccountState.failed(l),
+          (l) async => emit(AdmobAccountState.failed(l)),
           (account) async {
-            print("ACCOUNTFOUND : ${account.publisherId}");
-            await _accountService.storeAccountId(account.publisherId);
-            print("Account stored successfully");
+            final acId = await _accountService.getAccountId();
+            if (acId == null) {
+              await _accountService.storeAccountId(account.publisherId);
+            }
+
             emit(AdmobAccountState.loaded(account));
           },
         );
