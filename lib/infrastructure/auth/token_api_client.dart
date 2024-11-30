@@ -50,6 +50,8 @@ class TokenApiClient {
   /// - A [Future] containing the raw JSON data (decoded as `Map<String, dynamic>`)
   ///   from the server if the request is successful.
   ///
+  ///  This response includes a idToken, but no refreshToken
+  ///
   /// - Explicitly throws [ServerException] when http response code is other than 200
   ///
   /// **Other potential exceptions are not handled.**

@@ -48,10 +48,21 @@ class TokenStorageService {
     final expiryTime = DateTime.parse(expiryTimeString);
 
     if (DateTime.now().isAfter(expiryTime)) {
+      cprint('SKT', 'Token Not Valid Bodda');
       final apiResponse =
           await _tokenApiClient.refreshAccessToken(refreshToken);
+      // This response doesnt have refresh token. So refreshToken will be empty
+      // Then previous refresh token is copied replacing empty
       final authTokens = AuthTokensDto.fromMap(apiResponse).toDomain();
-      await storeAuthTokens(authTokens);
+      cprint('SKT : At : ', authTokens.accessToken);
+      cprint('SKT : Rt : ', authTokens.refreshToken);
+      cprint('SKT : Time : ', authTokens.expiryTime.toIso8601String());
+      final newTokens = authTokens.copyWith(refreshToken: refreshToken);
+      cprint('SKT after: At : ', newTokens.accessToken);
+      cprint('SKT after: Rt : ', newTokens.refreshToken);
+      cprint('SKT after: Time : ', newTokens.expiryTime.toIso8601String());
+
+      await storeAuthTokens(newTokens);
       return authTokens.accessToken;
     }
     return accessToken;
@@ -68,6 +79,7 @@ class TokenStorageService {
         key: KEY_EXPIRY_TIME,
         value: tokens.expiryTime.toIso8601String(),
       );
+      cprint('MAZ expiring in seconds : ', tokens.expiryTime.toIso8601String());
       return;
     } on PlatformException catch (e) {
       throw PlatformException(code: e.code);
