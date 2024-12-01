@@ -1,6 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/presentation/metrics/widgets/dashboard_top_part.dart';
+import 'package:advista/presentation/metrics/widgets/metrics_item.dart';
+import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +19,7 @@ class MetricsPage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<TodaysMetricsBloc>()
-            ..add(const TodaysMetricsEvent.requsted7days()),
+            ..add(const TodaysMetricsEvent.requsted()),
         ),
       ],
       child: const Scaffold(body: _Handler()),
@@ -49,31 +54,40 @@ class _Handler extends StatelessWidget {
           },
         ),
       ],
-      child: BlocBuilder<TodaysMetricsBloc, TodaysMetricsState>(
-        builder: (context, state) {
-          return state.map(
-            initial: (_) => const SizedBox(),
-            loading: (_) => const Center(child: CircularProgressIndicator()),
-            loaded: (s) {
-              final metrics = s.metrics;
-              return ListView(
+      child: SafeArea(
+        child: Column(
+          children: [
+            DashboardTopPart(text: '16 April, 2020'),
+            Expanded(
+              child: ListView(
                 children: [
-                  Text('Earnings : ${metrics.earnings}'),
-                  Text('Impression : ${metrics.impression}'),
-                  Text('Requests : ${metrics.requests}'),
-                  Text('Clicks : ${metrics.clicks}'),
-                  Text('Clicks : ${metrics.clicks}'),
-                  Text('CPM : ${metrics.eCPM}'),
+                  // Section with 2 columns and 6 items
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        childAspectRatio: 1.7,
+                      ),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return const MetricsItem(
+                          topText: '321',
+                          bottomText: 'Impression',
+                        );
+                      },
+                    ),
+                  ),
                 ],
-              );
-            },
-            failed: (f) {
-              return Center(
-                child: Text(f.failures.msg),
-              );
-            },
-          );
-        },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
