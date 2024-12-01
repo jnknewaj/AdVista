@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'metrics_summary_bloc.dart';
+part of 'todays_metrics_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,177 +15,124 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$MetricsSummaryEvent {
-  DateTime get endDate => throw _privateConstructorUsedError;
+mixin _$TodaysMetricsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime endDate) fetchSummaryRequested,
+    required TResult Function() requsted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime endDate)? fetchSummaryRequested,
+    TResult? Function()? requsted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime endDate)? fetchSummaryRequested,
+    TResult Function()? requsted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchSummaryRequested value)
-        fetchSummaryRequested,
+    required TResult Function(_Requested value) requsted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchSummaryRequested value)? fetchSummaryRequested,
+    TResult? Function(_Requested value)? requsted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchSummaryRequested value)? fetchSummaryRequested,
+    TResult Function(_Requested value)? requsted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  /// Create a copy of MetricsSummaryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MetricsSummaryEventCopyWith<MetricsSummaryEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MetricsSummaryEventCopyWith<$Res> {
-  factory $MetricsSummaryEventCopyWith(
-          MetricsSummaryEvent value, $Res Function(MetricsSummaryEvent) then) =
-      _$MetricsSummaryEventCopyWithImpl<$Res, MetricsSummaryEvent>;
-  @useResult
-  $Res call({DateTime endDate});
+abstract class $TodaysMetricsEventCopyWith<$Res> {
+  factory $TodaysMetricsEventCopyWith(
+          TodaysMetricsEvent value, $Res Function(TodaysMetricsEvent) then) =
+      _$TodaysMetricsEventCopyWithImpl<$Res, TodaysMetricsEvent>;
 }
 
 /// @nodoc
-class _$MetricsSummaryEventCopyWithImpl<$Res, $Val extends MetricsSummaryEvent>
-    implements $MetricsSummaryEventCopyWith<$Res> {
-  _$MetricsSummaryEventCopyWithImpl(this._value, this._then);
+class _$TodaysMetricsEventCopyWithImpl<$Res, $Val extends TodaysMetricsEvent>
+    implements $TodaysMetricsEventCopyWith<$Res> {
+  _$TodaysMetricsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MetricsSummaryEvent
+  /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? endDate = null,
-  }) {
-    return _then(_value.copyWith(
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$FetchSummaryRequestedImplCopyWith<$Res>
-    implements $MetricsSummaryEventCopyWith<$Res> {
-  factory _$$FetchSummaryRequestedImplCopyWith(
-          _$FetchSummaryRequestedImpl value,
-          $Res Function(_$FetchSummaryRequestedImpl) then) =
-      __$$FetchSummaryRequestedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({DateTime endDate});
+abstract class _$$RequestedImplCopyWith<$Res> {
+  factory _$$RequestedImplCopyWith(
+          _$RequestedImpl value, $Res Function(_$RequestedImpl) then) =
+      __$$RequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchSummaryRequestedImplCopyWithImpl<$Res>
-    extends _$MetricsSummaryEventCopyWithImpl<$Res, _$FetchSummaryRequestedImpl>
-    implements _$$FetchSummaryRequestedImplCopyWith<$Res> {
-  __$$FetchSummaryRequestedImplCopyWithImpl(_$FetchSummaryRequestedImpl _value,
-      $Res Function(_$FetchSummaryRequestedImpl) _then)
+class __$$RequestedImplCopyWithImpl<$Res>
+    extends _$TodaysMetricsEventCopyWithImpl<$Res, _$RequestedImpl>
+    implements _$$RequestedImplCopyWith<$Res> {
+  __$$RequestedImplCopyWithImpl(
+      _$RequestedImpl _value, $Res Function(_$RequestedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MetricsSummaryEvent
+  /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? endDate = null,
-  }) {
-    return _then(_$FetchSummaryRequestedImpl(
-      null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$FetchSummaryRequestedImpl implements _FetchSummaryRequested {
-  const _$FetchSummaryRequestedImpl(this.endDate);
-
-  @override
-  final DateTime endDate;
+class _$RequestedImpl implements _Requested {
+  const _$RequestedImpl();
 
   @override
   String toString() {
-    return 'MetricsSummaryEvent.fetchSummaryRequested(endDate: $endDate)';
+    return 'TodaysMetricsEvent.requsted()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FetchSummaryRequestedImpl &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+        (other.runtimeType == runtimeType && other is _$RequestedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, endDate);
-
-  /// Create a copy of MetricsSummaryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FetchSummaryRequestedImplCopyWith<_$FetchSummaryRequestedImpl>
-      get copyWith => __$$FetchSummaryRequestedImplCopyWithImpl<
-          _$FetchSummaryRequestedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime endDate) fetchSummaryRequested,
+    required TResult Function() requsted,
   }) {
-    return fetchSummaryRequested(endDate);
+    return requsted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime endDate)? fetchSummaryRequested,
+    TResult? Function()? requsted,
   }) {
-    return fetchSummaryRequested?.call(endDate);
+    return requsted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime endDate)? fetchSummaryRequested,
+    TResult Function()? requsted,
     required TResult orElse(),
   }) {
-    if (fetchSummaryRequested != null) {
-      return fetchSummaryRequested(endDate);
+    if (requsted != null) {
+      return requsted();
     }
     return orElse();
   }
@@ -193,55 +140,43 @@ class _$FetchSummaryRequestedImpl implements _FetchSummaryRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchSummaryRequested value)
-        fetchSummaryRequested,
+    required TResult Function(_Requested value) requsted,
   }) {
-    return fetchSummaryRequested(this);
+    return requsted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchSummaryRequested value)? fetchSummaryRequested,
+    TResult? Function(_Requested value)? requsted,
   }) {
-    return fetchSummaryRequested?.call(this);
+    return requsted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchSummaryRequested value)? fetchSummaryRequested,
+    TResult Function(_Requested value)? requsted,
     required TResult orElse(),
   }) {
-    if (fetchSummaryRequested != null) {
-      return fetchSummaryRequested(this);
+    if (requsted != null) {
+      return requsted(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchSummaryRequested implements MetricsSummaryEvent {
-  const factory _FetchSummaryRequested(final DateTime endDate) =
-      _$FetchSummaryRequestedImpl;
-
-  @override
-  DateTime get endDate;
-
-  /// Create a copy of MetricsSummaryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FetchSummaryRequestedImplCopyWith<_$FetchSummaryRequestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+abstract class _Requested implements TodaysMetricsEvent {
+  const factory _Requested() = _$RequestedImpl;
 }
 
 /// @nodoc
-mixin _$MetricsSummaryState {
+mixin _$TodaysMetricsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(MetricsSummary summary) loaded,
+    required TResult Function(Metrics metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -249,7 +184,7 @@ mixin _$MetricsSummaryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(MetricsSummary summary)? loaded,
+    TResult? Function(Metrics metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -257,7 +192,7 @@ mixin _$MetricsSummaryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(MetricsSummary summary)? loaded,
+    TResult Function(Metrics metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
   }) =>
@@ -290,23 +225,23 @@ mixin _$MetricsSummaryState {
 }
 
 /// @nodoc
-abstract class $MetricsSummaryStateCopyWith<$Res> {
-  factory $MetricsSummaryStateCopyWith(
-          MetricsSummaryState value, $Res Function(MetricsSummaryState) then) =
-      _$MetricsSummaryStateCopyWithImpl<$Res, MetricsSummaryState>;
+abstract class $TodaysMetricsStateCopyWith<$Res> {
+  factory $TodaysMetricsStateCopyWith(
+          TodaysMetricsState value, $Res Function(TodaysMetricsState) then) =
+      _$TodaysMetricsStateCopyWithImpl<$Res, TodaysMetricsState>;
 }
 
 /// @nodoc
-class _$MetricsSummaryStateCopyWithImpl<$Res, $Val extends MetricsSummaryState>
-    implements $MetricsSummaryStateCopyWith<$Res> {
-  _$MetricsSummaryStateCopyWithImpl(this._value, this._then);
+class _$TodaysMetricsStateCopyWithImpl<$Res, $Val extends TodaysMetricsState>
+    implements $TodaysMetricsStateCopyWith<$Res> {
+  _$TodaysMetricsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -319,13 +254,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MetricsSummaryStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -336,7 +271,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'MetricsSummaryState.initial()';
+    return 'TodaysMetricsState.initial()';
   }
 
   @override
@@ -353,7 +288,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(MetricsSummary summary) loaded,
+    required TResult Function(Metrics metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
     return initial();
@@ -364,7 +299,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(MetricsSummary summary)? loaded,
+    TResult? Function(Metrics metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
     return initial?.call();
@@ -375,7 +310,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(MetricsSummary summary)? loaded,
+    TResult Function(Metrics metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
   }) {
@@ -423,7 +358,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements MetricsSummaryState {
+abstract class _Initial implements TodaysMetricsState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -436,13 +371,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$MetricsSummaryStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -453,7 +388,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'MetricsSummaryState.loading()';
+    return 'TodaysMetricsState.loading()';
   }
 
   @override
@@ -470,7 +405,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(MetricsSummary summary) loaded,
+    required TResult Function(Metrics metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
     return loading();
@@ -481,7 +416,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(MetricsSummary summary)? loaded,
+    TResult? Function(Metrics metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
     return loading?.call();
@@ -492,7 +427,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(MetricsSummary summary)? loaded,
+    TResult Function(Metrics metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
   }) {
@@ -540,7 +475,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements MetricsSummaryState {
+abstract class _Loading implements TodaysMetricsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -550,41 +485,41 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({MetricsSummary summary});
+  $Res call({Metrics metrics});
 
-  $MetricsSummaryCopyWith<$Res> get summary;
+  $MetricsCopyWith<$Res> get metrics;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$MetricsSummaryStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? summary = null,
+    Object? metrics = null,
   }) {
     return _then(_$LoadedImpl(
-      null == summary
-          ? _value.summary
-          : summary // ignore: cast_nullable_to_non_nullable
-              as MetricsSummary,
+      null == metrics
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metrics,
     ));
   }
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MetricsSummaryCopyWith<$Res> get summary {
-    return $MetricsSummaryCopyWith<$Res>(_value.summary, (value) {
-      return _then(_value.copyWith(summary: value));
+  $MetricsCopyWith<$Res> get metrics {
+    return $MetricsCopyWith<$Res>(_value.metrics, (value) {
+      return _then(_value.copyWith(metrics: value));
     });
   }
 }
@@ -592,14 +527,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.summary);
+  const _$LoadedImpl(this.metrics);
 
   @override
-  final MetricsSummary summary;
+  final Metrics metrics;
 
   @override
   String toString() {
-    return 'MetricsSummaryState.loaded(summary: $summary)';
+    return 'TodaysMetricsState.loaded(metrics: $metrics)';
   }
 
   @override
@@ -607,13 +542,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.summary, summary) || other.summary == summary));
+            (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, summary);
+  int get hashCode => Object.hash(runtimeType, metrics);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -626,10 +561,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(MetricsSummary summary) loaded,
+    required TResult Function(Metrics metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
-    return loaded(summary);
+    return loaded(metrics);
   }
 
   @override
@@ -637,10 +572,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(MetricsSummary summary)? loaded,
+    TResult? Function(Metrics metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
-    return loaded?.call(summary);
+    return loaded?.call(metrics);
   }
 
   @override
@@ -648,12 +583,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(MetricsSummary summary)? loaded,
+    TResult Function(Metrics metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(summary);
+      return loaded(metrics);
     }
     return orElse();
   }
@@ -696,12 +631,12 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements MetricsSummaryState {
-  const factory _Loaded(final MetricsSummary summary) = _$LoadedImpl;
+abstract class _Loaded implements TodaysMetricsState {
+  const factory _Loaded(final Metrics metrics) = _$LoadedImpl;
 
-  MetricsSummary get summary;
+  Metrics get metrics;
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -721,13 +656,13 @@ abstract class _$$FailedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailedImplCopyWithImpl<$Res>
-    extends _$MetricsSummaryStateCopyWithImpl<$Res, _$FailedImpl>
+    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$FailedImpl>
     implements _$$FailedImplCopyWith<$Res> {
   __$$FailedImplCopyWithImpl(
       _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -742,7 +677,7 @@ class __$$FailedImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -763,7 +698,7 @@ class _$FailedImpl implements _Failed {
 
   @override
   String toString() {
-    return 'MetricsSummaryState.failed(failures: $failures)';
+    return 'TodaysMetricsState.failed(failures: $failures)';
   }
 
   @override
@@ -778,7 +713,7 @@ class _$FailedImpl implements _Failed {
   @override
   int get hashCode => Object.hash(runtimeType, failures);
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -791,7 +726,7 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(MetricsSummary summary) loaded,
+    required TResult Function(Metrics metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
     return failed(failures);
@@ -802,7 +737,7 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(MetricsSummary summary)? loaded,
+    TResult? Function(Metrics metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
     return failed?.call(failures);
@@ -813,7 +748,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(MetricsSummary summary)? loaded,
+    TResult Function(Metrics metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
   }) {
@@ -861,12 +796,12 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements MetricsSummaryState {
+abstract class _Failed implements TodaysMetricsState {
   const factory _Failed(final MetricsFailures failures) = _$FailedImpl;
 
   MetricsFailures get failures;
 
-  /// Create a copy of MetricsSummaryState
+  /// Create a copy of TodaysMetricsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>

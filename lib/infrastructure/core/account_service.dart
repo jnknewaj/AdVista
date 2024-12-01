@@ -11,7 +11,7 @@ import 'package:advista/utils/string_consts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:advista/infrastructure/core/base_service.dart';
-import 'package:advista/infrastructure/core/token_storage_service.dart';
+import 'package:advista/infrastructure/core/local_storage_service.dart';
 import 'package:intl/intl.dart';
 
 /**
@@ -22,14 +22,14 @@ import 'package:intl/intl.dart';
 class AccountService {
   final FlutterSecureStorage _secureStorage;
   final BaseService _baseService;
-  final TokenStorageService _tokenStorageService;
+  final LocalStorageService _storageService;
   // Cant propogate everything on [BaseService], thats why http imported here
   final http.Client _httpClient;
 
   AccountService(
     this._secureStorage,
     this._baseService,
-    this._tokenStorageService,
+    this._storageService,
     this._httpClient,
   );
 
@@ -64,7 +64,7 @@ class AccountService {
   /// We are just dealing with the first account.**
   Future<AdmobAccount> fetchAccountInfo() async {
     try {
-      final accessToken = await _tokenStorageService.fetchValidAccessToken();
+      final accessToken = await _storageService.fetchValidAccessToken();
       const url = 'https://admob.googleapis.com/v1/accounts';
       final headers = {
         'Authorization': 'Bearer $accessToken',
@@ -108,13 +108,19 @@ class AccountService {
   /// - [UnknownException]: If an unexpected error occurs.
   Future<String> fetchAccountOpeningDate() async {
     try {
+      final storedDate = await _storageService.fetchAdmobAcOpeningDate();
+
+      if (storedDate != null) {
+        cprint('DATE', storedDate);
+        return storedDate;
+      }
+
       final accountId = await getAccountId();
-      cprint('SKT', accountId);
       if (accountId == null) {
         throw IdNotFoundException(msg: 'Admob Id Not Found In Storage');
       }
 
-      final accessToken = await _tokenStorageService.fetchValidAccessToken();
+      final accessToken = await _storageService.fetchValidAccessToken();
 
       final url =
           'https://admob.googleapis.com/v1/accounts/$accountId/networkReport:generate';
@@ -155,7 +161,9 @@ class AccountService {
           final date = DateTime.parse(rawDate);
 
           // Format the date as "18 January, 2021"
-          return DateFormat('d MMMM, yyyy').format(date);
+          final theDate = DateFormat('d MMMM, yyyy').format(date);
+          await _storageService.storeAdmobAccountOpeningDate(theDate);
+          return theDate;
         }
       }
 

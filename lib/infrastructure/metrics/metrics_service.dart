@@ -1,104 +1,115 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
-
+import 'package:advista/domain/auth/i_token_repository.dart';
+import 'package:advista/domain/auth/token_failures.dart';
+import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/infrastructure/core/account_service.dart';
 import 'package:advista/infrastructure/core/base_service.dart';
+import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
+import 'package:advista/infrastructure/metrics/metrics_dto.dart';
+import 'package:advista/infrastructure/metrics/metrics_service_helper.dart';
 import 'package:advista/infrastructure/metrics/metrics_summary_dto.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/helper.dart';
+import 'package:advista/utils/map.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:http/http.dart' as http;
 
 @LazySingleton()
 class MetricsService {
-  final BaseService _baseService;
+  /// to find admob id
   final AccountService _accountService;
+  final http.Client _httpClient;
 
-  MetricsService(this._baseService, this._accountService);
+  /// to get accessToken
+  final ITokenRepository _tokenRepository;
+  final DateService _dateService;
 
-  /// Throws [ServiceException]
-  ///
-  /// Throws [IdNotFoundException] if admob id not found in storage
-  Future<MetricsSummaryDto> fetchMetricsSummary(
-    DateTime endDate,
-  ) async {
-    // Temp. Get startdate from storage
-    final startDate = DateTime.now();
+  MetricsService(
+    this._accountService,
+    this._httpClient,
+    this._tokenRepository,
+    this._dateService,
+  );
 
-    final body = {
-      "dateRange": {
-        "startDate": formatDate(startDate),
-        "endDate": formatDate(endDate),
-      },
-      "metrics": [
-        "ESTIMATED_EARNINGS",
-        "IMPRESSIONS",
-        "MATCHED_REQUESTS",
-        "MATCH_RATE",
-        "CLICKS"
-      ]
-    };
-
-    final headers = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
-    };
-
+  Future<Metrics> getMetricsForDate(DateTime date) async {
     final accountId = await _accountService.getAccountId();
-
     if (accountId == null) {
-      throw IdNotFoundException(msg: 'Admob Id Not Found in The Storage');
+      throw IdNotFoundException(msg: 'Account Id Not Found in Storage');
     }
+    final accessToken = await _provideAccessToken();
+
+    final requestBody = buildRequestBody(DateTimeRange(start: date, end: date));
+    final headers = buildHeaders(accessToken);
+
+    String url =
+        "https://admob.googleapis.com/v1/accounts/$accountId/networkReport:generate";
 
     try {
-      final responseJson = await _baseService.post(
-        url:
-            'https://admob.googleapis.com/v1/accounts/$accountId/mediationReport:generate',
+      final response = await _httpClient.post(
+        Uri.parse(url),
         headers: headers,
-        body: body,
+        body: jsonEncode(requestBody),
       );
 
-      return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException {
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+
+        final row = data.firstWhere(
+          (element) =>
+              element is Map<String, dynamic> && element.containsKey('row'),
+          orElse: () => null,
+        );
+
+        if (row == null) {
+          cprint('ABL null', row);
+          return Metrics.empty();
+        }
+
+        final metricsDto = Metricsdto.fromJsonWithCalculation(row);
+
+        return metricsDto.toDomain();
+      } else {
+        throw ServerException(
+            message: 'Exception in http response. ',
+            code: 'Code : ${response.statusCode}');
+      }
+    } on SocketException catch (_) {
+      throw NetworkException('Check Network');
+    } on TimeoutException catch (_) {
+      throw TimeoutException('The request timed out.');
+    } on ParsingException catch (_) {
+      rethrow;
+    } on TokenNotFoundException catch (e) {
+      rethrow;
+    } on ServerException catch (e) {
+      throw ServerException(message: e.message, code: e.code);
+    } on IdNotFoundException catch (_) {
       rethrow;
     }
   }
 
-  /// Throws [ServiceException]
+  /// Throws
+  /// - [TokenNotFoundException]
+  /// - Other exception maping [TokenFailures]
   ///
-  /// Throws [IdNotFoundException] if admob id not found in storage
-  Future<MetricsSummaryDto> fetchMetrics({
-    required DateTime startDate,
-    required DateTime endDate,
-  }) async {
-    final body = {
-      "dateRange": {
-        "startDate": formatDate(startDate),
-        "endDate": formatDate(endDate),
-      },
-      "metrics": [
-        "ESTIMATED_EARNINGS",
-        "IMPRESSIONS",
-        "MATCHED_REQUESTS",
-        "MATCH_RATE",
-        "CLICKS"
-      ]
-    };
+  Future<String> _provideAccessToken() async {
+    final accessTokenEither = await _tokenRepository.getValidAccessToken();
 
-    final headers = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
-    };
-
-    try {
-      final responseJson = await _baseService.post(
-        url:
-            'https://admob.googleapis.com/v1/accounts/{account_id}/mediationReport:generate',
-        headers: headers,
-        body: body,
-      );
-
-      return MetricsSummaryDto.fromJson(responseJson);
-    } on HttpException {
-      rethrow;
+    if (accessTokenEither.isLeft()) {
+      throw mapTokenFailuresToException(accessTokenEither.getLeft() ??
+          const TokenFailures.unknown(msg: 'F2E'));
     }
+
+    final accessToken = accessTokenEither.getRight();
+
+    if (accessToken == null) {
+      throw TokenNotFoundException('Access token not found in repository');
+    }
+
+    return accessToken;
   }
 }

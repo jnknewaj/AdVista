@@ -31,7 +31,7 @@ class AuthTokensDto with _$AuthTokensDto {
     return AuthTokens(
       accessToken: accessToken,
       refreshToken: refreshToken,
-      expiryTime: DateTime.now().add(Duration(seconds: 120)),
+      expiryTime: DateTime.now().add(Duration(seconds: 1200)),
       //expiryTime: DateTime.now().add(Duration(seconds: expiresIn)),
     );
   }
