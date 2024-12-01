@@ -14,7 +14,7 @@ class MetricsPage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<TodaysMetricsBloc>()
-            ..add(const TodaysMetricsEvent.requsted()),
+            ..add(const TodaysMetricsEvent.requsted7days()),
         ),
       ],
       child: const Scaffold(body: _Handler()),

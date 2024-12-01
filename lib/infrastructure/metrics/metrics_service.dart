@@ -35,14 +35,14 @@ class MetricsService {
     this._dateService,
   );
 
-  Future<Metrics> getMetricsForDate(DateTime date) async {
+  Future<Metrics> getMetricsForDateRange(DateTimeRange range) async {
     final accountId = await _accountService.getAccountId();
     if (accountId == null) {
       throw IdNotFoundException(msg: 'Account Id Not Found in Storage');
     }
     final accessToken = await _provideAccessToken();
 
-    final requestBody = buildRequestBody(DateTimeRange(start: date, end: date));
+    final requestBody = buildRequestBody(range);
     final headers = buildHeaders(accessToken);
 
     String url =

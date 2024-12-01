@@ -9,6 +9,7 @@ import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_service.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IMetricsRepository)
@@ -22,10 +23,11 @@ class MetricsRepository implements IMetricsRepository {
   );
 
   @override
-  Future<Either<MetricsFailures, Metrics>> getTodaysMetrics() async {
+  Future<Either<MetricsFailures, Metrics>> getMetrics(
+    DateTimeRange range,
+  ) async {
     try {
-      final metrics =
-          await _service.getMetricsForDate(_dateService.getYesterday());
+      final metrics = await _service.getMetricsForDateRange(range);
       return right(metrics);
     } on SocketException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));

@@ -93,8 +93,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i628.MetricsService>(),
           gh<_i439.DateService>(),
         ));
-    gh.factory<_i559.TodaysMetricsBloc>(
-        () => _i559.TodaysMetricsBloc(gh<_i839.IMetricsRepository>()));
+    gh.factory<_i559.TodaysMetricsBloc>(() => _i559.TodaysMetricsBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+        ));
     gh.factory<_i747.AdmobAccountBloc>(() => _i747.AdmobAccountBloc(
           gh<_i566.IAccountRepository>(),
           gh<_i823.AccountService>(),

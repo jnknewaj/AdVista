@@ -1,8 +1,11 @@
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 
 Map<String, dynamic> buildRequestBody(DateTimeRange date) {
   final startDate = date.start;
   final endDate = date.end;
+  cprint('VAL start', formatToStd(startDate));
+  cprint('VAL end', formatToStd(endDate));
   return {
     "reportSpec": {
       "dateRange": {
@@ -17,11 +20,8 @@ Map<String, dynamic> buildRequestBody(DateTimeRange date) {
           "day": endDate.day
         }
       },
-      "dimensions": ["DATE"],
+      "dimensions": [],
       "metrics": ["CLICKS", "AD_REQUESTS", "IMPRESSIONS", "ESTIMATED_EARNINGS"],
-      "sortConditions": [
-        {"dimension": "DATE", "order": "ASCENDING"}
-      ],
       "localizationSettings": {"currencyCode": "USD", "languageCode": "en"}
     }
   };
