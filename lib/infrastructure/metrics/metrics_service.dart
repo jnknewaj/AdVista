@@ -58,6 +58,8 @@ class MetricsService {
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
 
+        cprint('ABL', data.toString());
+
         final row = data.firstWhere(
           (element) =>
               element is Map<String, dynamic> && element.containsKey('row'),

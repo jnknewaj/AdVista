@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
+import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
+import 'package:advista/presentation/auth/login_page.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DashboardTopPart extends ConsumerWidget {
@@ -15,7 +17,7 @@ class DashboardTopPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeRange = ref.watch(timeRangeProvider);
+    final dateRange = ref.watch(timeRangeProvider);
     return Container(
       color: Colors.blue,
       height: screenHeightPortion(context, 0.09),
@@ -30,62 +32,83 @@ class DashboardTopPart extends ConsumerWidget {
               children: [
                 TimeRangeItem(
                   text: 'Today',
-                  isActive: timeRange == TimeRange.today,
+                  isActive: dateRange.range == TimeRange.today,
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requsted());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.today);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.yesterday,
+                  isActive: dateRange.range == TimeRange.yesterday,
                   text: 'Yesterday',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requstedYesterday());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.yesterday);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.last7Days,
+                  isActive: dateRange.range == TimeRange.last7Days,
                   text: 'Last 7 Days',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requsted7days());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.last7Days);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.thisMonth,
+                  isActive: dateRange.range == TimeRange.thisMonth,
                   text: 'This Month',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requstedThisMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisMonth);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.lastMonth,
+                  isActive: dateRange.range == TimeRange.lastMonth,
                   text: 'Last Month',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requstedLastMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lastMonth);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.thisYear,
+                  isActive: dateRange.range == TimeRange.thisYear,
                   text: 'This Year',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requstedThisYear());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisYear);
                   },
                 ),
                 TimeRangeItem(
-                  isActive: timeRange == TimeRange.lifetime,
+                  isActive: dateRange.range == TimeRange.lifetime,
                   text: 'Lifetime',
                   onTap: () {
+                    context
+                        .read<TodaysMetricsBloc>()
+                        .add(TodaysMetricsEvent.requstedLifeTime());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lifetime);
@@ -101,7 +124,7 @@ class DashboardTopPart extends ConsumerWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 3, left: 3, right: 8),
             child: Text(
-              text,
+              dateRange.dateRange,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

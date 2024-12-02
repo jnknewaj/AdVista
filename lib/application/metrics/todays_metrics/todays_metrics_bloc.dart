@@ -2,6 +2,7 @@ import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/infrastructure/core/date_service.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -70,6 +71,7 @@ class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
     DateTimeRange range,
     Emitter<TodaysMetricsState> emit,
   ) async {
+    cprint('BLC', 'Event added');
     emit(const TodaysMetricsState.loading());
     final result = await _repository.getMetrics(DateTimeRange(
       start: range.start,

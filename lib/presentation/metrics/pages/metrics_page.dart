@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
+import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/metrics/widgets/dashboard_top_part.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_item.dart';
+import 'package:advista/presentation/metrics/widgets/metrics_summary_view.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,9 @@ class _Handler extends StatelessWidget {
         BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
           listener: (context, state) {
             state.maybeMap(
+              loaded: (_) {
+                showSnackbar(context, 'Data Loaded');
+              },
               failed: (f) {
                 final text = f.failures.map(
                   networkFailure: (e) => e.msg,
@@ -61,28 +66,7 @@ class _Handler extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  // Section with 2 columns and 6 items
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 1.7,
-                      ),
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return const MetricsItem(
-                          topText: '321',
-                          bottomText: 'Impression',
-                        );
-                      },
-                    ),
-                  ),
+                  MetricsSummaryView(),
                 ],
               ),
             )
