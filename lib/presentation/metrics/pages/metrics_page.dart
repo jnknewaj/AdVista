@@ -24,16 +24,14 @@ class MetricsPage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) {
-            cprint('CTY', 'BlocProvider 1 created');
             return getIt<TodaysMetricsBloc>()
               ..add(const TodaysMetricsEvent.requsted());
           },
         ),
         BlocProvider(
           create: (context) {
-            cprint('CTY', 'BlocProvider 2 created');
             return getIt<CountryWiseMetricsBloc>()
-              ..add(const CountryWiseMetricsEvent.requstedYesterday());
+              ..add(const CountryWiseMetricsEvent.requsted());
           },
         ),
       ],

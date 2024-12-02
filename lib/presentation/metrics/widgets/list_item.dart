@@ -1,9 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
 class ListItem extends StatelessWidget {
-  const ListItem({super.key});
+  final String flagUrl;
+  final String country;
+  final String value;
+  const ListItem({
+    super.key,
+    required this.flagUrl,
+    required this.country,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +39,13 @@ class ListItem extends StatelessWidget {
           // Country name
           Expanded(
             child: Text(
-              'Bangladesh',
+              country,
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
           // Value aligned to the right
           Text(
-            '\$30,000',
+            value,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ],

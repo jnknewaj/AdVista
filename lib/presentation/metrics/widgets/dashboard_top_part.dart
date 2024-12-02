@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/presentation/auth/login_page.dart';
@@ -37,6 +38,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requsted());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requsted());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.today);
@@ -49,6 +53,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedYesterday());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedYesterday());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.yesterday);
@@ -61,6 +68,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requsted7days());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requsted7days());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.last7Days);
@@ -73,6 +83,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedThisMonth());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedThisMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisMonth);
@@ -85,6 +98,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedLastMonth());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedLastMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lastMonth);
@@ -97,6 +113,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedThisYear());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedThisYear());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisYear);
@@ -109,6 +128,9 @@ class DashboardTopPart extends ConsumerWidget {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedLifeTime());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedLifeTime());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lifetime);
