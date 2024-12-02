@@ -74,6 +74,38 @@ class Metricsdto with _$Metricsdto {
     );
   }
 
+  /// Factory for parsing JSON rows (handles country-specific data)
+  factory Metricsdto.fromRowJson(Map<String, dynamic> row) {
+    final metricValues = row['metricValues'] as Map<String, dynamic>? ?? {};
+
+    final clicks =
+        int.tryParse(metricValues['CLICKS']?['integerValue'] ?? '0') ?? 0;
+    final requests =
+        int.tryParse(metricValues['AD_REQUESTS']?['integerValue'] ?? '0') ?? 0;
+    final impressions =
+        int.tryParse(metricValues['IMPRESSIONS']?['integerValue'] ?? '0') ?? 0;
+    final earningsMicros = int.tryParse(
+            metricValues['ESTIMATED_EARNINGS']?['microsValue'] ?? '0') ??
+        0;
+
+    final earnings = earningsMicros / 1000000;
+    final matchRate = requests > 0 ? (impressions / requests) * 100 : 0.0;
+    final eCPM = impressions > 0 ? (earnings / impressions) * 1000 : 0.0;
+    final showRate = requests > 0 ? (impressions / requests) * 100 : 0.0;
+    final cTR = impressions > 0 ? (clicks / impressions) * 100 : 0.0;
+
+    return Metricsdto(
+      earnings: earnings,
+      impression: impressions,
+      requests: requests,
+      matchRate: matchRate,
+      clicks: clicks,
+      eCPM: eCPM,
+      showRate: showRate,
+      cTR: cTR,
+    );
+  }
+
   factory Metricsdto.fromJson(Map<String, dynamic> json) =>
       _$MetricsdtoFromJson(json);
 }

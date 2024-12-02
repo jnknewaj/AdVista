@@ -37,7 +37,7 @@ class MetricsSummaryView extends StatelessWidget {
                 },
                 failed: (f) {
                   return Text(
-                    f.failures.map(
+                    f.failures.maybeMap(
                       networkFailure: (e) => e.msg,
                       timeout: (e) => e.msg,
                       parsingFailure: (e) => e.msg,
@@ -45,6 +45,7 @@ class MetricsSummaryView extends StatelessWidget {
                       serverFailure: (e) => e.msg,
                       idNotFound: (e) => e.msg,
                       unknown: (e) => e.msg,
+                      orElse: () => "Unknown, probably from Country dimension",
                     ),
                   );
                 },

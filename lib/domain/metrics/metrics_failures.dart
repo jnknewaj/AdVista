@@ -11,4 +11,8 @@ class MetricsFailures with _$MetricsFailures {
   const factory MetricsFailures.serverFailure(String msg) = _ServerFailure;
   const factory MetricsFailures.idNotFound(String msg) = _IdNotFound;
   const factory MetricsFailures.unknown(String msg) = _Unknown;
+
+  // Specific to CountryMetrics
+  const factory MetricsFailures.invalidCountryCode() = _InvalidCountryCode;
+  const factory MetricsFailures.noDataForCountry() = _NoDataForCountry;
 }

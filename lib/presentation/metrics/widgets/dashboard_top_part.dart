@@ -30,7 +30,7 @@ class DashboardTopPart extends ConsumerWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                TimeRangeItem(
+                ClipCard(
                   text: 'Today',
                   isActive: dateRange.range == TimeRange.today,
                   onTap: () {
@@ -42,7 +42,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.today);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.yesterday,
                   text: 'Yesterday',
                   onTap: () {
@@ -54,7 +54,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.yesterday);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.last7Days,
                   text: 'Last 7 Days',
                   onTap: () {
@@ -66,7 +66,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.last7Days);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.thisMonth,
                   text: 'This Month',
                   onTap: () {
@@ -78,7 +78,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.thisMonth);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.lastMonth,
                   text: 'Last Month',
                   onTap: () {
@@ -90,7 +90,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.lastMonth);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.thisYear,
                   text: 'This Year',
                   onTap: () {
@@ -102,7 +102,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.thisYear);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.lifetime,
                   text: 'Lifetime',
                   onTap: () {
@@ -114,7 +114,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.lifetime);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   text: 'Custom',
                 ),
               ],
