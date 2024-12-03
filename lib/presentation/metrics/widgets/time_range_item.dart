@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TimeRangeItem extends StatelessWidget {
+class ClipCard extends StatelessWidget {
   final String text;
   final Function()? onTap;
   final bool isActive;
 
-  const TimeRangeItem({
+  const ClipCard({
     super.key,
     required this.text,
     this.onTap,
@@ -17,7 +17,7 @@ class TimeRangeItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 5,
@@ -29,7 +29,7 @@ class TimeRangeItem extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),

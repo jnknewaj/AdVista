@@ -1,3 +1,4 @@
+import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
@@ -8,28 +9,28 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'todays_metrics_event.dart';
-part 'todays_metrics_state.dart';
-part 'todays_metrics_bloc.freezed.dart';
+part 'country_wise_metrics_event.dart';
+part 'country_wise_metrics_state.dart';
+part 'country_wise_metrics_bloc.freezed.dart';
 
 @injectable
-class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
+class CountryWiseMetricsBloc
+    extends Bloc<CountryWiseMetricsEvent, CountryWiseMetricsState> {
   final IMetricsRepository _repository;
   final DateService _dateService;
 
-  TodaysMetricsBloc(
-    this._repository,
-    this._dateService,
-  ) : super(const TodaysMetricsState.initial()) {
-    on<TodaysMetricsEvent>(_onEvents);
+  CountryWiseMetricsBloc(this._repository, this._dateService)
+      : super(const CountryWiseMetricsState.initial()) {
+    on<CountryWiseMetricsEvent>(_onEvents);
   }
 
   Future<void> _onEvents(
-    TodaysMetricsEvent event,
-    Emitter<TodaysMetricsState> emit,
+    CountryWiseMetricsEvent event,
+    Emitter<CountryWiseMetricsState> emit,
   ) async {
     await event.map(
       requsted: (e) async {
+        cprint('CTY', 'event called');
         final range = DateTimeRange(start: DateTime.now(), end: DateTime.now());
         await _handleMatricsEvent(range, emit);
       },
@@ -43,16 +44,28 @@ class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
         await _handleMatricsEvent(range, emit);
       },
       requstedThisMonth: (e) async {
-        await _handleMatricsEvent(_dateService.getCurrentMonth(), emit);
+        await _handleMatricsEvent(
+          _dateService.getCurrentMonth(),
+          emit,
+        );
       },
       requstedLastMonth: (e) async {
-        await _handleMatricsEvent(_dateService.getLastMonth(), emit);
+        await _handleMatricsEvent(
+          _dateService.getLastMonth(),
+          emit,
+        );
       },
       requstedThisYear: (e) async {
-        await _handleMatricsEvent(_dateService.getThisYear(), emit);
+        await _handleMatricsEvent(
+          _dateService.getThisYear(),
+          emit,
+        );
       },
       requstedLastYear: (e) async {
-        await _handleMatricsEvent(_dateService.getLastYear(), emit);
+        await _handleMatricsEvent(
+          _dateService.getLastYear(),
+          emit,
+        );
       },
       requstedLifeTime: (e) async {},
       requstedCustom: (e) async {
@@ -69,19 +82,25 @@ class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
 
   Future<void> _handleMatricsEvent(
     DateTimeRange range,
-    Emitter<TodaysMetricsState> emit,
+    Emitter<CountryWiseMetricsState> emit,
   ) async {
-    cprint('BLC', 'Event added');
-    emit(const TodaysMetricsState.loading());
-    final result = await _repository.getMetrics(
+    emit(const CountryWiseMetricsState.loading());
+    cprint('CTY', 'bloc called');
+    final result = await _repository.getCountryMetrics(
       DateTimeRange(
         start: range.start,
         end: range.end,
       ),
     );
     result.fold(
-      (f) => emit(TodaysMetricsState.failed(f)),
-      (s) => emit(TodaysMetricsState.loaded(s)),
+      (f) => emit(CountryWiseMetricsState.failed(f)),
+      (s) {
+        if (s.isEmpty) {
+          emit(const CountryWiseMetricsState.noDataFound());
+        } else {
+          emit(CountryWiseMetricsState.loaded(s));
+        }
+      },
     );
   }
 }

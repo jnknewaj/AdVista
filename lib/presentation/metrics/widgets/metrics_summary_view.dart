@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MetricsSummaryView extends StatelessWidget {
-  const MetricsSummaryView({
-    super.key,
-  });
+  const MetricsSummaryView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class MetricsSummaryView extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 3,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 1.7,
@@ -37,7 +35,7 @@ class MetricsSummaryView extends StatelessWidget {
                 },
                 failed: (f) {
                   return Text(
-                    f.failures.map(
+                    f.failures.maybeMap(
                       networkFailure: (e) => e.msg,
                       timeout: (e) => e.msg,
                       parsingFailure: (e) => e.msg,
@@ -45,6 +43,7 @@ class MetricsSummaryView extends StatelessWidget {
                       serverFailure: (e) => e.msg,
                       idNotFound: (e) => e.msg,
                       unknown: (e) => e.msg,
+                      orElse: () => "Unknown, probably from Country dimension",
                     ),
                   );
                 },

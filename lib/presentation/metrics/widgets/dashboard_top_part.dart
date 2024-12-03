@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/presentation/auth/login_page.dart';
@@ -30,91 +31,112 @@ class DashboardTopPart extends ConsumerWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                TimeRangeItem(
+                ClipCard(
                   text: 'Today',
                   isActive: dateRange.range == TimeRange.today,
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requsted());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requsted());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.today);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.yesterday,
                   text: 'Yesterday',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedYesterday());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedYesterday());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.yesterday);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.last7Days,
                   text: 'Last 7 Days',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requsted7days());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requsted7days());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.last7Days);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.thisMonth,
                   text: 'This Month',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedThisMonth());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedThisMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisMonth);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.lastMonth,
                   text: 'Last Month',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedLastMonth());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedLastMonth());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lastMonth);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.thisYear,
                   text: 'This Year',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedThisYear());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedThisYear());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.thisYear);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   isActive: dateRange.range == TimeRange.lifetime,
                   text: 'Lifetime',
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
                         .add(TodaysMetricsEvent.requstedLifeTime());
+                    context
+                        .read<CountryWiseMetricsBloc>()
+                        .add(CountryWiseMetricsEvent.requstedLifeTime());
                     ref
                         .read(timeRangeProvider.notifier)
                         .setTimeRange(TimeRange.lifetime);
                   },
                 ),
-                TimeRangeItem(
+                ClipCard(
                   text: 'Custom',
                 ),
               ],

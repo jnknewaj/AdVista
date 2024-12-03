@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MetricsFailures {
-  String get msg => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String msg) networkFailure,
@@ -26,6 +25,8 @@ mixin _$MetricsFailures {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,6 +38,8 @@ mixin _$MetricsFailures {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +51,8 @@ mixin _$MetricsFailures {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +65,8 @@ mixin _$MetricsFailures {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +78,8 @@ mixin _$MetricsFailures {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,14 +91,10 @@ mixin _$MetricsFailures {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MetricsFailuresCopyWith<MetricsFailures> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -98,8 +103,6 @@ abstract class $MetricsFailuresCopyWith<$Res> {
   factory $MetricsFailuresCopyWith(
           MetricsFailures value, $Res Function(MetricsFailures) then) =
       _$MetricsFailuresCopyWithImpl<$Res, MetricsFailures>;
-  @useResult
-  $Res call({String msg});
 }
 
 /// @nodoc
@@ -114,27 +117,13 @@ class _$MetricsFailuresCopyWithImpl<$Res, $Val extends MetricsFailures>
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? msg = null,
-  }) {
-    return _then(_value.copyWith(
-      msg: null == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$NetworkFailureImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$NetworkFailureImplCopyWith<$Res> {
   factory _$$NetworkFailureImplCopyWith(_$NetworkFailureImpl value,
           $Res Function(_$NetworkFailureImpl) then) =
       __$$NetworkFailureImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -206,6 +195,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return networkFailure(msg);
   }
@@ -220,6 +211,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return networkFailure?.call(msg);
   }
@@ -234,6 +227,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -252,6 +247,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return networkFailure(this);
   }
@@ -266,6 +263,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return networkFailure?.call(this);
   }
@@ -280,6 +279,8 @@ class _$NetworkFailureImpl implements _NetworkFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (networkFailure != null) {
@@ -292,24 +293,20 @@ class _$NetworkFailureImpl implements _NetworkFailure {
 abstract class _NetworkFailure implements MetricsFailures {
   const factory _NetworkFailure(final String msg) = _$NetworkFailureImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TimeOutImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$TimeOutImplCopyWith<$Res> {
   factory _$$TimeOutImplCopyWith(
           _$TimeOutImpl value, $Res Function(_$TimeOutImpl) then) =
       __$$TimeOutImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -380,6 +377,8 @@ class _$TimeOutImpl implements _TimeOut {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return timeout(msg);
   }
@@ -394,6 +393,8 @@ class _$TimeOutImpl implements _TimeOut {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return timeout?.call(msg);
   }
@@ -408,6 +409,8 @@ class _$TimeOutImpl implements _TimeOut {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (timeout != null) {
@@ -426,6 +429,8 @@ class _$TimeOutImpl implements _TimeOut {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return timeout(this);
   }
@@ -440,6 +445,8 @@ class _$TimeOutImpl implements _TimeOut {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return timeout?.call(this);
   }
@@ -454,6 +461,8 @@ class _$TimeOutImpl implements _TimeOut {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (timeout != null) {
@@ -466,24 +475,20 @@ class _$TimeOutImpl implements _TimeOut {
 abstract class _TimeOut implements MetricsFailures {
   const factory _TimeOut(final String msg) = _$TimeOutImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TimeOutImplCopyWith<_$TimeOutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ParsingFailureImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$ParsingFailureImplCopyWith<$Res> {
   factory _$$ParsingFailureImplCopyWith(_$ParsingFailureImpl value,
           $Res Function(_$ParsingFailureImpl) then) =
       __$$ParsingFailureImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -555,6 +560,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return parsingFailure(msg);
   }
@@ -569,6 +576,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return parsingFailure?.call(msg);
   }
@@ -583,6 +592,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (parsingFailure != null) {
@@ -601,6 +612,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return parsingFailure(this);
   }
@@ -615,6 +628,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return parsingFailure?.call(this);
   }
@@ -629,6 +644,8 @@ class _$ParsingFailureImpl implements _ParsingFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (parsingFailure != null) {
@@ -641,24 +658,20 @@ class _$ParsingFailureImpl implements _ParsingFailure {
 abstract class _ParsingFailure implements MetricsFailures {
   const factory _ParsingFailure(final String msg) = _$ParsingFailureImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ParsingFailureImplCopyWith<_$ParsingFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TokenNotFoundImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$TokenNotFoundImplCopyWith<$Res> {
   factory _$$TokenNotFoundImplCopyWith(
           _$TokenNotFoundImpl value, $Res Function(_$TokenNotFoundImpl) then) =
       __$$TokenNotFoundImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -729,6 +742,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return tokenNotFound(msg);
   }
@@ -743,6 +758,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return tokenNotFound?.call(msg);
   }
@@ -757,6 +774,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (tokenNotFound != null) {
@@ -775,6 +794,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return tokenNotFound(this);
   }
@@ -789,6 +810,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return tokenNotFound?.call(this);
   }
@@ -803,6 +826,8 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (tokenNotFound != null) {
@@ -815,24 +840,20 @@ class _$TokenNotFoundImpl implements _TokenNotFound {
 abstract class _TokenNotFound implements MetricsFailures {
   const factory _TokenNotFound(final String msg) = _$TokenNotFoundImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenNotFoundImplCopyWith<_$TokenNotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServerFailureImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$ServerFailureImplCopyWith<$Res> {
   factory _$$ServerFailureImplCopyWith(
           _$ServerFailureImpl value, $Res Function(_$ServerFailureImpl) then) =
       __$$ServerFailureImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -903,6 +924,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return serverFailure(msg);
   }
@@ -917,6 +940,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return serverFailure?.call(msg);
   }
@@ -931,6 +956,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -949,6 +976,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return serverFailure(this);
   }
@@ -963,6 +992,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return serverFailure?.call(this);
   }
@@ -977,6 +1008,8 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -989,24 +1022,20 @@ class _$ServerFailureImpl implements _ServerFailure {
 abstract class _ServerFailure implements MetricsFailures {
   const factory _ServerFailure(final String msg) = _$ServerFailureImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$IdNotFoundImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$IdNotFoundImplCopyWith<$Res> {
   factory _$$IdNotFoundImplCopyWith(
           _$IdNotFoundImpl value, $Res Function(_$IdNotFoundImpl) then) =
       __$$IdNotFoundImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -1077,6 +1106,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return idNotFound(msg);
   }
@@ -1091,6 +1122,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return idNotFound?.call(msg);
   }
@@ -1105,6 +1138,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (idNotFound != null) {
@@ -1123,6 +1158,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return idNotFound(this);
   }
@@ -1137,6 +1174,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return idNotFound?.call(this);
   }
@@ -1151,6 +1190,8 @@ class _$IdNotFoundImpl implements _IdNotFound {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (idNotFound != null) {
@@ -1163,24 +1204,20 @@ class _$IdNotFoundImpl implements _IdNotFound {
 abstract class _IdNotFound implements MetricsFailures {
   const factory _IdNotFound(final String msg) = _$IdNotFoundImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdNotFoundImplCopyWith<_$IdNotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UnknownImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$UnknownImplCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
           _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
       __$$UnknownImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String msg});
 }
@@ -1251,6 +1288,8 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function(String msg) serverFailure,
     required TResult Function(String msg) idNotFound,
     required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
     return unknown(msg);
   }
@@ -1265,6 +1304,8 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function(String msg)? serverFailure,
     TResult? Function(String msg)? idNotFound,
     TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
     return unknown?.call(msg);
   }
@@ -1279,6 +1320,8 @@ class _$UnknownImpl implements _Unknown {
     TResult Function(String msg)? serverFailure,
     TResult Function(String msg)? idNotFound,
     TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1297,6 +1340,8 @@ class _$UnknownImpl implements _Unknown {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_IdNotFound value) idNotFound,
     required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return unknown(this);
   }
@@ -1311,6 +1356,8 @@ class _$UnknownImpl implements _Unknown {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_IdNotFound value)? idNotFound,
     TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return unknown?.call(this);
   }
@@ -1325,6 +1372,8 @@ class _$UnknownImpl implements _Unknown {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_IdNotFound value)? idNotFound,
     TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1337,13 +1386,305 @@ class _$UnknownImpl implements _Unknown {
 abstract class _Unknown implements MetricsFailures {
   const factory _Unknown(final String msg) = _$UnknownImpl;
 
-  @override
   String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InvalidCountryCodeImplCopyWith<$Res> {
+  factory _$$InvalidCountryCodeImplCopyWith(_$InvalidCountryCodeImpl value,
+          $Res Function(_$InvalidCountryCodeImpl) then) =
+      __$$InvalidCountryCodeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InvalidCountryCodeImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$InvalidCountryCodeImpl>
+    implements _$$InvalidCountryCodeImplCopyWith<$Res> {
+  __$$InvalidCountryCodeImplCopyWithImpl(_$InvalidCountryCodeImpl _value,
+      $Res Function(_$InvalidCountryCodeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InvalidCountryCodeImpl implements _InvalidCountryCode {
+  const _$InvalidCountryCodeImpl();
+
+  @override
+  String toString() {
+    return 'MetricsFailures.invalidCountryCode()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InvalidCountryCodeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return invalidCountryCode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return invalidCountryCode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (invalidCountryCode != null) {
+      return invalidCountryCode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return invalidCountryCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return invalidCountryCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (invalidCountryCode != null) {
+      return invalidCountryCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidCountryCode implements MetricsFailures {
+  const factory _InvalidCountryCode() = _$InvalidCountryCodeImpl;
+}
+
+/// @nodoc
+abstract class _$$NoDataForCountryImplCopyWith<$Res> {
+  factory _$$NoDataForCountryImplCopyWith(_$NoDataForCountryImpl value,
+          $Res Function(_$NoDataForCountryImpl) then) =
+      __$$NoDataForCountryImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoDataForCountryImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$NoDataForCountryImpl>
+    implements _$$NoDataForCountryImplCopyWith<$Res> {
+  __$$NoDataForCountryImplCopyWithImpl(_$NoDataForCountryImpl _value,
+      $Res Function(_$NoDataForCountryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoDataForCountryImpl implements _NoDataForCountry {
+  const _$NoDataForCountryImpl();
+
+  @override
+  String toString() {
+    return 'MetricsFailures.noDataForCountry()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoDataForCountryImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return noDataForCountry();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return noDataForCountry?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (noDataForCountry != null) {
+      return noDataForCountry();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return noDataForCountry(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return noDataForCountry?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (noDataForCountry != null) {
+      return noDataForCountry(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoDataForCountry implements MetricsFailures {
+  const factory _NoDataForCountry() = _$NoDataForCountryImpl;
 }

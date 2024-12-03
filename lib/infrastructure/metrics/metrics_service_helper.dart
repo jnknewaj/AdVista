@@ -1,7 +1,10 @@
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 
-Map<String, dynamic> buildRequestBody(DateTimeRange date) {
+Map<String, dynamic> buildRequestBody(
+  DateTimeRange date,
+  List<String> dimensions,
+) {
   final startDate = date.start;
   final endDate = date.end;
   cprint('VAL start', formatToStd(startDate));
@@ -20,7 +23,7 @@ Map<String, dynamic> buildRequestBody(DateTimeRange date) {
           "day": endDate.day
         }
       },
-      "dimensions": [],
+      "dimensions": dimensions,
       "metrics": ["CLICKS", "AD_REQUESTS", "IMPRESSIONS", "ESTIMATED_EARNINGS"],
       "localizationSettings": {"currencyCode": "USD", "languageCode": "en"}
     }
