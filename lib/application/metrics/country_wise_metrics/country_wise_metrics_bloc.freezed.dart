@@ -1496,6 +1496,7 @@ mixin _$CountryWiseMetricsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() noDataFound,
     required TResult Function(List<CountryMetrics> metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) =>
@@ -1504,6 +1505,7 @@ mixin _$CountryWiseMetricsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? noDataFound,
     TResult? Function(List<CountryMetrics> metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) =>
@@ -1512,6 +1514,7 @@ mixin _$CountryWiseMetricsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? noDataFound,
     TResult Function(List<CountryMetrics> metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
@@ -1521,6 +1524,7 @@ mixin _$CountryWiseMetricsState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) =>
@@ -1529,6 +1533,7 @@ mixin _$CountryWiseMetricsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) =>
@@ -1537,6 +1542,7 @@ mixin _$CountryWiseMetricsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -1609,6 +1615,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() noDataFound,
     required TResult Function(List<CountryMetrics> metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
@@ -1620,6 +1627,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? noDataFound,
     TResult? Function(List<CountryMetrics> metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
@@ -1631,6 +1639,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? noDataFound,
     TResult Function(List<CountryMetrics> metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
@@ -1646,6 +1655,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -1657,6 +1667,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -1668,6 +1679,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -1726,6 +1738,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() noDataFound,
     required TResult Function(List<CountryMetrics> metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
@@ -1737,6 +1750,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? noDataFound,
     TResult? Function(List<CountryMetrics> metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
@@ -1748,6 +1762,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? noDataFound,
     TResult Function(List<CountryMetrics> metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
@@ -1763,6 +1778,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -1774,6 +1790,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -1785,6 +1802,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -1798,6 +1816,129 @@ class _$LoadingImpl implements _Loading {
 
 abstract class _Loading implements CountryWiseMetricsState {
   const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$NoDataFoundImplCopyWith<$Res> {
+  factory _$$NoDataFoundImplCopyWith(
+          _$NoDataFoundImpl value, $Res Function(_$NoDataFoundImpl) then) =
+      __$$NoDataFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoDataFoundImplCopyWithImpl<$Res>
+    extends _$CountryWiseMetricsStateCopyWithImpl<$Res, _$NoDataFoundImpl>
+    implements _$$NoDataFoundImplCopyWith<$Res> {
+  __$$NoDataFoundImplCopyWithImpl(
+      _$NoDataFoundImpl _value, $Res Function(_$NoDataFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CountryWiseMetricsState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoDataFoundImpl implements _NoDataFound {
+  const _$NoDataFoundImpl();
+
+  @override
+  String toString() {
+    return 'CountryWiseMetricsState.noDataFound()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoDataFoundImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() noDataFound,
+    required TResult Function(List<CountryMetrics> metrics) loaded,
+    required TResult Function(MetricsFailures failures) failed,
+  }) {
+    return noDataFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? noDataFound,
+    TResult? Function(List<CountryMetrics> metrics)? loaded,
+    TResult? Function(MetricsFailures failures)? failed,
+  }) {
+    return noDataFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? noDataFound,
+    TResult Function(List<CountryMetrics> metrics)? loaded,
+    TResult Function(MetricsFailures failures)? failed,
+    required TResult orElse(),
+  }) {
+    if (noDataFound != null) {
+      return noDataFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return noDataFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Failed value)? failed,
+  }) {
+    return noDataFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (noDataFound != null) {
+      return noDataFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoDataFound implements CountryWiseMetricsState {
+  const factory _NoDataFound() = _$NoDataFoundImpl;
 }
 
 /// @nodoc
@@ -1876,6 +2017,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() noDataFound,
     required TResult Function(List<CountryMetrics> metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
@@ -1887,6 +2029,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? noDataFound,
     TResult? Function(List<CountryMetrics> metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
@@ -1898,6 +2041,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? noDataFound,
     TResult Function(List<CountryMetrics> metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
@@ -1913,6 +2057,7 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -1924,6 +2069,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -1935,6 +2081,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -2041,6 +2188,7 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() noDataFound,
     required TResult Function(List<CountryMetrics> metrics) loaded,
     required TResult Function(MetricsFailures failures) failed,
   }) {
@@ -2052,6 +2200,7 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? noDataFound,
     TResult? Function(List<CountryMetrics> metrics)? loaded,
     TResult? Function(MetricsFailures failures)? failed,
   }) {
@@ -2063,6 +2212,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? noDataFound,
     TResult Function(List<CountryMetrics> metrics)? loaded,
     TResult Function(MetricsFailures failures)? failed,
     required TResult orElse(),
@@ -2078,6 +2228,7 @@ class _$FailedImpl implements _Failed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_NoDataFound value) noDataFound,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -2089,6 +2240,7 @@ class _$FailedImpl implements _Failed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_NoDataFound value)? noDataFound,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Failed value)? failed,
   }) {
@@ -2100,6 +2252,7 @@ class _$FailedImpl implements _Failed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_NoDataFound value)? noDataFound,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),

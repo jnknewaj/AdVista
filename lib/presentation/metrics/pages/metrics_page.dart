@@ -84,9 +84,11 @@ class _Handler extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  MetricsSummaryView(),
+                  const MetricsSummaryView(),
+                  const Divider(),
                   const SizedBox(height: 5),
                   const CountryMetricsView(),
+                  const Divider(),
                 ],
               ),
             )

@@ -2,6 +2,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/metrics/widgets/list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class CountryDataWidget extends StatelessWidget {
   const CountryDataWidget({
@@ -15,18 +16,44 @@ class CountryDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: countryDataList.length > 3 ? 3 : countryDataList.length,
-      itemBuilder: (context, index) {
-        final data = countryDataList[index];
-        return ListItem(
-          flagUrl: 'item.url',
-          country: data.country,
-          value: mapTitleToData(metricsTitle, data),
-        );
-      },
+    final bool showAllButton = countryDataList.length > 3;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: showAllButton ? 3 : countryDataList.length,
+          itemBuilder: (context, index) {
+            final data = countryDataList[index];
+            return ListItem(
+              flagUrl: 'item.url',
+              country: data.country,
+              value: mapTitleToData(metricsTitle, data),
+            );
+          },
+        ),
+        if (showAllButton)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.all(12.0),
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              child: const Text(
+                'Show All',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

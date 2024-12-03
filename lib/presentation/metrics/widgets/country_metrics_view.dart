@@ -8,11 +8,11 @@ import 'package:advista/presentation/metrics/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/country_wise_top_widget.dart';
 import 'package:advista/presentation/metrics/widgets/list_item.dart';
+import 'package:advista/presentation/metrics/widgets/no_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class CountryMetricsView extends ConsumerWidget {
   const CountryMetricsView({super.key});
@@ -42,6 +42,7 @@ class CountryMetricsView extends ConsumerWidget {
               state.map(
                 initial: (_) => const ShimmerCountryData(),
                 loading: (_) => const ShimmerCountryData(),
+                noDataFound: (_) => const NoDataWidget(),
                 loaded: (s) {
                   final dataList = s.metrics;
                   return CountryDataWidget(
@@ -53,17 +54,7 @@ class CountryMetricsView extends ConsumerWidget {
                   return Text(f.failures.toString());
                 },
               ),
-
               const SizedBox(height: 16),
-              // Button to navigate
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigation logic here
-                  },
-                  child: const Text('Show All'),
-                ),
-              ),
             ],
           ),
         );

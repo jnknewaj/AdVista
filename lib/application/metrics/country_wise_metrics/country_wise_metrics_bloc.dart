@@ -94,7 +94,13 @@ class CountryWiseMetricsBloc
     );
     result.fold(
       (f) => emit(CountryWiseMetricsState.failed(f)),
-      (s) => emit(CountryWiseMetricsState.loaded(s)),
+      (s) {
+        if (s.isEmpty) {
+          emit(const CountryWiseMetricsState.noDataFound());
+        } else {
+          emit(CountryWiseMetricsState.loaded(s));
+        }
+      },
     );
   }
 }

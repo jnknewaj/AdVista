@@ -1,5 +1,6 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,8 +14,10 @@ class CountryWiseTopWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: 40,
+    cprint('HEIGHT', MediaQuery.of(context).size.height.toString());
+    return Container(
+      color: Colors.blue,
+      height: screenHeightPortion(context, .06),
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
