@@ -1,24 +1,23 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/presentation/metrics/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/list_item.dart';
-import 'package:advista/utils/app_utils.dart';
-import 'package:advista/utils/country_name_util.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
-class CountryDataWidget extends StatelessWidget {
-  const CountryDataWidget({
+class AdUnitDataWidget extends StatelessWidget {
+  const AdUnitDataWidget({
     super.key,
-    required this.countryDataList,
+    required this.adUnitDataList,
     required this.metricsTitle,
   });
 
-  final List<CountryMetrics> countryDataList;
+  final List<AdUnitMetrics> adUnitDataList;
   final MetricsTitle metricsTitle;
 
   @override
   Widget build(BuildContext context) {
-    final bool showAllButton = countryDataList.length > 3;
+    final bool showAllButton = adUnitDataList.length > 3;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -26,13 +25,18 @@ class CountryDataWidget extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: showAllButton ? 3 : countryDataList.length,
+          itemCount: showAllButton ? 3 : adUnitDataList.length,
           itemBuilder: (context, index) {
-            final data = countryDataList[index];
-            return ListItem(
-              flag: getFlagEmoji(data.country),
-              country: getCountryName(data.country),
-              value: _mapTitleToData(metricsTitle, data),
+            final data = adUnitDataList[index];
+            return ListTile(
+              title: Text(
+                data.adUnitType,
+                style: const TextStyle(fontSize: 18),
+              ),
+              trailing: Text(
+                _mapTitleToData(metricsTitle, data),
+                style: const TextStyle(fontSize: 20),
+              ),
             );
           },
         ),
@@ -62,22 +66,22 @@ class CountryDataWidget extends StatelessWidget {
 
 String _mapTitleToData(
   MetricsTitle title,
-  CountryMetrics countryMetrics,
+  AdUnitMetrics adUnitMetrics,
 ) {
   switch (title) {
     case MetricsTitle.earnings:
-      return countryMetrics.metrics.earnings.toStringAsFixed(3);
+      return adUnitMetrics.metrics.earnings.toStringAsFixed(3);
     case MetricsTitle.impression:
-      return countryMetrics.metrics.impression.toString();
+      return adUnitMetrics.metrics.impression.toString();
     case MetricsTitle.requests:
-      return countryMetrics.metrics.requests.toString();
+      return adUnitMetrics.metrics.requests.toString();
     case MetricsTitle.clicks:
-      return countryMetrics.metrics.clicks.toString();
+      return adUnitMetrics.metrics.clicks.toString();
     case MetricsTitle.eCPM:
-      return countryMetrics.metrics.eCPM.toStringAsFixed(2);
+      return adUnitMetrics.metrics.eCPM.toStringAsFixed(2);
     case MetricsTitle.matchRate:
-      return countryMetrics.metrics.matchRate.toStringAsFixed(2);
+      return adUnitMetrics.metrics.matchRate.toStringAsFixed(2);
     default:
-      return 'Unknown CountryMetrics';
+      return 'Unknown AdUnitMetrics';
   }
 }

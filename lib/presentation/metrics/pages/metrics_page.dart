@@ -6,6 +6,7 @@ import 'package:advista/application/metrics/country_wise_metrics/country_wise_me
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/presentation/metrics/widgets/ad_unit_metrics_view.dart';
 import 'package:advista/presentation/metrics/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/widgets/dashboard_top_part.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_item.dart';
@@ -93,6 +94,8 @@ class _Handler extends StatelessWidget {
                   const SizedBox(height: 5),
                   const CountryMetricsView(),
                   const Divider(),
+                  const SizedBox(height: 5),
+                  const AdUnitMetricsView(),
                 ],
               ),
             )

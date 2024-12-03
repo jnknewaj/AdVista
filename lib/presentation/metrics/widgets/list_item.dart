@@ -4,12 +4,12 @@
 import 'package:flutter/material.dart';
 
 class ListItem extends StatelessWidget {
-  final String flagUrl;
+  final String flag;
   final String country;
   final String value;
   const ListItem({
     super.key,
-    required this.flagUrl,
+    required this.flag,
     required this.country,
     required this.value,
   });
@@ -22,18 +22,9 @@ class ListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Flag image
-          Container(
-            width: 60,
-            height: 30,
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://flagpedia.net/data/flags/w580/de.webp',
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+          Text(
+            flag,
+            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
           ),
           const SizedBox(width: 12),
           // Country name

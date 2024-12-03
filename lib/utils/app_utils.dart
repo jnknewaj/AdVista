@@ -62,3 +62,13 @@ cprint(String tag, String? msg) => print('$tag : $msg');
 double screenHeightPortion(BuildContext context, double portion) {
   return MediaQuery.of(context).size.height * portion;
 }
+
+String getFlagEmoji(String countryCode) {
+  const int flagOffset = 0x1F1E6; // Unicode offset for 'A'
+  const int asciiOffset = 0x41; // ASCII offset for 'A'
+
+  int firstChar = countryCode.codeUnitAt(0) - asciiOffset + flagOffset;
+  int secondChar = countryCode.codeUnitAt(1) - asciiOffset + flagOffset;
+
+  return String.fromCharCode(firstChar) + String.fromCharCode(secondChar);
+}

@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/metrics/pages/metrics_page.dart';
+import 'package:advista/presentation/metrics/widgets/ad_unit_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
@@ -14,13 +16,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CountryMetricsView extends ConsumerWidget {
-  const CountryMetricsView({super.key});
+class AdUnitMetricsView extends ConsumerWidget {
+  const AdUnitMetricsView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final metricsTitle = ref.watch(metricsTitleNotifierProvider);
-    return BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
+    final metricsTitle = ref.watch(metricsTitleNotifierProvider2);
+    return BlocBuilder<AdUnitMetricsBloc, AdUnitMetricsState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -29,7 +31,7 @@ class CountryMetricsView extends ConsumerWidget {
             children: [
               // Horizontal list view
               const Text(
-                "Countrywise Data",
+                "Ad Unit Data",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
@@ -40,32 +42,32 @@ class CountryMetricsView extends ConsumerWidget {
                 metricsTitle: metricsTitle,
                 onEarningsTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.earnings);
                 },
                 onImpressionTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.impression);
                 },
                 onReqTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.requests);
                 },
                 onClicksTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.clicks);
                 },
                 oneCPMTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.eCPM);
                 },
                 oneMatchRateTap: () {
                   ref
-                      .read(metricsTitleNotifierProvider.notifier)
+                      .read(metricsTitleNotifierProvider2.notifier)
                       .setMetricsTitle(MetricsTitle.matchRate);
                 },
               ),
@@ -77,8 +79,8 @@ class CountryMetricsView extends ConsumerWidget {
                 noDataFound: (_) => const NoDataWidget(),
                 loaded: (s) {
                   final dataList = s.metrics;
-                  return CountryDataWidget(
-                    countryDataList: dataList,
+                  return AdUnitDataWidget(
+                    adUnitDataList: dataList,
                     metricsTitle: metricsTitle,
                   );
                 },
