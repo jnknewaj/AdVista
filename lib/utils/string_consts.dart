@@ -12,3 +12,6 @@ const String KEY_EXPIRY_TIME = 'keyExpiryTime';
 
 // key for admob account id
 const String KEY_ADMOB_ID = "admobid";
+
+// key for admob ac opening date
+const String KEY_ADMOB_AC_OPEN_DATE = 'admobacopeningdate';

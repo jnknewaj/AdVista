@@ -16,62 +16,85 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MetricsFailures {
-  String? get msg => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? msg) serviceError,
-    required TResult Function(String? msg) idNotFoundError,
-    required TResult Function(String? msg, String? code) unknown,
-    required TResult Function(String? msg, int? code) httpError,
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? msg)? serviceError,
-    TResult? Function(String? msg)? idNotFoundError,
-    TResult? Function(String? msg, String? code)? unknown,
-    TResult? Function(String? msg, int? code)? httpError,
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? msg)? serviceError,
-    TResult Function(String? msg)? idNotFoundError,
-    TResult Function(String? msg, String? code)? unknown,
-    TResult Function(String? msg, int? code)? httpError,
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceError value) serviceError,
-    required TResult Function(IdNotFoundError value) idNotFoundError,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(HttpError value) httpError,
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceError value)? serviceError,
-    TResult? Function(IdNotFoundError value)? idNotFoundError,
-    TResult? Function(Unknown value)? unknown,
-    TResult? Function(HttpError value)? httpError,
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceError value)? serviceError,
-    TResult Function(IdNotFoundError value)? idNotFoundError,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(HttpError value)? httpError,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MetricsFailuresCopyWith<MetricsFailures> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -80,8 +103,6 @@ abstract class $MetricsFailuresCopyWith<$Res> {
   factory $MetricsFailuresCopyWith(
           MetricsFailures value, $Res Function(MetricsFailures) then) =
       _$MetricsFailuresCopyWithImpl<$Res, MetricsFailures>;
-  @useResult
-  $Res call({String? msg});
 }
 
 /// @nodoc
@@ -96,37 +117,23 @@ class _$MetricsFailuresCopyWithImpl<$Res, $Val extends MetricsFailures>
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? msg = freezed,
-  }) {
-    return _then(_value.copyWith(
-      msg: freezed == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ServiceErrorImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
-  factory _$$ServiceErrorImplCopyWith(
-          _$ServiceErrorImpl value, $Res Function(_$ServiceErrorImpl) then) =
-      __$$ServiceErrorImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$NetworkFailureImplCopyWith<$Res> {
+  factory _$$NetworkFailureImplCopyWith(_$NetworkFailureImpl value,
+          $Res Function(_$NetworkFailureImpl) then) =
+      __$$NetworkFailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? msg});
+  $Res call({String msg});
 }
 
 /// @nodoc
-class __$$ServiceErrorImplCopyWithImpl<$Res>
-    extends _$MetricsFailuresCopyWithImpl<$Res, _$ServiceErrorImpl>
-    implements _$$ServiceErrorImplCopyWith<$Res> {
-  __$$ServiceErrorImplCopyWithImpl(
-      _$ServiceErrorImpl _value, $Res Function(_$ServiceErrorImpl) _then)
+class __$$NetworkFailureImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$NetworkFailureImpl>
+    implements _$$NetworkFailureImplCopyWith<$Res> {
+  __$$NetworkFailureImplCopyWithImpl(
+      _$NetworkFailureImpl _value, $Res Function(_$NetworkFailureImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MetricsFailures
@@ -134,35 +141,35 @@ class __$$ServiceErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? msg = freezed,
+    Object? msg = null,
   }) {
-    return _then(_$ServiceErrorImpl(
-      msg: freezed == msg
+    return _then(_$NetworkFailureImpl(
+      null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ServiceErrorImpl implements ServiceError {
-  const _$ServiceErrorImpl({this.msg});
+class _$NetworkFailureImpl implements _NetworkFailure {
+  const _$NetworkFailureImpl(this.msg);
 
   @override
-  final String? msg;
+  final String msg;
 
   @override
   String toString() {
-    return 'MetricsFailures.serviceError(msg: $msg)';
+    return 'MetricsFailures.networkFailure(msg: $msg)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceErrorImpl &&
+            other is _$NetworkFailureImpl &&
             (identical(other.msg, msg) || other.msg == msg));
   }
 
@@ -174,199 +181,58 @@ class _$ServiceErrorImpl implements ServiceError {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceErrorImplCopyWith<_$ServiceErrorImpl> get copyWith =>
-      __$$ServiceErrorImplCopyWithImpl<_$ServiceErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? msg) serviceError,
-    required TResult Function(String? msg) idNotFoundError,
-    required TResult Function(String? msg, String? code) unknown,
-    required TResult Function(String? msg, int? code) httpError,
-  }) {
-    return serviceError(msg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? msg)? serviceError,
-    TResult? Function(String? msg)? idNotFoundError,
-    TResult? Function(String? msg, String? code)? unknown,
-    TResult? Function(String? msg, int? code)? httpError,
-  }) {
-    return serviceError?.call(msg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? msg)? serviceError,
-    TResult Function(String? msg)? idNotFoundError,
-    TResult Function(String? msg, String? code)? unknown,
-    TResult Function(String? msg, int? code)? httpError,
-    required TResult orElse(),
-  }) {
-    if (serviceError != null) {
-      return serviceError(msg);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServiceError value) serviceError,
-    required TResult Function(IdNotFoundError value) idNotFoundError,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(HttpError value) httpError,
-  }) {
-    return serviceError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceError value)? serviceError,
-    TResult? Function(IdNotFoundError value)? idNotFoundError,
-    TResult? Function(Unknown value)? unknown,
-    TResult? Function(HttpError value)? httpError,
-  }) {
-    return serviceError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceError value)? serviceError,
-    TResult Function(IdNotFoundError value)? idNotFoundError,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(HttpError value)? httpError,
-    required TResult orElse(),
-  }) {
-    if (serviceError != null) {
-      return serviceError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ServiceError implements MetricsFailures {
-  const factory ServiceError({final String? msg}) = _$ServiceErrorImpl;
-
-  @override
-  String? get msg;
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ServiceErrorImplCopyWith<_$ServiceErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$IdNotFoundErrorImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
-  factory _$$IdNotFoundErrorImplCopyWith(_$IdNotFoundErrorImpl value,
-          $Res Function(_$IdNotFoundErrorImpl) then) =
-      __$$IdNotFoundErrorImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? msg});
-}
-
-/// @nodoc
-class __$$IdNotFoundErrorImplCopyWithImpl<$Res>
-    extends _$MetricsFailuresCopyWithImpl<$Res, _$IdNotFoundErrorImpl>
-    implements _$$IdNotFoundErrorImplCopyWith<$Res> {
-  __$$IdNotFoundErrorImplCopyWithImpl(
-      _$IdNotFoundErrorImpl _value, $Res Function(_$IdNotFoundErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? msg = freezed,
-  }) {
-    return _then(_$IdNotFoundErrorImpl(
-      msg: freezed == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$IdNotFoundErrorImpl implements IdNotFoundError {
-  const _$IdNotFoundErrorImpl({this.msg});
-
-  @override
-  final String? msg;
-
-  @override
-  String toString() {
-    return 'MetricsFailures.idNotFoundError(msg: $msg)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$IdNotFoundErrorImpl &&
-            (identical(other.msg, msg) || other.msg == msg));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, msg);
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$IdNotFoundErrorImplCopyWith<_$IdNotFoundErrorImpl> get copyWith =>
-      __$$IdNotFoundErrorImplCopyWithImpl<_$IdNotFoundErrorImpl>(
+  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
+      __$$NetworkFailureImplCopyWithImpl<_$NetworkFailureImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? msg) serviceError,
-    required TResult Function(String? msg) idNotFoundError,
-    required TResult Function(String? msg, String? code) unknown,
-    required TResult Function(String? msg, int? code) httpError,
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
-    return idNotFoundError(msg);
+    return networkFailure(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? msg)? serviceError,
-    TResult? Function(String? msg)? idNotFoundError,
-    TResult? Function(String? msg, String? code)? unknown,
-    TResult? Function(String? msg, int? code)? httpError,
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
-    return idNotFoundError?.call(msg);
+    return networkFailure?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? msg)? serviceError,
-    TResult Function(String? msg)? idNotFoundError,
-    TResult Function(String? msg, String? code)? unknown,
-    TResult Function(String? msg, int? code)? httpError,
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
-    if (idNotFoundError != null) {
-      return idNotFoundError(msg);
+    if (networkFailure != null) {
+      return networkFailure(msg);
     }
     return orElse();
   }
@@ -374,64 +240,986 @@ class _$IdNotFoundErrorImpl implements IdNotFoundError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceError value) serviceError,
-    required TResult Function(IdNotFoundError value) idNotFoundError,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(HttpError value) httpError,
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
-    return idNotFoundError(this);
+    return networkFailure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceError value)? serviceError,
-    TResult? Function(IdNotFoundError value)? idNotFoundError,
-    TResult? Function(Unknown value)? unknown,
-    TResult? Function(HttpError value)? httpError,
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
-    return idNotFoundError?.call(this);
+    return networkFailure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceError value)? serviceError,
-    TResult Function(IdNotFoundError value)? idNotFoundError,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(HttpError value)? httpError,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
-    if (idNotFoundError != null) {
-      return idNotFoundError(this);
+    if (networkFailure != null) {
+      return networkFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class IdNotFoundError implements MetricsFailures {
-  const factory IdNotFoundError({final String? msg}) = _$IdNotFoundErrorImpl;
+abstract class _NetworkFailure implements MetricsFailures {
+  const factory _NetworkFailure(final String msg) = _$NetworkFailureImpl;
 
-  @override
-  String? get msg;
+  String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IdNotFoundErrorImplCopyWith<_$IdNotFoundErrorImpl> get copyWith =>
+  _$$NetworkFailureImplCopyWith<_$NetworkFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UnknownImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
+abstract class _$$TimeOutImplCopyWith<$Res> {
+  factory _$$TimeOutImplCopyWith(
+          _$TimeOutImpl value, $Res Function(_$TimeOutImpl) then) =
+      __$$TimeOutImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$TimeOutImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$TimeOutImpl>
+    implements _$$TimeOutImplCopyWith<$Res> {
+  __$$TimeOutImplCopyWithImpl(
+      _$TimeOutImpl _value, $Res Function(_$TimeOutImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$TimeOutImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TimeOutImpl implements _TimeOut {
+  const _$TimeOutImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.timeout(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TimeOutImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TimeOutImplCopyWith<_$TimeOutImpl> get copyWith =>
+      __$$TimeOutImplCopyWithImpl<_$TimeOutImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return timeout(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return timeout?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (timeout != null) {
+      return timeout(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return timeout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return timeout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (timeout != null) {
+      return timeout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TimeOut implements MetricsFailures {
+  const factory _TimeOut(final String msg) = _$TimeOutImpl;
+
+  String get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TimeOutImplCopyWith<_$TimeOutImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ParsingFailureImplCopyWith<$Res> {
+  factory _$$ParsingFailureImplCopyWith(_$ParsingFailureImpl value,
+          $Res Function(_$ParsingFailureImpl) then) =
+      __$$ParsingFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$ParsingFailureImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$ParsingFailureImpl>
+    implements _$$ParsingFailureImplCopyWith<$Res> {
+  __$$ParsingFailureImplCopyWithImpl(
+      _$ParsingFailureImpl _value, $Res Function(_$ParsingFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$ParsingFailureImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ParsingFailureImpl implements _ParsingFailure {
+  const _$ParsingFailureImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.parsingFailure(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ParsingFailureImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ParsingFailureImplCopyWith<_$ParsingFailureImpl> get copyWith =>
+      __$$ParsingFailureImplCopyWithImpl<_$ParsingFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return parsingFailure(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return parsingFailure?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (parsingFailure != null) {
+      return parsingFailure(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return parsingFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return parsingFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (parsingFailure != null) {
+      return parsingFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ParsingFailure implements MetricsFailures {
+  const factory _ParsingFailure(final String msg) = _$ParsingFailureImpl;
+
+  String get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ParsingFailureImplCopyWith<_$ParsingFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TokenNotFoundImplCopyWith<$Res> {
+  factory _$$TokenNotFoundImplCopyWith(
+          _$TokenNotFoundImpl value, $Res Function(_$TokenNotFoundImpl) then) =
+      __$$TokenNotFoundImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$TokenNotFoundImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$TokenNotFoundImpl>
+    implements _$$TokenNotFoundImplCopyWith<$Res> {
+  __$$TokenNotFoundImplCopyWithImpl(
+      _$TokenNotFoundImpl _value, $Res Function(_$TokenNotFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$TokenNotFoundImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TokenNotFoundImpl implements _TokenNotFound {
+  const _$TokenNotFoundImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.tokenNotFound(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TokenNotFoundImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TokenNotFoundImplCopyWith<_$TokenNotFoundImpl> get copyWith =>
+      __$$TokenNotFoundImplCopyWithImpl<_$TokenNotFoundImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return tokenNotFound(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return tokenNotFound?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (tokenNotFound != null) {
+      return tokenNotFound(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return tokenNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return tokenNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (tokenNotFound != null) {
+      return tokenNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TokenNotFound implements MetricsFailures {
+  const factory _TokenNotFound(final String msg) = _$TokenNotFoundImpl;
+
+  String get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TokenNotFoundImplCopyWith<_$TokenNotFoundImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ServerFailureImplCopyWith<$Res> {
+  factory _$$ServerFailureImplCopyWith(
+          _$ServerFailureImpl value, $Res Function(_$ServerFailureImpl) then) =
+      __$$ServerFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$ServerFailureImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$ServerFailureImpl>
+    implements _$$ServerFailureImplCopyWith<$Res> {
+  __$$ServerFailureImplCopyWithImpl(
+      _$ServerFailureImpl _value, $Res Function(_$ServerFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$ServerFailureImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ServerFailureImpl implements _ServerFailure {
+  const _$ServerFailureImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.serverFailure(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServerFailureImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
+      __$$ServerFailureImplCopyWithImpl<_$ServerFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return serverFailure(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return serverFailure?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (serverFailure != null) {
+      return serverFailure(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return serverFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return serverFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (serverFailure != null) {
+      return serverFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ServerFailure implements MetricsFailures {
+  const factory _ServerFailure(final String msg) = _$ServerFailureImpl;
+
+  String get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IdNotFoundImplCopyWith<$Res> {
+  factory _$$IdNotFoundImplCopyWith(
+          _$IdNotFoundImpl value, $Res Function(_$IdNotFoundImpl) then) =
+      __$$IdNotFoundImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$IdNotFoundImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$IdNotFoundImpl>
+    implements _$$IdNotFoundImplCopyWith<$Res> {
+  __$$IdNotFoundImplCopyWithImpl(
+      _$IdNotFoundImpl _value, $Res Function(_$IdNotFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$IdNotFoundImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IdNotFoundImpl implements _IdNotFound {
+  const _$IdNotFoundImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'MetricsFailures.idNotFound(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IdNotFoundImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IdNotFoundImplCopyWith<_$IdNotFoundImpl> get copyWith =>
+      __$$IdNotFoundImplCopyWithImpl<_$IdNotFoundImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return idNotFound(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return idNotFound?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (idNotFound != null) {
+      return idNotFound(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return idNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return idNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (idNotFound != null) {
+      return idNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IdNotFound implements MetricsFailures {
+  const factory _IdNotFound(final String msg) = _$IdNotFoundImpl;
+
+  String get msg;
+
+  /// Create a copy of MetricsFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IdNotFoundImplCopyWith<_$IdNotFoundImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnknownImplCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
           _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
       __$$UnknownImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String? msg, String? code});
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -447,35 +1235,28 @@ class __$$UnknownImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? msg = freezed,
-    Object? code = freezed,
+    Object? msg = null,
   }) {
     return _then(_$UnknownImpl(
-      msg: freezed == msg
+      null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UnknownImpl implements Unknown {
-  const _$UnknownImpl({this.msg, this.code});
+class _$UnknownImpl implements _Unknown {
+  const _$UnknownImpl(this.msg);
 
   @override
-  final String? msg;
-  @override
-  final String? code;
+  final String msg;
 
   @override
   String toString() {
-    return 'MetricsFailures.unknown(msg: $msg, code: $code)';
+    return 'MetricsFailures.unknown(msg: $msg)';
   }
 
   @override
@@ -483,12 +1264,11 @@ class _$UnknownImpl implements Unknown {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnknownImpl &&
-            (identical(other.msg, msg) || other.msg == msg) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, msg, code);
+  int get hashCode => Object.hash(runtimeType, msg);
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
@@ -501,36 +1281,51 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? msg) serviceError,
-    required TResult Function(String? msg) idNotFoundError,
-    required TResult Function(String? msg, String? code) unknown,
-    required TResult Function(String? msg, int? code) httpError,
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
-    return unknown(msg, code);
+    return unknown(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? msg)? serviceError,
-    TResult? Function(String? msg)? idNotFoundError,
-    TResult? Function(String? msg, String? code)? unknown,
-    TResult? Function(String? msg, int? code)? httpError,
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
-    return unknown?.call(msg, code);
+    return unknown?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? msg)? serviceError,
-    TResult Function(String? msg)? idNotFoundError,
-    TResult Function(String? msg, String? code)? unknown,
-    TResult Function(String? msg, int? code)? httpError,
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
     if (unknown != null) {
-      return unknown(msg, code);
+      return unknown(msg);
     }
     return orElse();
   }
@@ -538,10 +1333,15 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceError value) serviceError,
-    required TResult Function(IdNotFoundError value) idNotFoundError,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(HttpError value) httpError,
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
     return unknown(this);
   }
@@ -549,10 +1349,15 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceError value)? serviceError,
-    TResult? Function(IdNotFoundError value)? idNotFoundError,
-    TResult? Function(Unknown value)? unknown,
-    TResult? Function(HttpError value)? httpError,
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
     return unknown?.call(this);
   }
@@ -560,10 +1365,15 @@ class _$UnknownImpl implements Unknown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceError value)? serviceError,
-    TResult Function(IdNotFoundError value)? idNotFoundError,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(HttpError value)? httpError,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -573,130 +1383,104 @@ class _$UnknownImpl implements Unknown {
   }
 }
 
-abstract class Unknown implements MetricsFailures {
-  const factory Unknown({final String? msg, final String? code}) =
-      _$UnknownImpl;
+abstract class _Unknown implements MetricsFailures {
+  const factory _Unknown(final String msg) = _$UnknownImpl;
 
-  @override
-  String? get msg;
-  String? get code;
+  String get msg;
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HttpErrorImplCopyWith<$Res>
-    implements $MetricsFailuresCopyWith<$Res> {
-  factory _$$HttpErrorImplCopyWith(
-          _$HttpErrorImpl value, $Res Function(_$HttpErrorImpl) then) =
-      __$$HttpErrorImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? msg, int? code});
+abstract class _$$InvalidCountryCodeImplCopyWith<$Res> {
+  factory _$$InvalidCountryCodeImplCopyWith(_$InvalidCountryCodeImpl value,
+          $Res Function(_$InvalidCountryCodeImpl) then) =
+      __$$InvalidCountryCodeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HttpErrorImplCopyWithImpl<$Res>
-    extends _$MetricsFailuresCopyWithImpl<$Res, _$HttpErrorImpl>
-    implements _$$HttpErrorImplCopyWith<$Res> {
-  __$$HttpErrorImplCopyWithImpl(
-      _$HttpErrorImpl _value, $Res Function(_$HttpErrorImpl) _then)
+class __$$InvalidCountryCodeImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$InvalidCountryCodeImpl>
+    implements _$$InvalidCountryCodeImplCopyWith<$Res> {
+  __$$InvalidCountryCodeImplCopyWithImpl(_$InvalidCountryCodeImpl _value,
+      $Res Function(_$InvalidCountryCodeImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? msg = freezed,
-    Object? code = freezed,
-  }) {
-    return _then(_$HttpErrorImpl(
-      msg: freezed == msg
-          ? _value.msg
-          : msg // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$HttpErrorImpl implements HttpError {
-  const _$HttpErrorImpl({this.msg, this.code});
-
-  @override
-  final String? msg;
-  @override
-  final int? code;
+class _$InvalidCountryCodeImpl implements _InvalidCountryCode {
+  const _$InvalidCountryCodeImpl();
 
   @override
   String toString() {
-    return 'MetricsFailures.httpError(msg: $msg, code: $code)';
+    return 'MetricsFailures.invalidCountryCode()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$HttpErrorImpl &&
-            (identical(other.msg, msg) || other.msg == msg) &&
-            (identical(other.code, code) || other.code == code));
+        (other.runtimeType == runtimeType && other is _$InvalidCountryCodeImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, msg, code);
-
-  /// Create a copy of MetricsFailures
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HttpErrorImplCopyWith<_$HttpErrorImpl> get copyWith =>
-      __$$HttpErrorImplCopyWithImpl<_$HttpErrorImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? msg) serviceError,
-    required TResult Function(String? msg) idNotFoundError,
-    required TResult Function(String? msg, String? code) unknown,
-    required TResult Function(String? msg, int? code) httpError,
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
   }) {
-    return httpError(msg, code);
+    return invalidCountryCode();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? msg)? serviceError,
-    TResult? Function(String? msg)? idNotFoundError,
-    TResult? Function(String? msg, String? code)? unknown,
-    TResult? Function(String? msg, int? code)? httpError,
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
   }) {
-    return httpError?.call(msg, code);
+    return invalidCountryCode?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? msg)? serviceError,
-    TResult Function(String? msg)? idNotFoundError,
-    TResult Function(String? msg, String? code)? unknown,
-    TResult Function(String? msg, int? code)? httpError,
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
     required TResult orElse(),
   }) {
-    if (httpError != null) {
-      return httpError(msg, code);
+    if (invalidCountryCode != null) {
+      return invalidCountryCode();
     }
     return orElse();
   }
@@ -704,53 +1488,203 @@ class _$HttpErrorImpl implements HttpError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServiceError value) serviceError,
-    required TResult Function(IdNotFoundError value) idNotFoundError,
-    required TResult Function(Unknown value) unknown,
-    required TResult Function(HttpError value) httpError,
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
   }) {
-    return httpError(this);
+    return invalidCountryCode(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServiceError value)? serviceError,
-    TResult? Function(IdNotFoundError value)? idNotFoundError,
-    TResult? Function(Unknown value)? unknown,
-    TResult? Function(HttpError value)? httpError,
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
   }) {
-    return httpError?.call(this);
+    return invalidCountryCode?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServiceError value)? serviceError,
-    TResult Function(IdNotFoundError value)? idNotFoundError,
-    TResult Function(Unknown value)? unknown,
-    TResult Function(HttpError value)? httpError,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
     required TResult orElse(),
   }) {
-    if (httpError != null) {
-      return httpError(this);
+    if (invalidCountryCode != null) {
+      return invalidCountryCode(this);
     }
     return orElse();
   }
 }
 
-abstract class HttpError implements MetricsFailures {
-  const factory HttpError({final String? msg, final int? code}) =
-      _$HttpErrorImpl;
+abstract class _InvalidCountryCode implements MetricsFailures {
+  const factory _InvalidCountryCode() = _$InvalidCountryCodeImpl;
+}
 
-  @override
-  String? get msg;
-  int? get code;
+/// @nodoc
+abstract class _$$NoDataForCountryImplCopyWith<$Res> {
+  factory _$$NoDataForCountryImplCopyWith(_$NoDataForCountryImpl value,
+          $Res Function(_$NoDataForCountryImpl) then) =
+      __$$NoDataForCountryImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoDataForCountryImplCopyWithImpl<$Res>
+    extends _$MetricsFailuresCopyWithImpl<$Res, _$NoDataForCountryImpl>
+    implements _$$NoDataForCountryImplCopyWith<$Res> {
+  __$$NoDataForCountryImplCopyWithImpl(_$NoDataForCountryImpl _value,
+      $Res Function(_$NoDataForCountryImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MetricsFailures
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NoDataForCountryImpl implements _NoDataForCountry {
+  const _$NoDataForCountryImpl();
+
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HttpErrorImplCopyWith<_$HttpErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  String toString() {
+    return 'MetricsFailures.noDataForCountry()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoDataForCountryImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) networkFailure,
+    required TResult Function(String msg) timeout,
+    required TResult Function(String msg) parsingFailure,
+    required TResult Function(String msg) tokenNotFound,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function(String msg) idNotFound,
+    required TResult Function(String msg) unknown,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() noDataForCountry,
+  }) {
+    return noDataForCountry();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? networkFailure,
+    TResult? Function(String msg)? timeout,
+    TResult? Function(String msg)? parsingFailure,
+    TResult? Function(String msg)? tokenNotFound,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function(String msg)? idNotFound,
+    TResult? Function(String msg)? unknown,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? noDataForCountry,
+  }) {
+    return noDataForCountry?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? networkFailure,
+    TResult Function(String msg)? timeout,
+    TResult Function(String msg)? parsingFailure,
+    TResult Function(String msg)? tokenNotFound,
+    TResult Function(String msg)? serverFailure,
+    TResult Function(String msg)? idNotFound,
+    TResult Function(String msg)? unknown,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (noDataForCountry != null) {
+      return noDataForCountry();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_TimeOut value) timeout,
+    required TResult Function(_ParsingFailure value) parsingFailure,
+    required TResult Function(_TokenNotFound value) tokenNotFound,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_IdNotFound value) idNotFound,
+    required TResult Function(_Unknown value) unknown,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_NoDataForCountry value) noDataForCountry,
+  }) {
+    return noDataForCountry(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_TimeOut value)? timeout,
+    TResult? Function(_ParsingFailure value)? parsingFailure,
+    TResult? Function(_TokenNotFound value)? tokenNotFound,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_IdNotFound value)? idNotFound,
+    TResult? Function(_Unknown value)? unknown,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_NoDataForCountry value)? noDataForCountry,
+  }) {
+    return noDataForCountry?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_TimeOut value)? timeout,
+    TResult Function(_ParsingFailure value)? parsingFailure,
+    TResult Function(_TokenNotFound value)? tokenNotFound,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_IdNotFound value)? idNotFound,
+    TResult Function(_Unknown value)? unknown,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_NoDataForCountry value)? noDataForCountry,
+    required TResult orElse(),
+  }) {
+    if (noDataForCountry != null) {
+      return noDataForCountry(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoDataForCountry implements MetricsFailures {
+  const factory _NoDataForCountry() = _$NoDataForCountryImpl;
 }

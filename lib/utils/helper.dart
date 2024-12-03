@@ -1,11 +1,9 @@
-String getCurrentFunctionName(StackTrace stackTrace) {
-  var stack = stackTrace.toString();
-  var lines = stack.split('\n');
+import 'package:dartz/dartz.dart';
 
-  if (lines.length > 1) {
-    var currentLine = lines[1]; // The second line contains the current function
-    var functionName = currentLine.split(' ').last; // Extract the function name
-    return functionName;
-  }
-  return 'Unknown';
+extension EitherExtensions<L, R> on Either<L, R> {
+  /// Returns the value if this is a Left, or null otherwise.
+  L? getLeft() => isLeft() ? (this as Left<L, R>).value : null;
+
+  /// Returns the value if this is a Right, or null otherwise.
+  R? getRight() => isRight() ? (this as Right<L, R>).value : null;
 }

@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:advista/domain/auth/auth_tokens.dart';
 import 'package:advista/domain/auth/i_token_repository.dart';
 import 'package:advista/domain/auth/token_failures.dart';
-import 'package:advista/infrastructure/core/token_storage_service.dart';
+import 'package:advista/infrastructure/core/local_storage_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ITokenRepository)
 class TokenRepository implements ITokenRepository {
-  final TokenStorageService _tokenStorageService;
+  final LocalStorageService _tokenStorageService;
 
   TokenRepository(this._tokenStorageService);
 

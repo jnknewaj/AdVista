@@ -1,16 +1,14 @@
+import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/domain/metrics/metrics_summary.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 abstract class IMetricsRepository {
-  /// To get aggregate data in a given time range
-  Future<Either<MetricsFailures, MetricsSummary>> getMetricsSummary(
-    DateTime endDate,
-  );
+  Future<Either<MetricsFailures, Metrics>> getMetrics(DateTimeRange range);
 
-  /// To get aggregate data in a given time range
-  Future<Either<MetricsFailures, MetricsSummary>> getMetrics({
-    required DateTime startDate,
-    required DateTime endDate,
-  });
+  Future<Either<MetricsFailures, List<CountryMetrics>>> getCountryMetrics(
+    DateTimeRange range,
+  );
 }

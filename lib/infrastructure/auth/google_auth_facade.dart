@@ -88,11 +88,7 @@ class GoogleAuthFacade implements IAuthFacade {
               msg:
                   'Unknown error occurred during sign-in, class [GoogleAuthFacade]');
         default:
-          print(
-              'Code : ${e.code}  |||  msg : ${e.message} ||| ${e.toString()}');
-          return AuthFailure.unknown(
-              msg:
-                  'Unknown [default] error. [GoogleAuthFacade -> ${getCurrentFunctionName(stackTrace)}]');
+          return const AuthFailure.unknown(msg: 'Unknown [default] error]');
       }
     } else {
       return AuthFailure.serverError(

@@ -4,12 +4,15 @@ part 'metrics_failures.freezed.dart';
 
 @freezed
 class MetricsFailures with _$MetricsFailures {
-  const factory MetricsFailures.serviceError({String? msg}) = ServiceError;
-  const factory MetricsFailures.idNotFoundError({String? msg}) =
-      IdNotFoundError;
-  const factory MetricsFailures.unknown({String? msg, String? code}) = Unknown;
-  const factory MetricsFailures.httpError({
-    String? msg,
-    int? code,
-  }) = HttpError;
+  const factory MetricsFailures.networkFailure(String msg) = _NetworkFailure;
+  const factory MetricsFailures.timeout(String msg) = _TimeOut;
+  const factory MetricsFailures.parsingFailure(String msg) = _ParsingFailure;
+  const factory MetricsFailures.tokenNotFound(String msg) = _TokenNotFound;
+  const factory MetricsFailures.serverFailure(String msg) = _ServerFailure;
+  const factory MetricsFailures.idNotFound(String msg) = _IdNotFound;
+  const factory MetricsFailures.unknown(String msg) = _Unknown;
+
+  // Specific to CountryMetrics
+  const factory MetricsFailures.invalidCountryCode() = _InvalidCountryCode;
+  const factory MetricsFailures.noDataForCountry() = _NoDataForCountry;
 }

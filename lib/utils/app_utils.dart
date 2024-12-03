@@ -57,6 +57,8 @@ String formatToStd(DateTime dateTime) {
   return '$day $month, $year';
 }
 
-cprint(String tag, String? msg) {
-  print('$tag : $msg');
+cprint(String tag, String? msg) => print('$tag : $msg');
+
+double screenHeightPortion(BuildContext context, double portion) {
+  return MediaQuery.of(context).size.height * portion;
 }
