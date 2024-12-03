@@ -1,7 +1,7 @@
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/domain/metrics/metrics.dart';
-import 'package:advista/presentation/metrics/widgets/grid_item_loading_widget.dart';
-import 'package:advista/presentation/metrics/widgets/metrics_item.dart';
+import 'package:advista/presentation/metrics/summary/widgets/grid_item_loading_widget.dart';
+import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

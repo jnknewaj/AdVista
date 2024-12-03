@@ -5,12 +5,12 @@ import 'package:advista/application/metrics/country_wise_metrics/country_wise_me
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/metrics/pages/metrics_page.dart';
-import 'package:advista/presentation/metrics/widgets/ad_unit_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/country_data_shimmer.dart';
-import 'package:advista/presentation/metrics/widgets/country_data_widget.dart';
+import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_data_widget.dart';
+import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
+import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
-import 'package:advista/presentation/metrics/widgets/list_item.dart';
-import 'package:advista/presentation/metrics/widgets/no_data_widget.dart';
+import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
+import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

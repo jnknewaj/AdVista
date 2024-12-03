@@ -1,6 +1,6 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
-import 'package:advista/presentation/metrics/widgets/list_item.dart';
+import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/country_name_util.dart';
 import 'package:flutter/material.dart';

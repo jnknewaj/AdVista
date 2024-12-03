@@ -1,8 +1,8 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
-import 'package:advista/presentation/metrics/widgets/country_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/list_item.dart';
+import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
+import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:flutter/material.dart';
 
 class AdUnitDataWidget extends StatelessWidget {
