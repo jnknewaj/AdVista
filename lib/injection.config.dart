@@ -20,6 +20,7 @@ import 'application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart'
     as _i250;
 import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
     as _i747;
+import 'application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart' as _i761;
 import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
     as _i651;
 import 'application/metrics/todays_metrics/todays_metrics_bloc.dart' as _i559;
@@ -98,6 +99,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i439.DateService>(),
         ));
     gh.factory<_i651.CountryWiseMetricsBloc>(() => _i651.CountryWiseMetricsBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+        ));
+    gh.factory<_i761.AdUnitMetricsBloc>(() => _i761.AdUnitMetricsBloc(
           gh<_i839.IMetricsRepository>(),
           gh<_i439.DateService>(),
         ));

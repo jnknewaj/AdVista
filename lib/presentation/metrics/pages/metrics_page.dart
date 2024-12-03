@@ -34,6 +34,10 @@ class MetricsPage extends StatelessWidget {
               ..add(const CountryWiseMetricsEvent.requsted());
           },
         ),
+        BlocProvider(
+          create: (context) => getIt<AdUnitMetricsBloc>()
+            ..add(const AdUnitMetricsEvent.requsted()),
+        )
       ],
       child: const Scaffold(body: _Handler()),
     );
@@ -71,16 +75,16 @@ class _Handler extends StatelessWidget {
           },
         ),
         BlocListener<CountryWiseMetricsBloc, CountryWiseMetricsState>(
-          listener: (context, state) {
-            cprint('CTY', 'listening 2 ${state.toString()}');
-          },
-          child: Container(),
+          listener: (context, state) {},
+        ),
+        BlocListener<AdUnitMetricsBloc, AdUnitMetricsState>(
+          listener: (context, state) {},
         )
       ],
       child: SafeArea(
         child: Column(
           children: [
-            DashboardTopPart(text: '16 April, 2020'),
+            DashboardTopPart(),
             Expanded(
               child: ListView(
                 children: [
