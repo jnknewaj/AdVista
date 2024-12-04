@@ -27,7 +27,7 @@ class MetricsRepository implements IMetricsRepository {
     try {
       final metrics = await _service.getMetricsForDateRange(range);
       return right(metrics);
-    } on SocketException catch (e) {
+    } on NetworkException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));
     } on TimeoutException catch (e) {
       return left(MetricsFailures.timeout(e.message ?? "Response timeout"));
@@ -52,7 +52,7 @@ class MetricsRepository implements IMetricsRepository {
     try {
       final metricsList = await _service.getCountryMetrics(range);
       return right(metricsList);
-    } on SocketException catch (e) {
+    } on NetworkException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));
     } on TimeoutException catch (e) {
       return left(MetricsFailures.timeout(e.message ?? "Response timeout"));
@@ -77,7 +77,7 @@ class MetricsRepository implements IMetricsRepository {
     try {
       final metricsList = await _service.getAdUnitMetrics(range);
       return right(metricsList);
-    } on SocketException catch (e) {
+    } on NetworkException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));
     } on TimeoutException catch (e) {
       return left(MetricsFailures.timeout(e.message ?? "Response timeout"));

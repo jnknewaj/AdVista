@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:flutter/material.dart';
 
 navigateTo(BuildContext context, Widget page) {
@@ -71,4 +74,52 @@ String getFlagEmoji(String countryCode) {
   int secondChar = countryCode.codeUnitAt(1) - asciiOffset + flagOffset;
 
   return String.fromCharCode(firstChar) + String.fromCharCode(secondChar);
+}
+
+String mapMetricsFailuresToText(MetricsFailures failures) {
+  return failures.map(
+    networkFailure: (e) => 'Check Network',
+    timeout: (e) => 'Connection Timeout',
+    parsingFailure: (e) => 'Parsing error : ${e.msg}',
+    tokenNotFound: (e) => 'Token Not Found',
+    serverFailure: (e) => 'Server Error : ${e.msg}',
+    idNotFound: (e) => 'Admob Id Not Found',
+    unknown: (e) => 'Unknown Error : ${e.msg}',
+    invalidCountryCode: (e) => 'Invalid Country Code',
+    noDataForCountry: (e) => 'No Country Data Found',
+  );
+}
+
+List<CountryMetrics> sortCountryMetricsList(
+  MetricsTitle title,
+  List<CountryMetrics> list,
+) {
+  final sortedList = List<CountryMetrics>.from(list);
+  switch (title) {
+    case MetricsTitle.earnings:
+      sortedList
+          .sort((a, b) => b.metrics.earnings.compareTo(a.metrics.earnings));
+      break;
+    case MetricsTitle.impression:
+      sortedList
+          .sort((a, b) => b.metrics.impression.compareTo(a.metrics.impression));
+      break;
+    case MetricsTitle.requests:
+      sortedList
+          .sort((a, b) => b.metrics.requests.compareTo(a.metrics.requests));
+      break;
+    case MetricsTitle.clicks:
+      sortedList.sort((a, b) => b.metrics.clicks.compareTo(a.metrics.clicks));
+      break;
+    case MetricsTitle.eCPM:
+      sortedList.sort((a, b) => b.metrics.eCPM.compareTo(a.metrics.eCPM));
+      break;
+    case MetricsTitle.matchRate:
+      sortedList
+          .sort((a, b) => b.metrics.matchRate.compareTo(a.metrics.matchRate));
+      break;
+    default:
+      throw Exception('Unsupported MetricsTitle: $title');
+  }
+  return sortedList;
 }

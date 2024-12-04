@@ -74,7 +74,7 @@ class CountryMetricsView extends ConsumerWidget {
               state.map(
                 initial: (_) => const ShimmerCountryData(),
                 loading: (_) => const ShimmerCountryData(),
-                noDataFound: (_) => const NoDataWidget(),
+                noDataFound: (_) => const BillBoard(),
                 loaded: (s) {
                   final dataList = s.metrics;
                   return CountryDataWidget(

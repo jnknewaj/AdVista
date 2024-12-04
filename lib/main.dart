@@ -2,7 +2,7 @@ import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/auth/login_page.dart';
-import 'package:advista/presentation/core/splash_screen.dart';
+import 'package:advista/presentation/core/pages/splash_screen.dart';
 import 'package:advista/presentation/home/home_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';

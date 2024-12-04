@@ -1,14 +1,13 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CountryPageTopWidget extends ConsumerWidget {
-  const CountryPageTopWidget({
-    super.key,
-  });
+  const CountryPageTopWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,7 +17,7 @@ class CountryPageTopWidget extends ConsumerWidget {
       children: [
         Container(
           color: Colors.amber,
-          height: 50,
+          height: screenHeightPortion(context, 0.06),
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [

@@ -69,7 +69,7 @@ String mapCountryMetricsToData(
 ) {
   switch (title) {
     case MetricsTitle.earnings:
-      return countryMetrics.metrics.earnings.toStringAsFixed(3);
+      return '\$${countryMetrics.metrics.earnings.toStringAsFixed(3)}';
     case MetricsTitle.impression:
       return countryMetrics.metrics.impression.toString();
     case MetricsTitle.requests:
@@ -77,9 +77,9 @@ String mapCountryMetricsToData(
     case MetricsTitle.clicks:
       return countryMetrics.metrics.clicks.toString();
     case MetricsTitle.eCPM:
-      return countryMetrics.metrics.eCPM.toStringAsFixed(2);
+      return '\$${countryMetrics.metrics.eCPM.toStringAsFixed(2)}';
     case MetricsTitle.matchRate:
-      return countryMetrics.metrics.matchRate.toStringAsFixed(2);
+      return '${countryMetrics.metrics.matchRate.toStringAsFixed(2)}\%';
     default:
       return 'Unknown CountryMetrics';
   }
