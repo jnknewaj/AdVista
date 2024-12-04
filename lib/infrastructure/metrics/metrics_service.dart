@@ -191,18 +191,12 @@ class MetricsService {
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
 
-        cprint('ABB data', data.toString());
-
         final rows = data.where((item) => item['row'] != null).toList();
-
-        cprint('ABB rows', rows.toString());
 
         final list = rows
             .map((row) =>
                 AdUnitMetricsDto.fromRowJsonForAdUnit(row['row']).toDomain())
             .toList();
-
-        cprint('ABB last', list[0].adUnitType);
 
         return list;
       } else {

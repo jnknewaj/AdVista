@@ -24,7 +24,7 @@ class TimeRangeState {
   TimeRangeState({required this.range, required this.dateRange});
 }
 
-class TimeRangeNotifier extends Notifier<TimeRangeState> {
+class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
   final DateService _dateService;
 
   TimeRangeNotifier(this._dateService);
@@ -70,7 +70,15 @@ class TimeRangeNotifier extends Notifier<TimeRangeState> {
   }
 }
 
-final timeRangeProvider = NotifierProvider<TimeRangeNotifier, TimeRangeState>(
+final timeRangeProvider =
+    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
+  () => TimeRangeNotifier(
+    getIt<DateService>(),
+  ),
+);
+
+final timeRangeProviderForCountryPage =
+    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
   () => TimeRangeNotifier(
     getIt<DateService>(),
   ),

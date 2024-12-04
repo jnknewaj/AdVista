@@ -1,5 +1,6 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/presentation/metrics/country/country_details/country_data_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/country_name_util.dart';
@@ -32,7 +33,7 @@ class CountryDataWidget extends StatelessWidget {
             return ListItem(
               flag: getFlagEmoji(data.country),
               country: getCountryName(data.country),
-              value: _mapTitleToData(metricsTitle, data),
+              value: mapCountryMetricsToData(metricsTitle, data),
             );
           },
         ),
@@ -40,7 +41,9 @@ class CountryDataWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(context, const CountryDataPage());
+              },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.all(12.0),
                 backgroundColor: Colors.blue,
@@ -60,7 +63,7 @@ class CountryDataWidget extends StatelessWidget {
   }
 }
 
-String _mapTitleToData(
+String mapCountryMetricsToData(
   MetricsTitle title,
   CountryMetrics countryMetrics,
 ) {
