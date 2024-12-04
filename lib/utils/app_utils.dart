@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:flutter/material.dart';
@@ -120,6 +121,40 @@ List<CountryMetrics> sortCountryMetricsList(
       break;
     default:
       throw Exception('Unsupported MetricsTitle: $title');
+  }
+  return sortedList;
+}
+
+List<AdUnitMetrics> sortAdUnitMetricsList(
+  MetricsTitle title,
+  List<AdUnitMetrics> list,
+) {
+  final sortedList = List<AdUnitMetrics>.from(list);
+  switch (title) {
+    case MetricsTitle.earnings:
+      sortedList
+          .sort((a, b) => b.metrics.earnings.compareTo(a.metrics.earnings));
+      break;
+    case MetricsTitle.impression:
+      sortedList
+          .sort((a, b) => b.metrics.impression.compareTo(a.metrics.impression));
+      break;
+    case MetricsTitle.requests:
+      sortedList
+          .sort((a, b) => b.metrics.requests.compareTo(a.metrics.requests));
+      break;
+    case MetricsTitle.clicks:
+      sortedList.sort((a, b) => b.metrics.clicks.compareTo(a.metrics.clicks));
+      break;
+    case MetricsTitle.eCPM:
+      sortedList.sort((a, b) => b.metrics.eCPM.compareTo(a.metrics.eCPM));
+      break;
+    case MetricsTitle.matchRate:
+      sortedList
+          .sort((a, b) => b.metrics.matchRate.compareTo(a.metrics.matchRate));
+      break;
+    default:
+      throw Exception('Unsupported Metrics Title: $title');
   }
   return sortedList;
 }

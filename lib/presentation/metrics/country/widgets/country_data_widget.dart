@@ -1,4 +1,5 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_data_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
@@ -66,6 +67,28 @@ class CountryDataWidget extends StatelessWidget {
 String mapCountryMetricsToData(
   MetricsTitle title,
   CountryMetrics countryMetrics,
+) {
+  switch (title) {
+    case MetricsTitle.earnings:
+      return '\$${countryMetrics.metrics.earnings.toStringAsFixed(3)}';
+    case MetricsTitle.impression:
+      return countryMetrics.metrics.impression.toString();
+    case MetricsTitle.requests:
+      return countryMetrics.metrics.requests.toString();
+    case MetricsTitle.clicks:
+      return countryMetrics.metrics.clicks.toString();
+    case MetricsTitle.eCPM:
+      return '\$${countryMetrics.metrics.eCPM.toStringAsFixed(2)}';
+    case MetricsTitle.matchRate:
+      return '${countryMetrics.metrics.matchRate.toStringAsFixed(2)}\%';
+    default:
+      return 'Unknown CountryMetrics';
+  }
+}
+
+String mapAdUnitMetricsToText(
+  MetricsTitle title,
+  AdUnitMetrics countryMetrics,
 ) {
   switch (title) {
     case MetricsTitle.earnings:

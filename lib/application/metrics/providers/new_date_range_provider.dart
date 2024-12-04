@@ -1,7 +1,8 @@
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:state_notifier/state_notifier.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum TimeRange {
   today,
@@ -10,29 +11,30 @@ enum TimeRange {
   thisMonth,
   lastMonth,
   thisYear,
-  lifetime,
-  custom
+  allTime,
+  custom,
 }
 
 class TimeRangeState {
   final TimeRange range;
   final String dateRange;
 
-  TimeRangeState({required this.range, required this.dateRange});
+  TimeRangeState({
+    required this.range,
+    required this.dateRange,
+  });
 }
 
-class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
+class TimeRangeNotifier extends StateNotifier<TimeRangeState> {
   final DateService _dateService;
 
-  TimeRangeNotifier(this._dateService);
-
-  @override
-  TimeRangeState build() {
-    return TimeRangeState(
-      range: TimeRange.today,
-      dateRange: formatToStd(DateTime.now()),
-    );
-  }
+  TimeRangeNotifier(this._dateService)
+      : super(
+          TimeRangeState(
+            range: TimeRange.today,
+            dateRange: formatToStd(DateTime.now()),
+          ),
+        );
 
   void setTimeRange(TimeRange range) {
     state = TimeRangeState(
@@ -59,7 +61,7 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
       case TimeRange.thisYear:
         final thisYear = _dateService.getThisYear();
         return '${formatToStd(thisYear.start)} - ${formatToStd(thisYear.end)}';
-      case TimeRange.lifetime:
+      case TimeRange.allTime:
         return 'All Time';
       case TimeRange.custom:
         return 'Custom Range';
@@ -67,23 +69,7 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
   }
 }
 
-final timeRangeProvider =
-    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
-  () => TimeRangeNotifier(
-    getIt<DateService>(),
-  ),
-); // used in MetricsPage
-
-final timeRangeProviderForCountryPage =
-    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
-  () => TimeRangeNotifier(
-    getIt<DateService>(),
-  ),
-);
-
-final timeRangeProviderForAdUnitPage =
-    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
-  () => TimeRangeNotifier(
-    getIt<DateService>(),
-  ),
+final newDateRangeProvider = StateNotifierProvider.autoDispose
+    .family<TimeRangeNotifier, TimeRangeState, String>(
+  (ref, id) => TimeRangeNotifier(getIt<DateService>()),
 );
