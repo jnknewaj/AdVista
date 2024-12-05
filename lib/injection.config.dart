@@ -21,13 +21,18 @@ import 'application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart'
 import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
     as _i747;
 import 'application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart' as _i761;
+import 'application/metrics/apps_metrics/apps_data_bloc/apps_data_bloc_bloc.dart'
+    as _i653;
 import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
     as _i651;
 import 'application/metrics/todays_metrics/todays_metrics_bloc.dart' as _i559;
+import 'domain/apps_metrics/i_apps_data_repository.dart' as _i272;
 import 'domain/auth/i_auth_facade.dart' as _i878;
 import 'domain/auth/i_token_repository.dart' as _i357;
 import 'domain/core/i_account_repository.dart' as _i566;
 import 'domain/metrics/i_metrics_repository.dart' as _i839;
+import 'infrastructure/apps_metrics/apps_data_repository.dart' as _i665;
+import 'infrastructure/apps_metrics/apps_data_service.dart' as _i532;
 import 'infrastructure/auth/google_auth_facade.dart' as _i168;
 import 'infrastructure/auth/token_api_client.dart' as _i1066;
 import 'infrastructure/auth/token_repository.dart' as _i969;
@@ -84,6 +89,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i384.LocalStorageService>(),
           gh<_i519.Client>(),
         ));
+    gh.lazySingleton<_i532.AppsDataService>(() => _i532.AppsDataService(
+          gh<_i823.AccountService>(),
+          gh<_i519.Client>(),
+          gh<_i357.ITokenRepository>(),
+        ));
     gh.lazySingleton<_i566.IAccountRepository>(
         () => _i876.AdmobAccountRepository(gh<_i823.AccountService>()));
     gh.lazySingleton<_i628.MetricsService>(() => _i628.MetricsService(
@@ -110,6 +120,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i566.IAccountRepository>(),
           gh<_i823.AccountService>(),
         ));
+    gh.lazySingleton<_i272.IAppsDataRepository>(
+        () => _i665.AppsDataRepository(gh<_i532.AppsDataService>()));
     gh.factory<_i250.AcOpeningDateBloc>(
         () => _i250.AcOpeningDateBloc(gh<_i566.IAccountRepository>()));
     gh.factory<_i700.AuthCheckBloc>(() => _i700.AuthCheckBloc(
@@ -117,6 +129,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i566.IAccountRepository>(),
           gh<_i357.ITokenRepository>(),
         ));
+    gh.factory<_i653.AppsDataBlocBloc>(
+        () => _i653.AppsDataBlocBloc(gh<_i272.IAppsDataRepository>()));
     return this;
   }
 }

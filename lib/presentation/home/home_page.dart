@@ -1,3 +1,4 @@
+import 'package:advista/presentation/metrics/apps_data/apps_data_page.dart';
 import 'package:advista/presentation/metrics/pages/metrics_page.dart';
 import 'package:advista/presentation/profile/pages/profile_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: const [MetricsPage(), ProfilePage()],
+      screens: const [MetricsPage(), AppsDataPage(), ProfilePage()],
       items: _navBarsItems(),
       padding: const EdgeInsets.only(top: 8),
       backgroundColor: Colors.grey.shade900,
@@ -43,6 +44,12 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.home),
       title: ("Home"),
+      activeColorPrimary: CupertinoColors.activeBlue,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: const Icon(CupertinoIcons.app),
+      title: ("Apps"),
       activeColorPrimary: CupertinoColors.activeBlue,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),

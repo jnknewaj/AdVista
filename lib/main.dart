@@ -50,8 +50,6 @@ class AuthGate extends StatelessWidget {
         listeners: [
           BlocListener<AdmobAccountBloc, AdmobAccountState>(
             listener: (context, state) {
-              print('We are in---------------------------');
-              print(state.toString());
               state.map(
                 initial: (s) {},
                 loading: (s) {

@@ -30,6 +30,11 @@ class ParsingException implements Exception {
   ParsingException(this.message);
 }
 
+class HtmlException implements Exception {
+  final String message;
+  HtmlException(this.message);
+}
+
 // UNVERIFIED
 // class ServiceException implements Exception {
 //   final String message;

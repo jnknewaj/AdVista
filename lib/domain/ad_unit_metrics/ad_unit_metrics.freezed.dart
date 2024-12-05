@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AdUnitMetrics {
   String get adUnitId => throw _privateConstructorUsedError;
+
+  /// actually name of the ad unit.
   String get adUnitType => throw _privateConstructorUsedError;
   Metrics get metrics => throw _privateConstructorUsedError;
 
@@ -141,6 +143,8 @@ class _$AdUnitMetricsImpl extends _AdUnitMetrics {
 
   @override
   final String adUnitId;
+
+  /// actually name of the ad unit.
   @override
   final String adUnitType;
   @override
@@ -184,6 +188,8 @@ abstract class _AdUnitMetrics extends AdUnitMetrics {
 
   @override
   String get adUnitId;
+
+  /// actually name of the ad unit.
   @override
   String get adUnitType;
   @override
