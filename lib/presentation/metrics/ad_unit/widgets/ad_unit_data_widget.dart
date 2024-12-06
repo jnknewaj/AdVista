@@ -1,10 +1,9 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
-import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/presentation/core/widgets/simple_button.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_unit_details_page.dart';
-import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
-import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';
 
 class AdUnitDataWidget extends StatelessWidget {
@@ -20,6 +19,7 @@ class AdUnitDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool showAllButton = adUnitDataList.length > 3;
+    final sortedList = sortAdUnitMetricsList(metricsTitle, adUnitDataList);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -29,12 +29,13 @@ class AdUnitDataWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: showAllButton ? 3 : adUnitDataList.length,
           itemBuilder: (context, index) {
-            final data = adUnitDataList[index];
+            final data = sortedList[index];
             return ListTile(
               title: Text(
                 data.adUnitType,
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 16),
               ),
+              subtitle: Text(data.adUnitId),
               trailing: Text(
                 _mapTitleToData(metricsTitle, data),
                 style: const TextStyle(fontSize: 20),
@@ -43,25 +44,14 @@ class AdUnitDataWidget extends StatelessWidget {
           },
         ),
         if (showAllButton)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: TextButton(
-              onPressed: () {
-                navigateTo(context, const AdUnitDetailsPage());
-              },
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(12.0),
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-              child: const Text(
-                'Show All',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
+          SimpleButton(
+            text: 'Show All',
+            onPressed: () {
+              persistentNavigateTo(context, const AdUnitListPage());
+            },
+            primaryColor: Theme.of(context).primaryColor,
+            secondaryColor: Theme.of(context).buttonTheme.secondaryColor,
+            fill: false,
           ),
       ],
     );

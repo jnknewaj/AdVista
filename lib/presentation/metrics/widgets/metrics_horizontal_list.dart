@@ -26,20 +26,14 @@ class MetricsHorizontalList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      color: Colors.blue,
-      height: screenHeightPortion(context, .06),
+    return SizedBox(
+      height: screenHeightPortion(context, .05),
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           ClipCard(
             text: 'Earnings',
             isActive: metricsTitle == MetricsTitle.earnings,
-            // onTap: () {
-            //   ref
-            //       .read(metricsTitleNotifierProvider.notifier)
-            //       .setMetricsTitle(MetricsTitle.earnings);
-            // },
             onTap: onEarningsTap,
           ),
           ClipCard(

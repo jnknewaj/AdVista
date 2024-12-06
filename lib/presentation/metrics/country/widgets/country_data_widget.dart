@@ -1,11 +1,11 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/presentation/core/widgets/simple_button.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_data_page.dart';
-import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/country_name_util.dart';
-import 'package:flutter/material.dart';
+import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';
 
 class CountryDataWidget extends StatelessWidget {
@@ -21,6 +21,7 @@ class CountryDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool showAllButton = countryDataList.length > 3;
+    final sortedList = sortCountryMetricsList(metricsTitle, countryDataList);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,34 +31,29 @@ class CountryDataWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: showAllButton ? 3 : countryDataList.length,
           itemBuilder: (context, index) {
-            final data = countryDataList[index];
-            return ListItem(
-              flag: getFlagEmoji(data.country),
-              country: getCountryName(data.country),
-              value: mapCountryMetricsToData(metricsTitle, data),
+            final data = sortedList[index];
+            return ListTile(
+              leading: Text(
+                getFlagEmoji(data.country),
+                style: const TextStyle(fontSize: 40),
+              ),
+              title: Text(getCountryName(data.country)),
+              trailing: Text(
+                mapCountryMetricsToData(metricsTitle, data),
+                style: Theme.of(context).textTheme.listTileTrailingTextStyle(),
+              ),
             );
           },
         ),
         if (showAllButton)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: TextButton(
-              onPressed: () {
-                navigateTo(context, const CountryDataPage());
-              },
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(12.0),
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-              child: const Text(
-                'Show All',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
+          SimpleButton(
+            text: 'Show All',
+            onPressed: () {
+              persistentNavigateTo(context, const CountryDataPage());
+            },
+            primaryColor: Theme.of(context).primaryColor,
+            secondaryColor: Theme.of(context).buttonTheme.secondaryColor,
+            fill: false,
           ),
       ],
     );

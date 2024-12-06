@@ -9,8 +9,8 @@ import 'package:advista/injection.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 
-class AdUnitDetailsPage extends StatelessWidget {
-  const AdUnitDetailsPage({super.key});
+class AdUnitListPage extends StatelessWidget {
+  const AdUnitListPage({super.key});
 
   @override
   Widget build(BuildContext context) {

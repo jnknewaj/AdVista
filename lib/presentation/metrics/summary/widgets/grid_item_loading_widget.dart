@@ -24,8 +24,8 @@ class GridItemLoadingWidget extends StatelessWidget {
           children: [
             // Circle loader for image or icon
             Container(
-              width: 60,
-              height: 60,
+              // width: 60,
+              // height: 60,
               decoration: BoxDecoration(
                 color: Colors.grey.shade400,
                 shape: BoxShape.circle,

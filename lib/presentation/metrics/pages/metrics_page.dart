@@ -34,7 +34,13 @@ class MetricsPage extends StatelessWidget {
             ..add(const AdUnitMetricsEvent.requsted()),
         )
       ],
-      child: const Scaffold(body: _Handler()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('AdVista'),
+          centerTitle: true,
+        ),
+        body: const _Handler(),
+      ),
     );
   }
 }
@@ -83,10 +89,8 @@ class _Handler extends StatelessWidget {
                 children: const [
                   MetricsSummaryView(),
                   Divider(),
-                  SizedBox(height: 5),
                   CountryMetricsView(),
                   Divider(),
-                  SizedBox(height: 5),
                   AdUnitMetricsView(),
                 ],
               ),

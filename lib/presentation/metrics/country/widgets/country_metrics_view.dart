@@ -1,15 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
-import 'package:advista/domain/country_metrics/country_metrics.dart';
-import 'package:advista/presentation/metrics/pages/metrics_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
-import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,15 +21,15 @@ class CountryMetricsView extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Horizontal list view
-              const Text(
+              Text(
                 "Countrywise Data",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               MetricsHorizontalList(
                 metricsTitle: metricsTitle,
                 onEarningsTap: () {
@@ -70,7 +64,6 @@ class CountryMetricsView extends ConsumerWidget {
                 },
               ),
               const SizedBox(height: 8),
-
               state.map(
                 initial: (_) => const ShimmerCountryData(),
                 loading: (_) => const ShimmerCountryData(),
