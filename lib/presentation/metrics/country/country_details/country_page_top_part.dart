@@ -1,6 +1,6 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
-import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

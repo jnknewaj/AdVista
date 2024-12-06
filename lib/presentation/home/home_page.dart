@@ -13,10 +13,11 @@ class HomePage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: const [MetricsPage(), AppsDataPage(), ProfilePage()],
-      items: _navBarsItems(),
-      padding: const EdgeInsets.only(top: 8),
-      backgroundColor: Colors.grey.shade900,
+      screens: const [MetricsPage(), AppsListPage(), ProfilePage()],
+      items: _navBarsItems(context),
+      backgroundColor:
+          Theme.of(context).bottomNavigationBarTheme.backgroundColor ??
+              Colors.white,
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(
@@ -39,25 +40,34 @@ class HomePage extends StatelessWidget {
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
-List<PersistentBottomNavBarItem> _navBarsItems() {
+List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
   return [
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.home),
       title: ("Home"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
+      activeColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.selectedItemColor ??
+              Colors.white,
+      inactiveColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.app),
       title: ("Apps"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
+      activeColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.selectedItemColor ??
+              Colors.white,
+      inactiveColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.settings),
       title: ("Profile"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
+      activeColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.selectedItemColor ??
+              Colors.white,
+      inactiveColorPrimary:
+          Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
     ),
   ];
 }

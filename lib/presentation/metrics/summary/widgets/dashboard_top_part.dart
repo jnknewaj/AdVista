@@ -1,23 +1,21 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
-import 'package:advista/presentation/auth/login_page.dart';
-import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DashboardTopPart extends ConsumerWidget {
+  /// Used in [MetricsPage]
   const DashboardTopPart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dateRange = ref.watch(timeRangeProvider);
     return Container(
-      color: Colors.blue,
       height: screenHeightPortion(context, 0.09),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       width: double.infinity,
@@ -34,10 +32,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requsted());
+                        .add(const TodaysMetricsEvent.requsted());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requsted());
+                        .add(const CountryWiseMetricsEvent.requsted());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requsted());
@@ -52,10 +50,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requstedYesterday());
+                        .add(const TodaysMetricsEvent.requstedYesterday());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requstedYesterday());
+                        .add(const CountryWiseMetricsEvent.requstedYesterday());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requstedYesterday());
@@ -70,10 +68,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requsted7days());
+                        .add(const TodaysMetricsEvent.requsted7days());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requsted7days());
+                        .add(const CountryWiseMetricsEvent.requsted7days());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requsted7days());
@@ -88,10 +86,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requstedThisMonth());
+                        .add(const TodaysMetricsEvent.requstedThisMonth());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requstedThisMonth());
+                        .add(const CountryWiseMetricsEvent.requstedThisMonth());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requstedThisMonth());
@@ -106,10 +104,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requstedLastMonth());
+                        .add(const TodaysMetricsEvent.requstedLastMonth());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requstedLastMonth());
+                        .add(const CountryWiseMetricsEvent.requstedLastMonth());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requstedLastMonth());
@@ -124,10 +122,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requstedThisYear());
+                        .add(const TodaysMetricsEvent.requstedThisYear());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requstedThisYear());
+                        .add(const CountryWiseMetricsEvent.requstedThisYear());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requstedThisYear());
@@ -142,10 +140,10 @@ class DashboardTopPart extends ConsumerWidget {
                   onTap: () {
                     context
                         .read<TodaysMetricsBloc>()
-                        .add(TodaysMetricsEvent.requstedLifeTime());
+                        .add(const TodaysMetricsEvent.requstedLifeTime());
                     context
                         .read<CountryWiseMetricsBloc>()
-                        .add(CountryWiseMetricsEvent.requstedLifeTime());
+                        .add(const CountryWiseMetricsEvent.requstedLifeTime());
                     context
                         .read<AdUnitMetricsBloc>()
                         .add(const AdUnitMetricsEvent.requstedLifeTime());
@@ -154,19 +152,17 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.lifetime);
                   },
                 ),
-                ClipCard(
-                  text: 'Custom',
-                ),
+                const ClipCard(text: 'Custom'),
               ],
             ),
           ),
           Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 3, left: 3, right: 8),
+            padding: const EdgeInsets.only(top: 3, left: 3, right: 8),
             child: Text(
               dateRange.dateRange,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).primaryColor, // check if color suits
                 fontWeight: FontWeight.bold,
               ),
             ),

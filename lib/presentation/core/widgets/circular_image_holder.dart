@@ -10,14 +10,13 @@ class CircularImageHolder extends StatelessWidget {
     super.key,
     required this.imageUrl,
     this.size = 50.0,
-    this.placeholderAsset =
-        'assets/icons/icon-android.png', // Default placeholder
+    this.placeholderAsset = 'assets/icons/icon-android.png',
   });
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(size / 2), // Circular icon
+      borderRadius: BorderRadius.circular(size / 2),
       child: CachedNetworkImage(
         imageUrl: imageUrl ?? '',
         width: size,

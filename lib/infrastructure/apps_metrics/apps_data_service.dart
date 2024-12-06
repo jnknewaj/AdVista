@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:advista/domain/apps_metrics/apps.dart';
 import 'package:advista/domain/auth/i_token_repository.dart';
 import 'package:advista/domain/auth/token_failures.dart';
@@ -111,7 +110,7 @@ class AppsDataService {
       throw TimeoutException('The request timed out.');
     } on ParsingException catch (_) {
       rethrow;
-    } on TokenNotFoundException catch (e) {
+    } on TokenNotFoundException catch (_) {
       rethrow;
     } on ServerException catch (e) {
       throw ServerException(message: e.message, code: e.code);

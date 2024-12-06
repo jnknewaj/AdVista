@@ -1,17 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
-import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/summary/widgets/dashboard_top_part.dart';
-import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_summary_view.dart';
-import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +40,7 @@ class MetricsPage extends StatelessWidget {
 }
 
 class _Handler extends StatelessWidget {
-  const _Handler({super.key});
+  const _Handler();
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +49,7 @@ class _Handler extends StatelessWidget {
         BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
           listener: (context, state) {
             state.maybeMap(
-              loaded: (_) {
-                showSnackbar(context, 'Data Loaded');
-              },
+              loaded: (_) {},
               failed: (f) {
                 final text = f.failures.maybeMap(
                   networkFailure: (e) => e.msg,
@@ -85,17 +77,17 @@ class _Handler extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            DashboardTopPart(),
+            const DashboardTopPart(),
             Expanded(
               child: ListView(
-                children: [
-                  const MetricsSummaryView(),
-                  const Divider(),
-                  const SizedBox(height: 5),
-                  const CountryMetricsView(),
-                  const Divider(),
-                  const SizedBox(height: 5),
-                  const AdUnitMetricsView(),
+                children: const [
+                  MetricsSummaryView(),
+                  Divider(),
+                  SizedBox(height: 5),
+                  CountryMetricsView(),
+                  Divider(),
+                  SizedBox(height: 5),
+                  AdUnitMetricsView(),
                 ],
               ),
             )

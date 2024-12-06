@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppsDataPage extends StatelessWidget {
-  const AppsDataPage({super.key});
+class AppsListPage extends StatelessWidget {
+  const AppsListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,30 @@ class _Handler extends StatelessWidget {
                       imageUrl: app.appIconUrl,
                     ),
                     title: Text(app.displayName),
-                    subtitle: Text(app.platform),
+                    subtitle: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '${app.platform} ',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ), // General style
+                          ),
+                          const TextSpan(
+                            text: '|| ', // Separator
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          TextSpan(
+                            text: app.appApprovalState, // App state text
+                            style: TextStyle(
+                              color: _mapAppStateToColor(app.appApprovalState),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    onTap: () {},
                   );
                 },
               );
@@ -67,4 +90,13 @@ class _Handler extends StatelessWidget {
       ),
     );
   }
+}
+
+Color _mapAppStateToColor(String approvalState) {
+  if (approvalState == 'ACTION_REQUIRED') {
+    return Colors.red;
+  } else if (approvalState == 'APPROVED') {
+    return Colors.green;
+  }
+  return Colors.black;
 }

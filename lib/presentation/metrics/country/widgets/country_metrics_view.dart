@@ -9,7 +9,7 @@ import 'package:advista/presentation/metrics/country/widgets/country_data_widget
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/presentation/metrics/country/widgets/list_item.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
