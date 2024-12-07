@@ -5,6 +5,7 @@ import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 navigateTo(BuildContext context, Widget page) {
@@ -174,3 +175,8 @@ List<AdUnitMetrics> sortAdUnitMetricsList(
 }
 
 String appName() => 'AdVista';
+
+DateTime stringToDateTime(String dateString) {
+  DateFormat dateFormat = DateFormat("d MMMM, yyyy");
+  return dateFormat.parse(dateString);
+}

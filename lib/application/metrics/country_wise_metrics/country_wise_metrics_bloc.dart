@@ -1,6 +1,6 @@
+import 'package:advista/domain/core/i_account_repository.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
-import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -18,9 +18,13 @@ class CountryWiseMetricsBloc
     extends Bloc<CountryWiseMetricsEvent, CountryWiseMetricsState> {
   final IMetricsRepository _repository;
   final DateService _dateService;
+  final IAccountRepository _accountRepository;
 
-  CountryWiseMetricsBloc(this._repository, this._dateService)
-      : super(const CountryWiseMetricsState.initial()) {
+  CountryWiseMetricsBloc(
+    this._repository,
+    this._dateService,
+    this._accountRepository,
+  ) : super(const CountryWiseMetricsState.initial()) {
     on<CountryWiseMetricsEvent>(_onEvents);
   }
 
@@ -67,7 +71,19 @@ class CountryWiseMetricsBloc
           emit,
         );
       },
-      requstedLifeTime: (e) async {},
+      requstedLifeTime: (e) async {
+        final acOpenDateEither =
+            await _accountRepository.getAccoutOpeningDate();
+        await acOpenDateEither.fold(
+          (f) async => emit(const CountryWiseMetricsState.failed(
+              MetricsFailures.unknown('Failed to fetch account opening date'))),
+          (s) async {
+            final startDate = stringToDateTime(s);
+            await _handleMatricsEvent(
+                DateTimeRange(start: startDate, end: DateTime.now()), emit);
+          },
+        );
+      },
       requstedCustom: (e) async {
         await _handleMatricsEvent(
           DateTimeRange(

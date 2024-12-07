@@ -104,18 +104,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i839.IMetricsRepository>(
         () => _i18.MetricsRepository(gh<_i628.MetricsService>()));
-    gh.factory<_i559.TodaysMetricsBloc>(() => _i559.TodaysMetricsBloc(
-          gh<_i839.IMetricsRepository>(),
-          gh<_i439.DateService>(),
-        ));
-    gh.factory<_i651.CountryWiseMetricsBloc>(() => _i651.CountryWiseMetricsBloc(
-          gh<_i839.IMetricsRepository>(),
-          gh<_i439.DateService>(),
-        ));
-    gh.factory<_i761.AdUnitMetricsBloc>(() => _i761.AdUnitMetricsBloc(
-          gh<_i839.IMetricsRepository>(),
-          gh<_i439.DateService>(),
-        ));
     gh.factory<_i747.AdmobAccountBloc>(() => _i747.AdmobAccountBloc(
           gh<_i566.IAccountRepository>(),
           gh<_i823.AccountService>(),
@@ -124,6 +112,21 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i665.AppsDataRepository(gh<_i532.AppsDataService>()));
     gh.factory<_i250.AcOpeningDateBloc>(
         () => _i250.AcOpeningDateBloc(gh<_i566.IAccountRepository>()));
+    gh.factory<_i559.TodaysMetricsBloc>(() => _i559.TodaysMetricsBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+          gh<_i566.IAccountRepository>(),
+        ));
+    gh.factory<_i651.CountryWiseMetricsBloc>(() => _i651.CountryWiseMetricsBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+          gh<_i566.IAccountRepository>(),
+        ));
+    gh.factory<_i761.AdUnitMetricsBloc>(() => _i761.AdUnitMetricsBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+          gh<_i566.IAccountRepository>(),
+        ));
     gh.factory<_i700.AuthCheckBloc>(() => _i700.AuthCheckBloc(
           gh<_i878.IAuthFacade>(),
           gh<_i566.IAccountRepository>(),
