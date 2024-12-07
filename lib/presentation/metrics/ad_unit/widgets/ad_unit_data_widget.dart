@@ -1,7 +1,7 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
-import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_unit_details_page.dart';
+import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_list_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';

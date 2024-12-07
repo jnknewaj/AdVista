@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
-import 'package:advista/application/metrics/providers/new_date_range_provider.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/date_range_list.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -13,10 +12,8 @@ class AdUnitPageTopPart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(timeRangeProviderForAdUnitPage);
     final dateRange = ref.watch(timeRangeProviderForAdUnitPage);
     return Container(
-      color: Colors.blue,
       height: screenHeightPortion(context, 0.09),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       width: double.infinity,
@@ -70,7 +67,7 @@ class AdUnitPageTopPart extends ConsumerWidget {
             child: Text(
               dateRange.dateRange,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).primaryColor, // check if color suits
                 fontWeight: FontWeight.bold,
               ),
             ),

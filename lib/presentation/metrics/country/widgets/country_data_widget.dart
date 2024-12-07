@@ -2,7 +2,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
-import 'package:advista/presentation/metrics/country/country_details/country_data_page.dart';
+import 'package:advista/presentation/metrics/country/country_details/country_list_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/country_name_util.dart';
 import 'package:advista/utils/styles/theme.dart';
