@@ -172,3 +172,5 @@ List<AdUnitMetrics> sortAdUnitMetricsList(
   }
   return sortedList;
 }
+
+String appName() => 'AdVista';
