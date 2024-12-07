@@ -152,7 +152,41 @@ class DashboardTopPart extends ConsumerWidget {
                         .setTimeRange(TimeRange.lifetime);
                   },
                 ),
-                const ClipCard(text: 'Custom'),
+                ClipCard(
+                  text: 'Custom',
+                  isActive: dateRange.range == TimeRange.custom,
+                  onTap: () async {
+                    final bloc = context.read<TodaysMetricsBloc>();
+                    final countryBloc = context.read<CountryWiseMetricsBloc>();
+                    final adUnitBloc = context.read<AdUnitMetricsBloc>();
+                    final dateRange = await showDateRangePicker(
+                      context: context,
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime.now(),
+                    );
+
+                    if (dateRange != null) {
+                      bloc.add(TodaysMetricsEvent.requstedCustom(
+                        dateRange.start,
+                        dateRange.end,
+                      ));
+                      countryBloc.add(CountryWiseMetricsEvent.requstedCustom(
+                        dateRange.start,
+                        dateRange.end,
+                      ));
+                      adUnitBloc.add(
+                        AdUnitMetricsEvent.requstedCustom(
+                          dateRange.start,
+                          dateRange.end,
+                        ),
+                      );
+                      ref.read(timeRangeProvider.notifier).setTimeRange(
+                            TimeRange.custom,
+                            dateTimeRange: dateRange,
+                          );
+                    }
+                  },
+                ),
               ],
             ),
           ),
@@ -162,7 +196,7 @@ class DashboardTopPart extends ConsumerWidget {
             child: Text(
               dateRange.dateRange,
               style: TextStyle(
-                color: Theme.of(context).primaryColor, // check if color suits
+                color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,
               ),
             ),

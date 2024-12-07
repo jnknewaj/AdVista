@@ -1,5 +1,6 @@
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:advista/utils/app_utils.dart';
 
@@ -34,14 +35,25 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
     );
   }
 
-  void setTimeRange(TimeRange range) {
+  void setTimeRange(
+    TimeRange range, {
+    /// Just For 'Custom'
+    DateTimeRange? dateTimeRange,
+  }) {
     state = TimeRangeState(
       range: range,
-      dateRange: timeRangeToString(range),
+      dateRange: timeRangeToString(
+        range,
+        dateTimeRange: dateTimeRange,
+      ),
     );
   }
 
-  String timeRangeToString(TimeRange range) {
+  String timeRangeToString(
+    TimeRange range, {
+    /// Just For 'Custom'
+    DateTimeRange? dateTimeRange,
+  }) {
     switch (range) {
       case TimeRange.today:
         return formatToStd(DateTime.now());
@@ -62,7 +74,11 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
       case TimeRange.lifetime:
         return 'All Time';
       case TimeRange.custom:
-        return 'Custom Range';
+        if (dateTimeRange != null) {
+          return '${formatToStd(dateTimeRange.start)} - ${formatToStd(dateTimeRange.end)}';
+        } else {
+          return 'Custom Range';
+        }
     }
   }
 }

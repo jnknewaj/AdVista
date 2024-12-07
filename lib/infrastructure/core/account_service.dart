@@ -111,7 +111,7 @@ class AccountService {
       final storedDate = await _storageService.fetchAdmobAcOpeningDate();
 
       if (storedDate != null) {
-        cprint('DATE', storedDate);
+        cprint('AC OPEN DATE FROM STORAGE', storedDate);
         return storedDate;
       }
 
