@@ -49,7 +49,7 @@ class CountryDataWidget extends StatelessWidget {
           SimpleButton(
             text: 'Show All',
             onPressed: () {
-              persistentNavigateTo(context, const CountryDataPage());
+              persistentNavigateTo(context, const CountryListPage());
             },
             primaryColor: Theme.of(context).primaryColor,
             secondaryColor: Theme.of(context).buttonTheme.secondaryColor,

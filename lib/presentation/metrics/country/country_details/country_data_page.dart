@@ -10,10 +10,10 @@ import 'package:advista/injection.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_page_top_part.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/dimension_list.dart';
+import 'package:advista/presentation/metrics/widgets/metrics_list.dart';
 
-class CountryDataPage extends StatelessWidget {
-  const CountryDataPage({super.key});
+class CountryListPage extends StatelessWidget {
+  const CountryListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,19 +42,18 @@ class _Handler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Countries'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('Countries'), centerTitle: true),
       body: SafeArea(
         child: Column(
           children: [
             CountryPageTopWidget(),
+            MetricsList(notifierKey: 'CountryDataPage'),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 children: [
-                  DimensionList(notifierKey: 'CountryDataPage'),
+                  // MetricsList(notifierKey: 'CountryDataPage'),
+                  const SizedBox(height: 6),
                   BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
                     builder: (context, state) {
                       return state.map(

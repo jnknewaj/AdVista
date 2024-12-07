@@ -64,8 +64,7 @@ class AdUnitMetricsView extends ConsumerWidget {
                       .setMetricsTitle(MetricsTitle.matchRate);
                 },
               ),
-              //const SizedBox(height: 8),
-
+              const SizedBox(height: 8),
               state.map(
                 initial: (_) => const ShimmerCountryData(),
                 loading: (_) => const ShimmerCountryData(),

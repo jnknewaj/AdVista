@@ -1,6 +1,6 @@
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
-import 'package:advista/presentation/metrics/widgets/dimension_list.dart';
+import 'package:advista/presentation/metrics/widgets/metrics_list.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

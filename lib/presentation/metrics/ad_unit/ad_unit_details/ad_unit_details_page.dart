@@ -1,7 +1,7 @@
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_unit_full_list.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_unit_page_top_part.dart';
-import 'package:advista/presentation/metrics/widgets/dimension_list.dart';
+import 'package:advista/presentation/metrics/widgets/metrics_list.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +44,7 @@ class _Handler extends StatelessWidget {
         child: Column(
           children: [
             const AdUnitPageTopPart(),
-            const DimensionList(notifierKey: 'AdUnitDetailsPage'),
+            const MetricsList(notifierKey: 'AdUnitDetailsPage'),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 5),

@@ -26,7 +26,8 @@ class MetricsHorizontalList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       height: screenHeightPortion(context, .05),
       child: ListView(
         scrollDirection: Axis.horizontal,
