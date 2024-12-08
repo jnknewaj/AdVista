@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_super_parameters
-
+import 'package:advista/application/advertising_bloc/advertising_bloc.dart';
+import 'package:advista/presentation/core/widgets/banner_ad_widget.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_full_list.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +22,37 @@ class CountryListPage extends StatelessWidget {
           create: (context) => getIt<CountryWiseMetricsBloc>()
             ..add(const CountryWiseMetricsEvent.requsted()),
         ),
+        BlocProvider(
+          create: (context) => getIt<AdvertisingBloc>()
+            ..add(const AdvertisingEvent.bannerRequested()),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
           BlocListener<CountryWiseMetricsBloc, CountryWiseMetricsState>(
             listener: (context, state) {},
           ),
+          BlocListener<AdvertisingBloc, AdvertisingState>(
+            listener: (context, state) {
+              state.map(
+                initial: (s) {
+                  cprint('SLM', 'Listening : ${s.toString()}');
+                },
+                loading: (s) {
+                  cprint('SLM', 'Listening : ${s.toString()}');
+                },
+                loaded: (s) {
+                  cprint('SLM', 'Listening : ${s.toString()}');
+                },
+                failure: (s) {
+                  cprint('SLM', 'Listening : ${s.toString()}');
+                },
+              );
+            },
+            child: Container(),
+          )
         ],
-        child: _Handler(),
+        child: const _Handler(),
       ),
     );
   }
@@ -42,17 +64,16 @@ class _Handler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Countries'), centerTitle: true),
+      appBar: AppBar(title: const Text('Countries'), centerTitle: true),
       body: SafeArea(
         child: Column(
           children: [
-            CountryPageTopWidget(),
-            MetricsList(notifierKey: 'CountryDataPage'),
+            const CountryPageTopWidget(),
+            const MetricsList(notifierKey: 'CountryDataPage'),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 children: [
-                  // MetricsList(notifierKey: 'CountryDataPage'),
                   const SizedBox(height: 6),
                   BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
                     builder: (context, state) {
@@ -73,9 +94,21 @@ class _Handler extends StatelessWidget {
                         },
                       );
                     },
-                  )
+                  ),
                 ],
               ),
+            ),
+            BlocBuilder<AdvertisingBloc, AdvertisingState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  loaded: (s) {
+                    cprint('SLV',
+                        'ADWIDGET HERE : ${s.bannerAd.size.height.toDouble()}');
+                    return BannerAdWidget(bannerAd: s.bannerAd);
+                  },
+                  orElse: () => const SizedBox(),
+                );
+              },
             ),
           ],
         ),

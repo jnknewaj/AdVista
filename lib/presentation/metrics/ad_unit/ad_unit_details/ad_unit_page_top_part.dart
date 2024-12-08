@@ -13,6 +13,7 @@ class AdUnitPageTopPart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dateRange = ref.watch(timeRangeProviderForAdUnitPage);
+    final notifier = ref.watch(timeRangeProviderForAdUnitPage.notifier);
     return Container(
       height: screenHeightPortion(context, 0.09),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -24,41 +25,51 @@ class AdUnitPageTopPart extends ConsumerWidget {
             child: DateRangeList(
               notifierKey: 'AdUnitDetailsPage',
               onToday: () {
+                notifier.setTimeRange(TimeRange.today);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requsted());
               },
               onYesterday: () {
+                notifier.setTimeRange(TimeRange.yesterday);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedYesterday());
               },
               onLastSevenDays: () {
+                notifier.setTimeRange(TimeRange.last7Days);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requsted7days());
               },
               onThisMonth: () {
+                notifier.setTimeRange(TimeRange.thisMonth);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedThisMonth());
               },
               onLastMonth: () {
+                notifier.setTimeRange(TimeRange.lastMonth);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedLastMonth());
               },
               onThisYear: () {
+                notifier.setTimeRange(TimeRange.thisYear);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedThisYear());
               },
               onAllTime: () {
+                notifier.setTimeRange(TimeRange.lifetime);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedLifeTime());
               },
-              onCustom: () {},
+              onCustom: () {
+                notifier.setTimeRange(TimeRange.today);
+                showSnackbar(context, 'Feature Coming Soon!'); // TODO
+              },
             ),
           ),
           Container(

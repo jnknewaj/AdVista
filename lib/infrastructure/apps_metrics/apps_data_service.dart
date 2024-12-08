@@ -84,15 +84,16 @@ class AppsDataService {
           final dto = AppsDto.fromApiResponse(appData);
           var domain = dto.toDomain();
 
+          // TODO : Optimize this icon fetching as its now very much time consuming
           // If packageName exists, fetch the app icon URL
-          if (dto.linkedAppInfo != null) {
-            final packageName = dto.linkedAppInfo?.appStoreId;
+          // if (dto.linkedAppInfo != null) {
+          //   final packageName = dto.linkedAppInfo?.appStoreId;
 
-            if (packageName != null) {
-              final appIconUrl = await fetchAndroidAppIcon(packageName);
-              domain = domain.copyWith(appIconUrl: appIconUrl);
-            }
-          }
+          //   if (packageName != null) {
+          //     final appIconUrl = await fetchAndroidAppIcon(packageName);
+          //     domain = domain.copyWith(appIconUrl: appIconUrl);
+          //   }
+          // }
 
           apps.add(domain);
         }

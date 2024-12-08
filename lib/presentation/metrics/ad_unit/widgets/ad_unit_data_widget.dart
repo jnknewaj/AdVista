@@ -47,7 +47,7 @@ class AdUnitDataWidget extends StatelessWidget {
           SimpleButton(
             text: 'Show All',
             onPressed: () {
-              persistentNavigateTo(context, const AdUnitListPage());
+              navigateTo(context, const AdUnitListPage());
             },
             primaryColor: Theme.of(context).primaryColor,
             secondaryColor: Theme.of(context).buttonTheme.secondaryColor,

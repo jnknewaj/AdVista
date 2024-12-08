@@ -6,7 +6,6 @@ import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 navigateTo(BuildContext context, Widget page) {
   Navigator.of(context).push(
@@ -16,14 +15,14 @@ navigateTo(BuildContext context, Widget page) {
   );
 }
 
-persistentNavigateTo(BuildContext context, Widget page) {
-  PersistentNavBarNavigator.pushNewScreen(
-    context,
-    screen: page,
-    withNavBar: false,
-    pageTransitionAnimation: PageTransitionAnimation.cupertino,
-  );
-}
+// persistentNavigateTo(BuildContext context, Widget page) {
+//   PersistentNavBarNavigator.pushNewScreen(
+//     context,
+//     screen: page,
+//     withNavBar: false,
+//     pageTransitionAnimation: PageTransitionAnimation.cupertino,
+//   );
+// }
 
 navigateAndRemoveUntil(BuildContext context, Widget page) {
   Navigator.of(context).pushAndRemoveUntil(

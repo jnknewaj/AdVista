@@ -14,6 +14,7 @@ import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
 
+import 'application/advertising_bloc/advertising_bloc.dart' as _i568;
 import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
 import 'application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart'
@@ -26,11 +27,13 @@ import 'application/metrics/apps_metrics/apps_data_bloc/apps_data_bloc_bloc.dart
 import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
     as _i651;
 import 'application/metrics/todays_metrics/todays_metrics_bloc.dart' as _i559;
+import 'domain/advertising/i_ad_repository.dart' as _i299;
 import 'domain/apps_metrics/i_apps_data_repository.dart' as _i272;
 import 'domain/auth/i_auth_facade.dart' as _i878;
 import 'domain/auth/i_token_repository.dart' as _i357;
 import 'domain/core/i_account_repository.dart' as _i566;
 import 'domain/metrics/i_metrics_repository.dart' as _i839;
+import 'infrastructure/advertising/ad_repository.dart' as _i968;
 import 'infrastructure/apps_metrics/apps_data_repository.dart' as _i665;
 import 'infrastructure/apps_metrics/apps_data_service.dart' as _i532;
 import 'infrastructure/auth/google_auth_facade.dart' as _i168;
@@ -65,6 +68,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i116.GoogleSignIn>(
         () => googleInjectableModule.googleSignIn);
     gh.lazySingleton<_i439.DateService>(() => _i439.DateService());
+    gh.lazySingleton<_i299.IAdRepository>(() => _i968.AdRepository());
+    gh.factory<_i568.AdvertisingBloc>(
+        () => _i568.AdvertisingBloc(gh<_i299.IAdRepository>()));
     gh.lazySingleton<_i1066.TokenApiClient>(
         () => _i1066.TokenApiClient(gh<_i519.Client>()));
     gh.lazySingleton<_i621.BaseService>(
