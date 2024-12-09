@@ -93,7 +93,7 @@ class _Handler extends StatelessWidget {
                       return state.maybeMap(
                         loaded: (s) => NativeAdWidget(
                           nativeAd: s.nativeAd,
-                          size: NativeAdSize.medium,
+                          size: NativeAdSize.large,
                         ),
                         orElse: () => const SizedBox(),
                       );

@@ -4,6 +4,7 @@ import 'package:advista/injection.dart';
 import 'package:advista/presentation/auth/login_page.dart';
 import 'package:advista/presentation/core/pages/splash_screen.dart';
 import 'package:advista/presentation/home/home_page.dart';
+import 'package:advista/presentation/not_admob_user/pages/not_admob_user_page.dart';
 import 'package:advista/utils/ad_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class AuthGate extends StatelessWidget {
                   navigateAndRemoveUntil(context, const HomePage());
                 },
                 failed: (s) {
-                  showSnackbar(context, 'Failed To Get Admob Account Info');
+                  navigateAndRemoveUntil(context, const NotAdmobUserPage());
                 },
                 idInfoFound: (ss) {
                   navigateAndRemoveUntil(context, const HomePage());
