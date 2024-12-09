@@ -38,6 +38,21 @@ class MyApp extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
         ),
         primaryColor: const Color(0xff00B4CC),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all<Color>(
+                const Color(0xff00B4CC)), // Primary background color
+            foregroundColor:
+                WidgetStateProperty.all<Color>(Colors.white), // Text color
+            padding: WidgetStateProperty.all<EdgeInsets>(
+              const EdgeInsets.symmetric(
+                  vertical: 12, horizontal: 20), // Padding
+            ),
+            textStyle: WidgetStateProperty.all<TextStyle>(
+              const TextStyle(fontSize: 16), // Text style
+            ),
+          ),
+        ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           selectedItemColor: Color(0xff00B4CC),
@@ -111,16 +126,8 @@ class AuthGate extends StatelessWidget {
           builder: (context, state) {
             return state.map(
               initial: (_) => const SplashScreen(),
-              authenticated: (_) => Container(
-                child: const Center(
-                  child: Text('Authenticated'),
-                ),
-              ),
-              unAuthenticated: (_) => Container(
-                child: const Center(
-                  child: Text('Not Authenticated'),
-                ),
-              ),
+              authenticated: (_) => const SplashScreen(),
+              unAuthenticated: (_) => const LoginPage(),
             );
           },
         ),

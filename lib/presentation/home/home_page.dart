@@ -1,5 +1,6 @@
 import 'package:advista/application/advertising/advertising_bloc/advertising_bloc.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/presentation/core/pages/splash_screen.dart';
 import 'package:advista/presentation/core/widgets/banner_ad_widget.dart';
 import 'package:advista/presentation/metrics/apps_data/apps_list_page.dart';
 import 'package:advista/presentation/metrics/pages/metrics_page.dart';
