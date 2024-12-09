@@ -90,11 +90,11 @@ class LocalStorageService {
 
   /// **Doesn't handle exception**
   Future<void> storeAdmobAccountOpeningDate(String date) async {
-    //await _storage.write(key: KEY_ADMOB_AC_OPEN_DATE, value: date);
+    await _storage.write(key: KEY_ADMOB_AC_OPEN_DATE, value: date);
   }
 
   Future<String?> fetchAdmobAcOpeningDate() async {
     final theDate = _storage.read(key: KEY_ADMOB_AC_OPEN_DATE);
-    return null;
+    return theDate;
   }
 }

@@ -1,8 +1,6 @@
-import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:advista/utils/app_utils.dart';
 
@@ -24,7 +22,7 @@ class TimeRangeState {
   TimeRangeState({required this.range, required this.dateRange});
 }
 
-class TimeRangeNotifier extends Notifier<TimeRangeState> {
+class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
   final DateService _dateService;
 
   TimeRangeNotifier(this._dateService);
@@ -37,14 +35,25 @@ class TimeRangeNotifier extends Notifier<TimeRangeState> {
     );
   }
 
-  void setTimeRange(TimeRange range) {
+  void setTimeRange(
+    TimeRange range, {
+    /// Just For 'Custom'
+    DateTimeRange? dateTimeRange,
+  }) {
     state = TimeRangeState(
       range: range,
-      dateRange: timeRangeToString(range),
+      dateRange: timeRangeToString(
+        range,
+        dateTimeRange: dateTimeRange,
+      ),
     );
   }
 
-  String timeRangeToString(TimeRange range) {
+  String timeRangeToString(
+    TimeRange range, {
+    /// Just For 'Custom'
+    DateTimeRange? dateTimeRange,
+  }) {
     switch (range) {
       case TimeRange.today:
         return formatToStd(DateTime.now());
@@ -65,12 +74,31 @@ class TimeRangeNotifier extends Notifier<TimeRangeState> {
       case TimeRange.lifetime:
         return 'All Time';
       case TimeRange.custom:
-        return 'Custom Range';
+        if (dateTimeRange != null) {
+          return '${formatToStd(dateTimeRange.start)} - ${formatToStd(dateTimeRange.end)}';
+        } else {
+          return 'Custom Range';
+        }
     }
   }
 }
 
-final timeRangeProvider = NotifierProvider<TimeRangeNotifier, TimeRangeState>(
+final timeRangeProvider =
+    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
+  () => TimeRangeNotifier(
+    getIt<DateService>(),
+  ),
+); // used in MetricsPage
+
+final timeRangeProviderForCountryPage =
+    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
+  () => TimeRangeNotifier(
+    getIt<DateService>(),
+  ),
+);
+
+final timeRangeProviderForAdUnitPage =
+    NotifierProvider.autoDispose<TimeRangeNotifier, TimeRangeState>(
   () => TimeRangeNotifier(
     getIt<DateService>(),
   ),

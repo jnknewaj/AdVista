@@ -44,11 +44,16 @@ dependencies:
   http: ^1.2.2
   dio: ^5.7.0
   flutter_secure_storage: ^9.2.2
-  persistent_bottom_nav_bar: ^6.2.1
+  google_nav_bar: ^5.0.7
   intl: ^0.20.1
   flutter_riverpod: ^2.6.1
   shimmer: ^3.0.0
   skeletonizer: ^1.4.2
+  html: ^0.15.5
+  cached_network_image: ^3.4.1
+  google_fonts: ^6.2.1
+  google_mobile_ads: ^5.2.0
+  flutter_hooks: ^0.20.5
 
 dev_dependencies:
   flutter_test:
@@ -57,16 +62,22 @@ dev_dependencies:
   freezed: ^2.5.7
   injectable_generator: ^2.6.2
   json_serializable: ^6.8.0
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  flutter_native_splash: ^2.4.3
   flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.2
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+flutter_native_splash:
+  color: "#00B4CC"
+  image: assets/images/logo.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/logo.png"
+
+
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -77,8 +88,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/icons/icon-android.png
+    - assets/icons/google.png
+    - assets/images/logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -2,7 +2,12 @@
     <application
         android:label="advista"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+
+        <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-4396432234695580~1771839170" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

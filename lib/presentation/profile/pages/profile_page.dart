@@ -2,7 +2,14 @@ import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/main.dart';
 import 'package:advista/presentation/auth/login_page.dart';
+import 'package:advista/presentation/core/widgets/app_icon.dart';
+import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
+import 'package:advista/presentation/profile/widgets/profile_info_card.dart';
+import 'package:advista/presentation/profile/widgets/profile_info_card_shimmer.dart';
+import 'package:advista/presentation/profile/widgets/total_earning_card.dart';
+import 'package:advista/utils/app_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +40,7 @@ class ProfilePage extends StatelessWidget {
               state.maybeMap(
                 unAuthenticated: (_) => navigateAndRemoveUntil(
                   context,
-                  const LoginPage(),
+                  const AuthGate(),
                 ),
                 orElse: () {},
               );
@@ -97,7 +104,25 @@ class _Handler extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account Information'),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.info_outlined,
+          ),
+          onPressed: () {
+            showAboutDialog(
+              context: context,
+              applicationIcon: const AppIcon(
+                height: 80,
+                width: 80,
+              ),
+              applicationName: AppStrings.appName,
+              applicationVersion: AppStrings.appVersion,
+              children: [const Text('Developer : newazkabirtaluk@gmail.com')],
+            );
+          },
+        ),
+        title: Text(appName()),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -109,49 +134,81 @@ class _Handler extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
-        children: [
-          // Account Info
-          BlocBuilder<AdmobAccountBloc, AdmobAccountState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                loaded: (s) {
-                  final account = s.account;
-                  return Text('Publisher : ${account.name}');
-                },
-                failed: (s) {
-                  return Text(
-                      'Failed to load account info : ${s.failures.toString()}');
-                },
-                initial: (_) =>
-                    const Center(child: CircularProgressIndicator()),
-                loading: (_) =>
-                    const Center(child: CircularProgressIndicator()),
-                orElse: () => const SizedBox(),
-              );
-            },
-          ),
-          BlocBuilder<AcOpeningDateBloc, AcOpeningDateState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                loaded: (s) {
-                  final date = s.date;
-                  return Text('Date : $date');
-                },
-                failed: (s) {
-                  return Text(
-                      'Failed to load account info : ${s.failure.toString()}');
-                },
-                initial: (_) =>
-                    const Center(child: CircularProgressIndicator()),
-                loading: (_) =>
-                    const Center(child: CircularProgressIndicator()),
-                orElse: () => const SizedBox(),
-              );
-            },
-          ),
-        ],
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child: ListView(
+          children: [
+            BlocBuilder<AdmobAccountBloc, AdmobAccountState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  loaded: (s) {
+                    final account = s.account;
+                    return BlocBuilder<AcOpeningDateBloc, AcOpeningDateState>(
+                      builder: (context, state2) {
+                        return ProfileInfoCard(
+                          name: account.name,
+                          reportingTimeZone: account.reportingTimeZone,
+                          currencyCode: account.currencyCode,
+                          accountOpeningDate: state2.maybeMap(
+                            loaded: (s2) => s2.date,
+                            failed: (e) =>
+                                'Failed to load account opening date : ${e.failure.toString()}',
+                            orElse: () => '',
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  failed: (s) {
+                    return const BillBoard(
+                      // TODO create a map
+                      text: 'Failed To Load Account Info',
+                    );
+                  },
+                  initial: (_) => const ProfileInfoCardShimmer(),
+                  loading: (_) => const ProfileInfoCardShimmer(),
+                  orElse: () => const SizedBox(),
+                );
+              },
+            ),
+            const TotalEarningCard(),
+          ],
+        ),
       ),
+    );
+  }
+
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    final authCheckBloc = context.read<AuthCheckBloc>();
+
+    showDialog(
+      context: context,
+      builder: (dialogContext) {
+        return BlocProvider.value(
+          value: authCheckBloc,
+          child: AlertDialog(
+            title: const Text('Confirm Logout'),
+            content: const Text('Are you sure you want to log out?'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop(); // Close the dialog
+                },
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop(); // Close the dialog
+                  dialogContext.read<AuthCheckBloc>().add(
+                        const AuthCheckEvent.signOutPressed(),
+                      );
+                },
+                child: const Text('Logout'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

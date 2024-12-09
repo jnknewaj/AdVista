@@ -9,7 +9,7 @@ abstract class GoogleInjectableModule {
         scopes: [
           'email',
           'https://www.googleapis.com/auth/admob.report',
-          // Add any other scopes your app needs
+          'https://www.googleapis.com/auth/admob.readonly',
         ],
         serverClientId: CLIENT_ID,
         forceCodeForRefreshToken: true,

@@ -1,16 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
+import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
-import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/injection.dart';
-import 'package:advista/presentation/metrics/widgets/country_metrics_view.dart';
-import 'package:advista/presentation/metrics/widgets/dashboard_top_part.dart';
-import 'package:advista/presentation/metrics/widgets/metrics_item.dart';
-import 'package:advista/presentation/metrics/widgets/metrics_summary_view.dart';
-import 'package:advista/presentation/metrics/widgets/time_range_item.dart';
+import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
+import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
+import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
+import 'package:advista/presentation/metrics/summary/widgets/dashboard_top_part.dart';
+import 'package:advista/presentation/metrics/summary/widgets/metrics_summary_view.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,61 +31,75 @@ class MetricsPage extends StatelessWidget {
               ..add(const CountryWiseMetricsEvent.requsted());
           },
         ),
+        BlocProvider(
+          create: (context) => getIt<AdUnitMetricsBloc>()
+            ..add(const AdUnitMetricsEvent.requsted()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+        )
       ],
-      child: const Scaffold(body: _Handler()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('AdVista'),
+          centerTitle: true,
+        ),
+        body: const _Handler(),
+      ),
     );
   }
 }
 
 class _Handler extends StatelessWidget {
-  const _Handler({super.key});
+  const _Handler();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
+        BlocListener<NativeAdBloc, NativeAdState>(
           listener: (context, state) {
-            state.maybeMap(
-              loaded: (_) {
-                showSnackbar(context, 'Data Loaded');
+            state.map(
+              initial: (e) {
+                cprint('NAT listen', e.toString());
               },
-              failed: (f) {
-                final text = f.failures.maybeMap(
-                  networkFailure: (e) => e.msg,
-                  timeout: (e) => e.msg,
-                  parsingFailure: (e) => e.msg,
-                  tokenNotFound: (e) => e.msg,
-                  serverFailure: (e) => e.msg,
-                  idNotFound: (e) => e.msg,
-                  unknown: (e) => e.msg,
-                  orElse: () => "Unknown, probably from Country dimension",
-                );
-                showSnackbar(context, text);
+              loading: (e) {
+                cprint('NAT listen', e.toString());
               },
-              orElse: () {},
+              loaded: (e) {
+                cprint('NAT listen', e.toString());
+              },
+              failure: (e) {
+                cprint('NAT listen', e.toString());
+              },
             );
           },
-        ),
-        BlocListener<CountryWiseMetricsBloc, CountryWiseMetricsState>(
-          listener: (context, state) {
-            cprint('CTY', 'listening 2 ${state.toString()}');
-          },
-          child: Container(),
         )
       ],
       child: SafeArea(
         child: Column(
           children: [
-            DashboardTopPart(text: '16 April, 2020'),
+            const DashboardTopPart(),
             Expanded(
               child: ListView(
                 children: [
                   const MetricsSummaryView(),
                   const Divider(),
-                  const SizedBox(height: 5),
                   const CountryMetricsView(),
                   const Divider(),
+                  BlocBuilder<NativeAdBloc, NativeAdState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        loaded: (s) => NativeAdWidget(
+                          nativeAd: s.nativeAd,
+                          size: NativeAdSize.medium,
+                        ),
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  const AdUnitMetricsView(),
                 ],
               ),
             )

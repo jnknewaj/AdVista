@@ -11,7 +11,11 @@ enum MetricsTitle {
 
 final metricsTitleNotifierProvider =
     NotifierProvider<MetricsTitleNotifier, MetricsTitle>(
-        () => MetricsTitleNotifier());
+        () => MetricsTitleNotifier()); // to be used CountryMetricsView
+
+final metricsTitleNotifierProvider2 =
+    NotifierProvider<MetricsTitleNotifier, MetricsTitle>(
+        () => MetricsTitleNotifier()); // to be used AdUnitMetricsView
 
 class MetricsTitleNotifier extends Notifier<MetricsTitle> {
   @override

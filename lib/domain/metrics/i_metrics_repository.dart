@@ -1,3 +1,4 @@
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
@@ -9,6 +10,10 @@ abstract class IMetricsRepository {
   Future<Either<MetricsFailures, Metrics>> getMetrics(DateTimeRange range);
 
   Future<Either<MetricsFailures, List<CountryMetrics>>> getCountryMetrics(
+    DateTimeRange range,
+  );
+
+  Future<Either<MetricsFailures, List<AdUnitMetrics>>> getAdUnitMetrics(
     DateTimeRange range,
   );
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics.dart';
@@ -26,7 +27,7 @@ class MetricsRepository implements IMetricsRepository {
     try {
       final metrics = await _service.getMetricsForDateRange(range);
       return right(metrics);
-    } on SocketException catch (e) {
+    } on NetworkException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));
     } on TimeoutException catch (e) {
       return left(MetricsFailures.timeout(e.message ?? "Response timeout"));
@@ -51,7 +52,32 @@ class MetricsRepository implements IMetricsRepository {
     try {
       final metricsList = await _service.getCountryMetrics(range);
       return right(metricsList);
-    } on SocketException catch (e) {
+    } on NetworkException catch (e) {
+      return left(MetricsFailures.networkFailure(e.message));
+    } on TimeoutException catch (e) {
+      return left(MetricsFailures.timeout(e.message ?? "Response timeout"));
+    } on ParsingException catch (e) {
+      return left(MetricsFailures.parsingFailure(e.message));
+    } on TokenNotFoundException catch (e) {
+      return left(MetricsFailures.tokenNotFound(e.message));
+    } on ServerException catch (e) {
+      return left(MetricsFailures.serverFailure(
+          'Server failure : ${e.message} || ${e.code}'));
+    } on IdNotFoundException catch (e) {
+      return left(MetricsFailures.idNotFound(e.msg));
+    } catch (e) {
+      return left(MetricsFailures.unknown(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<MetricsFailures, List<AdUnitMetrics>>> getAdUnitMetrics(
+    DateTimeRange range,
+  ) async {
+    try {
+      final metricsList = await _service.getAdUnitMetrics(range);
+      return right(metricsList);
+    } on NetworkException catch (e) {
       return left(MetricsFailures.networkFailure(e.message));
     } on TimeoutException catch (e) {
       return left(MetricsFailures.timeout(e.message ?? "Response timeout"));
