@@ -4,14 +4,23 @@ import 'package:advista/injection.dart';
 import 'package:advista/presentation/auth/login_page.dart';
 import 'package:advista/presentation/core/pages/splash_screen.dart';
 import 'package:advista/presentation/home/home_page.dart';
+import 'package:advista/utils/ad_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:advista/utils/styles/theme.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
   configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.updateRequestConfiguration(
+    RequestConfiguration(
+      testDeviceIds: [
+        AdString.testDevice1,
+      ],
+    ),
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 

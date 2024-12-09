@@ -14,7 +14,9 @@ import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
 
-import 'application/advertising_bloc/advertising_bloc.dart' as _i568;
+import 'application/advertising/advertising_bloc/advertising_bloc.dart'
+    as _i319;
+import 'application/advertising/native_ad/native_ad_bloc.dart' as _i558;
 import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
 import 'application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart'
@@ -69,8 +71,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => googleInjectableModule.googleSignIn);
     gh.lazySingleton<_i439.DateService>(() => _i439.DateService());
     gh.lazySingleton<_i299.IAdRepository>(() => _i968.AdRepository());
-    gh.factory<_i568.AdvertisingBloc>(
-        () => _i568.AdvertisingBloc(gh<_i299.IAdRepository>()));
+    gh.factory<_i319.AdvertisingBloc>(
+        () => _i319.AdvertisingBloc(gh<_i299.IAdRepository>()));
+    gh.factory<_i558.NativeAdBloc>(
+        () => _i558.NativeAdBloc(gh<_i299.IAdRepository>()));
     gh.lazySingleton<_i1066.TokenApiClient>(
         () => _i1066.TokenApiClient(gh<_i519.Client>()));
     gh.lazySingleton<_i621.BaseService>(

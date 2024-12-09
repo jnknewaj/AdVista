@@ -1,4 +1,4 @@
-import 'package:advista/application/advertising_bloc/advertising_bloc.dart';
+import 'package:advista/application/advertising/advertising_bloc/advertising_bloc.dart';
 import 'package:advista/presentation/core/widgets/banner_ad_widget.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_full_list.dart';
 import 'package:advista/utils/app_utils.dart';

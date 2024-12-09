@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AdvertisingFailures {
+  String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unknown,
+    required TResult Function(String message) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unknown,
+    TResult? Function(String message)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unknown,
+    TResult Function(String message)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$AdvertisingFailures {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of AdvertisingFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AdvertisingFailuresCopyWith<AdvertisingFailures> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ abstract class $AdvertisingFailuresCopyWith<$Res> {
   factory $AdvertisingFailuresCopyWith(
           AdvertisingFailures value, $Res Function(AdvertisingFailures) then) =
       _$AdvertisingFailuresCopyWithImpl<$Res, AdvertisingFailures>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -69,13 +78,29 @@ class _$AdvertisingFailuresCopyWithImpl<$Res, $Val extends AdvertisingFailures>
 
   /// Create a copy of AdvertisingFailures
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_value.copyWith(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$UnknownImplCopyWith<$Res> {
+abstract class _$$UnknownImplCopyWith<$Res>
+    implements $AdvertisingFailuresCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
           _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
       __$$UnknownImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -88,51 +113,76 @@ class __$$UnknownImplCopyWithImpl<$Res>
 
   /// Create a copy of AdvertisingFailures
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$UnknownImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UnknownImpl implements Unknown {
-  const _$UnknownImpl();
+  const _$UnknownImpl(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AdvertisingFailures.unknown()';
+    return 'AdvertisingFailures.unknown(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnknownImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UnknownImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AdvertisingFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
+      __$$UnknownImplCopyWithImpl<_$UnknownImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unknown,
+    required TResult Function(String message) unknown,
   }) {
-    return unknown();
+    return unknown(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unknown,
+    TResult? Function(String message)? unknown,
   }) {
-    return unknown?.call();
+    return unknown?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unknown,
+    TResult Function(String message)? unknown,
     required TResult orElse(),
   }) {
     if (unknown != null) {
-      return unknown();
+      return unknown(message);
     }
     return orElse();
   }
@@ -167,5 +217,15 @@ class _$UnknownImpl implements Unknown {
 }
 
 abstract class Unknown implements AdvertisingFailures {
-  const factory Unknown() = _$UnknownImpl;
+  const factory Unknown(final String message) = _$UnknownImpl;
+
+  @override
+  String get message;
+
+  /// Create a copy of AdvertisingFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

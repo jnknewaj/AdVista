@@ -4,5 +4,5 @@ part 'advertising_failures.freezed.dart';
 
 @freezed
 class AdvertisingFailures with _$AdvertisingFailures {
-  const factory AdvertisingFailures.unknown() = Unknown;
+  const factory AdvertisingFailures.unknown(String message) = Unknown;
 }

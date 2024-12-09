@@ -18,7 +18,7 @@ class BannerAdWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
-      height: height ?? 91,
+      height: height ?? bannerAd.size.height.toDouble(),
       child: AdWidget(ad: bannerAd),
     );
   }

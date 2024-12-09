@@ -6,4 +6,7 @@ abstract class IAdRepository {
   Future<Either<AdvertisingFailures, BannerAd>> showBannerAd(
     BannerAdListener adListener,
   );
+  Future<Either<AdvertisingFailures, NativeAd>> showNativeAd(
+    NativeAdListener adListener,
+  );
 }

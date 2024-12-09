@@ -41,8 +41,9 @@ class AdvertisingBloc extends Bloc<AdvertisingEvent, AdvertisingState> {
       bannerAdLoaded: (e) async {
         emit(AdvertisingState.loaded(e.bannerAd));
       },
-      failed: (e) async {
-        emit(const AdvertisingState.failure(AdvertisingFailures.unknown()));
+      failed: (err) async {
+        emit(const AdvertisingState.failure(
+            AdvertisingFailures.unknown('Unknown -- From AdvertisingBloc')));
       },
     );
   }

@@ -1,7 +1,9 @@
+import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/summary/widgets/dashboard_top_part.dart';
@@ -32,6 +34,10 @@ class MetricsPage extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AdUnitMetricsBloc>()
             ..add(const AdUnitMetricsEvent.requsted()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
         )
       ],
       child: Scaffold(
@@ -52,32 +58,23 @@ class _Handler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
+        BlocListener<NativeAdBloc, NativeAdState>(
           listener: (context, state) {
-            state.maybeMap(
-              loaded: (_) {},
-              failed: (f) {
-                final text = f.failures.maybeMap(
-                  networkFailure: (e) => e.msg,
-                  timeout: (e) => e.msg,
-                  parsingFailure: (e) => e.msg,
-                  tokenNotFound: (e) => e.msg,
-                  serverFailure: (e) => e.msg,
-                  idNotFound: (e) => e.msg,
-                  unknown: (e) => e.msg,
-                  orElse: () => "Unknown, probably from Country dimension",
-                );
-                showSnackbar(context, text);
+            state.map(
+              initial: (e) {
+                cprint('NAT listen', e.toString());
               },
-              orElse: () {},
+              loading: (e) {
+                cprint('NAT listen', e.toString());
+              },
+              loaded: (e) {
+                cprint('NAT listen', e.toString());
+              },
+              failure: (e) {
+                cprint('NAT listen', e.toString());
+              },
             );
           },
-        ),
-        BlocListener<CountryWiseMetricsBloc, CountryWiseMetricsState>(
-          listener: (context, state) {},
-        ),
-        BlocListener<AdUnitMetricsBloc, AdUnitMetricsState>(
-          listener: (context, state) {},
         )
       ],
       child: SafeArea(
@@ -86,12 +83,23 @@ class _Handler extends StatelessWidget {
             const DashboardTopPart(),
             Expanded(
               child: ListView(
-                children: const [
-                  MetricsSummaryView(),
-                  Divider(),
-                  CountryMetricsView(),
-                  Divider(),
-                  AdUnitMetricsView(),
+                children: [
+                  const MetricsSummaryView(),
+                  const Divider(),
+                  const CountryMetricsView(),
+                  const Divider(),
+                  BlocBuilder<NativeAdBloc, NativeAdState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        loaded: (s) => NativeAdWidget(
+                          nativeAd: s.nativeAd,
+                          size: NativeAdSize.medium,
+                        ),
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  const AdUnitMetricsView(),
                 ],
               ),
             )
