@@ -32,9 +32,6 @@ class _Handler extends StatelessWidget {
             },
             inProgrees: (_) {},
             signInSuccess: (s) {
-              final temp = s.tokens;
-              print('TOKENS =======  $temp');
-              // Storing tokens done in bloc itself for simplicity
               navigateAndRemoveUntil(context, const AuthGate());
             },
             failed: (f) {
@@ -51,15 +48,7 @@ class _Handler extends StatelessWidget {
                   failedToStoreToken: (_) => 'Failed To Store Auth Tokens');
               showSnackbar(context, text);
             },
-            failedToStoreTokens: (s) {
-              final msg = s.failure.map(
-                notFound: (_) => 'Token Not Found',
-                expired: (_) => 'Token Expired',
-                serverError: (err) =>
-                    'Server Error. Code : ${err.code} Message : ${err.msg}',
-                unknown: (e) => 'Unknown error occurred',
-              );
-            });
+            failedToStoreTokens: (s) {});
       },
       child: BlocBuilder<SignInBloc, SignInState>(
         builder: (context, state) {
@@ -117,8 +106,7 @@ class _Handler extends StatelessWidget {
                       'Powered by Toreador',
                       style: TextStyle(
                         fontSize: 12,
-                        color:
-                            Colors.blue[500], // Lighter color for footer text
+                        color: Colors.blue[500],
                       ),
                     ),
                   ],
