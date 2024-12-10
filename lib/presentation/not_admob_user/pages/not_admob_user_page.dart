@@ -4,6 +4,7 @@ import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
+import 'package:advista/presentation/demo/pages/demo_home_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,8 @@ class NotAdmobUserPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthCheckBloc>(),
+          create: (context) => getIt<AuthCheckBloc>()
+            ..add(const AuthCheckEvent.signOutPressed()),
         ),
         BlocProvider(
           create: (context) =>
@@ -98,11 +100,9 @@ class _Handler extends StatelessWidget {
               const SizedBox(height: 16),
               SimpleButton(
                 onPressed: () {
-                  context
-                      .read<AuthCheckBloc>()
-                      .add(const AuthCheckEvent.signOutPressed());
+                  navigateAndRemoveUntil(context, const DemoHomePage());
                 },
-                text: 'Sign Out',
+                text: 'See Demo',
                 fill: true,
                 primaryColor: Theme.of(context).primaryColor,
                 secondaryColor: Colors.white,

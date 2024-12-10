@@ -41,6 +41,8 @@ class MetricsItem extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Theme.of(context).primaryColor,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
           Text(

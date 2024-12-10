@@ -3,6 +3,8 @@ import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
 import 'package:advista/presentation/core/widgets/google_sign_in_button.dart';
+import 'package:advista/presentation/core/widgets/simple_button.dart';
+import 'package:advista/presentation/demo/pages/demo_home_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,6 +102,18 @@ class _Handler extends StatelessWidget {
                             .add(const SignInEvent.started());
                       },
                     ),
+                    const SizedBox(height: 20),
+
+                    SimpleButton(
+                      onPressed: () {
+                        navigateAndRemoveUntil(context, const DemoHomePage());
+                      },
+                      text: 'See Demo',
+                      fill: true,
+                      primaryColor: Theme.of(context).primaryColor,
+                      secondaryColor: Colors.white,
+                    ),
+
                     const SizedBox(height: 20),
 
                     Text(
