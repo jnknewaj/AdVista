@@ -1,4 +1,5 @@
 import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
+import 'package:advista/domain/advertising/my_ad_manager.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
@@ -11,7 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DemoProfilePage extends StatelessWidget {
-  const DemoProfilePage({super.key});
+  // TODO Temp. Must follow BLOC later
+  final MyAdManager _adManager = MyAdManager();
+  DemoProfilePage({super.key}) {
+    _adManager.loadAd();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +27,14 @@ class DemoProfilePage extends StatelessWidget {
               getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
         )
       ],
-      child: const _Handler(),
+      child: _Handler(_adManager),
     );
   }
 }
 
 class _Handler extends StatelessWidget {
-  const _Handler();
+  final MyAdManager _adManager;
+  const _Handler(this._adManager);
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +61,7 @@ class _Handler extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
+              _adManager.showAd();
               navigateAndRemoveUntil(context, const AuthGate());
             },
           ),

@@ -69,9 +69,9 @@ class _Handler extends HookWidget {
           Expanded(
             child: IndexedStack(
               index: currentTab.value,
-              children: const <Widget>[
-                DemoMetricsPage(),
-                DemoAppsListPage(),
+              children: <Widget>[
+                const DemoMetricsPage(),
+                const DemoAppsListPage(),
                 DemoProfilePage(),
               ],
             ),
