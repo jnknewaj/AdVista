@@ -2,6 +2,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
+import 'package:advista/presentation/demo/pages/demo_country_list_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -103,8 +104,7 @@ class DemoCountryMetricsView extends ConsumerWidget {
             child: SimpleButton(
               text: 'Show All',
               onPressed: () {
-                showSnackbar(context,
-                    'Create AdMob Account and Use This App To Have Clear Picture of Your App Performance');
+                navigateTo(context, const DemoCountryListPage());
               },
               primaryColor: Theme.of(context).primaryColor,
               secondaryColor: Theme.of(context).buttonTheme.secondaryColor,

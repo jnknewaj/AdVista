@@ -55,7 +55,7 @@ class _Handler extends StatelessWidget {
             );
           },
         ),
-        title: Text(appName()),
+        title: Text('${appName()} Demo'),
         centerTitle: true,
         actions: [
           IconButton(

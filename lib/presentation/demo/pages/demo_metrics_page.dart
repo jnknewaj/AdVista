@@ -21,7 +21,7 @@ class DemoMetricsPage extends StatelessWidget {
         )
       ],
       child: Scaffold(
-        appBar: AppBar(title: const Text('AdVista'), centerTitle: true),
+        appBar: AppBar(title: const Text('AdVista Demo'), centerTitle: true),
         body: const _Handler(),
       ),
     );
