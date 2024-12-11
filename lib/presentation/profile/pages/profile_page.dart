@@ -1,3 +1,4 @@
+import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/auth/login_page.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
+import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 import 'package:advista/presentation/profile/widgets/profile_info_card.dart';
 import 'package:advista/presentation/profile/widgets/profile_info_card_shimmer.dart';
@@ -31,7 +33,11 @@ class ProfilePage extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AcOpeningDateBloc>()
             ..add(const AcOpeningDateEvent.started()),
-        )
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -172,6 +178,17 @@ class _Handler extends StatelessWidget {
               },
             ),
             const TotalEarningCard(),
+            BlocBuilder<NativeAdBloc, NativeAdState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  loaded: (s) => NativeAdWidget(
+                    nativeAd: s.nativeAd,
+                    size: NativeAdSize.large,
+                  ),
+                  orElse: () => const SizedBox(),
+                );
+              },
+            ),
           ],
         ),
       ),

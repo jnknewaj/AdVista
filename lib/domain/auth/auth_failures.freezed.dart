@@ -28,6 +28,7 @@ mixin _$AuthFailure {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$AuthFailure {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +58,7 @@ mixin _$AuthFailure {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +74,7 @@ mixin _$AuthFailure {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +89,7 @@ mixin _$AuthFailure {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +104,7 @@ mixin _$AuthFailure {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -176,6 +182,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return cancelledByUser();
   }
@@ -193,6 +200,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return cancelledByUser?.call();
   }
@@ -210,6 +218,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -231,6 +240,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return cancelledByUser(this);
   }
@@ -248,6 +258,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -265,6 +276,7 @@ class _$CancelledByUserImpl implements CancelledByUser {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -356,6 +368,7 @@ class _$ServerErrorImpl implements ServerError {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return serverError(msg);
   }
@@ -373,6 +386,7 @@ class _$ServerErrorImpl implements ServerError {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return serverError?.call(msg);
   }
@@ -390,6 +404,7 @@ class _$ServerErrorImpl implements ServerError {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -411,6 +426,7 @@ class _$ServerErrorImpl implements ServerError {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return serverError(this);
   }
@@ -428,6 +444,7 @@ class _$ServerErrorImpl implements ServerError {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return serverError?.call(this);
   }
@@ -445,6 +462,7 @@ class _$ServerErrorImpl implements ServerError {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -517,6 +535,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return noAccessToken();
   }
@@ -534,6 +553,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return noAccessToken?.call();
   }
@@ -551,6 +571,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (noAccessToken != null) {
@@ -572,6 +593,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return noAccessToken(this);
   }
@@ -589,6 +611,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return noAccessToken?.call(this);
   }
@@ -606,6 +629,7 @@ class _$NoAccessTokenImpl implements NoAccessToken {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (noAccessToken != null) {
@@ -670,6 +694,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return noRefreshToken();
   }
@@ -687,6 +712,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return noRefreshToken?.call();
   }
@@ -704,6 +730,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (noRefreshToken != null) {
@@ -725,6 +752,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return noRefreshToken(this);
   }
@@ -742,6 +770,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return noRefreshToken?.call(this);
   }
@@ -759,6 +788,7 @@ class _$NoRefreshTokenImpl implements NoRefreshToken {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (noRefreshToken != null) {
@@ -823,6 +853,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return noServerAuthCode();
   }
@@ -840,6 +871,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return noServerAuthCode?.call();
   }
@@ -857,6 +889,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (noServerAuthCode != null) {
@@ -878,6 +911,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return noServerAuthCode(this);
   }
@@ -895,6 +929,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return noServerAuthCode?.call(this);
   }
@@ -912,6 +947,7 @@ class _$NoServerAuthCodeImpl implements NoServerAuthCode {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (noServerAuthCode != null) {
@@ -977,6 +1013,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return tokenExchangeFailed();
   }
@@ -994,6 +1031,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return tokenExchangeFailed?.call();
   }
@@ -1011,6 +1049,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (tokenExchangeFailed != null) {
@@ -1032,6 +1071,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return tokenExchangeFailed(this);
   }
@@ -1049,6 +1089,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return tokenExchangeFailed?.call(this);
   }
@@ -1066,6 +1107,7 @@ class _$TokenExchangeFailedImpl implements TokenExchangeFailed {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (tokenExchangeFailed != null) {
@@ -1130,6 +1172,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return failedToStoreToken();
   }
@@ -1147,6 +1190,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return failedToStoreToken?.call();
   }
@@ -1164,6 +1208,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (failedToStoreToken != null) {
@@ -1185,6 +1230,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return failedToStoreToken(this);
   }
@@ -1202,6 +1248,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return failedToStoreToken?.call(this);
   }
@@ -1219,6 +1266,7 @@ class _$FailedToStoreTokenImpl implements FailedToStoreToken {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (failedToStoreToken != null) {
@@ -1283,6 +1331,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return notSignedIn();
   }
@@ -1300,6 +1349,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return notSignedIn?.call();
   }
@@ -1317,6 +1367,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (notSignedIn != null) {
@@ -1338,6 +1389,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return notSignedIn(this);
   }
@@ -1355,6 +1407,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return notSignedIn?.call(this);
   }
@@ -1372,6 +1425,7 @@ class _$NotSignedInImpl implements NotSignedIn {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (notSignedIn != null) {
@@ -1436,6 +1490,7 @@ class _$NetworkErrorImpl implements NetworkError {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return networkError();
   }
@@ -1453,6 +1508,7 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return networkError?.call();
   }
@@ -1470,6 +1526,7 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (networkError != null) {
@@ -1491,6 +1548,7 @@ class _$NetworkErrorImpl implements NetworkError {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return networkError(this);
   }
@@ -1508,6 +1566,7 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return networkError?.call(this);
   }
@@ -1525,6 +1584,7 @@ class _$NetworkErrorImpl implements NetworkError {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (networkError != null) {
@@ -1624,6 +1684,7 @@ class _$UnknownImpl implements Unknown {
     required TResult Function() notSignedIn,
     required TResult Function() networkError,
     required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
   }) {
     return unknown(code, msg);
   }
@@ -1641,6 +1702,7 @@ class _$UnknownImpl implements Unknown {
     TResult? Function()? notSignedIn,
     TResult? Function()? networkError,
     TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
   }) {
     return unknown?.call(code, msg);
   }
@@ -1658,6 +1720,7 @@ class _$UnknownImpl implements Unknown {
     TResult Function()? notSignedIn,
     TResult Function()? networkError,
     TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1679,6 +1742,7 @@ class _$UnknownImpl implements Unknown {
     required TResult Function(NotSignedIn value) notSignedIn,
     required TResult Function(NetworkError value) networkError,
     required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
   }) {
     return unknown(this);
   }
@@ -1696,6 +1760,7 @@ class _$UnknownImpl implements Unknown {
     TResult? Function(NotSignedIn value)? notSignedIn,
     TResult? Function(NetworkError value)? networkError,
     TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
   }) {
     return unknown?.call(this);
   }
@@ -1713,6 +1778,7 @@ class _$UnknownImpl implements Unknown {
     TResult Function(NotSignedIn value)? notSignedIn,
     TResult Function(NetworkError value)? networkError,
     TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1733,5 +1799,200 @@ abstract class Unknown implements AuthFailure {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnknownImplCopyWith<_$UnknownImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PlatformFailureImplCopyWith<$Res> {
+  factory _$$PlatformFailureImplCopyWith(_$PlatformFailureImpl value,
+          $Res Function(_$PlatformFailureImpl) then) =
+      __$$PlatformFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
+}
+
+/// @nodoc
+class __$$PlatformFailureImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$PlatformFailureImpl>
+    implements _$$PlatformFailureImplCopyWith<$Res> {
+  __$$PlatformFailureImplCopyWithImpl(
+      _$PlatformFailureImpl _value, $Res Function(_$PlatformFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$PlatformFailureImpl(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlatformFailureImpl implements PlatformFailure {
+  const _$PlatformFailureImpl(this.msg);
+
+  @override
+  final String msg;
+
+  @override
+  String toString() {
+    return 'AuthFailure.platformFailure(msg: $msg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlatformFailureImpl &&
+            (identical(other.msg, msg) || other.msg == msg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlatformFailureImplCopyWith<_$PlatformFailureImpl> get copyWith =>
+      __$$PlatformFailureImplCopyWithImpl<_$PlatformFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function(String? msg) serverError,
+    required TResult Function() noAccessToken,
+    required TResult Function() noRefreshToken,
+    required TResult Function() noServerAuthCode,
+    required TResult Function() tokenExchangeFailed,
+    required TResult Function() failedToStoreToken,
+    required TResult Function() notSignedIn,
+    required TResult Function() networkError,
+    required TResult Function(String? code, String? msg) unknown,
+    required TResult Function(String msg) platformFailure,
+  }) {
+    return platformFailure(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? cancelledByUser,
+    TResult? Function(String? msg)? serverError,
+    TResult? Function()? noAccessToken,
+    TResult? Function()? noRefreshToken,
+    TResult? Function()? noServerAuthCode,
+    TResult? Function()? tokenExchangeFailed,
+    TResult? Function()? failedToStoreToken,
+    TResult? Function()? notSignedIn,
+    TResult? Function()? networkError,
+    TResult? Function(String? code, String? msg)? unknown,
+    TResult? Function(String msg)? platformFailure,
+  }) {
+    return platformFailure?.call(msg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function(String? msg)? serverError,
+    TResult Function()? noAccessToken,
+    TResult Function()? noRefreshToken,
+    TResult Function()? noServerAuthCode,
+    TResult Function()? tokenExchangeFailed,
+    TResult Function()? failedToStoreToken,
+    TResult Function()? notSignedIn,
+    TResult Function()? networkError,
+    TResult Function(String? code, String? msg)? unknown,
+    TResult Function(String msg)? platformFailure,
+    required TResult orElse(),
+  }) {
+    if (platformFailure != null) {
+      return platformFailure(msg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(NoAccessToken value) noAccessToken,
+    required TResult Function(NoRefreshToken value) noRefreshToken,
+    required TResult Function(NoServerAuthCode value) noServerAuthCode,
+    required TResult Function(TokenExchangeFailed value) tokenExchangeFailed,
+    required TResult Function(FailedToStoreToken value) failedToStoreToken,
+    required TResult Function(NotSignedIn value) notSignedIn,
+    required TResult Function(NetworkError value) networkError,
+    required TResult Function(Unknown value) unknown,
+    required TResult Function(PlatformFailure value) platformFailure,
+  }) {
+    return platformFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(NoAccessToken value)? noAccessToken,
+    TResult? Function(NoRefreshToken value)? noRefreshToken,
+    TResult? Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult? Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult? Function(FailedToStoreToken value)? failedToStoreToken,
+    TResult? Function(NotSignedIn value)? notSignedIn,
+    TResult? Function(NetworkError value)? networkError,
+    TResult? Function(Unknown value)? unknown,
+    TResult? Function(PlatformFailure value)? platformFailure,
+  }) {
+    return platformFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(NoAccessToken value)? noAccessToken,
+    TResult Function(NoRefreshToken value)? noRefreshToken,
+    TResult Function(NoServerAuthCode value)? noServerAuthCode,
+    TResult Function(TokenExchangeFailed value)? tokenExchangeFailed,
+    TResult Function(FailedToStoreToken value)? failedToStoreToken,
+    TResult Function(NotSignedIn value)? notSignedIn,
+    TResult Function(NetworkError value)? networkError,
+    TResult Function(Unknown value)? unknown,
+    TResult Function(PlatformFailure value)? platformFailure,
+    required TResult orElse(),
+  }) {
+    if (platformFailure != null) {
+      return platformFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlatformFailure implements AuthFailure {
+  const factory PlatformFailure(final String msg) = _$PlatformFailureImpl;
+
+  String get msg;
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlatformFailureImplCopyWith<_$PlatformFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

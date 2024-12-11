@@ -17,8 +17,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AdvertisingBloc>()
-        ..add(const AdvertisingEvent.bannerRequested()),
+      // Temporarily removed banner ad
+      create: (context) => getIt<AdvertisingBloc>(),
       child: const _Handler(),
     );
   }
@@ -30,23 +30,10 @@ class _Handler extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentTab = useState(0);
+    // To prevent pre loading
+    final pages = useState<List<Widget?>>([const MetricsPage(), null, null]);
     return BlocListener<AdvertisingBloc, AdvertisingState>(
-      listener: (context, state) {
-        state.map(
-          initial: (e) {
-            cprint('SLM MAL', e.toString());
-          },
-          loading: (e) {
-            cprint('SLM MAL', e.toString());
-          },
-          loaded: (e) {
-            cprint('SLM MAL', e.toString());
-          },
-          failure: (e) {
-            cprint('SLM MAL', e.toString());
-          },
-        );
-      },
+      listener: (context, state) {},
       child: Scaffold(
         bottomNavigationBar: Container(
           child: SafeArea(
@@ -78,6 +65,14 @@ class _Handler extends HookWidget {
                 selectedIndex: currentTab.value,
                 onTabChange: (int index) {
                   currentTab.value = index;
+                  // ADDED: Dynamically load the selected page
+                  if (pages.value[index] == null) {
+                    if (index == 1) {
+                      pages.value[index] = const AppsListPage();
+                    } else if (index == 2) {
+                      pages.value[index] = const ProfilePage();
+                    }
+                  }
                 },
               ),
             ),
@@ -88,11 +83,9 @@ class _Handler extends HookWidget {
             Expanded(
               child: IndexedStack(
                 index: currentTab.value,
-                children: const <Widget>[
-                  MetricsPage(),
-                  AppsListPage(),
-                  ProfilePage(),
-                ],
+                children: pages.value
+                    .map((page) => page ?? const SizedBox())
+                    .toList(),
               ),
             ),
             BlocBuilder<AdvertisingBloc, AdvertisingState>(

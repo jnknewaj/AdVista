@@ -14,4 +14,5 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.notSignedIn() = NotSignedIn;
   const factory AuthFailure.networkError() = NetworkError;
   const factory AuthFailure.unknown({String? code, String? msg}) = Unknown;
+  const factory AuthFailure.platformFailure(String msg) = PlatformFailure;
 }

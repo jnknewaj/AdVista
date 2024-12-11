@@ -3,6 +3,7 @@ import 'package:advista/domain/auth/auth_tokens.dart';
 import 'package:advista/domain/auth/i_auth_facade.dart';
 import 'package:advista/infrastructure/auth/auth_tokens_dto.dart';
 import 'package:advista/infrastructure/auth/token_api_client.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/helper.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -68,8 +69,11 @@ class GoogleAuthFacade implements IAuthFacade {
         await _googleSignIn.signOut();
         return left(const AuthFailure.tokenExchangeFailed());
       }
+    } on PlatformException catch (e) {
+      print('ERRRRR : ${e.toString()}');
+      return left(AuthFailure.platformFailure(
+          'Failures in Platform ---> Code : ${e.code}. Message : ${e.message}. Details : ${e.details}'));
     } catch (e) {
-      print('ERROR: ${e.toString()}');
       await _googleSignIn.signOut();
       return left(AuthFailure.unknown(msg: e.toString()));
     }

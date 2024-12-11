@@ -71,10 +71,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => googleInjectableModule.googleSignIn);
     gh.lazySingleton<_i439.DateService>(() => _i439.DateService());
     gh.lazySingleton<_i299.IAdRepository>(() => _i968.AdRepository());
-    gh.factory<_i319.AdvertisingBloc>(
-        () => _i319.AdvertisingBloc(gh<_i299.IAdRepository>()));
     gh.factory<_i558.NativeAdBloc>(
         () => _i558.NativeAdBloc(gh<_i299.IAdRepository>()));
+    gh.factory<_i319.AdvertisingBloc>(
+        () => _i319.AdvertisingBloc(gh<_i299.IAdRepository>()));
     gh.lazySingleton<_i1066.TokenApiClient>(
         () => _i1066.TokenApiClient(gh<_i519.Client>()));
     gh.lazySingleton<_i621.BaseService>(
