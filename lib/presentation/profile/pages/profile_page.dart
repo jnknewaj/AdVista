@@ -2,9 +2,9 @@ import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
+import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
-import 'package:advista/presentation/auth/login_page.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
 import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
@@ -38,6 +38,9 @@ class ProfilePage extends StatelessWidget {
           create: (context) =>
               getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
         ),
+        BlocProvider(
+          create: (context) => getIt<TodaysMetricsBloc>(),
+        )
       ],
       child: MultiBlocListener(
         listeners: [
@@ -192,40 +195,6 @@ class _Handler extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  void _showLogoutConfirmationDialog(BuildContext context) {
-    final authCheckBloc = context.read<AuthCheckBloc>();
-
-    showDialog(
-      context: context,
-      builder: (dialogContext) {
-        return BlocProvider.value(
-          value: authCheckBloc,
-          child: AlertDialog(
-            title: const Text('Confirm Logout'),
-            content: const Text('Are you sure you want to log out?'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(dialogContext).pop(); // Close the dialog
-                },
-                child: const Text('Cancel'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(dialogContext).pop(); // Close the dialog
-                  dialogContext.read<AuthCheckBloc>().add(
-                        const AuthCheckEvent.signOutPressed(),
-                      );
-                },
-                child: const Text('Logout'),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
