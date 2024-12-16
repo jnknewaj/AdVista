@@ -82,6 +82,10 @@ double screenHeightPortion(BuildContext context, double portion) {
   return MediaQuery.of(context).size.height * portion;
 }
 
+double screenWidthPortion(BuildContext context, double portion) {
+  return MediaQuery.of(context).size.width * portion;
+}
+
 String getFlagEmoji(String countryCode) {
   const int flagOffset = 0x1F1E6; // Unicode offset for 'A'
   const int asciiOffset = 0x41; // ASCII offset for 'A'
@@ -210,3 +214,16 @@ String formatDateString(String dateStr) {
     return 'E'; // Handle invalid format
   }
 }
+
+final colorsForPieChart = [
+  Colors.blue,
+  const Color.fromARGB(255, 233, 30, 206),
+  Colors.green,
+  Colors.yellow,
+  Colors.purple,
+  Colors.cyan,
+  Colors.orange,
+  Colors.pink,
+  Colors.teal,
+  Colors.lime,
+];

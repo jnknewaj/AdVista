@@ -1,5 +1,6 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/presentation/charts/country/pages/country_chart_page.dart';
 import 'package:advista/presentation/charts/metrics/pages/metrics_chart_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
@@ -44,7 +45,7 @@ class CountryMetricsView extends ConsumerWidget {
                       ),
                     ),
                     onTap: () {
-                      navigateTo(context, const MetricsChartPage());
+                      navigateTo(context, const CountryChartPage());
                     },
                   ),
                 ],
