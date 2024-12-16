@@ -56,55 +56,33 @@ class _Handler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<NativeAdBloc, NativeAdState>(
-          listener: (context, state) {
-            state.map(
-              initial: (e) {
-                cprint('NAT listen', e.toString());
-              },
-              loading: (e) {
-                cprint('NAT listen', e.toString());
-              },
-              loaded: (e) {
-                cprint('NAT listen', e.toString());
-              },
-              failure: (e) {
-                cprint('NAT listen', e.toString());
-              },
-            );
-          },
-        )
-      ],
-      child: SafeArea(
-        child: Column(
-          children: [
-            const DashboardTopPart(),
-            Expanded(
-              child: ListView(
-                children: [
-                  const MetricsSummaryView(),
-                  const Divider(),
-                  const CountryMetricsView(),
-                  const Divider(),
-                  BlocBuilder<NativeAdBloc, NativeAdState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        loaded: (s) => NativeAdWidget(
-                          nativeAd: s.nativeAd,
-                          size: NativeAdSize.large,
-                        ),
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  ),
-                  const AdUnitMetricsView(),
-                ],
-              ),
-            )
-          ],
-        ),
+    return SafeArea(
+      child: Column(
+        children: [
+          const DashboardTopPart(),
+          Expanded(
+            child: ListView(
+              children: [
+                const MetricsSummaryView(),
+                const Divider(),
+                const CountryMetricsView(),
+                const Divider(),
+                BlocBuilder<NativeAdBloc, NativeAdState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loaded: (s) => NativeAdWidget(
+                        nativeAd: s.nativeAd,
+                        size: NativeAdSize.large,
+                      ),
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                const AdUnitMetricsView(),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

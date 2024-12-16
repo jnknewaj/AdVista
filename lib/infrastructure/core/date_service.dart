@@ -50,4 +50,11 @@ class DateService {
         DateTime(today.year - 1, 12, 31); // December 31st of the previous year
     return DateTimeRange(start: firstDayOfLastYear, end: lastDayOfLastYear);
   }
+
+  DateTimeRange getLast12Months() {
+    final today = DateTime.now();
+    final firstDay12MonthsAgo = DateTime(today.year, today.month - 11, 1);
+    final lastDay = DateTime(today.year, today.month, today.day);
+    return DateTimeRange(start: firstDay12MonthsAgo, end: lastDay);
+  }
 }

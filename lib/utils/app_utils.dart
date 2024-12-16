@@ -4,6 +4,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
+import 'package:advista/domain/metrics/metrics_with_date.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -178,4 +179,34 @@ String appName() => 'AdVista';
 DateTime stringToDateTime(String dateString) {
   DateFormat dateFormat = DateFormat("d MMMM, yyyy");
   return dateFormat.parse(dateString);
+}
+
+T findMaxForMatricsWithDate<T extends num>(
+    List<MetricsWithDate> metricsList, T Function(MetricsWithDate) selector) {
+  return metricsList.map(selector).reduce((a, b) => a > b ? a : b);
+}
+
+T findMinForMatricsWithDate<T extends num>(
+    List<MetricsWithDate> metricsList, T Function(MetricsWithDate) selector) {
+  return metricsList.map(selector).reduce((a, b) => a < b ? a : b);
+}
+
+String formatDateString(String dateStr) {
+  DateTime date;
+
+  if (dateStr.length == 8) {
+    // Format: YYYYMMDD (e.g., 20241209)
+    date = DateTime.parse(dateStr);
+    final formatter = DateFormat('d MMM');
+    return formatter.format(date); // Outputs "d MMM", e.g., "9 Dec"
+  } else if (dateStr.length == 6) {
+    // Format: YYYYMM (e.g., 202301)
+    final year = int.parse(dateStr.substring(0, 4));
+    final month = int.parse(dateStr.substring(4, 6));
+    date = DateTime(year, month);
+    final formatter = DateFormat('MMM'); // Only the month name
+    return formatter.format(date); // Outputs "MMM", e.g., "Jan"
+  } else {
+    return 'E'; // Handle invalid format
+  }
 }

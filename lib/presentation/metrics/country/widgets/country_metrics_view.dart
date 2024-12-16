@@ -1,9 +1,11 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/presentation/charts/metrics/pages/metrics_chart_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,13 +23,31 @@ class CountryMetricsView extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Countrywise Data",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Theme.of(context).primaryColor,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Countrywise Data",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Text(
+                      'See Chart',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    onTap: () {
+                      navigateTo(context, const MetricsChartPage());
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 5),
               MetricsHorizontalList(

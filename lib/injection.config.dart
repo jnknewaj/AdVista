@@ -28,6 +28,8 @@ import 'application/metrics/apps_metrics/apps_data_bloc/apps_data_bloc_bloc.dart
     as _i653;
 import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
     as _i651;
+import 'application/metrics/metrics_with_date/metrics_with_date_bloc.dart'
+    as _i587;
 import 'application/metrics/todays_metrics/todays_metrics_bloc.dart' as _i559;
 import 'domain/advertising/i_ad_repository.dart' as _i299;
 import 'domain/apps_metrics/i_apps_data_repository.dart' as _i272;
@@ -104,16 +106,19 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i519.Client>(),
           gh<_i357.ITokenRepository>(),
         ));
-    gh.lazySingleton<_i566.IAccountRepository>(
-        () => _i876.AdmobAccountRepository(gh<_i823.AccountService>()));
     gh.lazySingleton<_i628.MetricsService>(() => _i628.MetricsService(
           gh<_i823.AccountService>(),
           gh<_i519.Client>(),
           gh<_i357.ITokenRepository>(),
-          gh<_i439.DateService>(),
         ));
+    gh.lazySingleton<_i566.IAccountRepository>(
+        () => _i876.AdmobAccountRepository(gh<_i823.AccountService>()));
     gh.lazySingleton<_i839.IMetricsRepository>(
         () => _i18.MetricsRepository(gh<_i628.MetricsService>()));
+    gh.factory<_i587.MetricsWithDateBloc>(() => _i587.MetricsWithDateBloc(
+          gh<_i839.IMetricsRepository>(),
+          gh<_i439.DateService>(),
+        ));
     gh.factory<_i747.AdmobAccountBloc>(() => _i747.AdmobAccountBloc(
           gh<_i566.IAccountRepository>(),
           gh<_i823.AccountService>(),
