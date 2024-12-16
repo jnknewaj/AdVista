@@ -4,8 +4,8 @@ import 'package:advista/utils/app_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class BarChartForMetrics extends StatelessWidget {
-  const BarChartForMetrics({
+class LineChartForMetrics extends StatelessWidget {
+  const LineChartForMetrics({
     required this.metricsList,
     required this.selectedMetrics,
   });
@@ -15,7 +15,6 @@ class BarChartForMetrics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Map selectedMetrics to the corresponding value extractor
     double Function(MetricsWithDate) valueExtractor;
     switch (selectedMetrics.value) {
       case MetricsTitle.impression:
@@ -37,38 +36,45 @@ class BarChartForMetrics extends StatelessWidget {
         valueExtractor = (m) => m.earnings;
     }
 
-    // Compute max value and scaling factor based on the selected metric
     final maxValue = findMaxForMatricsWithDate(metricsList, valueExtractor);
     final scalingFactor = maxValue < 0.01 ? 1e6 : (maxValue < 1 ? 1e3 : 1);
     final adjustedMaxY = (maxValue * scalingFactor).ceilToDouble();
 
     return SizedBox(
       height: screenHeightPortion(context, 0.45),
-      child: BarChart(
-        duration: const Duration(milliseconds: 1000),
-        curve: Curves.ease,
-        BarChartData(
+      child: LineChart(
+        LineChartData(
           minY: 0,
           maxY: adjustedMaxY,
           backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
-          barGroups: List.generate(
-            metricsList.length,
-            (index) {
-              final theValue = valueExtractor(metricsList[index]);
-              return BarChartGroupData(
-                showingTooltipIndicators: [0],
-                x: index,
-                barRods: [
-                  BarChartRodData(
-                    toY: theValue * scalingFactor,
-                    width: 10,
-                    borderRadius: BorderRadius.zero,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ],
-              );
-            },
-          ),
+          lineBarsData: [
+            LineChartBarData(
+              isCurved: false,
+              color: Theme.of(context).primaryColor,
+              barWidth: 2,
+              spots: List.generate(
+                metricsList.length,
+                (index) {
+                  final theValue = valueExtractor(metricsList[index]);
+                  return FlSpot(
+                    index.toDouble(),
+                    theValue * scalingFactor,
+                  );
+                },
+              ),
+              belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).primaryColor.withOpacity(0.3),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+          ],
           titlesData: FlTitlesData(
             topTitles: const AxisTitles(
               sideTitles: SideTitles(showTitles: false),
@@ -90,13 +96,10 @@ class BarChartForMetrics extends StatelessWidget {
                       selectedMetrics.value == MetricsTitle.matchRate) {
                     return Text(
                       displayValue < 0.01
-                          ? displayValue.toStringAsExponential(
-                              2) // Use exponential format for tiny values
-                          : displayValue.toStringAsFixed(
-                              2), // Use fixed-point notation for larger earnings values
+                          ? displayValue.toStringAsExponential(2)
+                          : displayValue.toStringAsFixed(2),
                     );
                   } else {
-                    // For other metrics (like impressions, requests), show integer values
                     return Text(
                       displayValue < 1
                           ? displayValue.toStringAsFixed(0)
@@ -112,31 +115,38 @@ class BarChartForMetrics extends StatelessWidget {
                 getTitlesWidget: (value, meta) {
                   int index = value.toInt();
                   if (index >= 0 && index < metricsList.length) {
-                    final date = metricsList[index].date;
-                    return Text(
-                      formatDateString(date),
-                      style: const TextStyle(
-                        fontSize: 10,
-                      ),
-                    );
+                    final year = metricsList[index].date;
+
+                    if (index == 0 || metricsList[index - 1].date != year) {
+                      return Text(
+                        year,
+                        style: const TextStyle(
+                          fontSize: 10,
+                        ),
+                      );
+                    }
                   }
                   return const Text('');
                 },
               ),
             ),
           ),
-          barTouchData: BarTouchData(
-            touchTooltipData: BarTouchTooltipData(
-              getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                return BarTooltipItem(
-                  selectedMetrics.value == MetricsTitle.earnings
-                      ? (rod.toY / scalingFactor).toStringAsFixed(3)
-                      : (rod.toY / scalingFactor).toStringAsFixed(0),
-                  const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                );
+          gridData: const FlGridData(show: true),
+          borderData: FlBorderData(show: true),
+          lineTouchData: LineTouchData(
+            touchTooltipData: LineTouchTooltipData(
+              getTooltipItems: (touchedSpots) {
+                return touchedSpots.map((spot) {
+                  return LineTooltipItem(
+                    selectedMetrics.value == MetricsTitle.earnings
+                        ? (spot.y / scalingFactor).toStringAsFixed(3)
+                        : (spot.y / scalingFactor).toStringAsFixed(0),
+                    const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                }).toList();
               },
             ),
           ),

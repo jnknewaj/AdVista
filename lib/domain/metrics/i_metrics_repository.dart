@@ -27,4 +27,8 @@ abstract class IMetricsRepository {
       getMetricsForMonthDimension(
     DateTimeRange range,
   );
+
+  Future<Either<MetricsFailures, List<MetricsWithDate>>> getMetricsForFiveYears(
+    List<DateTimeRange> rangeList,
+  );
 }

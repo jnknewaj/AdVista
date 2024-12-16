@@ -57,4 +57,17 @@ class DateService {
     final lastDay = DateTime(today.year, today.month, today.day);
     return DateTimeRange(start: firstDay12MonthsAgo, end: lastDay);
   }
+
+  List<DateTimeRange> generateYearlyDateRanges(int years) {
+    final now = DateTime.now();
+    List<DateTimeRange> ranges = [];
+
+    for (int i = 0; i < years; i++) {
+      final startOfYear = DateTime(now.year - i, 1, 1);
+      final endOfYear = DateTime(now.year - i, 12, 31, 23, 59, 59);
+      ranges.add(DateTimeRange(start: startOfYear, end: endOfYear));
+    }
+
+    return ranges;
+  }
 }

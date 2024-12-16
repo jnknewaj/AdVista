@@ -24,7 +24,17 @@ Map<String, dynamic> buildRequestBody(
         }
       },
       "dimensions": dimensions,
-      "metrics": ["CLICKS", "AD_REQUESTS", "IMPRESSIONS", "ESTIMATED_EARNINGS"],
+      "metrics": [
+        "AD_REQUESTS",
+        "CLICKS",
+        "ESTIMATED_EARNINGS",
+        "IMPRESSIONS",
+        "IMPRESSION_CTR",
+        "IMPRESSION_RPM",
+        "MATCHED_REQUESTS",
+        "MATCH_RATE",
+        "SHOW_RATE"
+      ],
       "localizationSettings": {"currencyCode": "USD", "languageCode": "en"}
     }
   };

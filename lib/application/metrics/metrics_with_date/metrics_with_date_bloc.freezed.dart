@@ -20,18 +20,21 @@ mixin _$MetricsWithDateEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() twelveMonthsRequested,
+    required TResult Function() last5YearsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? twelveMonthsRequested,
+    TResult? Function()? last5YearsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? twelveMonthsRequested,
+    TResult Function()? last5YearsRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$MetricsWithDateEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_TwelveMonthsRequested value)
         twelveMonthsRequested,
+    required TResult Function(_Last5YearsRequested value) last5YearsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult? Function(_Last5YearsRequested value)? last5YearsRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult Function(_Last5YearsRequested value)? last5YearsRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +128,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() twelveMonthsRequested,
+    required TResult Function() last5YearsRequested,
   }) {
     return started();
   }
@@ -131,6 +138,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? twelveMonthsRequested,
+    TResult? Function()? last5YearsRequested,
   }) {
     return started?.call();
   }
@@ -140,6 +148,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? twelveMonthsRequested,
+    TResult Function()? last5YearsRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -154,6 +163,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_TwelveMonthsRequested value)
         twelveMonthsRequested,
+    required TResult Function(_Last5YearsRequested value) last5YearsRequested,
   }) {
     return started(this);
   }
@@ -163,6 +173,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult? Function(_Last5YearsRequested value)? last5YearsRequested,
   }) {
     return started?.call(this);
   }
@@ -172,6 +183,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult Function(_Last5YearsRequested value)? last5YearsRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -231,6 +243,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() twelveMonthsRequested,
+    required TResult Function() last5YearsRequested,
   }) {
     return twelveMonthsRequested();
   }
@@ -240,6 +253,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? twelveMonthsRequested,
+    TResult? Function()? last5YearsRequested,
   }) {
     return twelveMonthsRequested?.call();
   }
@@ -249,6 +263,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? twelveMonthsRequested,
+    TResult Function()? last5YearsRequested,
     required TResult orElse(),
   }) {
     if (twelveMonthsRequested != null) {
@@ -263,6 +278,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
     required TResult Function(_Started value) started,
     required TResult Function(_TwelveMonthsRequested value)
         twelveMonthsRequested,
+    required TResult Function(_Last5YearsRequested value) last5YearsRequested,
   }) {
     return twelveMonthsRequested(this);
   }
@@ -272,6 +288,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult? Function(_Last5YearsRequested value)? last5YearsRequested,
   }) {
     return twelveMonthsRequested?.call(this);
   }
@@ -281,6 +298,7 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult Function(_Last5YearsRequested value)? last5YearsRequested,
     required TResult orElse(),
   }) {
     if (twelveMonthsRequested != null) {
@@ -292,6 +310,119 @@ class _$TwelveMonthsRequestedImpl implements _TwelveMonthsRequested {
 
 abstract class _TwelveMonthsRequested implements MetricsWithDateEvent {
   const factory _TwelveMonthsRequested() = _$TwelveMonthsRequestedImpl;
+}
+
+/// @nodoc
+abstract class _$$Last5YearsRequestedImplCopyWith<$Res> {
+  factory _$$Last5YearsRequestedImplCopyWith(_$Last5YearsRequestedImpl value,
+          $Res Function(_$Last5YearsRequestedImpl) then) =
+      __$$Last5YearsRequestedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$Last5YearsRequestedImplCopyWithImpl<$Res>
+    extends _$MetricsWithDateEventCopyWithImpl<$Res, _$Last5YearsRequestedImpl>
+    implements _$$Last5YearsRequestedImplCopyWith<$Res> {
+  __$$Last5YearsRequestedImplCopyWithImpl(_$Last5YearsRequestedImpl _value,
+      $Res Function(_$Last5YearsRequestedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MetricsWithDateEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$Last5YearsRequestedImpl implements _Last5YearsRequested {
+  const _$Last5YearsRequestedImpl();
+
+  @override
+  String toString() {
+    return 'MetricsWithDateEvent.last5YearsRequested()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Last5YearsRequestedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() twelveMonthsRequested,
+    required TResult Function() last5YearsRequested,
+  }) {
+    return last5YearsRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? twelveMonthsRequested,
+    TResult? Function()? last5YearsRequested,
+  }) {
+    return last5YearsRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? twelveMonthsRequested,
+    TResult Function()? last5YearsRequested,
+    required TResult orElse(),
+  }) {
+    if (last5YearsRequested != null) {
+      return last5YearsRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_TwelveMonthsRequested value)
+        twelveMonthsRequested,
+    required TResult Function(_Last5YearsRequested value) last5YearsRequested,
+  }) {
+    return last5YearsRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult? Function(_Last5YearsRequested value)? last5YearsRequested,
+  }) {
+    return last5YearsRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_TwelveMonthsRequested value)? twelveMonthsRequested,
+    TResult Function(_Last5YearsRequested value)? last5YearsRequested,
+    required TResult orElse(),
+  }) {
+    if (last5YearsRequested != null) {
+      return last5YearsRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Last5YearsRequested implements MetricsWithDateEvent {
+  const factory _Last5YearsRequested() = _$Last5YearsRequestedImpl;
 }
 
 /// @nodoc

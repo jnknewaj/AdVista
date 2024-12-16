@@ -6,4 +6,6 @@ class MetricsWithDateEvent with _$MetricsWithDateEvent {
   const factory MetricsWithDateEvent.started() = _Started;
   const factory MetricsWithDateEvent.twelveMonthsRequested() =
       _TwelveMonthsRequested;
+  const factory MetricsWithDateEvent.last5YearsRequested() =
+      _Last5YearsRequested;
 }

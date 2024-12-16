@@ -41,9 +41,16 @@ class MetricsWithDateBloc
       twelveMonthsRequested: (e) async {
         emit(const MetricsWithDateState.loading());
         final dateRange = _dateService.getLast12Months();
-        cprint('TAF start', formatToStd(dateRange.start));
-        cprint('TAF end', formatToStd(dateRange.end));
         final result = await _repository.getMetricsForMonthDimension(dateRange);
+        result.fold(
+          (f) => emit(MetricsWithDateState.failure(f)),
+          (s) => emit(MetricsWithDateState.loaded(s)),
+        );
+      },
+      last5YearsRequested: (e) async {
+        emit(const MetricsWithDateState.loading());
+        final dateRange = _dateService.generateYearlyDateRanges(5);
+        final result = await _repository.getMetricsForFiveYears(dateRange);
         result.fold(
           (f) => emit(MetricsWithDateState.failure(f)),
           (s) => emit(MetricsWithDateState.loaded(s)),

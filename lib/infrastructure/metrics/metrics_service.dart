@@ -267,4 +267,64 @@ class MetricsService {
       rethrow;
     }
   }
+
+  Future<List<MetricsWithDate>> getMetricsForFiveYears(
+    List<DateTimeRange> ranges,
+    List<String> dimensions,
+  ) async {
+    final accountId = await _accountService.getAccountId();
+    if (accountId == null) {
+      throw IdNotFoundException(msg: 'Account Id Not Found in Storage');
+    }
+
+    final accessToken = await _provideAccessToken();
+    final headers = buildHeaders(accessToken);
+    final String url =
+        "https://admob.googleapis.com/v1/accounts/$accountId/networkReport:generate";
+
+    List<MetricsWithDate> allMetrics = [];
+
+    for (var range in ranges) {
+      final requestBody = buildRequestBody(range, dimensions);
+
+      try {
+        final response = await _httpClient.post(
+          Uri.parse(url),
+          headers: headers,
+          body: jsonEncode(requestBody),
+        );
+
+        if (response.statusCode == 200) {
+          final jsonResponse = jsonDecode(response.body) as List<dynamic>;
+
+          final row1 = jsonResponse.firstWhere(
+            (element) =>
+                element is Map<String, dynamic> && element.containsKey('row'),
+            orElse: () => null,
+          );
+
+          allMetrics.add(MetricsWithDateDto.fromResponseAppendingYear(
+                  row1, range.start.year)
+              .toDomain());
+        } else {
+          throw ServerException(
+              message: 'HTTP error: ${response.statusCode}',
+              code: '${response.statusCode}');
+        }
+      } on Exception catch (e) {
+        // Catch and rethrow custom exceptions
+        if (e is SocketException ||
+            e is TimeoutException ||
+            e is ParsingException ||
+            e is TokenNotFoundException ||
+            e is ServerException ||
+            e is IdNotFoundException) {
+          rethrow;
+        }
+        throw Exception('Unhandled exception: $e');
+      }
+    }
+
+    return allMetrics;
+  }
 }

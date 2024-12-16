@@ -55,7 +55,15 @@ class _Handler extends HookWidget {
                     ..add(const MetricsWithDateEvent.twelveMonthsRequested()),
                   child: ChartSevenDays(selectedMetrics),
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 10),
+                BlocProvider(
+                  create: (context) => getIt<MetricsWithDateBloc>()
+                    ..add(const MetricsWithDateEvent.last5YearsRequested()),
+                  child: ChartSevenDays(
+                    selectedMetrics,
+                    chartType: ChartType.lineChart,
+                  ),
+                ),
               ],
             ),
           ),

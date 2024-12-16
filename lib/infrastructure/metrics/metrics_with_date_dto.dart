@@ -89,6 +89,41 @@ class MetricsWithDateDto with _$MetricsWithDateDto {
     );
   }
 
-  // factory MetricsWithDateDto.fromJson(Map<String, dynamic> json) =>
-  //     _$MetricsWithDateDtoFromJson(json);
+  factory MetricsWithDateDto.fromResponseAppendingYear(
+    Map<String, dynamic> entry,
+    int year,
+  ) {
+    final metricValues = entry['row']['metricValues'];
+
+    return MetricsWithDateDto(
+      date: year.toString(),
+      requests:
+          int.tryParse(metricValues['AD_REQUESTS']?['integerValue'] ?? '0') ??
+              0,
+      matchedRequests: int.tryParse(
+              metricValues['MATCHED_REQUESTS']?['integerValue'] ?? '0') ??
+          0,
+      clicks: int.tryParse(metricValues['CLICKS']?['integerValue'] ?? '0') ?? 0,
+      earnings: int.parse(metricValues['ESTIMATED_EARNINGS']['microsValue']) /
+          1000000.0,
+      impressions:
+          int.tryParse(metricValues['IMPRESSIONS']?['integerValue'] ?? '0') ??
+              0,
+      cTR: double.tryParse(
+              metricValues['IMPRESSION_CTR']?['doubleValue']?.toString() ??
+                  '0.0') ??
+          0.0,
+      eCPM: double.tryParse(
+              metricValues['IMPRESSION_RPM']?['doubleValue']?.toString() ??
+                  '0.0') ??
+          0.0,
+      matchRate: double.tryParse(
+              metricValues['MATCH_RATE']?['doubleValue']?.toString() ??
+                  '0.0') ??
+          0.0,
+      showRate: double.tryParse(
+              metricValues['SHOW_RATE']?['doubleValue']?.toString() ?? '0.0') ??
+          0.0,
+    );
+  }
 }
