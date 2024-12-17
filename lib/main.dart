@@ -11,8 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async {
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.updateRequestConfiguration(
@@ -22,6 +24,11 @@ void main() {
       ],
     ),
   );
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  ).catchError((e) {
+    cprint('PRS storage', e.toString());
+  });
   runApp(const ProviderScope(child: MyApp()));
 }
 

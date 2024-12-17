@@ -2,14 +2,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:advista/domain/apps_metrics/apps.dart';
+import 'package:advista/domain/apps_metrics/apps_metrics.dart';
 import 'package:advista/domain/auth/i_token_repository.dart';
 import 'package:advista/domain/auth/token_failures.dart';
 import 'package:advista/infrastructure/apps_metrics/apps_dto.dart';
+import 'package:advista/infrastructure/apps_metrics/apps_metrics_dto.dart';
 import 'package:advista/infrastructure/core/account_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_service_helper.dart';
 import 'package:advista/utils/helper.dart';
 import 'package:advista/utils/map.dart';
+import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
@@ -118,6 +121,52 @@ class AppsDataService {
     } on IdNotFoundException catch (_) {
       rethrow;
     } on HtmlException catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<List<AppsMetrics>> fetchAppsMetrics(DateTimeRange range) async {
+    final accountId = await _accountService.getAccountId();
+    if (accountId == null) {
+      throw IdNotFoundException(msg: 'Account Id Not Found in Storage');
+    }
+    final accessToken = await _provideAccessToken();
+
+    final requestBody = buildRequestBody(range, ["APP"]);
+    final headers = buildHeaders(accessToken);
+
+    String url =
+        "https://admob.googleapis.com/v1/accounts/$accountId/networkReport:generate";
+
+    try {
+      final response = await _httpClient.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+
+      if (response.statusCode == 200) {
+        final jsonResponse = jsonDecode(response.body) as List<dynamic>;
+        return jsonResponse
+            .where((entry) => entry.containsKey('row')) // Only process rows
+            .map((entry) => AppsMetricsDto.fromRow(entry).toDomain())
+            .toList();
+      } else {
+        throw ServerException(
+            message: 'Exception in http response. ',
+            code: 'Code : ${response.statusCode}');
+      }
+    } on SocketException catch (_) {
+      throw NetworkException('Check Network');
+    } on TimeoutException catch (_) {
+      throw TimeoutException('The request timed out.');
+    } on ParsingException catch (_) {
+      rethrow;
+    } on TokenNotFoundException catch (_) {
+      rethrow;
+    } on ServerException catch (e) {
+      throw ServerException(message: e.message, code: e.code);
+    } on IdNotFoundException catch (_) {
       rethrow;
     }
   }

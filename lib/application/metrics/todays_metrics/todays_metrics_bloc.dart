@@ -2,21 +2,22 @@ import 'package:advista/domain/core/i_account_repository.dart';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
-import 'package:advista/infrastructure/apps_metrics/apps_data_service.dart';
 import 'package:advista/infrastructure/core/date_service.dart';
+import 'package:advista/infrastructure/metrics/metrics_dto.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 
 part 'todays_metrics_event.dart';
 part 'todays_metrics_state.dart';
 part 'todays_metrics_bloc.freezed.dart';
 
 @injectable
-class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
+class TodaysMetricsBloc
+    extends HydratedBloc<TodaysMetricsEvent, TodaysMetricsState> {
   final IMetricsRepository _repository;
   final IAccountRepository _accountRepository;
   final DateService _dateService;
@@ -98,6 +99,27 @@ class TodaysMetricsBloc extends Bloc<TodaysMetricsEvent, TodaysMetricsState> {
     result.fold(
       (f) => emit(TodaysMetricsState.failed(f)),
       (s) => emit(TodaysMetricsState.loaded(s)),
+    );
+  }
+
+  @override
+  TodaysMetricsState? fromJson(Map<String, dynamic> json) {
+    cprint('PRS', 'FromJSon');
+    try {
+      final metricsDto = Metricsdto.fromHydratedBloc(json);
+      return TodaysMetricsState.loaded(metricsDto.toDomain());
+    } catch (e) {
+      cprint('PRS Err', e.toString());
+      return const TodaysMetricsState.initial();
+    }
+  }
+
+  @override
+  Map<String, dynamic>? toJson(TodaysMetricsState state) {
+    cprint('PRS', 'toJson');
+    return state.maybeWhen(
+      loaded: (metrics) => Metricsdto.fromDomain(metrics).toJson(),
+      orElse: () => null,
     );
   }
 }

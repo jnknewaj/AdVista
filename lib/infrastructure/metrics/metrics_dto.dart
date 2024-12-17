@@ -106,6 +106,20 @@ class Metricsdto with _$Metricsdto {
     );
   }
 
+  /// **New Function to Parse from Specific Format**
+  factory Metricsdto.fromHydratedBloc(Map<String, dynamic> formattedMap) {
+    return Metricsdto(
+      earnings: formattedMap['earnings'] ?? 0.0,
+      impression: formattedMap['impression'] ?? 0,
+      requests: formattedMap['requests'] ?? 0,
+      matchRate: formattedMap['matchRate'] ?? 0.0,
+      clicks: formattedMap['clicks'] ?? 0,
+      eCPM: formattedMap['eCPM'] ?? 0.0,
+      showRate: formattedMap['showRate'] ?? 0.0,
+      cTR: formattedMap['cTR'] ?? 0.0,
+    );
+  }
+
   factory Metricsdto.fromJson(Map<String, dynamic> json) =>
       _$MetricsdtoFromJson(json);
 }

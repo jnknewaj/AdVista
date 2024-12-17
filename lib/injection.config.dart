@@ -26,6 +26,8 @@ import 'application/core/account/admob_account_bloc/admob_account_bloc.dart'
 import 'application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart' as _i761;
 import 'application/metrics/apps_metrics/apps_data_bloc/apps_data_bloc_bloc.dart'
     as _i653;
+import 'application/metrics/apps_metrics/apps_metrics_bloc/apps_metrics_bloc.dart'
+    as _i648;
 import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
     as _i651;
 import 'application/metrics/metrics_with_date/metrics_with_date_bloc.dart'
@@ -149,6 +151,11 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i653.AppsDataBlocBloc>(
         () => _i653.AppsDataBlocBloc(gh<_i272.IAppsDataRepository>()));
+    gh.factory<_i648.AppsMetricsBloc>(() => _i648.AppsMetricsBloc(
+          gh<_i272.IAppsDataRepository>(),
+          gh<_i439.DateService>(),
+          gh<_i566.IAccountRepository>(),
+        ));
     return this;
   }
 }

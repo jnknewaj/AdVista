@@ -3,8 +3,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:advista/domain/apps_metrics/apps_data_failures.dart';
+import 'package:advista/domain/apps_metrics/apps_metrics.dart';
+import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/src/material/date.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:advista/domain/apps_metrics/apps.dart';
@@ -24,6 +27,33 @@ class AppsDataRepository implements IAppsDataRepository {
     } on SocketException catch (e) {
       return left(const AppsDataFailures.networkFailure('Check Network'));
     } on TimeoutException catch (e) {
+      return left(const AppsDataFailures.timeoutFailure('Request Timeout'));
+    } on ParsingException catch (e) {
+      return left(ParsingFailure('Parsing failed : ${e.message}'));
+    } on TokenNotFoundException catch (e) {
+      return left(AppsDataFailures.tokenNotFoundFailure(e.message));
+    } on ServerException catch (e) {
+      return left(AppsDataFailures.serverFailure(
+          'Server error. Message : ${e.message}. Code : ${e.code}'));
+    } on IdNotFoundException catch (e) {
+      return left(AppsDataFailures.idNotFound(e.msg));
+    } on HtmlException catch (e) {
+      return left(AppsDataFailures.htmlFailure(e.message));
+    } catch (e) {
+      return left(AppsDataFailures.unknown(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AppsDataFailures, List<AppsMetrics>>> getAppsMetrics(
+    DateTimeRange range,
+  ) async {
+    try {
+      final appsMetricsList = await _service.fetchAppsMetrics(range);
+      return right(appsMetricsList);
+    } on SocketException catch (_) {
+      return left(const AppsDataFailures.networkFailure('Check Network'));
+    } on TimeoutException catch (_) {
       return left(const AppsDataFailures.timeoutFailure('Request Timeout'));
     } on ParsingException catch (e) {
       return left(ParsingFailure('Parsing failed : ${e.message}'));
