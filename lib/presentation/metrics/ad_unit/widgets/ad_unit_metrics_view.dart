@@ -1,9 +1,11 @@
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/presentation/charts/ad_unit/pages/ad_unit_chart_page.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_data_widget.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,13 +24,31 @@ class AdUnitMetricsView extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Horizontal list view
-              Text(
-                "Ad Unit Data",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Theme.of(context).primaryColor,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Ad Unit Data",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Text(
+                      'See Chart',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    onTap: () {
+                      navigateTo(context, const AdUnitChartPage());
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 8),
               MetricsHorizontalList(

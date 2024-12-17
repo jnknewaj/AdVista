@@ -37,6 +37,7 @@ class _Handler extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        appBar: AppBar(title: Text(appName()), centerTitle: true),
         body: BlocBuilder<AppsDataBlocBloc, AppsDataBlocState>(
           builder: (context, state) {
             return state.map(

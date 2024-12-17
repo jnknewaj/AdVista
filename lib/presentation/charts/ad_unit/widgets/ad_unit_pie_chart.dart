@@ -1,25 +1,24 @@
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
-import 'package:advista/domain/country_metrics/country_metrics.dart';
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/presentation/charts/country/widgets/legend_item.dart';
 import 'package:advista/utils/app_utils.dart';
-import 'package:advista/utils/country_name_util.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class CountryPieChart extends StatelessWidget {
-  const CountryPieChart({
+class AdUnitPieChart extends StatelessWidget {
+  const AdUnitPieChart({
     required this.metricsList,
     required this.selectedMetrics,
     required this.title,
   });
 
-  final List<CountryMetrics> metricsList;
+  final List<AdUnitMetrics> metricsList;
   final ValueNotifier<MetricsTitle> selectedMetrics;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    double Function(CountryMetrics) valueExtractor;
+    double Function(AdUnitMetrics) valueExtractor;
     switch (selectedMetrics.value) {
       case MetricsTitle.impression:
         valueExtractor = (m) => m.metrics.impression.toDouble();
@@ -65,12 +64,12 @@ class CountryPieChart extends StatelessWidget {
                 selectedMetrics.value == MetricsTitle.requests ||
                 selectedMetrics.value == MetricsTitle.clicks;
         return PieChartSectionData(
-          color: _getColorForCountry(countryMetric.country),
+          color: _getColorForCountry(countryMetric.adUnitId),
           value: value,
           title: isIntegerMetric
               ? '${value.toInt()}'
-              : '${value.toStringAsFixed(1)}',
-          radius: 50,
+              : '${value.toStringAsFixed(1)}', // Conditional formatting
+          radius: 50, // Customize as needed
           titleStyle: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
@@ -91,8 +90,8 @@ class CountryPieChart extends StatelessWidget {
           value: othersValue,
           title: isIntegerMetric
               ? '${othersValue.toInt()}'
-              : '${othersValue.toStringAsFixed(1)}',
-          radius: 50,
+              : '${othersValue.toStringAsFixed(1)}', // Conditional formatting
+          radius: 50, // Customize as needed
           titleStyle: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
@@ -102,12 +101,12 @@ class CountryPieChart extends StatelessWidget {
       );
     }
 
-    final legendItems = top5.map((countryMetric) {
-      final value = valueExtractor(countryMetric);
+    final legendItems = top5.map((adUnitMetric) {
+      final value = valueExtractor(adUnitMetric);
       final percentage = ((value / totalValue) * 100).toStringAsFixed(1);
       return LegendItem(
-        title: getCountryName(countryMetric.country),
-        color: _getColorForCountry(countryMetric.country),
+        title: truncateString(adUnitMetric.adUnitType, 12),
+        color: _getColorForCountry(adUnitMetric.adUnitId),
         percentage: percentage,
       );
     }).toList();
@@ -124,20 +123,23 @@ class CountryPieChart extends StatelessWidget {
 
     return Container(
       color: Theme.of(context).primaryColor.withOpacity(0.15),
-      height: screenHeightPortion(context, 0.3),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
       child: Column(
+        mainAxisSize: MainAxisSize.min, // Allow the column to wrap its children
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w600),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Pie chart
               SizedBox(
-                height: screenHeightPortion(context, 0.25),
+                height: screenHeightPortion(context, 0.25), // Adjust if needed
                 width: screenWidthPortion(context, 0.40),
                 child: PieChart(
                   PieChartData(
@@ -147,20 +149,20 @@ class CountryPieChart extends StatelessWidget {
                   ),
                 ),
               ),
-              // Legend
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 3),
-                alignment: Alignment.center,
-                height: screenHeightPortion(context, 0.25),
-                width: screenWidthPortion(context, 0.43),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: legendItems.length,
-                  itemBuilder: (context, index) {
-                    final item = legendItems[index];
-                    return LegendTile(item: item);
-                  },
+              const SizedBox(width: 10),
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  alignment: Alignment.center,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: legendItems.length,
+                    itemBuilder: (context, index) {
+                      final item = legendItems[index];
+                      return LegendTile(item: item);
+                    },
+                  ),
                 ),
               ),
             ],
