@@ -11,6 +11,7 @@ enum TimeRange {
   thisMonth,
   lastMonth,
   thisYear,
+  lastYear, // newly Added
   lifetime,
   custom
 }
@@ -71,6 +72,9 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
       case TimeRange.thisYear:
         final thisYear = _dateService.getThisYear();
         return '${formatToStd(thisYear.start)} - ${formatToStd(thisYear.end)}';
+      case TimeRange.lastYear:
+        final lastYear = _dateService.getLastYear();
+        return '${formatToStd(lastYear.start)} - ${formatToStd(lastYear.end)}';
       case TimeRange.lifetime:
         return 'All Time';
       case TimeRange.custom:

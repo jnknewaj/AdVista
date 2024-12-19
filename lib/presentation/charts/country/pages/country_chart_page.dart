@@ -1,5 +1,6 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/charts/country/widgets/country_graph.dart';
@@ -45,31 +46,51 @@ class _Handler extends HookWidget {
                 BlocProvider(
                   create: (context) => getIt<CountryWiseMetricsBloc>()
                     ..add(const CountryWiseMetricsEvent.requsted7days()),
-                  child: CountryGraph(selectedMetrics, 'Last 7-Days Data'),
+                  child: CountryGraph(
+                    selectedMetrics,
+                    'Last 7-Days Data',
+                    TimeRange.last7Days,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 BlocProvider(
                   create: (context) => getIt<CountryWiseMetricsBloc>()
                     ..add(const CountryWiseMetricsEvent.requstedThisMonth()),
-                  child: CountryGraph(selectedMetrics, 'This Months Data'),
+                  child: CountryGraph(
+                    selectedMetrics,
+                    'This Months Data',
+                    TimeRange.thisMonth,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 BlocProvider(
                   create: (context) => getIt<CountryWiseMetricsBloc>()
                     ..add(const CountryWiseMetricsEvent.requstedThisYear()),
-                  child: CountryGraph(selectedMetrics, 'This Years Data'),
+                  child: CountryGraph(
+                    selectedMetrics,
+                    'This Years Data',
+                    TimeRange.thisYear,
+                  ),
                 ),
                 const SizedBox(height: 10),
-                BlocProvider(
-                  create: (context) => getIt<CountryWiseMetricsBloc>()
-                    ..add(const CountryWiseMetricsEvent.requstedLastYear()),
-                  child: CountryGraph(selectedMetrics, 'Last Years Data'),
-                ),
+                // BlocProvider(
+                //   create: (context) => getIt<CountryWiseMetricsBloc>()
+                //     ..add(const CountryWiseMetricsEvent.requstedLastYear()),
+                //   child: CountryGraph(
+                //     selectedMetrics,
+                //     'Last Years Data',
+                //     TimeRange.lastYear,
+                //   ),
+                // ),
                 const SizedBox(height: 10),
                 BlocProvider(
                   create: (context) => getIt<CountryWiseMetricsBloc>()
                     ..add(const CountryWiseMetricsEvent.requstedLifeTime()),
-                  child: CountryGraph(selectedMetrics, 'All Time Data'),
+                  child: CountryGraph(
+                    selectedMetrics,
+                    'All Time Data',
+                    TimeRange.lifetime,
+                  ),
                 ),
                 const SizedBox(height: 10),
               ],

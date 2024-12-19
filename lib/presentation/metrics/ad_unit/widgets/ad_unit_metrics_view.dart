@@ -1,6 +1,8 @@
 import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
+import 'package:advista/application/metrics/providers/time_range_provider.dart';
+import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/presentation/charts/ad_unit/pages/ad_unit_chart_page.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_data_widget.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_shimmer.dart';
@@ -17,98 +19,192 @@ class AdUnitMetricsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final metricsTitle = ref.watch(metricsTitleNotifierProvider2);
-    return BlocBuilder<AdUnitMetricsBloc, AdUnitMetricsState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    final dateRange = ref.watch(timeRangeProvider);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Horizontal list view
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Horizontal list view
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Ad Unit Data",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Theme.of(context).primaryColor,
-                    ),
+              Text(
+                "Ad Unit Data",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              GestureDetector(
+                child: Text(
+                  'See Chart',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Theme.of(context).primaryColor,
                   ),
-                  GestureDetector(
-                    child: Text(
-                      'See Chart',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    onTap: () {
-                      context
-                          .read<InterstialBloc>()
-                          .add(const InterstialEvent.showAd());
-                      navigateTo(context, const AdUnitChartPage());
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              MetricsHorizontalList(
-                metricsTitle: metricsTitle,
-                onEarningsTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.earnings);
-                },
-                onImpressionTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.impression);
-                },
-                onReqTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.requests);
-                },
-                onClicksTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.clicks);
-                },
-                oneCPMTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.eCPM);
-                },
-                oneMatchRateTap: () {
-                  ref
-                      .read(metricsTitleNotifierProvider2.notifier)
-                      .setMetricsTitle(MetricsTitle.matchRate);
+                ),
+                onTap: () {
+                  context
+                      .read<InterstialBloc>()
+                      .add(const InterstialEvent.showAd());
+                  navigateTo(context, const AdUnitChartPage());
                 },
               ),
-              const SizedBox(height: 8),
-              state.map(
-                initial: (_) => const ShimmerCountryData(),
-                loading: (_) => const ShimmerCountryData(),
-                noDataFound: (_) => const BillBoard(),
-                loaded: (s) {
-                  final dataList = s.metrics;
-                  return AdUnitDataWidget(
-                    adUnitDataList: dataList,
-                    metricsTitle: metricsTitle,
-                  );
-                },
-                failed: (f) {
-                  return Text(f.failures.toString());
-                },
-              ),
-              const SizedBox(height: 16),
             ],
           ),
-        );
-      },
+          const SizedBox(height: 8),
+          MetricsHorizontalList(
+            metricsTitle: metricsTitle,
+            onEarningsTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.earnings);
+            },
+            onImpressionTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.impression);
+            },
+            onReqTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.requests);
+            },
+            onClicksTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.clicks);
+            },
+            oneCPMTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.eCPM);
+            },
+            oneMatchRateTap: () {
+              ref
+                  .read(metricsTitleNotifierProvider2.notifier)
+                  .setMetricsTitle(MetricsTitle.matchRate);
+            },
+          ),
+          const SizedBox(height: 8),
+          BlocBuilder<AdUnitMetricsBloc, AdUnitMetricsState>(
+            builder: (context, state) {
+              if (state.isLoading) {
+                return const ShimmerCountryData();
+              }
+              final error = mapAdUnitMetricsToError(dateRange.range, state);
+              if (error == null) {
+                final dataList =
+                    mapTimeRangeToAdUnitMetrics(dateRange.range, state);
+                if (dataList == null) {
+                  return const BillBoard(text: "No Data Found");
+                }
+                return AdUnitDataWidget(
+                  adUnitDataList: dataList,
+                  metricsTitle: metricsTitle,
+                );
+              } else {
+                return BillBoard(text: error);
+              }
+            },
+          ),
+          // state.map(
+          //   initial: (_) => const ShimmerCountryData(),
+          //   loading: (_) => const ShimmerCountryData(),
+          //   noDataFound: (_) => const BillBoard(),
+          //   loaded: (s) {
+          //     final dataList = s.metrics;
+          //     return AdUnitDataWidget(
+          //       adUnitDataList: dataList,
+          //       metricsTitle: metricsTitle,
+          //     );
+          //   },
+          //   failed: (f) {
+          //     return Text(f.failures.toString());
+          //   },
+          // ),
+          const SizedBox(height: 16),
+        ],
+      ),
     );
+  }
+}
+
+List<AdUnitMetrics>? mapTimeRangeToAdUnitMetrics(
+  TimeRange timeRange,
+  AdUnitMetricsState state,
+) {
+  switch (timeRange) {
+    case TimeRange.today:
+      return state.todayMetrics;
+    case TimeRange.yesterday:
+      return state.yesterdayMetrics;
+    case TimeRange.last7Days:
+      return state.sevenDaysMetrics;
+    case TimeRange.thisMonth:
+      return state.thisMonthMetrics;
+    case TimeRange.lastMonth:
+      return state.lastMonthMetrics;
+    case TimeRange.thisYear:
+      return state.thisYearsMetrics;
+    case TimeRange.lifetime:
+      return state.lifeTimeMetrics;
+    case TimeRange.custom:
+      return state.customMetrics;
+    default:
+      return null;
+  }
+}
+
+String? mapAdUnitMetricsToError(
+  TimeRange timeRange,
+  AdUnitMetricsState state,
+) {
+  switch (timeRange) {
+    case TimeRange.today:
+      if (state.todayError != null) {
+        return state.todayError!;
+      }
+      return null;
+    case TimeRange.yesterday:
+      if (state.yesterdayError != null) {
+        return state.yesterdayError!;
+      }
+      return null;
+    case TimeRange.last7Days:
+      if (state.last7DaysError != null) {
+        return state.last7DaysError!;
+      }
+      return null;
+    case TimeRange.thisMonth:
+      if (state.thisMonthError != null) {
+        return state.thisMonthError!;
+      }
+      return null;
+    case TimeRange.lastMonth:
+      if (state.lastMonthError != null) {
+        return state.lastMonthError!;
+      }
+      return null;
+    case TimeRange.thisYear:
+      if (state.thisYearError != null) {
+        return state.thisMonthError!;
+      }
+      return null;
+    case TimeRange.lifetime:
+      if (state.lifeTimeError != null) {
+        return state.lifeTimeError!;
+      }
+      return null;
+    case TimeRange.custom:
+      if (state.customError != null) {
+        return state.customError!;
+      }
+      return null;
+    default:
+      return 'ERRRRROR';
   }
 }

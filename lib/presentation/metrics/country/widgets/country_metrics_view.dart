@@ -94,10 +94,11 @@ class CountryMetricsView extends ConsumerWidget {
               if (state.isLoading) {
                 return const ShimmerCountryData();
               }
-              final error = _mapToError(dateRange.range, state);
+              final error =
+                  mapCountryMetricStateToError(dateRange.range, state);
               if (error == null) {
                 final dataList =
-                    _mapTimeRangeToMetricsList(dateRange.range, state);
+                    mapTimeRangeToCountryMetrics(dateRange.range, state);
                 if (dataList == null) {
                   return const BillBoard(text: "No Data Found");
                 }
@@ -117,7 +118,7 @@ class CountryMetricsView extends ConsumerWidget {
   }
 }
 
-List<CountryMetrics>? _mapTimeRangeToMetricsList(
+List<CountryMetrics>? mapTimeRangeToCountryMetrics(
   TimeRange timeRange,
   CountryWiseMetricsState state,
 ) {
@@ -143,7 +144,7 @@ List<CountryMetrics>? _mapTimeRangeToMetricsList(
   }
 }
 
-String? _mapToError(
+String? mapCountryMetricStateToError(
   TimeRange timeRange,
   CountryWiseMetricsState state,
 ) {

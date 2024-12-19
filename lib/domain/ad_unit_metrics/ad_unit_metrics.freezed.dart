@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+AdUnitMetrics _$AdUnitMetricsFromJson(Map<String, dynamic> json) {
+  return _AdUnitMetrics.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AdUnitMetrics {
   String get adUnitId => throw _privateConstructorUsedError;
@@ -21,6 +25,9 @@ mixin _$AdUnitMetrics {
   /// actually name of the ad unit.
   String get adUnitType => throw _privateConstructorUsedError;
   Metrics get metrics => throw _privateConstructorUsedError;
+
+  /// Serializes this AdUnitMetrics to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of AdUnitMetrics
   /// with the given fields replaced by the non-null parameter values.
@@ -135,11 +142,14 @@ class __$$AdUnitMetricsImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AdUnitMetricsImpl extends _AdUnitMetrics {
   const _$AdUnitMetricsImpl(
       {required this.adUnitId, required this.adUnitType, required this.metrics})
       : super._();
+
+  factory _$AdUnitMetricsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdUnitMetricsImplFromJson(json);
 
   @override
   final String adUnitId;
@@ -167,6 +177,7 @@ class _$AdUnitMetricsImpl extends _AdUnitMetrics {
             (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, adUnitId, adUnitType, metrics);
 
@@ -177,6 +188,13 @@ class _$AdUnitMetricsImpl extends _AdUnitMetrics {
   @pragma('vm:prefer-inline')
   _$$AdUnitMetricsImplCopyWith<_$AdUnitMetricsImpl> get copyWith =>
       __$$AdUnitMetricsImplCopyWithImpl<_$AdUnitMetricsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AdUnitMetricsImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AdUnitMetrics extends AdUnitMetrics {
@@ -185,6 +203,9 @@ abstract class _AdUnitMetrics extends AdUnitMetrics {
       required final String adUnitType,
       required final Metrics metrics}) = _$AdUnitMetricsImpl;
   const _AdUnitMetrics._() : super._();
+
+  factory _AdUnitMetrics.fromJson(Map<String, dynamic> json) =
+      _$AdUnitMetricsImpl.fromJson;
 
   @override
   String get adUnitId;

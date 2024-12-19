@@ -2,6 +2,7 @@ import 'package:advista/domain/metrics/metrics.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ad_unit_metrics.freezed.dart';
+part 'ad_unit_metrics.g.dart';
 
 @freezed
 class AdUnitMetrics with _$AdUnitMetrics {
@@ -20,4 +21,7 @@ class AdUnitMetrics with _$AdUnitMetrics {
         adUnitType: '',
         metrics: Metrics.empty(),
       );
+
+  factory AdUnitMetrics.fromJson(Map<String, dynamic> json) =>
+      _$AdUnitMetricsFromJson(json);
 }

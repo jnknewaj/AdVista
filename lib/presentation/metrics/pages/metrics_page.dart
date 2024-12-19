@@ -140,44 +140,60 @@ class _Handler extends StatelessWidget {
     switch (dateRange) {
       case TimeRange.today:
         todaysBloc.add(const TodaysMetricsEvent.requsted(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requsted());
-        adUnitBloc.add(const AdUnitMetricsEvent.requsted());
+        countryBloc
+            .add(const CountryWiseMetricsEvent.requsted(forceRefresh: true));
+        adUnitBloc.add(const AdUnitMetricsEvent.requsted(forceRefresh: true));
         break;
       case TimeRange.yesterday:
         todaysBloc.add(
             const TodaysMetricsEvent.requstedYesterday(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requstedYesterday());
-        adUnitBloc.add(const AdUnitMetricsEvent.requstedYesterday());
+        countryBloc.add(const CountryWiseMetricsEvent.requstedYesterday(
+            forceRefresh: true));
+        adUnitBloc.add(
+            const AdUnitMetricsEvent.requstedYesterday(forceRefresh: true));
         break;
       case TimeRange.last7Days:
         todaysBloc
             .add(const TodaysMetricsEvent.requsted7days(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requsted7days());
-        adUnitBloc.add(const AdUnitMetricsEvent.requsted7days());
+        countryBloc.add(
+            const CountryWiseMetricsEvent.requsted7days(forceRefresh: true));
+        adUnitBloc
+            .add(const AdUnitMetricsEvent.requsted7days(forceRefresh: true));
         break;
       case TimeRange.thisMonth:
         todaysBloc.add(
             const TodaysMetricsEvent.requstedThisMonth(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requstedThisMonth());
-        adUnitBloc.add(const AdUnitMetricsEvent.requstedThisMonth());
+        countryBloc.add(const CountryWiseMetricsEvent.requstedThisMonth(
+            forceRefresh: true));
+        adUnitBloc.add(
+            const AdUnitMetricsEvent.requstedThisMonth(forceRefresh: true));
         break;
       case TimeRange.lastMonth:
         todaysBloc.add(
             const TodaysMetricsEvent.requstedLastMonth(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requstedLastMonth());
-        adUnitBloc.add(const AdUnitMetricsEvent.requstedLastMonth());
+        countryBloc.add(const CountryWiseMetricsEvent.requstedLastMonth(
+            forceRefresh: true));
+        adUnitBloc.add(
+            const AdUnitMetricsEvent.requstedLastMonth(forceRefresh: true));
         break;
       case TimeRange.thisYear:
         todaysBloc
             .add(const TodaysMetricsEvent.requstedThisYear(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requstedThisYear());
-        adUnitBloc.add(const AdUnitMetricsEvent.requstedThisYear());
+        countryBloc.add(
+            const CountryWiseMetricsEvent.requstedThisYear(forceRefresh: true));
+        adUnitBloc
+            .add(const AdUnitMetricsEvent.requstedThisYear(forceRefresh: true));
         break;
       case TimeRange.lifetime:
         todaysBloc
             .add(const TodaysMetricsEvent.requstedLifeTime(forceRefresh: true));
-        countryBloc.add(const CountryWiseMetricsEvent.requstedLifeTime());
-        adUnitBloc.add(const AdUnitMetricsEvent.requstedLifeTime());
+        countryBloc.add(
+            const CountryWiseMetricsEvent.requstedLifeTime(forceRefresh: true));
+        adUnitBloc
+            .add(const AdUnitMetricsEvent.requstedLifeTime(forceRefresh: true));
+        break;
+      case TimeRange.lastYear:
+        // TODO Not Available Yet
         break;
       case TimeRange.custom:
         // final customRange = dateRange.dateTimeRange!;
