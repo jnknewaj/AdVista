@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
 part 'metrics.freezed.dart';
+part 'metrics.g.dart';
 
 @freezed
 class Metrics with _$Metrics {
@@ -28,4 +29,7 @@ class Metrics with _$Metrics {
         showRate: 0.0,
         cTR: 0.0,
       );
+
+  factory Metrics.fromJson(Map<String, dynamic> json) =>
+      _$MetricsFromJson(json);
 }

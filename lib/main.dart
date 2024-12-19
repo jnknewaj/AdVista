@@ -15,8 +15,13 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
-  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+  final storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+  HydratedBloc.storage = storage;
+  await storage.clear();
+  configureDependencies();
   MobileAds.instance.updateRequestConfiguration(
     RequestConfiguration(
       testDeviceIds: [
@@ -24,11 +29,6 @@ void main() async {
       ],
     ),
   );
-  HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: await getApplicationDocumentsDirectory(),
-  ).catchError((e) {
-    cprint('PRS storage', e.toString());
-  });
   runApp(const ProviderScope(child: MyApp()));
 }
 

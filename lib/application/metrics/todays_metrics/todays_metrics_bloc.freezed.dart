@@ -18,40 +18,40 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodaysMetricsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) =>
@@ -124,6 +124,8 @@ abstract class _$$RequestedImplCopyWith<$Res> {
   factory _$$RequestedImplCopyWith(
           _$RequestedImpl value, $Res Function(_$RequestedImpl) then) =
       __$$RequestedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -136,75 +138,102 @@ class __$$RequestedImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$RequestedImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RequestedImpl implements _Requested {
-  const _$RequestedImpl();
+  const _$RequestedImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requsted()';
+    return 'TodaysMetricsEvent.requsted(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequestedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$RequestedImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
+      __$$RequestedImplCopyWithImpl<_$RequestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requsted();
+    return requsted(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requsted?.call();
+    return requsted?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requsted != null) {
-      return requsted();
+      return requsted(forceRefresh);
     }
     return orElse();
   }
@@ -263,7 +292,15 @@ class _$RequestedImpl implements _Requested {
 }
 
 abstract class _Requested implements TodaysMetricsEvent {
-  const factory _Requested() = _$RequestedImpl;
+  const factory _Requested({final bool forceRefresh}) = _$RequestedImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -271,6 +308,8 @@ abstract class _$$RequestedYesterdayImplCopyWith<$Res> {
   factory _$$RequestedYesterdayImplCopyWith(_$RequestedYesterdayImpl value,
           $Res Function(_$RequestedYesterdayImpl) then) =
       __$$RequestedYesterdayImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -283,75 +322,103 @@ class __$$RequestedYesterdayImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$RequestedYesterdayImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RequestedYesterdayImpl implements _RequestedYesterday {
-  const _$RequestedYesterdayImpl();
+  const _$RequestedYesterdayImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedYesterday()';
+    return 'TodaysMetricsEvent.requstedYesterday(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequestedYesterdayImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$RequestedYesterdayImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestedYesterdayImplCopyWith<_$RequestedYesterdayImpl> get copyWith =>
+      __$$RequestedYesterdayImplCopyWithImpl<_$RequestedYesterdayImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedYesterday();
+    return requstedYesterday(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedYesterday?.call();
+    return requstedYesterday?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedYesterday != null) {
-      return requstedYesterday();
+      return requstedYesterday(forceRefresh);
     }
     return orElse();
   }
@@ -410,7 +477,16 @@ class _$RequestedYesterdayImpl implements _RequestedYesterday {
 }
 
 abstract class _RequestedYesterday implements TodaysMetricsEvent {
-  const factory _RequestedYesterday() = _$RequestedYesterdayImpl;
+  const factory _RequestedYesterday({final bool forceRefresh}) =
+      _$RequestedYesterdayImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RequestedYesterdayImplCopyWith<_$RequestedYesterdayImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -418,6 +494,8 @@ abstract class _$$Requested7daysImplCopyWith<$Res> {
   factory _$$Requested7daysImplCopyWith(_$Requested7daysImpl value,
           $Res Function(_$Requested7daysImpl) then) =
       __$$Requested7daysImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -430,75 +508,103 @@ class __$$Requested7daysImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$Requested7daysImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Requested7daysImpl implements _Requested7days {
-  const _$Requested7daysImpl();
+  const _$Requested7daysImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requsted7days()';
+    return 'TodaysMetricsEvent.requsted7days(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Requested7daysImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$Requested7daysImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Requested7daysImplCopyWith<_$Requested7daysImpl> get copyWith =>
+      __$$Requested7daysImplCopyWithImpl<_$Requested7daysImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requsted7days();
+    return requsted7days(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requsted7days?.call();
+    return requsted7days?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requsted7days != null) {
-      return requsted7days();
+      return requsted7days(forceRefresh);
     }
     return orElse();
   }
@@ -557,7 +663,16 @@ class _$Requested7daysImpl implements _Requested7days {
 }
 
 abstract class _Requested7days implements TodaysMetricsEvent {
-  const factory _Requested7days() = _$Requested7daysImpl;
+  const factory _Requested7days({final bool forceRefresh}) =
+      _$Requested7daysImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$Requested7daysImplCopyWith<_$Requested7daysImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -565,6 +680,8 @@ abstract class _$$requstedThisMonthImplCopyWith<$Res> {
   factory _$$requstedThisMonthImplCopyWith(_$requstedThisMonthImpl value,
           $Res Function(_$requstedThisMonthImpl) then) =
       __$$requstedThisMonthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -577,75 +694,103 @@ class __$$requstedThisMonthImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$requstedThisMonthImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$requstedThisMonthImpl implements _requstedThisMonth {
-  const _$requstedThisMonthImpl();
+  const _$requstedThisMonthImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedThisMonth()';
+    return 'TodaysMetricsEvent.requstedThisMonth(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$requstedThisMonthImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$requstedThisMonthImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$requstedThisMonthImplCopyWith<_$requstedThisMonthImpl> get copyWith =>
+      __$$requstedThisMonthImplCopyWithImpl<_$requstedThisMonthImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedThisMonth();
+    return requstedThisMonth(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedThisMonth?.call();
+    return requstedThisMonth?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedThisMonth != null) {
-      return requstedThisMonth();
+      return requstedThisMonth(forceRefresh);
     }
     return orElse();
   }
@@ -704,7 +849,16 @@ class _$requstedThisMonthImpl implements _requstedThisMonth {
 }
 
 abstract class _requstedThisMonth implements TodaysMetricsEvent {
-  const factory _requstedThisMonth() = _$requstedThisMonthImpl;
+  const factory _requstedThisMonth({final bool forceRefresh}) =
+      _$requstedThisMonthImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$requstedThisMonthImplCopyWith<_$requstedThisMonthImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -712,6 +866,8 @@ abstract class _$$requstedLastMonthImplCopyWith<$Res> {
   factory _$$requstedLastMonthImplCopyWith(_$requstedLastMonthImpl value,
           $Res Function(_$requstedLastMonthImpl) then) =
       __$$requstedLastMonthImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -724,75 +880,103 @@ class __$$requstedLastMonthImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$requstedLastMonthImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$requstedLastMonthImpl implements _requstedLastMonth {
-  const _$requstedLastMonthImpl();
+  const _$requstedLastMonthImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedLastMonth()';
+    return 'TodaysMetricsEvent.requstedLastMonth(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$requstedLastMonthImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$requstedLastMonthImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$requstedLastMonthImplCopyWith<_$requstedLastMonthImpl> get copyWith =>
+      __$$requstedLastMonthImplCopyWithImpl<_$requstedLastMonthImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedLastMonth();
+    return requstedLastMonth(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedLastMonth?.call();
+    return requstedLastMonth?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedLastMonth != null) {
-      return requstedLastMonth();
+      return requstedLastMonth(forceRefresh);
     }
     return orElse();
   }
@@ -851,7 +1035,16 @@ class _$requstedLastMonthImpl implements _requstedLastMonth {
 }
 
 abstract class _requstedLastMonth implements TodaysMetricsEvent {
-  const factory _requstedLastMonth() = _$requstedLastMonthImpl;
+  const factory _requstedLastMonth({final bool forceRefresh}) =
+      _$requstedLastMonthImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$requstedLastMonthImplCopyWith<_$requstedLastMonthImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -859,6 +1052,8 @@ abstract class _$$requstedThisYearImplCopyWith<$Res> {
   factory _$$requstedThisYearImplCopyWith(_$requstedThisYearImpl value,
           $Res Function(_$requstedThisYearImpl) then) =
       __$$requstedThisYearImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -871,75 +1066,103 @@ class __$$requstedThisYearImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$requstedThisYearImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$requstedThisYearImpl implements _requstedThisYear {
-  const _$requstedThisYearImpl();
+  const _$requstedThisYearImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedThisYear()';
+    return 'TodaysMetricsEvent.requstedThisYear(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$requstedThisYearImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$requstedThisYearImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$requstedThisYearImplCopyWith<_$requstedThisYearImpl> get copyWith =>
+      __$$requstedThisYearImplCopyWithImpl<_$requstedThisYearImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedThisYear();
+    return requstedThisYear(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedThisYear?.call();
+    return requstedThisYear?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedThisYear != null) {
-      return requstedThisYear();
+      return requstedThisYear(forceRefresh);
     }
     return orElse();
   }
@@ -998,7 +1221,16 @@ class _$requstedThisYearImpl implements _requstedThisYear {
 }
 
 abstract class _requstedThisYear implements TodaysMetricsEvent {
-  const factory _requstedThisYear() = _$requstedThisYearImpl;
+  const factory _requstedThisYear({final bool forceRefresh}) =
+      _$requstedThisYearImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$requstedThisYearImplCopyWith<_$requstedThisYearImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1006,6 +1238,8 @@ abstract class _$$requstedLastYearImplCopyWith<$Res> {
   factory _$$requstedLastYearImplCopyWith(_$requstedLastYearImpl value,
           $Res Function(_$requstedLastYearImpl) then) =
       __$$requstedLastYearImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -1018,75 +1252,103 @@ class __$$requstedLastYearImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$requstedLastYearImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$requstedLastYearImpl implements _requstedLastYear {
-  const _$requstedLastYearImpl();
+  const _$requstedLastYearImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedLastYear()';
+    return 'TodaysMetricsEvent.requstedLastYear(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$requstedLastYearImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$requstedLastYearImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$requstedLastYearImplCopyWith<_$requstedLastYearImpl> get copyWith =>
+      __$$requstedLastYearImplCopyWithImpl<_$requstedLastYearImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedLastYear();
+    return requstedLastYear(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedLastYear?.call();
+    return requstedLastYear?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedLastYear != null) {
-      return requstedLastYear();
+      return requstedLastYear(forceRefresh);
     }
     return orElse();
   }
@@ -1145,7 +1407,16 @@ class _$requstedLastYearImpl implements _requstedLastYear {
 }
 
 abstract class _requstedLastYear implements TodaysMetricsEvent {
-  const factory _requstedLastYear() = _$requstedLastYearImpl;
+  const factory _requstedLastYear({final bool forceRefresh}) =
+      _$requstedLastYearImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$requstedLastYearImplCopyWith<_$requstedLastYearImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1153,6 +1424,8 @@ abstract class _$$requstedLifeTimeImplCopyWith<$Res> {
   factory _$$requstedLifeTimeImplCopyWith(_$requstedLifeTimeImpl value,
           $Res Function(_$requstedLifeTimeImpl) then) =
       __$$requstedLifeTimeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool forceRefresh});
 }
 
 /// @nodoc
@@ -1165,75 +1438,103 @@ class __$$requstedLifeTimeImplCopyWithImpl<$Res>
 
   /// Create a copy of TodaysMetricsEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forceRefresh = null,
+  }) {
+    return _then(_$requstedLifeTimeImpl(
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$requstedLifeTimeImpl implements _requstedLifeTime {
-  const _$requstedLifeTimeImpl();
+  const _$requstedLifeTimeImpl({this.forceRefresh = false});
+
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'TodaysMetricsEvent.requstedLifeTime()';
+    return 'TodaysMetricsEvent.requstedLifeTime(forceRefresh: $forceRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$requstedLifeTimeImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$requstedLifeTimeImpl &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, forceRefresh);
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$requstedLifeTimeImplCopyWith<_$requstedLifeTimeImpl> get copyWith =>
+      __$$requstedLifeTimeImplCopyWithImpl<_$requstedLifeTimeImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
-    return requstedLifeTime();
+    return requstedLifeTime(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
-    return requstedLifeTime?.call();
+    return requstedLifeTime?.call(forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
     if (requstedLifeTime != null) {
-      return requstedLifeTime();
+      return requstedLifeTime(forceRefresh);
     }
     return orElse();
   }
@@ -1292,7 +1593,16 @@ class _$requstedLifeTimeImpl implements _requstedLifeTime {
 }
 
 abstract class _requstedLifeTime implements TodaysMetricsEvent {
-  const factory _requstedLifeTime() = _$requstedLifeTimeImpl;
+  const factory _requstedLifeTime({final bool forceRefresh}) =
+      _$requstedLifeTimeImpl;
+
+  bool get forceRefresh;
+
+  /// Create a copy of TodaysMetricsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$requstedLifeTimeImplCopyWith<_$requstedLifeTimeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1372,14 +1682,14 @@ class _$requstedCustomImpl implements _requstedCustom {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requsted,
-    required TResult Function() requstedYesterday,
-    required TResult Function() requsted7days,
-    required TResult Function() requstedThisMonth,
-    required TResult Function() requstedLastMonth,
-    required TResult Function() requstedThisYear,
-    required TResult Function() requstedLastYear,
-    required TResult Function() requstedLifeTime,
+    required TResult Function(bool forceRefresh) requsted,
+    required TResult Function(bool forceRefresh) requstedYesterday,
+    required TResult Function(bool forceRefresh) requsted7days,
+    required TResult Function(bool forceRefresh) requstedThisMonth,
+    required TResult Function(bool forceRefresh) requstedLastMonth,
+    required TResult Function(bool forceRefresh) requstedThisYear,
+    required TResult Function(bool forceRefresh) requstedLastYear,
+    required TResult Function(bool forceRefresh) requstedLifeTime,
     required TResult Function(DateTime start, DateTime end) requstedCustom,
   }) {
     return requstedCustom(start, end);
@@ -1388,14 +1698,14 @@ class _$requstedCustomImpl implements _requstedCustom {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requsted,
-    TResult? Function()? requstedYesterday,
-    TResult? Function()? requsted7days,
-    TResult? Function()? requstedThisMonth,
-    TResult? Function()? requstedLastMonth,
-    TResult? Function()? requstedThisYear,
-    TResult? Function()? requstedLastYear,
-    TResult? Function()? requstedLifeTime,
+    TResult? Function(bool forceRefresh)? requsted,
+    TResult? Function(bool forceRefresh)? requstedYesterday,
+    TResult? Function(bool forceRefresh)? requsted7days,
+    TResult? Function(bool forceRefresh)? requstedThisMonth,
+    TResult? Function(bool forceRefresh)? requstedLastMonth,
+    TResult? Function(bool forceRefresh)? requstedThisYear,
+    TResult? Function(bool forceRefresh)? requstedLastYear,
+    TResult? Function(bool forceRefresh)? requstedLifeTime,
     TResult? Function(DateTime start, DateTime end)? requstedCustom,
   }) {
     return requstedCustom?.call(start, end);
@@ -1404,14 +1714,14 @@ class _$requstedCustomImpl implements _requstedCustom {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requsted,
-    TResult Function()? requstedYesterday,
-    TResult Function()? requsted7days,
-    TResult Function()? requstedThisMonth,
-    TResult Function()? requstedLastMonth,
-    TResult Function()? requstedThisYear,
-    TResult Function()? requstedLastYear,
-    TResult Function()? requstedLifeTime,
+    TResult Function(bool forceRefresh)? requsted,
+    TResult Function(bool forceRefresh)? requstedYesterday,
+    TResult Function(bool forceRefresh)? requsted7days,
+    TResult Function(bool forceRefresh)? requstedThisMonth,
+    TResult Function(bool forceRefresh)? requstedLastMonth,
+    TResult Function(bool forceRefresh)? requstedThisYear,
+    TResult Function(bool forceRefresh)? requstedLastYear,
+    TResult Function(bool forceRefresh)? requstedLifeTime,
     TResult Function(DateTime start, DateTime end)? requstedCustom,
     required TResult orElse(),
   }) {
@@ -1485,643 +1795,5 @@ abstract class _requstedCustom implements TodaysMetricsEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$requstedCustomImplCopyWith<_$requstedCustomImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$TodaysMetricsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Metrics metrics) loaded,
-    required TResult Function(MetricsFailures failures) failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Metrics metrics)? loaded,
-    TResult? Function(MetricsFailures failures)? failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Metrics metrics)? loaded,
-    TResult Function(MetricsFailures failures)? failed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Failed value)? failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TodaysMetricsStateCopyWith<$Res> {
-  factory $TodaysMetricsStateCopyWith(
-          TodaysMetricsState value, $Res Function(TodaysMetricsState) then) =
-      _$TodaysMetricsStateCopyWithImpl<$Res, TodaysMetricsState>;
-}
-
-/// @nodoc
-class _$TodaysMetricsStateCopyWithImpl<$Res, $Val extends TodaysMetricsState>
-    implements $TodaysMetricsStateCopyWith<$Res> {
-  _$TodaysMetricsStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'TodaysMetricsState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Metrics metrics) loaded,
-    required TResult Function(MetricsFailures failures) failed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Metrics metrics)? loaded,
-    TResult? Function(MetricsFailures failures)? failed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Metrics metrics)? loaded,
-    TResult Function(MetricsFailures failures)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Failed value)? failed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements TodaysMetricsState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'TodaysMetricsState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Metrics metrics) loaded,
-    required TResult Function(MetricsFailures failures) failed,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Metrics metrics)? loaded,
-    TResult? Function(MetricsFailures failures)? failed,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Metrics metrics)? loaded,
-    TResult Function(MetricsFailures failures)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Failed value)? failed,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements TodaysMetricsState {
-  const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Metrics metrics});
-
-  $MetricsCopyWith<$Res> get metrics;
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? metrics = null,
-  }) {
-    return _then(_$LoadedImpl(
-      null == metrics
-          ? _value.metrics
-          : metrics // ignore: cast_nullable_to_non_nullable
-              as Metrics,
-    ));
-  }
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MetricsCopyWith<$Res> get metrics {
-    return $MetricsCopyWith<$Res>(_value.metrics, (value) {
-      return _then(_value.copyWith(metrics: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.metrics);
-
-  @override
-  final Metrics metrics;
-
-  @override
-  String toString() {
-    return 'TodaysMetricsState.loaded(metrics: $metrics)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.metrics, metrics) || other.metrics == metrics));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, metrics);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Metrics metrics) loaded,
-    required TResult Function(MetricsFailures failures) failed,
-  }) {
-    return loaded(metrics);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Metrics metrics)? loaded,
-    TResult? Function(MetricsFailures failures)? failed,
-  }) {
-    return loaded?.call(metrics);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Metrics metrics)? loaded,
-    TResult Function(MetricsFailures failures)? failed,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(metrics);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Failed value)? failed,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements TodaysMetricsState {
-  const factory _Loaded(final Metrics metrics) = _$LoadedImpl;
-
-  Metrics get metrics;
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FailedImplCopyWith<$Res> {
-  factory _$$FailedImplCopyWith(
-          _$FailedImpl value, $Res Function(_$FailedImpl) then) =
-      __$$FailedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({MetricsFailures failures});
-
-  $MetricsFailuresCopyWith<$Res> get failures;
-}
-
-/// @nodoc
-class __$$FailedImplCopyWithImpl<$Res>
-    extends _$TodaysMetricsStateCopyWithImpl<$Res, _$FailedImpl>
-    implements _$$FailedImplCopyWith<$Res> {
-  __$$FailedImplCopyWithImpl(
-      _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? failures = null,
-  }) {
-    return _then(_$FailedImpl(
-      null == failures
-          ? _value.failures
-          : failures // ignore: cast_nullable_to_non_nullable
-              as MetricsFailures,
-    ));
-  }
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MetricsFailuresCopyWith<$Res> get failures {
-    return $MetricsFailuresCopyWith<$Res>(_value.failures, (value) {
-      return _then(_value.copyWith(failures: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$FailedImpl implements _Failed {
-  const _$FailedImpl(this.failures);
-
-  @override
-  final MetricsFailures failures;
-
-  @override
-  String toString() {
-    return 'TodaysMetricsState.failed(failures: $failures)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailedImpl &&
-            (identical(other.failures, failures) ||
-                other.failures == failures));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failures);
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
-      __$$FailedImplCopyWithImpl<_$FailedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Metrics metrics) loaded,
-    required TResult Function(MetricsFailures failures) failed,
-  }) {
-    return failed(failures);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Metrics metrics)? loaded,
-    TResult? Function(MetricsFailures failures)? failed,
-  }) {
-    return failed?.call(failures);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Metrics metrics)? loaded,
-    TResult Function(MetricsFailures failures)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(failures);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return failed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Failed value)? failed,
-  }) {
-    return failed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failed implements TodaysMetricsState {
-  const factory _Failed(final MetricsFailures failures) = _$FailedImpl;
-
-  MetricsFailures get failures;
-
-  /// Create a copy of TodaysMetricsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

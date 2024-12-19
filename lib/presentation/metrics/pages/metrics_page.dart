@@ -4,6 +4,7 @@ import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
+import 'package:advista/application/metrics/todays_metrics/todays_metrics_state.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
@@ -65,6 +66,12 @@ class _Handler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
+        BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
+          listener: (context, state) {
+            cprint('MST', state.toString());
+          },
+          child: Container(),
+        ),
         BlocListener<InterstialBloc, InterstialState>(
           listener: (context, state) {
             state.maybeMap(
@@ -132,37 +139,43 @@ class _Handler extends StatelessWidget {
 
     switch (dateRange) {
       case TimeRange.today:
-        todaysBloc.add(const TodaysMetricsEvent.requsted());
+        todaysBloc.add(const TodaysMetricsEvent.requsted(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requsted());
         adUnitBloc.add(const AdUnitMetricsEvent.requsted());
         break;
       case TimeRange.yesterday:
-        todaysBloc.add(const TodaysMetricsEvent.requstedYesterday());
+        todaysBloc.add(
+            const TodaysMetricsEvent.requstedYesterday(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requstedYesterday());
         adUnitBloc.add(const AdUnitMetricsEvent.requstedYesterday());
         break;
       case TimeRange.last7Days:
-        todaysBloc.add(const TodaysMetricsEvent.requsted7days());
+        todaysBloc
+            .add(const TodaysMetricsEvent.requsted7days(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requsted7days());
         adUnitBloc.add(const AdUnitMetricsEvent.requsted7days());
         break;
       case TimeRange.thisMonth:
-        todaysBloc.add(const TodaysMetricsEvent.requstedThisMonth());
+        todaysBloc.add(
+            const TodaysMetricsEvent.requstedThisMonth(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requstedThisMonth());
         adUnitBloc.add(const AdUnitMetricsEvent.requstedThisMonth());
         break;
       case TimeRange.lastMonth:
-        todaysBloc.add(const TodaysMetricsEvent.requstedLastMonth());
+        todaysBloc.add(
+            const TodaysMetricsEvent.requstedLastMonth(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requstedLastMonth());
         adUnitBloc.add(const AdUnitMetricsEvent.requstedLastMonth());
         break;
       case TimeRange.thisYear:
-        todaysBloc.add(const TodaysMetricsEvent.requstedThisYear());
+        todaysBloc
+            .add(const TodaysMetricsEvent.requstedThisYear(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requstedThisYear());
         adUnitBloc.add(const AdUnitMetricsEvent.requstedThisYear());
         break;
       case TimeRange.lifetime:
-        todaysBloc.add(const TodaysMetricsEvent.requstedLifeTime());
+        todaysBloc
+            .add(const TodaysMetricsEvent.requstedLifeTime(forceRefresh: true));
         countryBloc.add(const CountryWiseMetricsEvent.requstedLifeTime());
         adUnitBloc.add(const AdUnitMetricsEvent.requstedLifeTime());
         break;

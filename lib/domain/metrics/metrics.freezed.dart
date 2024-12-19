@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+Metrics _$MetricsFromJson(Map<String, dynamic> json) {
+  return _Metrics.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Metrics {
   double get earnings => throw _privateConstructorUsedError;
@@ -24,6 +28,9 @@ mixin _$Metrics {
   double get eCPM => throw _privateConstructorUsedError;
   double get showRate => throw _privateConstructorUsedError;
   double get cTR => throw _privateConstructorUsedError;
+
+  /// Serializes this Metrics to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of Metrics
   /// with the given fields replaced by the non-null parameter values.
@@ -186,7 +193,7 @@ class __$$MetricsImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$MetricsImpl extends _Metrics with DiagnosticableTreeMixin {
   const _$MetricsImpl(
       {required this.earnings,
@@ -198,6 +205,9 @@ class _$MetricsImpl extends _Metrics with DiagnosticableTreeMixin {
       required this.showRate,
       required this.cTR})
       : super._();
+
+  factory _$MetricsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MetricsImplFromJson(json);
 
   @override
   final double earnings;
@@ -256,6 +266,7 @@ class _$MetricsImpl extends _Metrics with DiagnosticableTreeMixin {
             (identical(other.cTR, cTR) || other.cTR == cTR));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, earnings, impression, requests,
       matchRate, clicks, eCPM, showRate, cTR);
@@ -267,6 +278,13 @@ class _$MetricsImpl extends _Metrics with DiagnosticableTreeMixin {
   @pragma('vm:prefer-inline')
   _$$MetricsImplCopyWith<_$MetricsImpl> get copyWith =>
       __$$MetricsImplCopyWithImpl<_$MetricsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MetricsImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Metrics extends Metrics {
@@ -280,6 +298,8 @@ abstract class _Metrics extends Metrics {
       required final double showRate,
       required final double cTR}) = _$MetricsImpl;
   const _Metrics._() : super._();
+
+  factory _Metrics.fromJson(Map<String, dynamic> json) = _$MetricsImpl.fromJson;
 
   @override
   double get earnings;

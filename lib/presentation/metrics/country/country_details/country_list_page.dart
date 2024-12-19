@@ -27,33 +27,7 @@ class CountryListPage extends StatelessWidget {
             ..add(const AdvertisingEvent.bannerRequested()),
         ),
       ],
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<CountryWiseMetricsBloc, CountryWiseMetricsState>(
-            listener: (context, state) {},
-          ),
-          BlocListener<AdvertisingBloc, AdvertisingState>(
-            listener: (context, state) {
-              state.map(
-                initial: (s) {
-                  cprint('SLM', 'Listening : ${s.toString()}');
-                },
-                loading: (s) {
-                  cprint('SLM', 'Listening : ${s.toString()}');
-                },
-                loaded: (s) {
-                  cprint('SLM', 'Listening : ${s.toString()}');
-                },
-                failure: (s) {
-                  cprint('SLM', 'Listening : ${s.toString()}');
-                },
-              );
-            },
-            child: Container(),
-          )
-        ],
-        child: const _Handler(),
-      ),
+      child: const _Handler(),
     );
   }
 }
@@ -102,8 +76,6 @@ class _Handler extends StatelessWidget {
               builder: (context, state) {
                 return state.maybeMap(
                   loaded: (s) {
-                    cprint('SLV',
-                        'ADWIDGET HERE : ${s.bannerAd.size.height.toDouble()}');
                     return BannerAdWidget(bannerAd: s.bannerAd);
                   },
                   orElse: () => const SizedBox(),

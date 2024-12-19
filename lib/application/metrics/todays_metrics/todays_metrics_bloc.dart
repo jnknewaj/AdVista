@@ -1,9 +1,7 @@
+import 'package:advista/application/metrics/todays_metrics/todays_metrics_state.dart';
 import 'package:advista/domain/core/i_account_repository.dart';
 import 'package:advista/domain/metrics/i_metrics_repository.dart';
-import 'package:advista/domain/metrics/metrics.dart';
-import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/infrastructure/core/date_service.dart';
-import 'package:advista/infrastructure/metrics/metrics_dto.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -12,21 +10,20 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'todays_metrics_event.dart';
-part 'todays_metrics_state.dart';
 part 'todays_metrics_bloc.freezed.dart';
 
 @injectable
 class TodaysMetricsBloc
     extends HydratedBloc<TodaysMetricsEvent, TodaysMetricsState> {
   final IMetricsRepository _repository;
-  final IAccountRepository _accountRepository;
   final DateService _dateService;
+  final IAccountRepository _accountRepository;
 
   TodaysMetricsBloc(
     this._repository,
     this._dateService,
     this._accountRepository,
-  ) : super(const TodaysMetricsState.initial()) {
+  ) : super(TodaysMetricsState.initial()) {
     on<TodaysMetricsEvent>(_onEvents);
   }
 
@@ -36,90 +33,206 @@ class TodaysMetricsBloc
   ) async {
     await event.map(
       requsted: (e) async {
+        if (state.todayMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, todayError: null));
         final range = DateTimeRange(start: DateTime.now(), end: DateTime.now());
-        await _handleMatricsEvent(range, emit);
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              todayError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, todayMetrics: r)),
+        );
       },
       requstedYesterday: (e) async {
+        if (state.yesterdayMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, yesterdayError: null));
         final yesterday = _dateService.getYesterday();
         final range = DateTimeRange(start: yesterday, end: yesterday);
-        await _handleMatricsEvent(range, emit);
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              yesterdayError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, yesterdayMetrics: r)),
+        );
       },
       requsted7days: (e) async {
+        if (state.sevenDaysMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, last7DaysError: null));
         final range = _dateService.getLast7DaysRange();
-        await _handleMatricsEvent(range, emit);
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              last7DaysError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, sevenDaysMetrics: r)),
+        );
       },
       requstedThisMonth: (e) async {
-        await _handleMatricsEvent(_dateService.getCurrentMonth(), emit);
+        if (state.thisMonthMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, thisMonthError: null));
+        final range = _dateService.getCurrentMonth();
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              thisMonthError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, thisMonthMetrics: r)),
+        );
       },
       requstedLastMonth: (e) async {
-        await _handleMatricsEvent(_dateService.getLastMonth(), emit);
+        if (state.lastMonthMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, lastMonthError: null));
+        final range = _dateService.getLastMonth();
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              lastMonthError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, lastMonthMetrics: r)),
+        );
       },
       requstedThisYear: (e) async {
-        await _handleMatricsEvent(_dateService.getThisYear(), emit);
+        if (state.thisYearsMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, thisYearError: null));
+        final range = _dateService.getThisYear();
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              thisYearError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, thisYearsMetrics: r)),
+        );
       },
       requstedLastYear: (e) async {
-        await _handleMatricsEvent(_dateService.getLastYear(), emit);
+        if (state.lastYearsMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, lastYearError: null));
+        final range = _dateService.getLastYear();
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              lastYearError: mapMetricsFailuresToText(l),
+            ),
+          ),
+          (r) => emit(state.copyWith(isLoading: false, lastYearsMetrics: r)),
+        );
       },
       requstedLifeTime: (e) async {
+        if (state.lifeTimeMetrics != null && !e.forceRefresh) {
+          emit(state);
+          return;
+        }
+        emit(state.copyWith(isLoading: true, lifeTimeError: null));
+
         final acOpenDateEither =
             await _accountRepository.getAccoutOpeningDate();
         await acOpenDateEither.fold(
-          (f) async => emit(const TodaysMetricsState.failed(
-              MetricsFailures.unknown('Failed to fetch account opening date'))),
+          (f) async => emit(
+              state.copyWith(lifeTimeError: "Failed To Get A/C Opening Date")),
           (s) async {
             final startDate = stringToDateTime(s);
-            await _handleMatricsEvent(
-                DateTimeRange(start: startDate, end: DateTime.now()), emit);
+            final range = DateTimeRange(start: startDate, end: DateTime.now());
+            final result = await _repository.getMetrics(range);
+            result.fold(
+              (l) => emit(
+                state.copyWith(
+                  isLoading: false,
+                  lifeTimeError: mapMetricsFailuresToText(l),
+                ),
+              ),
+              (r) => emit(state.copyWith(isLoading: false, lifeTimeMetrics: r)),
+            );
           },
         );
       },
       requstedCustom: (e) async {
-        await _handleMatricsEvent(
-          DateTimeRange(
-            start: e.start,
-            end: e.end,
+        emit(state.copyWith(isLoading: true, customError: null));
+        final range = DateTimeRange(start: e.start, end: e.end);
+        final result = await _repository.getMetrics(
+          DateTimeRange(start: range.start, end: range.end),
+        );
+        result.fold(
+          (l) => emit(
+            state.copyWith(
+              isLoading: false,
+              customError: mapMetricsFailuresToText(l),
+            ),
           ),
-          emit,
+          (r) => emit(state.copyWith(isLoading: false, customMetrics: r)),
         );
       },
-    );
-  }
-
-  Future<void> _handleMatricsEvent(
-    DateTimeRange range,
-    Emitter<TodaysMetricsState> emit,
-  ) async {
-    emit(const TodaysMetricsState.loading());
-    final result = await _repository.getMetrics(
-      DateTimeRange(
-        start: range.start,
-        end: range.end,
-      ),
-    );
-    result.fold(
-      (f) => emit(TodaysMetricsState.failed(f)),
-      (s) => emit(TodaysMetricsState.loaded(s)),
     );
   }
 
   @override
   TodaysMetricsState? fromJson(Map<String, dynamic> json) {
-    cprint('PRS', 'FromJSon');
+    cprint('PRSL', 'FromJSon');
     try {
-      final metricsDto = Metricsdto.fromHydratedBloc(json);
-      return TodaysMetricsState.loaded(metricsDto.toDomain());
+      cprint('PRSL Err', '');
+      return TodaysMetricsState.fromJson(json);
     } catch (e) {
-      cprint('PRS Err', e.toString());
-      return const TodaysMetricsState.initial();
+      return null;
     }
   }
 
   @override
   Map<String, dynamic>? toJson(TodaysMetricsState state) {
-    cprint('PRS', 'toJson');
-    return state.maybeWhen(
-      loaded: (metrics) => Metricsdto.fromDomain(metrics).toJson(),
-      orElse: () => null,
-    );
+    return state.toJson();
   }
 }
