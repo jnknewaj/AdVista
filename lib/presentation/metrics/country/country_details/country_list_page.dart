@@ -51,22 +51,23 @@ class _Handler extends StatelessWidget {
                   const SizedBox(height: 6),
                   BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
                     builder: (context, state) {
-                      return state.map(
-                        initial: (_) => const ShimmerCountryData(),
-                        loading: (_) => const ShimmerCountryData(),
-                        noDataFound: (_) => const BillBoard(),
-                        loaded: (s) {
-                          final list = s.metrics;
-                          return CountryFullList(list: list);
-                        },
-                        failed: (f) {
-                          return Center(
-                            child: BillBoard(
-                              text: mapMetricsFailuresToText(f.failures),
-                            ),
-                          );
-                        },
-                      );
+                      return SizedBox();
+                      // return state.map(
+                      //   initial: (_) => const ShimmerCountryData(),
+                      //   loading: (_) => const ShimmerCountryData(),
+                      //   noDataFound: (_) => const BillBoard(),
+                      //   loaded: (s) {
+                      //     final list = s.metrics;
+                      //     return CountryFullList(list: list);
+                      //   },
+                      //   failed: (f) {
+                      //     return Center(
+                      //       child: BillBoard(
+                      //         text: mapMetricsFailuresToText(f.failures),
+                      //       ),
+                      //     );
+                      //   },
+                      // );
                     },
                   ),
                 ],

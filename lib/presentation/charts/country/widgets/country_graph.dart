@@ -25,20 +25,21 @@ class _CountryGraphState extends State<CountryGraph>
     super.build(context);
     return BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
       builder: (context, state) {
-        return state.map(
-          initial: (_) => const ShimmerPieChart(),
-          loading: (_) => const ShimmerPieChart(),
-          loaded: (s) {
-            final metricsList = s.metrics;
-            return CountryPieChart(
-              title: widget.title,
-              metricsList: metricsList,
-              selectedMetrics: widget.selectedMetrics,
-            );
-          },
-          failed: (_) => const BillBoard(text: 'Error Loading Chart'),
-          noDataFound: (_) => const BillBoard(text: 'No Data Found'),
-        );
+        return SizedBox();
+        // return state.map(
+        //   initial: (_) => const ShimmerPieChart(),
+        //   loading: (_) => const ShimmerPieChart(),
+        //   loaded: (s) {
+        //     final metricsList = s.metrics;
+        //     return CountryPieChart(
+        //       title: widget.title,
+        //       metricsList: metricsList,
+        //       selectedMetrics: widget.selectedMetrics,
+        //     );
+        //   },
+        //   failed: (_) => const BillBoard(text: 'Error Loading Chart'),
+        //   noDataFound: (_) => const BillBoard(text: 'No Data Found'),
+        // );
       },
     );
   }

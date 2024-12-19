@@ -14,10 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+CountryMetrics _$CountryMetricsFromJson(Map<String, dynamic> json) {
+  return _CountryMetrics.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CountryMetrics {
   String get country => throw _privateConstructorUsedError;
   Metrics get metrics => throw _privateConstructorUsedError;
+
+  /// Serializes this CountryMetrics to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of CountryMetrics
   /// with the given fields replaced by the non-null parameter values.
@@ -122,10 +129,13 @@ class __$$CountryMetricsImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CountryMetricsImpl extends _CountryMetrics {
   const _$CountryMetricsImpl({required this.country, required this.metrics})
       : super._();
+
+  factory _$CountryMetricsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CountryMetricsImplFromJson(json);
 
   @override
   final String country;
@@ -146,6 +156,7 @@ class _$CountryMetricsImpl extends _CountryMetrics {
             (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, country, metrics);
 
@@ -157,6 +168,13 @@ class _$CountryMetricsImpl extends _CountryMetrics {
   _$$CountryMetricsImplCopyWith<_$CountryMetricsImpl> get copyWith =>
       __$$CountryMetricsImplCopyWithImpl<_$CountryMetricsImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CountryMetricsImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CountryMetrics extends CountryMetrics {
@@ -164,6 +182,9 @@ abstract class _CountryMetrics extends CountryMetrics {
       {required final String country,
       required final Metrics metrics}) = _$CountryMetricsImpl;
   const _CountryMetrics._() : super._();
+
+  factory _CountryMetrics.fromJson(Map<String, dynamic> json) =
+      _$CountryMetricsImpl.fromJson;
 
   @override
   String get country;
