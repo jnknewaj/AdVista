@@ -1,6 +1,6 @@
+import 'package:advista/application/adsense/payments_info/payments_info_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
-import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,15 +57,15 @@ class EarningCardBackSide extends StatelessWidget {
             const SizedBox(height: 8),
 
             // Total Earnings section
-            BlocBuilder<TodaysMetricsBloc, TodaysMetricsState>(
+            BlocBuilder<PaymentsInfoBloc, PaymentsInfoState>(
               builder: (context, state) {
                 final earning = state.maybeMap(
-                  loaded: (s) => s.metrics.earnings.toStringAsFixed(2),
-                  failed: (e) => 'Failed to load earnings data',
+                  loadedBalance: (s) => s.payments.payment,
+                  failure: (e) => 'Failed to load earnings data',
                   orElse: () => '',
                 );
                 return Text(
-                  "Total Earnings: \$$earning",
+                  "Total Earnings: $earning",
                   style: theme.textTheme.titleLarge?.copyWith(
                     color: theme.colorScheme.onPrimary.withOpacity(0.8),
                   ),
@@ -81,7 +81,7 @@ class EarningCardBackSide extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                "Total earnings may be adjusted by AdMob.",
+                "This is your month-end balance till last month.",
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.onPrimary,
                   fontWeight: FontWeight.w500,

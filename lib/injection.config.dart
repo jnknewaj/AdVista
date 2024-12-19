@@ -14,8 +14,11 @@ import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
 
+import 'application/adsense/payments_info/payments_info_bloc.dart' as _i106;
 import 'application/advertising/advertising_bloc/advertising_bloc.dart'
     as _i319;
+import 'application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart'
+    as _i347;
 import 'application/advertising/native_ad/native_ad_bloc.dart' as _i558;
 import 'application/auth/auth_check/auth_check_bloc.dart' as _i700;
 import 'application/auth/sign_in/sign_in_bloc.dart' as _i409;
@@ -33,12 +36,15 @@ import 'application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart'
 import 'application/metrics/metrics_with_date/metrics_with_date_bloc.dart'
     as _i587;
 import 'application/metrics/todays_metrics/todays_metrics_bloc.dart' as _i559;
+import 'domain/adsense/i_payments_repository.dart' as _i424;
 import 'domain/advertising/i_ad_repository.dart' as _i299;
 import 'domain/apps_metrics/i_apps_data_repository.dart' as _i272;
 import 'domain/auth/i_auth_facade.dart' as _i878;
 import 'domain/auth/i_token_repository.dart' as _i357;
 import 'domain/core/i_account_repository.dart' as _i566;
 import 'domain/metrics/i_metrics_repository.dart' as _i839;
+import 'infrastructure/adsense/adsense_service.dart' as _i191;
+import 'infrastructure/adsense/payments_repository.dart' as _i920;
 import 'infrastructure/advertising/ad_repository.dart' as _i968;
 import 'infrastructure/apps_metrics/apps_data_repository.dart' as _i665;
 import 'infrastructure/apps_metrics/apps_data_service.dart' as _i532;
@@ -75,6 +81,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => googleInjectableModule.googleSignIn);
     gh.lazySingleton<_i439.DateService>(() => _i439.DateService());
     gh.lazySingleton<_i299.IAdRepository>(() => _i968.AdRepository());
+    gh.factory<_i347.InterstialBloc>(
+        () => _i347.InterstialBloc(gh<_i299.IAdRepository>()));
     gh.factory<_i558.NativeAdBloc>(
         () => _i558.NativeAdBloc(gh<_i299.IAdRepository>()));
     gh.factory<_i319.AdvertisingBloc>(
@@ -104,6 +112,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i519.Client>(),
         ));
     gh.lazySingleton<_i532.AppsDataService>(() => _i532.AppsDataService(
+          gh<_i823.AccountService>(),
+          gh<_i519.Client>(),
+          gh<_i357.ITokenRepository>(),
+        ));
+    gh.lazySingleton<_i191.AdsenseService>(() => _i191.AdsenseService(
           gh<_i823.AccountService>(),
           gh<_i519.Client>(),
           gh<_i357.ITokenRepository>(),
@@ -149,8 +162,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i566.IAccountRepository>(),
           gh<_i357.ITokenRepository>(),
         ));
+    gh.lazySingleton<_i424.IPaymentsRepository>(
+        () => _i920.PaymentsRepository(gh<_i191.AdsenseService>()));
     gh.factory<_i653.AppsDataBlocBloc>(
         () => _i653.AppsDataBlocBloc(gh<_i272.IAppsDataRepository>()));
+    gh.factory<_i106.PaymentsInfoBloc>(
+        () => _i106.PaymentsInfoBloc(gh<_i424.IPaymentsRepository>()));
     gh.factory<_i648.AppsMetricsBloc>(() => _i648.AppsMetricsBloc(
           gh<_i272.IAppsDataRepository>(),
           gh<_i439.DateService>(),

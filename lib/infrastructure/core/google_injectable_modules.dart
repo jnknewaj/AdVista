@@ -10,6 +10,7 @@ abstract class GoogleInjectableModule {
           'email',
           'https://www.googleapis.com/auth/admob.report',
           'https://www.googleapis.com/auth/admob.readonly',
+          'https://www.googleapis.com/auth/adsense.readonly',
         ],
         serverClientId: CLIENT_ID,
         forceCodeForRefreshToken: true,

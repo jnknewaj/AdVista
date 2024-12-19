@@ -1,3 +1,4 @@
+import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/presentation/charts/ad_unit/pages/ad_unit_chart_page.dart';
@@ -45,6 +46,9 @@ class AdUnitMetricsView extends ConsumerWidget {
                       ),
                     ),
                     onTap: () {
+                      context
+                          .read<InterstialBloc>()
+                          .add(const InterstialEvent.showAd());
                       navigateTo(context, const AdUnitChartPage());
                     },
                   ),

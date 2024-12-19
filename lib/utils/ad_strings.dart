@@ -6,6 +6,7 @@ class AdString {
   static String bannerAdId = 'ca-app-pub-4396432234695580/4984497310';
   static String nativeAdId = 'ca-app-pub-4396432234695580/9647766678';
   static String interstitialAdIdDemo = 'ca-app-pub-4396432234695580/4337528424';
+  static String interstitialAdId = 'ca-app-pub-4396432234695580/7905054563';
   static String appOpenAdIdDemo = 'ca-app-pub-4396432234695580/5405598903';
 
   // test ad unit

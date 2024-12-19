@@ -1,7 +1,10 @@
+import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/domain/metrics/metrics.dart';
+import 'package:advista/presentation/charts/metrics/pages/metrics_chart_page.dart';
 import 'package:advista/presentation/metrics/summary/widgets/grid_item_loading_widget.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,41 +17,77 @@ class MetricsSummaryView extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.7,
-            ),
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              return state.maybeMap(
-                orElse: () => const GridItemLoadingWidget(),
-                loaded: (data) {
-                  return MetricsItem(
-                    topText: _mapIndexToTopText(index, data.metrics),
-                    bottomText: _mapIndexToBottomText(index),
-                  );
-                },
-                failed: (f) {
-                  return Text(
-                    f.failures.maybeMap(
-                      networkFailure: (e) => e.msg,
-                      timeout: (e) => e.msg,
-                      parsingFailure: (e) => e.msg,
-                      tokenNotFound: (e) => e.msg,
-                      serverFailure: (e) => e.msg,
-                      idNotFound: (e) => e.msg,
-                      unknown: (e) => e.msg,
-                      orElse: () => "Unknown, probably from Country dimension",
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Metrics",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Theme.of(context).primaryColor,
                     ),
+                  ),
+                  GestureDetector(
+                    child: Text(
+                      'See Chart',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    onTap: () {
+                      context
+                          .read<InterstialBloc>()
+                          .add(const InterstialEvent.showAd());
+                      navigateTo(context, const MetricsChartPage());
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1.7,
+                ),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return state.maybeMap(
+                    orElse: () => const GridItemLoadingWidget(),
+                    loaded: (data) {
+                      return MetricsItem(
+                        topText: _mapIndexToTopText(index, data.metrics),
+                        bottomText: _mapIndexToBottomText(index),
+                      );
+                    },
+                    failed: (f) {
+                      return Text(
+                        f.failures.maybeMap(
+                          networkFailure: (e) => e.msg,
+                          timeout: (e) => e.msg,
+                          parsingFailure: (e) => e.msg,
+                          tokenNotFound: (e) => e.msg,
+                          serverFailure: (e) => e.msg,
+                          idNotFound: (e) => e.msg,
+                          unknown: (e) => e.msg,
+                          orElse: () =>
+                              "Unknown, probably from Country dimension",
+                        ),
+                      );
+                    },
                   );
                 },
-              );
-            },
+              ),
+            ],
           ),
         );
       },

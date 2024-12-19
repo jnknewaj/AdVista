@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 class TokenNotFoundException implements Exception {
   final String message;
   TokenNotFoundException(this.message);
@@ -35,13 +37,8 @@ class HtmlException implements Exception {
   HtmlException(this.message);
 }
 
-// UNVERIFIED
-// class ServiceException implements Exception {
-//   final String message;
+class NoUnpaidPaymentException extends TlsException {
+  final String msg;
 
-//   /// Throws from [BaseService]
-//   ServiceException(this.message);
-
-//   @override
-//   String toString() => 'ServiceException: $message';
-// }
+  NoUnpaidPaymentException(this.msg);
+}

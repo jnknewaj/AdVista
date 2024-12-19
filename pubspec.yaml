@@ -57,6 +57,7 @@ dependencies:
   google_mobile_ads: ^5.2.0
   flutter_hooks: ^0.20.5
   fl_chart: ^0.69.2
+  flutter_animated_dialog_updated: ^1.0.1
 
 dev_dependencies:
   flutter_test:

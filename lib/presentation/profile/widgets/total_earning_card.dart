@@ -1,4 +1,4 @@
-import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
+import 'package:advista/application/adsense/payments_info/payments_info_bloc.dart';
 import 'package:advista/presentation/profile/widgets/card_flipping.dart';
 import 'package:advista/presentation/profile/widgets/earning_card_back_side.dart';
 import 'package:advista/presentation/profile/widgets/earning_card_front_side.dart';
@@ -29,7 +29,7 @@ class TotalEarningCard extends HookWidget {
 
     final theme = Theme.of(context);
 
-    return BlocListener<TodaysMetricsBloc, TodaysMetricsState>(
+    return BlocListener<PaymentsInfoBloc, PaymentsInfoState>(
       listener: (context, state) {
         state.maybeMap(
           loading: (_) {
@@ -37,7 +37,7 @@ class TotalEarningCard extends HookWidget {
               controller.repeat();
             }
           },
-          loaded: (_) {
+          loadedBalance: (_) {
             if (!isDataLoaded.value) {
               isDataLoaded.value = true;
               controller.stop();
@@ -47,7 +47,7 @@ class TotalEarningCard extends HookWidget {
           orElse: () {},
         );
       },
-      child: BlocBuilder<TodaysMetricsBloc, TodaysMetricsState>(
+      child: BlocBuilder<PaymentsInfoBloc, PaymentsInfoState>(
         builder: (context, state) {
           final frontChild = state.maybeMap(
             loading: (_) => CardFlipping(theme: theme),
@@ -58,8 +58,8 @@ class TotalEarningCard extends HookWidget {
             onTap: () {
               if (!isDataLoaded.value) {
                 context
-                    .read<TodaysMetricsBloc>()
-                    .add(const TodaysMetricsEvent.requstedLifeTime());
+                    .read<PaymentsInfoBloc>()
+                    .add(const PaymentsInfoEvent.requestedBalance());
               } else {
                 flipCard();
               }

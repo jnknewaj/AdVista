@@ -1,3 +1,4 @@
+import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/presentation/charts/country/pages/country_chart_page.dart';
@@ -20,7 +21,7 @@ class CountryMetricsView extends ConsumerWidget {
     return BlocBuilder<CountryWiseMetricsBloc, CountryWiseMetricsState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -45,6 +46,9 @@ class CountryMetricsView extends ConsumerWidget {
                       ),
                     ),
                     onTap: () {
+                      context
+                          .read<InterstialBloc>()
+                          .add(const InterstialEvent.showAd());
                       navigateTo(context, const CountryChartPage());
                     },
                   ),

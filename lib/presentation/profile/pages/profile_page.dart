@@ -1,3 +1,4 @@
+import 'package:advista/application/adsense/payments_info/payments_info_bloc.dart';
 import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
@@ -39,8 +40,8 @@ class ProfilePage extends StatelessWidget {
               getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
         ),
         BlocProvider(
-          create: (context) => getIt<TodaysMetricsBloc>(),
-        )
+          create: (context) => getIt<PaymentsInfoBloc>(),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -136,9 +137,7 @@ class _Handler extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              context
-                  .read<AuthCheckBloc>()
-                  .add(const AuthCheckEvent.signOutPressed());
+              _showAnimatedDialog(context);
             },
           ),
         ],
@@ -195,6 +194,105 @@ class _Handler extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showAnimatedDialog(BuildContext context) {
+    showGeneralDialog(
+      context: context,
+      pageBuilder: (ctx, animation, secondaryAnimation) {
+        final slideAnimation = Tween<Offset>(
+          begin: const Offset(0, 1), // Start off-screen at the bottom
+          end: Offset.zero, // End position (centered on screen)
+        ).animate(animation);
+
+        return BlocProvider.value(
+          value: BlocProvider.of<AuthCheckBloc>(context),
+          child: SlideTransition(
+            position: slideAnimation, // Slide transition
+            child: Center(
+              // Dialog in the center
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.7, // Reduced width
+                padding: const EdgeInsets.all(20.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.zero,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 12,
+                      offset: Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Log Out',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          //color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'This will sign you out.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(
+                                fontSize: 16,
+                                //fontWeight: FontWeight.w500,
+                                //color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<AuthCheckBloc>()
+                                  .add(const AuthCheckEvent.signOutPressed());
+                            },
+                            child: Text(
+                              'Ok',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierColor: Colors.black54, // Dim background
+      transitionDuration: const Duration(
+        milliseconds: 700,
+      ), // Smooth slide duration
     );
   }
 }

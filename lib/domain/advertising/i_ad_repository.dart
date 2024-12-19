@@ -9,4 +9,7 @@ abstract class IAdRepository {
   Future<Either<AdvertisingFailures, NativeAd>> showNativeAd(
     NativeAdListener adListener,
   );
+
+  Future<void> loadInterstitialAd();
+  Either<AdvertisingFailures, Unit> showInterstitialAd();
 }

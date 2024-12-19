@@ -10,6 +10,7 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAdRepository)
 class AdRepository implements IAdRepository {
+  InterstitialAd? _interstitialAd;
   @override
   Future<Either<AdvertisingFailures, BannerAd>> showBannerAd(
     BannerAdListener adListener,
@@ -50,5 +51,31 @@ class AdRepository implements IAdRepository {
       cprint('NAT ERRRR', e.toString());
       return left(AdvertisingFailures.unknown(e.toString()));
     }
+  }
+
+  @override
+  Future<void> loadInterstitialAd() async {
+    await InterstitialAd.load(
+      adUnitId: AdString.interstitialAdId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          _interstitialAd = ad;
+        },
+        onAdFailedToLoad: (e) {
+          _interstitialAd = null;
+        },
+      ),
+    );
+  }
+
+  @override
+  Either<AdvertisingFailures, Unit> showInterstitialAd() {
+    if (_interstitialAd != null) {
+      _interstitialAd!.show();
+      _interstitialAd = null;
+      return right(unit);
+    }
+    return left(const AdvertisingFailures.unknown('Interestial Ad Error'));
   }
 }

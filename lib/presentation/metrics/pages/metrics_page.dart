@@ -1,3 +1,4 @@
+import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
@@ -40,6 +41,10 @@ class MetricsPage extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<InterstialBloc>()..add(const InterstialEvent.loadAd()),
         )
       ],
       child: Scaffold(
@@ -58,43 +63,60 @@ class _Handler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          const DashboardTopPart(),
-          Expanded(
-            child: Consumer(
-              builder: (context, ref, child) {
-                final dateRange = ref.watch(timeRangeProvider);
-                return RefreshIndicator(
-                  onRefresh: () async {
-                    _onRefresh(context, dateRange.range);
-                  },
-                  child: ListView(
-                    children: [
-                      const MetricsSummaryView(),
-                      const Divider(),
-                      const CountryMetricsView(),
-                      const Divider(),
-                      BlocBuilder<NativeAdBloc, NativeAdState>(
-                        builder: (context, state) {
-                          return state.maybeMap(
-                            loaded: (s) => NativeAdWidget(
-                              nativeAd: s.nativeAd,
-                              size: NativeAdSize.large,
-                            ),
-                            orElse: () => const SizedBox(),
-                          );
-                        },
-                      ),
-                      const AdUnitMetricsView(),
-                    ],
-                  ),
-                );
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<InterstialBloc, InterstialState>(
+          listener: (context, state) {
+            state.maybeMap(
+              shown: (_) {
+                context
+                    .read<InterstialBloc>()
+                    .add(const InterstialEvent.loadAd());
               },
-            ),
-          )
-        ],
+              orElse: () {},
+            );
+          },
+        ),
+      ],
+      child: SafeArea(
+        child: Column(
+          children: [
+            const DashboardTopPart(),
+            Expanded(
+              child: Consumer(
+                builder: (context, ref, child) {
+                  final dateRange = ref.watch(timeRangeProvider);
+                  return RefreshIndicator(
+                    color: Theme.of(context).primaryColor,
+                    onRefresh: () async {
+                      _onRefresh(context, dateRange.range);
+                    },
+                    child: ListView(
+                      children: [
+                        const MetricsSummaryView(),
+                        const Divider(),
+                        const CountryMetricsView(),
+                        const Divider(),
+                        BlocBuilder<NativeAdBloc, NativeAdState>(
+                          builder: (context, state) {
+                            return state.maybeMap(
+                              loaded: (s) => NativeAdWidget(
+                                nativeAd: s.nativeAd,
+                                size: NativeAdSize.large,
+                              ),
+                              orElse: () => const SizedBox(),
+                            );
+                          },
+                        ),
+                        const AdUnitMetricsView(),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
