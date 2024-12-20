@@ -20,10 +20,6 @@ class NotAdmobUserPage extends StatelessWidget {
           create: (context) => getIt<AuthCheckBloc>()
             ..add(const AuthCheckEvent.signOutPressed()),
         ),
-        BlocProvider(
-          create: (context) =>
-              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
-        ),
       ],
       child: const _Handler(),
     );
@@ -41,7 +37,7 @@ class _Handler extends StatelessWidget {
           listener: (context, state) {
             state.maybeMap(
               unAuthenticated: (_) {
-                navigateAndRemoveUntil(context, const AuthGate());
+                // navigateAndRemoveUntil(context, const AuthGate());
               },
               orElse: () {},
             );
@@ -84,19 +80,6 @@ class _Handler extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              BlocBuilder<NativeAdBloc, NativeAdState>(
-                builder: (context, state) {
-                  return state.maybeMap(
-                    loaded: (s) {
-                      return NativeAdWidget(
-                        nativeAd: s.nativeAd,
-                        size: NativeAdSize.large,
-                      );
-                    },
-                    orElse: () => const SizedBox(),
-                  );
-                },
-              ),
               const SizedBox(height: 16),
               SimpleButton(
                 onPressed: () {

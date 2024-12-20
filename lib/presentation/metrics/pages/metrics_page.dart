@@ -1,3 +1,4 @@
+import 'package:advista/application/advertising/advertising_bloc/advertising_bloc.dart';
 import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
@@ -6,12 +7,14 @@ import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_state.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/presentation/core/widgets/banner_ad_widget.dart';
 import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/summary/widgets/dashboard_top_part.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_summary_view.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,12 +43,16 @@ class MetricsPage extends StatelessWidget {
             ..add(const AdUnitMetricsEvent.requsted()),
         ),
         BlocProvider(
-          create: (context) =>
-              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+          create: (context) => getIt<NativeAdBloc>(),
+          //..add(const NativeAdEvent.started()),
         ),
         BlocProvider(
           create: (context) =>
               getIt<InterstialBloc>()..add(const InterstialEvent.loadAd()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AdvertisingBloc>(),
+          //..add(const AdvertisingEvent.bannerRequested()),
         )
       ],
       child: Scaffold(
@@ -104,6 +111,17 @@ class _Handler extends StatelessWidget {
                         const Divider(),
                         const CountryMetricsView(),
                         const Divider(),
+                        // BlocBuilder<AdvertisingBloc, AdvertisingState>(
+                        //   builder: (context, state) {
+                        //     return state.maybeMap(
+                        //       loaded: (s) {
+                        //         return BannerAdWidget(bannerAd: s.bannerAd);
+                        //       },
+                        //       orElse: () => const SizedBox(),
+                        //     );
+                        //   },
+                        // ),
+                        const SizedBox(height: 20),
                         BlocBuilder<NativeAdBloc, NativeAdState>(
                           builder: (context, state) {
                             return state.maybeMap(
@@ -184,7 +202,7 @@ class _Handler extends StatelessWidget {
         adUnitBloc
             .add(const AdUnitMetricsEvent.requstedThisYear(forceRefresh: true));
         break;
-      case TimeRange.lifetime:
+      case TimeRange.allTime:
         todaysBloc
             .add(const TodaysMetricsEvent.requstedLifeTime(forceRefresh: true));
         countryBloc.add(

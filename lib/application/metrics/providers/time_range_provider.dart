@@ -1,20 +1,9 @@
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:advista/utils/app_utils.dart';
-
-enum TimeRange {
-  today,
-  yesterday,
-  last7Days,
-  thisMonth,
-  lastMonth,
-  thisYear,
-  lastYear, // newly Added
-  lifetime,
-  custom
-}
 
 class TimeRangeState {
   final TimeRange range;
@@ -75,7 +64,7 @@ class TimeRangeNotifier extends AutoDisposeNotifier<TimeRangeState> {
       case TimeRange.lastYear:
         final lastYear = _dateService.getLastYear();
         return '${formatToStd(lastYear.start)} - ${formatToStd(lastYear.end)}';
-      case TimeRange.lifetime:
+      case TimeRange.allTime:
         return 'All Time';
       case TimeRange.custom:
         if (dateTimeRange != null) {

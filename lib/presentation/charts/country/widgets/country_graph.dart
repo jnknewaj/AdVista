@@ -1,10 +1,9 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
-import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
-import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/presentation/charts/country/widgets/country_pie_chart.dart';
 import 'package:advista/presentation/charts/country/widgets/shimmer_pie_chart.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

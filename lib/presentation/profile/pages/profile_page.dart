@@ -127,7 +127,12 @@ class _Handler extends StatelessWidget {
               ),
               applicationName: AppStrings.appName,
               applicationVersion: AppStrings.appVersion,
-              children: [const Text('Developer : newazkabirtaluk@gmail.com')],
+              children: [
+                const Text('Developer : newazkabirtaluk@gmail.com'),
+                const SizedBox(height: 10),
+                const Text(
+                    'The app is still in beta version. Stay updated whenever available.'),
+              ],
             );
           },
         ),

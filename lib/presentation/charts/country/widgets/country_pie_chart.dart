@@ -1,8 +1,8 @@
-import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/charts/country/widgets/legend_item.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/country_name_util.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

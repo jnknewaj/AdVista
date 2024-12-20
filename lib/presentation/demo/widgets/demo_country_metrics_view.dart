@@ -6,6 +6,7 @@ import 'package:advista/presentation/demo/pages/demo_country_list_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -98,6 +99,7 @@ class DemoCountryMetricsView extends ConsumerWidget {
               ),
             ],
             metricsTitle: metricsTitle,
+            timeRange: TimeRange.today,
           ),
           Align(
             alignment: Alignment.center,

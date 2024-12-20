@@ -1,8 +1,8 @@
-import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_list_page.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +11,12 @@ class AdUnitDataWidget extends StatelessWidget {
     super.key,
     required this.adUnitDataList,
     required this.metricsTitle,
+    required this.timeRange,
   });
 
   final List<AdUnitMetrics> adUnitDataList;
   final MetricsTitle metricsTitle;
+  final TimeRange timeRange;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class AdUnitDataWidget extends StatelessWidget {
           SimpleButton(
             text: 'Show All',
             onPressed: () {
-              navigateTo(context, const AdUnitListPage());
+              navigateTo(context, AdUnitListPage(timeRange, sortedList));
             },
             primaryColor: Theme.of(context).primaryColor,
             secondaryColor: Theme.of(context).buttonTheme.secondaryColor,

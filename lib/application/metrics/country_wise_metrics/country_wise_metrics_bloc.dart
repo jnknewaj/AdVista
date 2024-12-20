@@ -35,6 +35,7 @@ class CountryWiseMetricsBloc
   ) async {
     await event.map(
       requsted: (e) async {
+        cprint("IHN haha", e.toString());
         if (state.todayMetrics != null && !e.forceRefresh) {
           emit(state);
           return;
@@ -96,6 +97,7 @@ class CountryWiseMetricsBloc
         );
       },
       requstedThisMonth: (e) async {
+        cprint("IHN haha", e.toString());
         if (state.thisMonthMetrics != null && !e.forceRefresh) {
           emit(state);
           return;

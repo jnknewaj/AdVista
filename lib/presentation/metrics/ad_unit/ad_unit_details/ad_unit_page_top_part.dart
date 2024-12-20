@@ -3,6 +3,7 @@ import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/date_range_list.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -61,7 +62,7 @@ class AdUnitPageTopPart extends ConsumerWidget {
                     .add(AdUnitMetricsEvent.requstedThisYear());
               },
               onAllTime: () {
-                notifier.setTimeRange(TimeRange.lifetime);
+                notifier.setTimeRange(TimeRange.allTime);
                 context
                     .read<AdUnitMetricsBloc>()
                     .add(AdUnitMetricsEvent.requstedLifeTime());

@@ -4,6 +4,7 @@ import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/date_range_list.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -50,7 +51,7 @@ class DemoAdUnitPageTopPart extends ConsumerWidget {
                 notifier.setTimeRange(TimeRange.thisYear);
               },
               onAllTime: () {
-                notifier.setTimeRange(TimeRange.lifetime);
+                notifier.setTimeRange(TimeRange.allTime);
               },
               onCustom: () {
                 notifier.setTimeRange(TimeRange.today);

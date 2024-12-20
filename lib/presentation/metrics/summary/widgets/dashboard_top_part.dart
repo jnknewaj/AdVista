@@ -4,6 +4,7 @@ import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -135,7 +136,7 @@ class DashboardTopPart extends ConsumerWidget {
                   },
                 ),
                 ClipCard(
-                  isActive: dateRange.range == TimeRange.lifetime,
+                  isActive: dateRange.range == TimeRange.allTime,
                   text: 'Lifetime',
                   onTap: () {
                     context
@@ -149,7 +150,7 @@ class DashboardTopPart extends ConsumerWidget {
                         .add(const AdUnitMetricsEvent.requstedLifeTime());
                     ref
                         .read(timeRangeProvider.notifier)
-                        .setTimeRange(TimeRange.lifetime);
+                        .setTimeRange(TimeRange.allTime);
                   },
                 ),
                 ClipCard(

@@ -1,10 +1,10 @@
 import 'package:advista/application/metrics/metrics_with_date/metrics_with_date_bloc.dart';
-import 'package:advista/application/metrics/providers/country_metrics_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/presentation/charts/metrics/widgets/chart_page_top_part.dart';
 import 'package:advista/presentation/charts/metrics/widgets/chart_seven_days.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

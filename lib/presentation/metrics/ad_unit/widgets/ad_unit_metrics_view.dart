@@ -9,6 +9,7 @@ import 'package:advista/presentation/metrics/country/widgets/country_data_shimme
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -99,12 +100,15 @@ class AdUnitMetricsView extends ConsumerWidget {
               if (error == null) {
                 final dataList =
                     mapTimeRangeToAdUnitMetrics(dateRange.range, state);
-                if (dataList == null) {
-                  return const BillBoard(text: "No Data Found");
+
+                if (dataList == null || dataList.isEmpty) {
+                  return const BillBoard(
+                      text: "No Data Found for The Selected Time Range");
                 }
                 return AdUnitDataWidget(
                   adUnitDataList: dataList,
                   metricsTitle: metricsTitle,
+                  timeRange: dateRange.range,
                 );
               } else {
                 return BillBoard(text: error);
@@ -150,7 +154,7 @@ List<AdUnitMetrics>? mapTimeRangeToAdUnitMetrics(
       return state.lastMonthMetrics;
     case TimeRange.thisYear:
       return state.thisYearsMetrics;
-    case TimeRange.lifetime:
+    case TimeRange.allTime:
       return state.lifeTimeMetrics;
     case TimeRange.custom:
       return state.customMetrics;
@@ -194,7 +198,7 @@ String? mapAdUnitMetricsToError(
         return state.thisMonthError!;
       }
       return null;
-    case TimeRange.lifetime:
+    case TimeRange.allTime:
       if (state.lifeTimeError != null) {
         return state.lifeTimeError!;
       }

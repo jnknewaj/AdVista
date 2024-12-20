@@ -3,9 +3,7 @@ import 'package:advista/domain/advertising/my_ad_manager.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
-import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/profile/widgets/profile_info_card.dart';
-import 'package:advista/presentation/profile/widgets/total_earning_card.dart';
 import 'package:advista/utils/app_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,7 @@ class DemoProfilePage extends StatelessWidget {
   // TODO Temp. Must follow BLOC later
   final MyAdManager _adManager = MyAdManager();
   DemoProfilePage({super.key}) {
-    _adManager.loadAd();
+    //_adManager.loadAd();
   }
 
   @override
@@ -23,8 +21,7 @@ class DemoProfilePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+          create: (context) => getIt<NativeAdBloc>(),
         )
       ],
       child: _Handler(_adManager),
@@ -61,7 +58,7 @@ class _Handler extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              _adManager.showAd();
+              //_adManager.showAd();
               navigateAndRemoveUntil(context, const AuthGate());
             },
           ),
@@ -70,25 +67,24 @@ class _Handler extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: ListView(
-          children: [
-            const ProfileInfoCard(
+          children: const [
+            ProfileInfoCard(
               name: 'Brock Lesnar',
               reportingTimeZone: 'California, USA',
               currencyCode: 'USD',
               accountOpeningDate: '31 October, 2021',
             ),
-            const TotalEarningCard(),
-            BlocBuilder<NativeAdBloc, NativeAdState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  loaded: (s) => NativeAdWidget(
-                    nativeAd: s.nativeAd,
-                    size: NativeAdSize.large,
-                  ),
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
+            // BlocBuilder<NativeAdBloc, NativeAdState>(
+            //   builder: (context, state) {
+            //     return state.maybeMap(
+            //       loaded: (s) => NativeAdWidget(
+            //         nativeAd: s.nativeAd,
+            //         size: NativeAdSize.large,
+            //       ),
+            //       orElse: () => const SizedBox(),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

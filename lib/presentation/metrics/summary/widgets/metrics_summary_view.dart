@@ -4,9 +4,11 @@ import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.d
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_state.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/presentation/charts/metrics/pages/metrics_chart_page.dart';
+import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 import 'package:advista/presentation/metrics/summary/widgets/grid_item_loading_widget.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,8 +79,10 @@ class MetricsSummaryView extends ConsumerWidget {
                       if (error == null) {
                         final metrics =
                             _mapTimeRangeToMetrics(dateRange.range, state);
+
                         return MetricsItem(
-                          topText: _mapIndexToTopText(index, metrics!),
+                          topText: _mapIndexToTopText(
+                              index, metrics!), // TODO check error on ! here
                           bottomText: _mapIndexToBottomText(index),
                         );
                       } else {
@@ -148,7 +152,7 @@ Metrics? _mapTimeRangeToMetrics(TimeRange timeRange, TodaysMetricsState state) {
       return state.lastMonthMetrics;
     case TimeRange.thisYear:
       return state.thisYearsMetrics;
-    case TimeRange.lifetime:
+    case TimeRange.allTime:
       return state.lifeTimeMetrics;
     case TimeRange.custom:
       return state.customMetrics;
@@ -192,7 +196,7 @@ String? _mapToError(
         return state.thisMonthError!;
       }
       return null;
-    case TimeRange.lifetime:
+    case TimeRange.allTime:
       if (state.lifeTimeError != null) {
         return state.lifeTimeError!;
       }

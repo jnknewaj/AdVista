@@ -1,18 +1,20 @@
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
+import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/presentation/metrics/widgets/clip_card.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class CountryPageTopWidget extends ConsumerWidget {
-  const CountryPageTopWidget({super.key});
+class CountryPageTopWidget extends HookWidget {
+  final TimeRange timeRange;
+  const CountryPageTopWidget(this.timeRange);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final timeRange = ref.watch(timeRangeProviderForCountryPage);
-    final notifier = ref.watch(timeRangeProviderForCountryPage.notifier);
+  Widget build(BuildContext context) {
+    final timeRangeState = useState(timeRange);
     return Container(
       height: screenHeightPortion(context, 0.09),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -26,9 +28,9 @@ class CountryPageTopWidget extends ConsumerWidget {
               children: [
                 ClipCard(
                   text: 'Today',
-                  isActive: timeRange.range == TimeRange.today,
+                  isActive: timeRangeState.value == TimeRange.today,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.today);
+                    timeRangeState.value = TimeRange.today;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requsted());
@@ -36,9 +38,10 @@ class CountryPageTopWidget extends ConsumerWidget {
                 ),
                 ClipCard(
                   text: 'Yesterday',
-                  isActive: timeRange.range == TimeRange.yesterday,
+                  isActive: timeRangeState.value == TimeRange.yesterday,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.yesterday);
+                    timeRangeState.value = TimeRange.yesterday;
+                    cprint('IHN', timeRangeState.value.toString());
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requstedYesterday());
@@ -46,9 +49,9 @@ class CountryPageTopWidget extends ConsumerWidget {
                 ),
                 ClipCard(
                   text: 'Last 7 Days',
-                  isActive: timeRange.range == TimeRange.last7Days,
+                  isActive: timeRangeState.value == TimeRange.last7Days,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.last7Days);
+                    timeRangeState.value = TimeRange.last7Days;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requsted7days());
@@ -56,9 +59,9 @@ class CountryPageTopWidget extends ConsumerWidget {
                 ),
                 ClipCard(
                   text: 'This Month',
-                  isActive: timeRange.range == TimeRange.thisMonth,
+                  isActive: timeRangeState.value == TimeRange.thisMonth,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.thisMonth);
+                    timeRangeState.value = TimeRange.thisMonth;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requstedThisMonth());
@@ -66,9 +69,9 @@ class CountryPageTopWidget extends ConsumerWidget {
                 ),
                 ClipCard(
                   text: 'Last Month',
-                  isActive: timeRange.range == TimeRange.lastMonth,
+                  isActive: timeRangeState.value == TimeRange.lastMonth,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.lastMonth);
+                    timeRangeState.value = TimeRange.lastMonth;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requstedLastMonth());
@@ -76,22 +79,42 @@ class CountryPageTopWidget extends ConsumerWidget {
                 ),
                 ClipCard(
                   text: 'This Year',
-                  isActive: timeRange.range == TimeRange.thisYear,
+                  isActive: timeRangeState.value == TimeRange.thisYear,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.thisYear);
+                    timeRangeState.value = TimeRange.thisYear;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requstedThisYear());
                   },
                 ),
                 ClipCard(
-                  text: 'Lifetime',
-                  isActive: timeRange.range == TimeRange.lifetime,
+                  text: 'All Time',
+                  isActive: timeRangeState.value == TimeRange.allTime,
                   onTap: () {
-                    notifier.setTimeRange(TimeRange.lifetime);
+                    timeRangeState.value = TimeRange.allTime;
                     context
                         .read<CountryWiseMetricsBloc>()
                         .add(const CountryWiseMetricsEvent.requstedLifeTime());
+                  },
+                ),
+                ClipCard(
+                  text: 'Custom',
+                  isActive: timeRangeState.value == TimeRange.custom,
+                  onTap: () async {
+                    timeRangeState.value = TimeRange.custom;
+                    final countryBloc = context.read<CountryWiseMetricsBloc>();
+                    final dateRange = await showDateRangePicker(
+                      context: context,
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime.now(),
+                    );
+
+                    if (dateRange != null) {
+                      countryBloc.add(CountryWiseMetricsEvent.requstedCustom(
+                        dateRange.start,
+                        dateRange.end,
+                      ));
+                    }
                   },
                 ),
               ],
@@ -101,7 +124,7 @@ class CountryPageTopWidget extends ConsumerWidget {
             alignment: Alignment.center,
             padding: const EdgeInsets.only(top: 3, left: 3, right: 8),
             child: Text(
-              timeRange.dateRange,
+              timeRangeToString(timeRangeState.value),
               style: TextStyle(
                 color: Theme.of(context).primaryColor, // check if color suits
                 fontWeight: FontWeight.bold,

@@ -16,8 +16,7 @@ class DemoMetricsPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+          create: (context) => getIt<NativeAdBloc>(),
         )
       ],
       child: Scaffold(
@@ -45,23 +44,23 @@ class _Handler extends StatelessWidget {
             const DemoDashboardTopPart(),
             Expanded(
               child: ListView(
-                children: [
-                  const DemoMetricsSummaryView(),
-                  const Divider(),
-                  const DemoCountryMetricsView(),
-                  const Divider(),
-                  BlocBuilder<NativeAdBloc, NativeAdState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        loaded: (s) => NativeAdWidget(
-                          nativeAd: s.nativeAd,
-                          size: NativeAdSize.large,
-                        ),
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  ),
-                  const DemoAdUnitMetricsView(),
+                children: const [
+                  DemoMetricsSummaryView(),
+                  Divider(),
+                  DemoCountryMetricsView(),
+                  Divider(),
+                  // BlocBuilder<NativeAdBloc, NativeAdState>(
+                  //   builder: (context, state) {
+                  //     return state.maybeMap(
+                  //       loaded: (s) => NativeAdWidget(
+                  //         nativeAd: s.nativeAd,
+                  //         size: NativeAdSize.large,
+                  //       ),
+                  //       orElse: () => const SizedBox(),
+                  //     );
+                  //   },
+                  // ),
+                  DemoAdUnitMetricsView(),
                 ],
               ),
             )

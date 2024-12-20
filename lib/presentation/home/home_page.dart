@@ -18,7 +18,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       // Temporarily removed banner ad
-      create: (context) => getIt<AdvertisingBloc>(),
+      create: (context) => getIt<AdvertisingBloc>()
+        ..add(const AdvertisingEvent.bannerRequested()),
       child: const _Handler(),
     );
   }

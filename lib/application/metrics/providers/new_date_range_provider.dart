@@ -1,19 +1,9 @@
 import 'package:advista/infrastructure/core/date_service.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/utils/app_utils.dart';
+import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-enum TimeRange {
-  today,
-  yesterday,
-  last7Days,
-  thisMonth,
-  lastMonth,
-  thisYear,
-  allTime,
-  custom,
-}
 
 class TimeRangeState {
   final TimeRange range;
@@ -61,6 +51,9 @@ class TimeRangeNotifier extends StateNotifier<TimeRangeState> {
       case TimeRange.thisYear:
         final thisYear = _dateService.getThisYear();
         return '${formatToStd(thisYear.start)} - ${formatToStd(thisYear.end)}';
+      case TimeRange.lastYear:
+        final year = _dateService.getLastYear();
+        return '${formatToStd(year.start)} - ${formatToStd(year.end)}';
       case TimeRange.allTime:
         return 'All Time';
       case TimeRange.custom:

@@ -39,8 +39,7 @@ class DemoAppsListPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              getIt<NativeAdBloc>()..add(const NativeAdEvent.started()),
+          create: (context) => getIt<NativeAdBloc>(),
         ),
       ],
       child: const _Handler(),
@@ -184,17 +183,17 @@ class _Handler extends StatelessWidget {
                   context, 'In Next Update - Apps Data Will be Available');
             },
           ),
-          BlocBuilder<NativeAdBloc, NativeAdState>(
-            builder: (context, state) {
-              return state.maybeMap(
-                loaded: (s) => NativeAdWidget(
-                  nativeAd: s.nativeAd,
-                  size: NativeAdSize.large,
-                ),
-                orElse: () => const SizedBox(),
-              );
-            },
-          ),
+          // BlocBuilder<NativeAdBloc, NativeAdState>(
+          //   builder: (context, state) {
+          //     return state.maybeMap(
+          //       loaded: (s) => NativeAdWidget(
+          //         nativeAd: s.nativeAd,
+          //         size: NativeAdSize.large,
+          //       ),
+          //       orElse: () => const SizedBox(),
+          //     );
+          //   },
+          // ),
           ListTile(
             leading: CircularImageHolder(imageUrl: app3.appIconUrl),
             title: Text(app3.displayName),
