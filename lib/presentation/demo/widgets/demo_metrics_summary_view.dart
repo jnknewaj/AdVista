@@ -1,4 +1,5 @@
 import 'package:advista/domain/metrics/metrics.dart';
+import 'package:advista/presentation/demo/dummy_data/dummy_data.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +25,14 @@ class DemoMetricsSummaryView extends StatelessWidget {
             topText: _mapIndexToTopText(
               index,
               const Metrics(
-                earnings: 5976.87,
-                impression: 72124,
-                requests: 79729,
-                matchRate: 38.89,
-                clicks: 89,
-                eCPM: 20.2,
-                showRate: 90.18,
-                cTR: 09.98,
+                earnings: 37.27,
+                impression: 62758,
+                requests: 89595,
+                matchRate: 70.05,
+                clicks: 35,
+                eCPM: 59.39,
+                showRate: 70.05,
+                cTR: 0.06,
               ),
             ),
             bottomText: _mapIndexToBottomText(index),

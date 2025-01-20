@@ -1,5 +1,6 @@
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
+import 'package:advista/presentation/demo/dummy_data/dummy_data.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_list.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -11,80 +12,35 @@ class DemoCountryFullList extends ConsumerWidget {
   final _data = [
     const CountryMetrics(
       country: 'AU',
-      metrics: Metrics(
-        earnings: 3.78,
-        impression: 25,
-        requests: 28,
-        matchRate: 87.78,
-        clicks: 1,
-        eCPM: 29.98,
-        showRate: 90.98,
-        cTR: 40.0,
-      ),
+      metrics: dLast7DaysMetrics,
     ),
     const CountryMetrics(
       country: 'US',
-      metrics: Metrics(
-        earnings: 10.23,
-        impression: 259,
-        requests: 280,
-        matchRate: 89.78,
-        clicks: 3,
-        eCPM: 40.38,
-        showRate: 90.93,
-        cTR: 11.29,
-      ),
+      metrics: dThisMonthMetrics,
     ),
     const CountryMetrics(
       country: 'SL',
-      metrics: Metrics(
-        earnings: 10.23,
-        impression: 259,
-        requests: 280,
-        matchRate: 89.78,
-        clicks: 3,
-        eCPM: 40.38,
-        showRate: 90.93,
-        cTR: 11.29,
-      ),
+      metrics: dTodayMetrics,
     ),
     const CountryMetrics(
       country: 'KR',
-      metrics: Metrics(
-        earnings: 10.23,
-        impression: 259,
-        requests: 280,
-        matchRate: 89.78,
-        clicks: 3,
-        eCPM: 40.38,
-        showRate: 90.93,
-        cTR: 11.29,
-      ),
+      metrics: dYesterdayMetrics,
     ),
     const CountryMetrics(
       country: 'NZ',
-      metrics: Metrics(
-        earnings: 4.23,
-        impression: 224,
-        requests: 134,
-        matchRate: 89.78,
-        clicks: 0,
-        eCPM: 23.38,
-        showRate: 90.93,
-        cTR: 11.29,
-      ),
+      metrics: dLastMonthMetrics,
     ),
     const CountryMetrics(
       country: 'BD',
       metrics: Metrics(
-        earnings: 12.23,
-        impression: 25539,
+        earnings: 1.23,
+        impression: 11539,
         requests: 28320,
-        matchRate: 94.38,
+        matchRate: 40.75,
         clicks: 2,
-        eCPM: 00.38,
-        showRate: 90.93,
-        cTR: 11.29,
+        eCPM: 00.11,
+        showRate: 40.74,
+        cTR: 0.02,
       ),
     ),
   ];

@@ -2,6 +2,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
+import 'package:advista/presentation/demo/dummy_data/dummy_data.dart';
 import 'package:advista/presentation/demo/pages/demo_country_list_page.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
@@ -73,29 +74,11 @@ class DemoCountryMetricsView extends ConsumerWidget {
             countryDataList: const [
               CountryMetrics(
                 country: 'AU',
-                metrics: Metrics(
-                  earnings: 3.78,
-                  impression: 25,
-                  requests: 28,
-                  matchRate: 87.78,
-                  clicks: 1,
-                  eCPM: 29.98,
-                  showRate: 90.98,
-                  cTR: 40.0,
-                ),
+                metrics: dLast7DaysMetrics,
               ),
               CountryMetrics(
                 country: 'US',
-                metrics: Metrics(
-                  earnings: 10.23,
-                  impression: 259,
-                  requests: 280,
-                  matchRate: 89.78,
-                  clicks: 3,
-                  eCPM: 40.38,
-                  showRate: 90.93,
-                  cTR: 11.29,
-                ),
+                metrics: dThisMonthMetrics,
               ),
             ],
             metricsTitle: metricsTitle,

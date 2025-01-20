@@ -32,7 +32,7 @@ class _Handler extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const DemoCountryPageTopWidget(),
+            //const DemoCountryPageTopWidget(),
             const MetricsList(notifierKey: 'DemoCountryListPage'),
             Expanded(
               child: ListView(

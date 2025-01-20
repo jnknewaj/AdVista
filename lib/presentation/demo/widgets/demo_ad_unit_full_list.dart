@@ -1,5 +1,6 @@
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
+import 'package:advista/presentation/demo/dummy_data/dummy_data.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_list.dart';
 import 'package:advista/utils/app_utils.dart';
@@ -10,30 +11,12 @@ final _data = [
   const AdUnitMetrics(
     adUnitId: 'CA-App-Pub-61836183',
     adUnitType: 'WW3Banner',
-    metrics: Metrics(
-      earnings: 2.3,
-      impression: 22,
-      requests: 23,
-      matchRate: 99,
-      clicks: 0,
-      eCPM: 23,
-      showRate: 98,
-      cTR: 0,
-    ),
+    metrics: dWw3BannerData,
   ),
   const AdUnitMetrics(
     adUnitId: 'CA-App-Pub-2972397',
     adUnitType: 'WW3Interstitial',
-    metrics: Metrics(
-      earnings: 56.24,
-      impression: 7232,
-      requests: 11242,
-      matchRate: 79,
-      clicks: 4,
-      eCPM: 5.6,
-      showRate: 98.23,
-      cTR: 12.5,
-    ),
+    metrics: dWW3IntData,
   ),
   const AdUnitMetrics(
     adUnitId: 'CA-App-Pub-2943397',

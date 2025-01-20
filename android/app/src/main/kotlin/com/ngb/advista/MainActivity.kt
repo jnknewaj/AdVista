@@ -1,4 +1,4 @@
-package com.ngb.advista
+package com.ngb.twoadvista
 
 import io.flutter.embedding.android.FlutterActivity
 

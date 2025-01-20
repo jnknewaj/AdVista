@@ -2,6 +2,7 @@ import 'package:advista/application/metrics/providers/country_metrics_provider.d
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/domain/metrics/metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
+import 'package:advista/presentation/demo/dummy_data/dummy_data.dart';
 import 'package:advista/presentation/demo/pages/demo_ad_unit_list_page.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_data_widget.dart';
 import 'package:advista/presentation/metrics/widgets/metrics_horizontal_list.dart';
@@ -75,30 +76,12 @@ class DemoAdUnitMetricsView extends ConsumerWidget {
               AdUnitMetrics(
                 adUnitId: 'CA-App-Pub-61836183',
                 adUnitType: 'WW3Banner',
-                metrics: Metrics(
-                  earnings: 2.3,
-                  impression: 22,
-                  requests: 23,
-                  matchRate: 99,
-                  clicks: 0,
-                  eCPM: 23,
-                  showRate: 98,
-                  cTR: 0,
-                ),
+                metrics: dWw3BannerData,
               ),
               AdUnitMetrics(
                 adUnitId: 'CA-App-Pub-2972397',
                 adUnitType: 'WW3Interstitial',
-                metrics: Metrics(
-                  earnings: 12.3,
-                  impression: 7,
-                  requests: 11,
-                  matchRate: 79,
-                  clicks: 2,
-                  eCPM: 23,
-                  showRate: 98,
-                  cTR: 35,
-                ),
+                metrics: dWW3IntData,
               ),
             ],
             metricsTitle: metricsTitle,
