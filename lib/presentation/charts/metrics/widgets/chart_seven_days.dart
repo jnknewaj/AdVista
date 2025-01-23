@@ -3,6 +3,7 @@ import 'package:advista/presentation/charts/metrics/widgets/bar_chart_fpr_metric
 import 'package:advista/presentation/charts/metrics/widgets/line_chart_for_metrics.dart';
 import 'package:advista/presentation/charts/metrics/widgets/shimmer_chart_seven_days.dart';
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
+import 'package:advista/utils/map.dart';
 import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +43,8 @@ class ChartSevenDays extends StatelessWidget {
               selectedMetrics: selectedMetrics,
             );
           },
-          failure: (_) => const BillBoard(text: 'Error Loading Chart'),
+          failure: (s) =>
+              BillBoard(text: mapMetricsFailuresToString(s.failures)),
         );
       },
     );

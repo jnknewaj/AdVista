@@ -46,23 +46,8 @@ class _AdUnitGraphState extends State<AdUnitGraph>
             );
           }
         } else {
-          return const BillBoard(text: "Error Loading Data");
+          return BillBoard(text: error);
         }
-
-        // return state.map(
-        //   initial: (_) => const ShimmerPieChart(),
-        //   loading: (_) => const ShimmerPieChart(),
-        //   loaded: (s) {
-        //     final metricsList = s.metrics;
-        //     return AdUnitPieChart(
-        //       title: widget.title,
-        //       metricsList: metricsList,
-        //       selectedMetrics: widget.selectedMetrics,
-        //     );
-        //   },
-        //   failed: (_) => const BillBoard(text: 'Error Loading Chart'),
-        //   noDataFound: (_) => const BillBoard(text: 'No Data Found'),
-        // );
       },
     );
   }

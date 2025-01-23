@@ -1,5 +1,10 @@
 // ignore_for_file: avoid_print
+import 'dart:math';
+
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
+import 'package:advista/domain/apps_metrics/apps_data_failures.dart';
+import 'package:advista/domain/apps_metrics/apps_metrics.dart';
+import 'package:advista/domain/core/account_failures.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/domain/metrics/metrics_failures.dart';
 import 'package:advista/domain/metrics/metrics_with_date.dart';
@@ -14,15 +19,6 @@ navigateTo(BuildContext context, Widget page) {
     ),
   );
 }
-
-// persistentNavigateTo(BuildContext context, Widget page) {
-//   PersistentNavBarNavigator.pushNewScreen(
-//     context,
-//     screen: page,
-//     withNavBar: false,
-//     pageTransitionAnimation: PageTransitionAnimation.cupertino,
-//   );
-// }
 
 navigateAndRemoveUntil(BuildContext context, Widget page) {
   Navigator.of(context).pushAndRemoveUntil(
@@ -95,6 +91,18 @@ String getFlagEmoji(String countryCode) {
   return String.fromCharCode(firstChar) + String.fromCharCode(secondChar);
 }
 
+String mapAppsDataFailuresToText(AppsDataFailures failures) {
+  return failures.map(
+    networkFailure: (e) => 'Check Network',
+    serverFailure: (e) => 'Server Error : ${e.msg}',
+    idNotFound: (e) => 'Admob Id Not Found',
+    unknown: (e) => 'Unknown Error : ${e.msg}',
+    htmlFailure: (e) => e.msg,
+    timeoutFailure: (e) => e.msg,
+    tokenNotFoundFailure: (e) => e.msg,
+  );
+}
+
 String mapMetricsFailuresToText(MetricsFailures failures) {
   return failures.map(
     networkFailure: (e) => 'Check Network',
@@ -102,10 +110,29 @@ String mapMetricsFailuresToText(MetricsFailures failures) {
     parsingFailure: (e) => 'Parsing error : ${e.msg}',
     tokenNotFound: (e) => 'Token Not Found',
     serverFailure: (e) => 'Server Error : ${e.msg}',
-    idNotFound: (e) => 'Admob Id Not Found',
+    idNotFound: (e) => 'Account is not linked with AdMob',
     unknown: (e) => 'Unknown Error : ${e.msg}',
     invalidCountryCode: (e) => 'Invalid Country Code',
     noDataForCountry: (e) => 'No Country Data Found',
+  );
+}
+
+String mapAccountFailuresToString(AccountFailures failure) {
+  return failure.map(
+    networkFailure: (e) => 'Check Network',
+    parsingFailure: (e) => 'Parsing error : ${e.msg}',
+    tokenNotFound: (e) => 'Token Not Found',
+    serverFailure: (e) {
+      if (e.code == 401.toString()) {
+        return 'The account is not linked with AdMob';
+      } else {
+        return e.msg;
+      }
+    },
+    idNotFound: (e) => 'Admob Id Not Found',
+    unknown: (e) => 'Unknown Error : ${e.message}',
+    httpFailure: (e) => e.message,
+    timeOut: (e) => e.msg,
   );
 }
 
@@ -148,6 +175,40 @@ List<AdUnitMetrics> sortAdUnitMetricsList(
   List<AdUnitMetrics> list,
 ) {
   final sortedList = List<AdUnitMetrics>.from(list);
+  switch (title) {
+    case MetricsTitle.earnings:
+      sortedList
+          .sort((a, b) => b.metrics.earnings.compareTo(a.metrics.earnings));
+      break;
+    case MetricsTitle.impression:
+      sortedList
+          .sort((a, b) => b.metrics.impression.compareTo(a.metrics.impression));
+      break;
+    case MetricsTitle.requests:
+      sortedList
+          .sort((a, b) => b.metrics.requests.compareTo(a.metrics.requests));
+      break;
+    case MetricsTitle.clicks:
+      sortedList.sort((a, b) => b.metrics.clicks.compareTo(a.metrics.clicks));
+      break;
+    case MetricsTitle.eCPM:
+      sortedList.sort((a, b) => b.metrics.eCPM.compareTo(a.metrics.eCPM));
+      break;
+    case MetricsTitle.matchRate:
+      sortedList
+          .sort((a, b) => b.metrics.matchRate.compareTo(a.metrics.matchRate));
+      break;
+    default:
+      throw Exception('Unsupported Metrics Title: $title');
+  }
+  return sortedList;
+}
+
+List<AppsMetrics> sortAppsMetricsList(
+  MetricsTitle title,
+  List<AppsMetrics> list,
+) {
+  final sortedList = List<AppsMetrics>.from(list);
   switch (title) {
     case MetricsTitle.earnings:
       sortedList
@@ -233,3 +294,43 @@ final colorsForPieChart = [
   Colors.teal,
   Colors.lime,
 ];
+
+String formatAdmobAppId(String adUnitId) {
+  if (adUnitId.contains("~")) {
+    final parts = adUnitId.split("~");
+    return "${parts.first.substring(0, 10)}..${parts.last}";
+  }
+  return adUnitId;
+}
+
+Color getRandomColor() {
+  final random = Random();
+  return Color.fromARGB(
+    255,
+    random.nextInt(256),
+    random.nextInt(256),
+    random.nextInt(256),
+  );
+}
+
+String mapAppsMetricsToText(
+  MetricsTitle title,
+  AppsMetrics metrics,
+) {
+  switch (title) {
+    case MetricsTitle.earnings:
+      return '\$${metrics.metrics.earnings.toStringAsFixed(4)}';
+    case MetricsTitle.impression:
+      return metrics.metrics.impression.toString();
+    case MetricsTitle.requests:
+      return metrics.metrics.requests.toString();
+    case MetricsTitle.clicks:
+      return metrics.metrics.clicks.toString();
+    case MetricsTitle.eCPM:
+      return '\$${metrics.metrics.eCPM.toStringAsFixed(2)}';
+    case MetricsTitle.matchRate:
+      return '${metrics.metrics.matchRate.toStringAsFixed(2)}\%';
+    default:
+      return 'Unknown metrics';
+  }
+}

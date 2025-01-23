@@ -1,4 +1,5 @@
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
+import 'package:advista/domain/apps_metrics/apps_metrics.dart';
 import 'package:advista/domain/country_metrics/country_metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
 import 'package:advista/presentation/metrics/country/country_details/country_list_page.dart';
@@ -39,10 +40,19 @@ class CountryDataWidget extends StatelessWidget {
                 getFlagEmoji(data.country),
                 style: const TextStyle(fontSize: 40),
               ),
-              title: Text(getCountryName(data.country)),
+              title: Text(
+                getCountryName(data.country),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
               trailing: Text(
                 mapCountryMetricsToData(metricsTitle, data),
-                style: Theme.of(context).textTheme.listTileTrailingTextStyle(),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
             );
           },
@@ -102,6 +112,6 @@ String mapAdUnitMetricsToText(
     case MetricsTitle.matchRate:
       return '${countryMetrics.metrics.matchRate.toStringAsFixed(2)}\%';
     default:
-      return 'Unknown CountryMetrics';
+      return 'Unknown metrics';
   }
 }

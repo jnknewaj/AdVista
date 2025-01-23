@@ -1,27 +1,28 @@
-import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
+import 'package:advista/domain/apps_metrics/apps_metrics.dart';
 import 'package:advista/presentation/core/widgets/simple_button.dart';
-import 'package:advista/presentation/metrics/ad_unit/ad_unit_details/ad_unit_list_page.dart';
+import 'package:advista/presentation/core/widgets/square_avatar.dart';
+import 'package:advista/presentation/metrics/apps_data/pages/apps_data_list_page.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:advista/utils/styles/theme.dart';
 import 'package:flutter/material.dart';
 
-class AdUnitDataWidget extends StatelessWidget {
-  const AdUnitDataWidget({
+class AppsDataWidget extends StatelessWidget {
+  const AppsDataWidget({
     super.key,
-    required this.adUnitDataList,
+    required this.appsDataList,
     required this.metricsTitle,
     required this.timeRange,
   });
 
-  final List<AdUnitMetrics> adUnitDataList;
+  final List<AppsMetrics> appsDataList;
   final MetricsTitle metricsTitle;
   final TimeRange timeRange;
 
   @override
   Widget build(BuildContext context) {
-    final bool showAllButton = adUnitDataList.length > 3;
-    final sortedList = sortAdUnitMetricsList(metricsTitle, adUnitDataList);
+    final bool showAllButton = appsDataList.length > 3;
+    final sortedList = sortAppsMetricsList(metricsTitle, appsDataList);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -29,18 +30,24 @@ class AdUnitDataWidget extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: showAllButton ? 3 : adUnitDataList.length,
+          itemCount: showAllButton ? 3 : appsDataList.length,
           itemBuilder: (context, index) {
             final data = sortedList[index];
             return ListTile(
+              // leading: SquareAvatar(
+              //   size: 30,
+              //   fallbackText: "${index + 1}",
+              //   color: Theme.of(context).primaryColor,
+              // ),
               title: Text(
-                data.adUnitType,
+                data.appDisplayLabel,
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge
                     ?.copyWith(fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text(data.adUnitId),
               trailing: Text(
                 _mapTitleToData(metricsTitle, data),
                 style: Theme.of(context)
@@ -55,7 +62,7 @@ class AdUnitDataWidget extends StatelessWidget {
           SimpleButton(
             text: 'Show All',
             onPressed: () {
-              navigateTo(context, AdUnitListPage(timeRange, sortedList));
+              navigateTo(context, AppsDataListPage(timeRange, sortedList));
             },
             primaryColor: Theme.of(context).primaryColor,
             secondaryColor: Theme.of(context).buttonTheme.secondaryColor,
@@ -68,22 +75,23 @@ class AdUnitDataWidget extends StatelessWidget {
 
 String _mapTitleToData(
   MetricsTitle title,
-  AdUnitMetrics adUnitMetrics,
+  AppsMetrics metrics,
 ) {
+  cprint('AKL', metrics.toString());
   switch (title) {
     case MetricsTitle.earnings:
-      return adUnitMetrics.metrics.earnings.toStringAsFixed(3);
+      return metrics.metrics.earnings.toStringAsFixed(4);
     case MetricsTitle.impression:
-      return adUnitMetrics.metrics.impression.toString();
+      return metrics.metrics.impression.toString();
     case MetricsTitle.requests:
-      return adUnitMetrics.metrics.requests.toString();
+      return metrics.metrics.requests.toString();
     case MetricsTitle.clicks:
-      return adUnitMetrics.metrics.clicks.toString();
+      return metrics.metrics.clicks.toString();
     case MetricsTitle.eCPM:
-      return adUnitMetrics.metrics.eCPM.toStringAsFixed(2);
+      return metrics.metrics.eCPM.toStringAsFixed(2);
     case MetricsTitle.matchRate:
-      return adUnitMetrics.metrics.matchRate.toStringAsFixed(2);
+      return metrics.metrics.matchRate.toStringAsFixed(2);
     default:
-      return 'Unknown AdUnitMetrics';
+      return 'Unknown metrics';
   }
 }

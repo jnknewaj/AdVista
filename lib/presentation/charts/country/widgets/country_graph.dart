@@ -45,22 +45,8 @@ class _CountryGraphState extends State<CountryGraph>
             );
           }
         } else {
-          return const BillBoard(text: "Error Loading Data");
+          return BillBoard(text: error);
         }
-        // return state.map(
-        //   initial: (_) => const ShimmerPieChart(),
-        //   loading: (_) => const ShimmerPieChart(),
-        //   loaded: (s) {
-        //     final metricsList = s.metrics;
-        // return CountryPieChart(
-        //   title: widget.title,
-        //   metricsList: metricsList,
-        //   selectedMetrics: widget.selectedMetrics,
-        // );
-        //   },
-        //   failed: (_) => const BillBoard(text: 'Error Loading Chart'),
-        //   noDataFound: (_) => const BillBoard(text: 'No Data Found'),
-        // );
       },
     );
   }

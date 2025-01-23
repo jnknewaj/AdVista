@@ -2,14 +2,15 @@ import 'package:advista/application/advertising/advertising_bloc/advertising_blo
 import 'package:advista/application/advertising/interstitial/interstitial_bloc/interstial_bloc.dart';
 import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/metrics/ad_unit_metrics/ad_unit_metrics_bloc.dart';
+import 'package:advista/application/metrics/apps_metrics/apps_metrics_bloc/apps_metrics_bloc.dart';
 import 'package:advista/application/metrics/country_wise_metrics/country_wise_metrics_bloc.dart';
 import 'package:advista/application/metrics/providers/time_range_provider.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/application/metrics/todays_metrics/todays_metrics_state.dart';
 import 'package:advista/injection.dart';
-import 'package:advista/presentation/core/widgets/banner_ad_widget.dart';
 import 'package:advista/presentation/core/widgets/native_ad_widget.dart';
 import 'package:advista/presentation/metrics/ad_unit/widgets/ad_unit_metrics_view.dart';
+import 'package:advista/presentation/metrics/apps_data/widgets/apps_metrics_view.dart';
 import 'package:advista/presentation/metrics/country/widgets/country_metrics_view.dart';
 import 'package:advista/presentation/metrics/summary/widgets/dashboard_top_part.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_summary_view.dart';
@@ -41,6 +42,10 @@ class MetricsPage extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<AdUnitMetricsBloc>()
             ..add(const AdUnitMetricsEvent.requsted()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<AppsMetricsBloc>()..add(const AppsMetricsEvent.requsted()),
         ),
         BlocProvider(
           create: (context) => getIt<NativeAdBloc>(),
@@ -106,34 +111,15 @@ class _Handler extends StatelessWidget {
                       _onRefresh(context, dateRange.range);
                     },
                     child: ListView(
-                      children: [
-                        const MetricsSummaryView(),
-                        const Divider(),
-                        const CountryMetricsView(),
-                        const Divider(),
-                        // BlocBuilder<AdvertisingBloc, AdvertisingState>(
-                        //   builder: (context, state) {
-                        //     return state.maybeMap(
-                        //       loaded: (s) {
-                        //         return BannerAdWidget(bannerAd: s.bannerAd);
-                        //       },
-                        //       orElse: () => const SizedBox(),
-                        //     );
-                        //   },
-                        // ),
-                        const SizedBox(height: 20),
-                        BlocBuilder<NativeAdBloc, NativeAdState>(
-                          builder: (context, state) {
-                            return state.maybeMap(
-                              loaded: (s) => NativeAdWidget(
-                                nativeAd: s.nativeAd,
-                                size: NativeAdSize.large,
-                              ),
-                              orElse: () => const SizedBox(),
-                            );
-                          },
-                        ),
-                        const AdUnitMetricsView(),
+                      children: const [
+                        MetricsSummaryView(),
+                        SizedBox(height: 10),
+                        CountryMetricsView(),
+                        //Divider(),
+                        SizedBox(height: 10),
+                        AdUnitMetricsView(),
+                        //Divider(),
+                        AppsMetricsView(),
                       ],
                     ),
                   );

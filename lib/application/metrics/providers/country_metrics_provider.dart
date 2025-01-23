@@ -9,6 +9,10 @@ final metricsTitleNotifierProvider2 =
     NotifierProvider<MetricsTitleNotifier, MetricsTitle>(
         () => MetricsTitleNotifier()); // to be used AdUnitMetricsView
 
+final metricsTitleNotifierProvider3 =
+    NotifierProvider<MetricsTitleNotifier, MetricsTitle>(
+        () => MetricsTitleNotifier()); // to be usee with AppMetricsView
+
 class MetricsTitleNotifier extends Notifier<MetricsTitle> {
   @override
   MetricsTitle build() => MetricsTitle.earnings;

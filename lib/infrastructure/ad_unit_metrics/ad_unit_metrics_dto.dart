@@ -1,6 +1,5 @@
 import 'package:advista/domain/ad_unit_metrics/ad_unit_metrics.dart';
 import 'package:advista/infrastructure/metrics/metrics_dto.dart';
-import 'package:advista/utils/app_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ad_unit_metrics_dto.freezed.dart';

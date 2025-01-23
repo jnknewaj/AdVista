@@ -87,7 +87,11 @@ class _Handler extends StatelessWidget {
               },
               noAppYet: (_) =>
                   const Center(child: BillBoard(text: 'No Admob App Yet')),
-              failed: (f) => Center(child: BillBoard(text: f.failures.msg)),
+              failed: (f) => const Center(
+                  child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: BillBoard(text: 'No apps found that linked with AdMob'),
+              )),
             );
           },
         ),

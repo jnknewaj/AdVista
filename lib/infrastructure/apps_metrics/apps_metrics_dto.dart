@@ -1,4 +1,6 @@
 import 'package:advista/domain/apps_metrics/apps_metrics.dart';
+import 'package:advista/infrastructure/metrics/metrics_dto.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -12,30 +14,14 @@ class AppsMetricsDto with _$AppsMetricsDto {
   const factory AppsMetricsDto({
     required String appValue, // app-id
     required String appDisplayLabel,
-    required int adRequests,
-    required int clicks,
-    required int impressions,
-    required double impressionCtr,
-    required double impressionRpm,
-    required int matchedRequests,
-    required double matchRate,
-    required double showRate,
-    required double estimatedEarnings,
+    required Metricsdto metrics,
   }) = _AppsMetricsDto;
 
   factory AppsMetricsDto.fromDomain(AppsMetrics domain) {
     return AppsMetricsDto(
       appValue: domain.appValue,
       appDisplayLabel: domain.appDisplayLabel,
-      adRequests: domain.adRequests,
-      clicks: domain.clicks,
-      impressions: domain.impressions,
-      impressionCtr: domain.impressionCtr,
-      impressionRpm: domain.impressionRpm,
-      matchedRequests: domain.matchedRequests,
-      matchRate: domain.matchRate,
-      showRate: domain.showRate,
-      estimatedEarnings: domain.estimatedEarnings,
+      metrics: Metricsdto.fromDomain(domain.metrics),
     );
   }
 
@@ -43,39 +29,33 @@ class AppsMetricsDto with _$AppsMetricsDto {
     return AppsMetrics(
       appValue: appValue,
       appDisplayLabel: appDisplayLabel,
-      adRequests: adRequests,
-      clicks: clicks,
-      impressions: impressions,
-      impressionCtr: impressionCtr,
-      impressionRpm: impressionRpm,
-      matchedRequests: matchedRequests,
-      matchRate: matchRate,
-      showRate: showRate,
-      estimatedEarnings: estimatedEarnings,
+      metrics: metrics.toDomain(),
     );
   }
 
-  factory AppsMetricsDto.fromRow(Map<String, dynamic> row) {
-    final dimensionValues = row['dimensionValues']['APP'];
-    final metricValues = row['metricValues'];
-
-    final earningsMicros =
-        int.parse(metricValues['ESTIMATED_EARNINGS']['microsValue']);
-
-    return AppsMetricsDto(
-      appValue: dimensionValues['value'] as String,
-      appDisplayLabel: dimensionValues['displayLabel'] as String,
-      adRequests: int.parse(metricValues['AD_REQUESTS']['integerValue']),
-      clicks: int.parse(metricValues['CLICKS']['integerValue']),
-      impressions: int.parse(metricValues['IMPRESSIONS']['integerValue']),
-      impressionCtr: (metricValues['IMPRESSION_CTR']['doubleValue'] as double),
-      impressionRpm: (metricValues['IMPRESSION_RPM']['doubleValue'] as double),
-      matchedRequests:
-          int.parse(metricValues['MATCHED_REQUESTS']['integerValue']),
-      matchRate: (metricValues['MATCH_RATE']['doubleValue'] as double),
-      showRate: (metricValues['SHOW_RATE']['doubleValue'] as double),
-      estimatedEarnings: earningsMicros / 1000000,
+  factory AppsMetricsDto.fromRow(Map<String, dynamic> json) {
+    final da = json;
+    final row = json['row'];
+    final dimens = row['dimensionValues'];
+    final app = dimens['APP'];
+    final appValue = app['value'];
+    final displayLabel = app['displayLabel'];
+    cprint('HSN da', da.toString());
+    cprint('HSN', '--------------------------------------------------------');
+    cprint('HSN row', row.toString());
+    cprint('HSN', '--------------------------------------------------------');
+    cprint('HSN dimens', dimens.toString());
+    cprint('HSN', '--------------------------------------------------------');
+    cprint('HSN app', app.toString());
+    cprint('HSN', '--------------------------------------------------------');
+    cprint('HSN appvalue', appValue.toString());
+    cprint('HSN label', displayLabel.toString());
+    final dto = AppsMetricsDto(
+      appValue: row['dimensionValues']['APP']['value'],
+      appDisplayLabel: row['dimensionValues']['APP']['displayLabel'],
+      metrics: Metricsdto.fromRowJson(row),
     );
+    return dto;
   }
 
   factory AppsMetricsDto.fromJson(Map<String, dynamic> json) =>

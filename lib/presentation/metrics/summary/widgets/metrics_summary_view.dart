@@ -7,6 +7,7 @@ import 'package:advista/presentation/charts/metrics/pages/metrics_chart_page.dar
 import 'package:advista/presentation/metrics/country/widgets/no_data_widget.dart';
 import 'package:advista/presentation/metrics/summary/widgets/grid_item_loading_widget.dart';
 import 'package:advista/presentation/metrics/summary/widgets/metrics_item.dart';
+import 'package:advista/presentation/metrics/summary/widgets/summary_loading.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/metrics_timerange_list.dart';
 import 'package:flutter/material.dart';
@@ -58,25 +59,24 @@ class MetricsSummaryView extends ConsumerWidget {
               const SizedBox(height: 5),
               BlocBuilder<TodaysMetricsBloc, TodaysMetricsState>(
                 builder: (context, state) {
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      childAspectRatio: 1.7,
-                    ),
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      if (state.isLoading) {
-                        return const GridItemLoadingWidget();
-                      }
-
-                      final error = _mapToError(dateRange.range, state);
-
-                      if (error == null) {
+                  if (state.isLoading) {
+                    return SummaryLoading(
+                        height: screenHeightPortion(context, 0.25));
+                  }
+                  final error = _mapToError(dateRange.range, state);
+                  if (error == null) {
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        childAspectRatio: 1.7,
+                      ),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
                         final metrics =
                             _mapTimeRangeToMetrics(dateRange.range, state);
 
@@ -85,11 +85,11 @@ class MetricsSummaryView extends ConsumerWidget {
                               index, metrics!), // TODO check error on ! here
                           bottomText: _mapIndexToBottomText(index),
                         );
-                      } else {
-                        return Text(error!);
-                      }
-                    },
-                  );
+                      },
+                    );
+                  } else {
+                    return BillBoard(text: error);
+                  }
                 },
               ),
             ],

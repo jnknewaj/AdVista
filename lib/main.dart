@@ -22,10 +22,12 @@ void main() async {
   HydratedBloc.storage = storage;
   await storage.clear();
   configureDependencies();
-  MobileAds.instance.updateRequestConfiguration(
+  final gmaInstance = MobileAds.instance;
+  await gmaInstance.initialize();
+  gmaInstance.updateRequestConfiguration(
     RequestConfiguration(
       testDeviceIds: [
-        AdString.testDevice1,
+        //AdString.testDevice1,
       ],
     ),
   );
@@ -101,7 +103,8 @@ class AuthGate extends StatelessWidget {
                   navigateAndRemoveUntil(context, const HomePage());
                 },
                 failed: (s) {
-                  navigateAndRemoveUntil(context, const NotAdmobUserPage());
+                  //navigateAndRemoveUntil(context, const NotAdmobUserPage());
+                  navigateAndRemoveUntil(context, const HomePage());
                 },
                 idInfoFound: (ss) {
                   navigateAndRemoveUntil(context, const HomePage());

@@ -2,25 +2,50 @@ part of 'apps_metrics_bloc.dart';
 
 @freezed
 class AppsMetricsState with _$AppsMetricsState {
-  const factory AppsMetricsState.initial() = _Initial;
-  const factory AppsMetricsState.loading() = _Loading;
-  const factory AppsMetricsState.loadedToday(List<AppsMetrics> data) =
-      _LoadedToday;
-  const factory AppsMetricsState.loadedYesterday(List<AppsMetrics> data) =
-      _LoadedYesterday;
-  const factory AppsMetricsState.loaded7Days(List<AppsMetrics> data) =
-      _Loaded7Days;
-  const factory AppsMetricsState.loadedThisMonth(List<AppsMetrics> data) =
-      _LoadedThisMonth;
-  const factory AppsMetricsState.loadedLastMonth(List<AppsMetrics> data) =
-      _LoadedLastMonth;
-  const factory AppsMetricsState.loadedThisYear(List<AppsMetrics> data) =
-      _LoadedThisYear;
-  const factory AppsMetricsState.loadedLastYear(List<AppsMetrics> data) =
-      _LoadedLastYear;
-  const factory AppsMetricsState.loadedAllTime(List<AppsMetrics> data) =
-      _LoadedAllTime;
-  const factory AppsMetricsState.loadedCustom(List<AppsMetrics> data) =
-      _loadedCustom;
-  const factory AppsMetricsState.failure(AppsDataFailures failures) = _Failure;
+  const factory AppsMetricsState({
+    required List<AppsMetrics>? todayMetrics,
+    required List<AppsMetrics>? yesterdayMetrics,
+    required List<AppsMetrics>? sevenDaysMetrics,
+    required List<AppsMetrics>? thisMonthMetrics,
+    required List<AppsMetrics>? lastMonthMetrics,
+    required List<AppsMetrics>? thisYearsMetrics,
+    required List<AppsMetrics>? lastYearsMetrics,
+    required List<AppsMetrics>? lifeTimeMetrics,
+    required List<AppsMetrics>? customMetrics,
+    required bool isLoading,
+    required String? todayError,
+    required String? yesterdayError,
+    required String? last7DaysError,
+    required String? thisMonthError,
+    required String? lastMonthError,
+    required String? thisYearError,
+    required String? lastYearError,
+    required String? customError,
+    required String? lifeTimeError,
+  }) = _AppsMetricsState;
+
+  factory AppsMetricsState.initial() => const AppsMetricsState(
+        todayMetrics: null,
+        yesterdayMetrics: null,
+        sevenDaysMetrics: null,
+        thisMonthMetrics: null,
+        lastMonthMetrics: null,
+        thisYearsMetrics: null,
+        lastYearsMetrics: null,
+        customMetrics: null,
+        lifeTimeMetrics: null,
+        isLoading: false,
+        todayError: null,
+        yesterdayError: null,
+        last7DaysError: null,
+        thisMonthError: null,
+        lastMonthError: null,
+        thisYearError: null,
+        lastYearError: null,
+        customError: null,
+        lifeTimeError: null,
+      );
+
+  factory AppsMetricsState.fromJson(Map<String, dynamic> json) =>
+      _$AppsMetricsStateFromJson(json);
 }

@@ -179,7 +179,7 @@ String? mapCountryMetricStateToError(
       return null;
     case TimeRange.thisYear:
       if (state.thisYearError != null) {
-        return state.thisMonthError!;
+        return state.thisMonthError;
       }
       return null;
     case TimeRange.allTime:

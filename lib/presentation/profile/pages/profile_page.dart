@@ -3,7 +3,6 @@ import 'package:advista/application/advertising/native_ad/native_ad_bloc.dart';
 import 'package:advista/application/auth/auth_check/auth_check_bloc.dart';
 import 'package:advista/application/core/account/ac_opening_date_bloc/ac_opening_date_bloc.dart';
 import 'package:advista/application/core/account/admob_account_bloc/admob_account_bloc.dart';
-import 'package:advista/application/metrics/todays_metrics/todays_metrics_bloc.dart';
 import 'package:advista/injection.dart';
 import 'package:advista/main.dart';
 import 'package:advista/presentation/core/widgets/app_icon.dart';
@@ -16,6 +15,7 @@ import 'package:advista/utils/app_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -72,7 +72,7 @@ class ProfilePage extends StatelessWidget {
                     unknown: (e) => e.message,
                     idNotFound: (e) => e.msg,
                   );
-                  showSnackbar(context, text);
+                  //showSnackbar(context, text);
                 },
                 orElse: () {},
               );
@@ -130,8 +130,6 @@ class _Handler extends StatelessWidget {
               children: [
                 const Text('Developer : newazkabirtaluk@gmail.com'),
                 const SizedBox(height: 10),
-                const Text(
-                    'The app is still in beta version. Stay updated whenever available.'),
               ],
             );
           },
@@ -139,6 +137,17 @@ class _Handler extends StatelessWidget {
         title: Text(appName()),
         centerTitle: true,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.rate_review),
+            onPressed: () async {
+              final Uri playStoreUrl = Uri.parse(
+                  "https://play.google.com/store/apps/details?id=com.ngb.twoadvista");
+              await launchUrl(
+                playStoreUrl,
+                mode: LaunchMode.externalApplication,
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
@@ -173,9 +182,8 @@ class _Handler extends StatelessWidget {
                     );
                   },
                   failed: (s) {
-                    return const BillBoard(
-                      // TODO create a map
-                      text: 'Failed To Load Account Info',
+                    return BillBoard(
+                      text: mapAccountFailuresToString(s.failures),
                     );
                   },
                   initial: (_) => const ProfileInfoCardShimmer(),

@@ -4,6 +4,7 @@ import 'package:advista/domain/advertising/i_ad_repository.dart';
 import 'package:advista/utils/ad_strings.dart';
 import 'package:advista/utils/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:gma_mediation_unity/gma_mediation_unity.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,8 @@ class AdRepository implements IAdRepository {
     BannerAdListener adListener,
   ) async {
     try {
+      GmaMediationUnity().setGDPRConsent(true);
+      GmaMediationUnity().setCCPAConsent(true);
       final BannerAd myBanner = BannerAd(
         adUnitId: AdString.bannerAdId,
         size: AdSize.banner,

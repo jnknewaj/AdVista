@@ -42,20 +42,49 @@ class _Handler extends HookWidget {
             child: ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
-                const Text('Last 7 Days'),
-                const SizedBox(height: 20),
+                Align(
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                    ),
+                    child: const Text('Last 7 Days'),
+                  ),
+                ),
+                const SizedBox(height: 60),
                 BlocProvider(
                   create: (context) => getIt<MetricsWithDateBloc>()
                     ..add(const MetricsWithDateEvent.started()),
                   child: ChartSevenDays(selectedMetrics),
                 ),
-                const SizedBox(height: 10),
+                Align(
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                    ),
+                    child: const Text('Last 12 Months'),
+                  ),
+                ),
+                const SizedBox(height: 60),
                 BlocProvider(
                   create: (context) => getIt<MetricsWithDateBloc>()
                     ..add(const MetricsWithDateEvent.twelveMonthsRequested()),
                   child: ChartSevenDays(selectedMetrics),
                 ),
-                const SizedBox(height: 10),
+                Align(
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                    ),
+                    child: const Text('Last 5 Years'),
+                  ),
+                ),
+                const SizedBox(height: 30),
                 BlocProvider(
                   create: (context) => getIt<MetricsWithDateBloc>()
                     ..add(const MetricsWithDateEvent.last5YearsRequested()),

@@ -11,7 +11,8 @@ class AdUnitFullList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dimensionTitle = ref.watch(titleProvider('AdUnitDetailsPage'));
+    final dimensionTitle = ref.watch(titleProvider(
+        'AdUnitDetailsPage')); // same key used in [AdUnitListPage]. They should be same as widget name (AdUnitListPage) for uniformity. But ok anyway.
     final sortedList = sortAdUnitMetricsList(dimensionTitle, list);
 
     return ListView.builder(

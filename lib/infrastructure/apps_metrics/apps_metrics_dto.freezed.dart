@@ -22,15 +22,7 @@ AppsMetricsDto _$AppsMetricsDtoFromJson(Map<String, dynamic> json) {
 mixin _$AppsMetricsDto {
   String get appValue => throw _privateConstructorUsedError; // app-id
   String get appDisplayLabel => throw _privateConstructorUsedError;
-  int get adRequests => throw _privateConstructorUsedError;
-  int get clicks => throw _privateConstructorUsedError;
-  int get impressions => throw _privateConstructorUsedError;
-  double get impressionCtr => throw _privateConstructorUsedError;
-  double get impressionRpm => throw _privateConstructorUsedError;
-  int get matchedRequests => throw _privateConstructorUsedError;
-  double get matchRate => throw _privateConstructorUsedError;
-  double get showRate => throw _privateConstructorUsedError;
-  double get estimatedEarnings => throw _privateConstructorUsedError;
+  Metricsdto get metrics => throw _privateConstructorUsedError;
 
   /// Serializes this AppsMetricsDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,18 +40,9 @@ abstract class $AppsMetricsDtoCopyWith<$Res> {
           AppsMetricsDto value, $Res Function(AppsMetricsDto) then) =
       _$AppsMetricsDtoCopyWithImpl<$Res, AppsMetricsDto>;
   @useResult
-  $Res call(
-      {String appValue,
-      String appDisplayLabel,
-      int adRequests,
-      int clicks,
-      int impressions,
-      double impressionCtr,
-      double impressionRpm,
-      int matchedRequests,
-      double matchRate,
-      double showRate,
-      double estimatedEarnings});
+  $Res call({String appValue, String appDisplayLabel, Metricsdto metrics});
+
+  $MetricsdtoCopyWith<$Res> get metrics;
 }
 
 /// @nodoc
@@ -79,15 +62,7 @@ class _$AppsMetricsDtoCopyWithImpl<$Res, $Val extends AppsMetricsDto>
   $Res call({
     Object? appValue = null,
     Object? appDisplayLabel = null,
-    Object? adRequests = null,
-    Object? clicks = null,
-    Object? impressions = null,
-    Object? impressionCtr = null,
-    Object? impressionRpm = null,
-    Object? matchedRequests = null,
-    Object? matchRate = null,
-    Object? showRate = null,
-    Object? estimatedEarnings = null,
+    Object? metrics = null,
   }) {
     return _then(_value.copyWith(
       appValue: null == appValue
@@ -98,43 +73,21 @@ class _$AppsMetricsDtoCopyWithImpl<$Res, $Val extends AppsMetricsDto>
           ? _value.appDisplayLabel
           : appDisplayLabel // ignore: cast_nullable_to_non_nullable
               as String,
-      adRequests: null == adRequests
-          ? _value.adRequests
-          : adRequests // ignore: cast_nullable_to_non_nullable
-              as int,
-      clicks: null == clicks
-          ? _value.clicks
-          : clicks // ignore: cast_nullable_to_non_nullable
-              as int,
-      impressions: null == impressions
-          ? _value.impressions
-          : impressions // ignore: cast_nullable_to_non_nullable
-              as int,
-      impressionCtr: null == impressionCtr
-          ? _value.impressionCtr
-          : impressionCtr // ignore: cast_nullable_to_non_nullable
-              as double,
-      impressionRpm: null == impressionRpm
-          ? _value.impressionRpm
-          : impressionRpm // ignore: cast_nullable_to_non_nullable
-              as double,
-      matchedRequests: null == matchedRequests
-          ? _value.matchedRequests
-          : matchedRequests // ignore: cast_nullable_to_non_nullable
-              as int,
-      matchRate: null == matchRate
-          ? _value.matchRate
-          : matchRate // ignore: cast_nullable_to_non_nullable
-              as double,
-      showRate: null == showRate
-          ? _value.showRate
-          : showRate // ignore: cast_nullable_to_non_nullable
-              as double,
-      estimatedEarnings: null == estimatedEarnings
-          ? _value.estimatedEarnings
-          : estimatedEarnings // ignore: cast_nullable_to_non_nullable
-              as double,
+      metrics: null == metrics
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metricsdto,
     ) as $Val);
+  }
+
+  /// Create a copy of AppsMetricsDto
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MetricsdtoCopyWith<$Res> get metrics {
+    return $MetricsdtoCopyWith<$Res>(_value.metrics, (value) {
+      return _then(_value.copyWith(metrics: value) as $Val);
+    });
   }
 }
 
@@ -146,18 +99,10 @@ abstract class _$$AppsMetricsDtoImplCopyWith<$Res>
       __$$AppsMetricsDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String appValue,
-      String appDisplayLabel,
-      int adRequests,
-      int clicks,
-      int impressions,
-      double impressionCtr,
-      double impressionRpm,
-      int matchedRequests,
-      double matchRate,
-      double showRate,
-      double estimatedEarnings});
+  $Res call({String appValue, String appDisplayLabel, Metricsdto metrics});
+
+  @override
+  $MetricsdtoCopyWith<$Res> get metrics;
 }
 
 /// @nodoc
@@ -175,15 +120,7 @@ class __$$AppsMetricsDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? appValue = null,
     Object? appDisplayLabel = null,
-    Object? adRequests = null,
-    Object? clicks = null,
-    Object? impressions = null,
-    Object? impressionCtr = null,
-    Object? impressionRpm = null,
-    Object? matchedRequests = null,
-    Object? matchRate = null,
-    Object? showRate = null,
-    Object? estimatedEarnings = null,
+    Object? metrics = null,
   }) {
     return _then(_$AppsMetricsDtoImpl(
       appValue: null == appValue
@@ -194,42 +131,10 @@ class __$$AppsMetricsDtoImplCopyWithImpl<$Res>
           ? _value.appDisplayLabel
           : appDisplayLabel // ignore: cast_nullable_to_non_nullable
               as String,
-      adRequests: null == adRequests
-          ? _value.adRequests
-          : adRequests // ignore: cast_nullable_to_non_nullable
-              as int,
-      clicks: null == clicks
-          ? _value.clicks
-          : clicks // ignore: cast_nullable_to_non_nullable
-              as int,
-      impressions: null == impressions
-          ? _value.impressions
-          : impressions // ignore: cast_nullable_to_non_nullable
-              as int,
-      impressionCtr: null == impressionCtr
-          ? _value.impressionCtr
-          : impressionCtr // ignore: cast_nullable_to_non_nullable
-              as double,
-      impressionRpm: null == impressionRpm
-          ? _value.impressionRpm
-          : impressionRpm // ignore: cast_nullable_to_non_nullable
-              as double,
-      matchedRequests: null == matchedRequests
-          ? _value.matchedRequests
-          : matchedRequests // ignore: cast_nullable_to_non_nullable
-              as int,
-      matchRate: null == matchRate
-          ? _value.matchRate
-          : matchRate // ignore: cast_nullable_to_non_nullable
-              as double,
-      showRate: null == showRate
-          ? _value.showRate
-          : showRate // ignore: cast_nullable_to_non_nullable
-              as double,
-      estimatedEarnings: null == estimatedEarnings
-          ? _value.estimatedEarnings
-          : estimatedEarnings // ignore: cast_nullable_to_non_nullable
-              as double,
+      metrics: null == metrics
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metricsdto,
     ));
   }
 }
@@ -241,15 +146,7 @@ class _$AppsMetricsDtoImpl extends _AppsMetricsDto
   const _$AppsMetricsDtoImpl(
       {required this.appValue,
       required this.appDisplayLabel,
-      required this.adRequests,
-      required this.clicks,
-      required this.impressions,
-      required this.impressionCtr,
-      required this.impressionRpm,
-      required this.matchedRequests,
-      required this.matchRate,
-      required this.showRate,
-      required this.estimatedEarnings})
+      required this.metrics})
       : super._();
 
   factory _$AppsMetricsDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -261,27 +158,11 @@ class _$AppsMetricsDtoImpl extends _AppsMetricsDto
   @override
   final String appDisplayLabel;
   @override
-  final int adRequests;
-  @override
-  final int clicks;
-  @override
-  final int impressions;
-  @override
-  final double impressionCtr;
-  @override
-  final double impressionRpm;
-  @override
-  final int matchedRequests;
-  @override
-  final double matchRate;
-  @override
-  final double showRate;
-  @override
-  final double estimatedEarnings;
+  final Metricsdto metrics;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppsMetricsDto(appValue: $appValue, appDisplayLabel: $appDisplayLabel, adRequests: $adRequests, clicks: $clicks, impressions: $impressions, impressionCtr: $impressionCtr, impressionRpm: $impressionRpm, matchedRequests: $matchedRequests, matchRate: $matchRate, showRate: $showRate, estimatedEarnings: $estimatedEarnings)';
+    return 'AppsMetricsDto(appValue: $appValue, appDisplayLabel: $appDisplayLabel, metrics: $metrics)';
   }
 
   @override
@@ -291,15 +172,7 @@ class _$AppsMetricsDtoImpl extends _AppsMetricsDto
       ..add(DiagnosticsProperty('type', 'AppsMetricsDto'))
       ..add(DiagnosticsProperty('appValue', appValue))
       ..add(DiagnosticsProperty('appDisplayLabel', appDisplayLabel))
-      ..add(DiagnosticsProperty('adRequests', adRequests))
-      ..add(DiagnosticsProperty('clicks', clicks))
-      ..add(DiagnosticsProperty('impressions', impressions))
-      ..add(DiagnosticsProperty('impressionCtr', impressionCtr))
-      ..add(DiagnosticsProperty('impressionRpm', impressionRpm))
-      ..add(DiagnosticsProperty('matchedRequests', matchedRequests))
-      ..add(DiagnosticsProperty('matchRate', matchRate))
-      ..add(DiagnosticsProperty('showRate', showRate))
-      ..add(DiagnosticsProperty('estimatedEarnings', estimatedEarnings));
+      ..add(DiagnosticsProperty('metrics', metrics));
   }
 
   @override
@@ -311,40 +184,13 @@ class _$AppsMetricsDtoImpl extends _AppsMetricsDto
                 other.appValue == appValue) &&
             (identical(other.appDisplayLabel, appDisplayLabel) ||
                 other.appDisplayLabel == appDisplayLabel) &&
-            (identical(other.adRequests, adRequests) ||
-                other.adRequests == adRequests) &&
-            (identical(other.clicks, clicks) || other.clicks == clicks) &&
-            (identical(other.impressions, impressions) ||
-                other.impressions == impressions) &&
-            (identical(other.impressionCtr, impressionCtr) ||
-                other.impressionCtr == impressionCtr) &&
-            (identical(other.impressionRpm, impressionRpm) ||
-                other.impressionRpm == impressionRpm) &&
-            (identical(other.matchedRequests, matchedRequests) ||
-                other.matchedRequests == matchedRequests) &&
-            (identical(other.matchRate, matchRate) ||
-                other.matchRate == matchRate) &&
-            (identical(other.showRate, showRate) ||
-                other.showRate == showRate) &&
-            (identical(other.estimatedEarnings, estimatedEarnings) ||
-                other.estimatedEarnings == estimatedEarnings));
+            (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      appValue,
-      appDisplayLabel,
-      adRequests,
-      clicks,
-      impressions,
-      impressionCtr,
-      impressionRpm,
-      matchedRequests,
-      matchRate,
-      showRate,
-      estimatedEarnings);
+  int get hashCode =>
+      Object.hash(runtimeType, appValue, appDisplayLabel, metrics);
 
   /// Create a copy of AppsMetricsDto
   /// with the given fields replaced by the non-null parameter values.
@@ -367,15 +213,7 @@ abstract class _AppsMetricsDto extends AppsMetricsDto {
   const factory _AppsMetricsDto(
       {required final String appValue,
       required final String appDisplayLabel,
-      required final int adRequests,
-      required final int clicks,
-      required final int impressions,
-      required final double impressionCtr,
-      required final double impressionRpm,
-      required final int matchedRequests,
-      required final double matchRate,
-      required final double showRate,
-      required final double estimatedEarnings}) = _$AppsMetricsDtoImpl;
+      required final Metricsdto metrics}) = _$AppsMetricsDtoImpl;
   const _AppsMetricsDto._() : super._();
 
   factory _AppsMetricsDto.fromJson(Map<String, dynamic> json) =
@@ -386,23 +224,7 @@ abstract class _AppsMetricsDto extends AppsMetricsDto {
   @override
   String get appDisplayLabel;
   @override
-  int get adRequests;
-  @override
-  int get clicks;
-  @override
-  int get impressions;
-  @override
-  double get impressionCtr;
-  @override
-  double get impressionRpm;
-  @override
-  int get matchedRequests;
-  @override
-  double get matchRate;
-  @override
-  double get showRate;
-  @override
-  double get estimatedEarnings;
+  Metricsdto get metrics;
 
   /// Create a copy of AppsMetricsDto
   /// with the given fields replaced by the non-null parameter values.

@@ -1,3 +1,4 @@
+import 'package:advista/domain/metrics/metrics.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'apps_metrics.freezed.dart';
@@ -9,16 +10,14 @@ class AppsMetrics with _$AppsMetrics {
   const factory AppsMetrics({
     required String appValue, // app-id
     required String appDisplayLabel,
-    required int adRequests,
-    required int clicks,
-    required int impressions,
-    required double impressionCtr,
-    required double impressionRpm,
-    required int matchedRequests,
-    required double matchRate,
-    required double showRate,
-    required double estimatedEarnings,
+    required Metrics metrics,
   }) = _AppsMetrics;
+
+  factory AppsMetrics.empty() => AppsMetrics(
+        appValue: '',
+        appDisplayLabel: '',
+        metrics: Metrics.empty(),
+      );
 
   factory AppsMetrics.fromJson(Map<String, dynamic> json) =>
       _$AppsMetricsFromJson(json);

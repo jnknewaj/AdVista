@@ -145,3 +145,97 @@ class BarChartForMetrics extends StatelessWidget {
     );
   }
 }
+
+// class BarChartForMetricsTwo extends StatelessWidget {
+//   const BarChartForMetricsTwo({
+//     required this.metricsList,
+//     required this.selectedMetrics,
+//   });
+
+//   final List<MetricsWithDate> metricsList;
+//   final ValueNotifier<MetricsTitle> selectedMetrics;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     double Function(MetricsWithDate) valueExtractor;
+//     switch (selectedMetrics.value) {
+//       case MetricsTitle.impression:
+//         valueExtractor = (m) => m.impressions.toDouble();
+//         break;
+//       case MetricsTitle.requests:
+//         valueExtractor = (m) => m.requests.toDouble();
+//         break;
+//       case MetricsTitle.clicks:
+//         valueExtractor = (m) => m.clicks.toDouble();
+//         break;
+//       case MetricsTitle.eCPM:
+//         valueExtractor = (m) => m.eCPM;
+//         break;
+//       case MetricsTitle.matchRate:
+//         valueExtractor = (m) => m.matchRate;
+//         break;
+//       default:
+//         valueExtractor = (m) => m.earnings;
+//     }
+
+//     final chartData = metricsList
+//         .map((metric) => ChartData(
+//               date: metric.date,
+//               value: valueExtractor(metric),
+//             ))
+//         .toList();
+
+//     return SizedBox(
+//       height: screenHeightPortion(context, 0.45),
+//       child: SfCartesianChart(
+//         plotAreaBorderWidth: 0,
+//         primaryXAxis: const CategoryAxis(
+//           title: AxisTitle(text: 'Date'),
+//           majorGridLines: MajorGridLines(width: 0),
+//           labelRotation: -45,
+//         ),
+//         primaryYAxis: NumericAxis(
+//           title: AxisTitle(text: selectedMetrics.value.name),
+//           interval: calculateInterval(chartData),
+//           labelFormat: '{value}',
+//           majorTickLines: const MajorTickLines(size: 0),
+//         ),
+//         title: const ChartTitle(text: 'Metrics Over Time'),
+//         tooltipBehavior: TooltipBehavior(enable: true),
+//         series: <CartesianSeries<dynamic, dynamic>>[
+//           ColumnSeries<dynamic, dynamic>(
+//             dataSource: chartData,
+//             xValueMapper: (data, _) => formatDateString(data.date),
+//             yValueMapper: (data, _) => data.value,
+//             dataLabelSettings: const DataLabelSettings(isVisible: true),
+//             gradient: LinearGradient(
+//               colors: [
+//                 Theme.of(context).primaryColor.withOpacity(0.5),
+//                 Theme.of(context).primaryColor,
+//               ],
+//               begin: Alignment.topCenter,
+//               end: Alignment.bottomCenter,
+//             ),
+//           ),
+//         ],
+//         zoomPanBehavior: ZoomPanBehavior(
+//           enablePanning: true,
+//           enablePinching: true,
+//         ),
+//       ),
+//     );
+//   }
+
+//   double calculateInterval(List<ChartData> chartData) {
+//     final maxValue =
+//         chartData.map((data) => data.value).reduce((a, b) => a > b ? a : b);
+//     return maxValue / 5;
+//   }
+// }
+
+// class ChartData {
+//   final String date;
+//   final double value;
+
+//   ChartData({required this.date, required this.value});
+// }

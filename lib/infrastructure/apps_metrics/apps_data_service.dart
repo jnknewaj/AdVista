@@ -10,6 +10,7 @@ import 'package:advista/infrastructure/apps_metrics/apps_metrics_dto.dart';
 import 'package:advista/infrastructure/core/account_service.dart';
 import 'package:advista/infrastructure/core/exceptions.dart';
 import 'package:advista/infrastructure/metrics/metrics_service_helper.dart';
+import 'package:advista/utils/app_utils.dart';
 import 'package:advista/utils/helper.dart';
 import 'package:advista/utils/map.dart';
 import 'package:flutter/material.dart';
@@ -128,7 +129,7 @@ class AppsDataService {
   Future<List<AppsMetrics>> fetchAppsMetrics(DateTimeRange range) async {
     final accountId = await _accountService.getAccountId();
     if (accountId == null) {
-      throw IdNotFoundException(msg: 'Account Id Not Found in Storage');
+      throw IdNotFoundException(msg: 'No linked AdMob Id found');
     }
     final accessToken = await _provideAccessToken();
 
@@ -147,10 +148,11 @@ class AppsDataService {
 
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body) as List<dynamic>;
-        return jsonResponse
+        final res = jsonResponse
             .where((entry) => entry.containsKey('row')) // Only process rows
             .map((entry) => AppsMetricsDto.fromRow(entry).toDomain())
             .toList();
+        return res;
       } else {
         throw ServerException(
             message: 'Exception in http response. ',
