@@ -1,16 +1,27 @@
-# advista
+# AdVista
 
-A new Flutter project.
+Advista is a Flutter application that displays real-time AdMob statistics using the AdMob API. Used flutter_bloc for state management and followed Domain Driven Design (DDD) pattern.
 
-## Getting Started
+## Key Features
 
-This project is a starting point for a Flutter application.
+AdMob API integration: View your AdMob earnings, impressions, and performance data in real-time.
 
-A few resources to get you started if this is your first Flutter project:
+Clean Architecture: Codebase structured using DDD principles — separating domain, application, infrastructure, and presentation layers.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+State Management: Uses flutter_bloc to manage UI state reactively and cleanly.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Future-Proof: Designed to be scalable and maintainable for adding more AdMob insights
+
+📁 Folder Structure
+lib/
+├── domain/         # entities, value objects, abstract repositories
+├── application/    # blocs
+├── infrastructure/ # API services, data sources, DTOs, repository implementations
+├── presentation/   # UI, widgets
+├── utils/          # other utility files
+└── main.dart
+
+## Download
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.ngb.twoadvista)
+
+
