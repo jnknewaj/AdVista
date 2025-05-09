@@ -14,7 +14,7 @@ Advista is a Flutter application that displays real-time AdMob statistics using 
 
 
 
-📁 Folder Structure
+## 📁 Folder Structure
 <pre> lib/
 ├── domain/         # entities, value objects, abstract repositories
 ├── application/    # blocs
