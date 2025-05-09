@@ -4,22 +4,22 @@ Advista is a Flutter application that displays real-time AdMob statistics using 
 
 ## Key Features
 
-AdMob API integration: View your AdMob earnings, impressions, and performance data in real-time.
+**AdMob API integration:** View your AdMob earnings, impressions, and performance data in real-time.
 
-Clean Architecture: Codebase structured using DDD principles — separating domain, application, infrastructure, and presentation layers.
+**Clean Architecture:** Codebase structured using DDD principles — separating domain, application, infrastructure, and presentation layers.
 
-State Management: Uses flutter_bloc to manage UI state reactively and cleanly.
+**State Management:** Uses flutter_bloc to manage UI state reactively and cleanly.
 
-Future-Proof: Designed to be scalable and maintainable for adding more AdMob insights
+**Future-Proof:** Designed to be scalable and maintainable for adding more AdMob insights
 
 📁 Folder Structure
-lib/
+<pre> ```lib/
 ├── domain/         # entities, value objects, abstract repositories
 ├── application/    # blocs
 ├── infrastructure/ # API services, data sources, DTOs, repository implementations
 ├── presentation/   # UI, widgets
 ├── utils/          # other utility files
-└── main.dart
+└── main.dart``` </pre>
 
 ## Download
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.ngb.twoadvista)
